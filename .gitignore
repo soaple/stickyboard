@@ -26,3 +26,5 @@ yarn-error.log*
 *.swo
 .idea
 tags
+
+package-lock.json
