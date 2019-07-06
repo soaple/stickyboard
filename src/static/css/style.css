@@ -1,0 +1,62 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+html, body {
+    height: 100%;
+    font-family: 'Nanum Gothic', serif;
+}
+
+html,
+body,
+#main,
+#main > div {
+    height: 100%;
+}
+
+input:focus, button:focus {
+    outline: none;
+}
+
+@media all {
+    .page-break	{
+        display: none;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #print-section, #print-section * {
+        visibility: visible;
+    }
+    #print-section {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .page-break {
+        display: block;
+        page-break-before: always;
+    }
+}
+
+/**
+ * Animations
+ */
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
+}
