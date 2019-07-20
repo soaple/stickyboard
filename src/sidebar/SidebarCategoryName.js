@@ -1,9 +1,10 @@
 // src/sidebar/SidebarCategoryName.js
 
-var SidebarCategoryName = {
+const SidebarCategoryName = {
 
     INTRO: 'INTRO',
+    COMPONENTS: 'COMPONENTS',
 
 }
 
-module.exports = SidebarCategoryName
+module.exports = SidebarCategoryName;

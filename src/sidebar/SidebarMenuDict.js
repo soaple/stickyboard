@@ -2,7 +2,11 @@
 
 import React from 'react';
 
-var SidebarMenuDict = {
+import { amber } from '@material-ui/core/colors';
+
+import Timeline from '@material-ui/icons/Timeline';
+
+const SidebarMenuDict = {
 
     /******************
      * Intro Menu
@@ -14,6 +18,17 @@ var SidebarMenuDict = {
          value: 101,
          need_permission: false
      }],
+
+     /******************
+     * Component Menus
+     ******************/
+    COMPONENTS: [{
+        title: 'Chart',
+        icon: (<Timeline color={'#FFFFFF'} hovercolor={amber[500]} />),
+        url: '/components/chart',
+        value: 201,
+        need_permission: false
+    }],
 
 }
 
