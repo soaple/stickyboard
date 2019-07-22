@@ -17,12 +17,12 @@ import {Responsive, WidthProvider} from 'react-grid-layout'
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 import { AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid,
-    Line, LineChart, Legend, ResponsiveContainer, PieChart, Pie, Bar,
-    BarChart, Sector, Cell, RadarChart, Radar, PolarGrid, PolarAngleAxis,
-    PolarRadiusAxis, ComposedChart, RadialBarChart, RadialBar,
+    Line, Legend, ResponsiveContainer, PieChart, Pie, Bar,
+    Sector, Cell, RadarChart, Radar, PolarGrid, PolarAngleAxis,
+    PolarRadiusAxis, RadialBarChart, RadialBar,
     ScatterChart, Scatter, Treemap, ReferenceLine } from 'recharts'
 
-import { ReLineChart, SimpleDateAxisTick } from '@stickyboard/recharts';
+import { LineChart, BarChart, ComposedChart, SimpleDateAxisTick } from '@stickyboard/recharts';
 
 import {
     showMessageSnackbar,
@@ -523,70 +523,39 @@ class ComponentChartsPage extends React.Component {
         case 'LineChart':
             return (
                 <Paper key={block.i}>
-                    <ReLineChart
+                    <LineChart
                         data={lineChartData}
+                        xAxisDataKey={'time'}
+                        lineType={'linear'}
+                        lineDataKey={'visitors'}
+                        lineName={'Visitors'}
                         lineColor={COLORS[0]} />
                 </Paper>
             )
         case 'BarChart':
             return (
                 <Paper key={block.i}>
-                    <ResponsiveContainer>
-                        <BarChart
-                            data={lineChartData}
-                            margin={{top: 20, right: 30, left: 10, bottom: 20}}>
-                            <XAxis
-                                dataKey='time'
-                                tickCount={10}
-                                tick={<SimpleDateAxisTick />}/>
-                            <YAxis/>
-                            <CartesianGrid strokeDasharray="3 3"/>
-                            <Tooltip
-                                labelFormatter={(label) => { return DateUtil.formatDateOnly(label) }}
-                                formatter={(value) => {return value.toFixed(0)}}/>
-                            <Legend />
-                            <ReferenceLine y={0} stroke='#000'/>
-                            <Bar
-                                dataKey="visitors"
-                                name="Visitors"
-                                fill={COLORS[1]}/>
-                        </BarChart>
-                    </ResponsiveContainer>
+                    <BarChart
+                        data={lineChartData}
+                        xAxisDataKey={'time'}
+                        barDataKey={'visitors'}
+                        barName={'Visitors'}
+                        barColor={COLORS[1]} />
                 </Paper>
             )
         case 'ComposedChart':
             return (
                 <Paper key={block.i}>
-                    <ResponsiveContainer>
-                        <ComposedChart
-                            data={lineChartData}
-                            margin={{top: 20, right: 30, left: 10, bottom: 20}}>
-                            <XAxis
-                                dataKey='time'
-                                tickCount={10}
-                                tick={<SimpleDateAxisTick />}/>
-                            <YAxis/>
-                            <CartesianGrid strokeDasharray="3 3"/>
-                            <Tooltip
-                                labelFormatter={(label) => { return DateUtil.formatDateOnly(label) }}
-                                formatter={(value) => {return value.toFixed(0)}}/>
-                            <Legend />
-                            <ReferenceLine y={0} stroke='#000'/>
-                            <Bar
-                                dataKey="visitors"
-                                name="Visitors"
-                                fill={COLORS[2]}/>
-                            <Line
-                                type="linear"
-                                dataKey="visitors"
-                                name={'Visitors'}
-                                unit={''}
-                                stroke={COLORS[3]}
-                                strokeWidth={2}
-                                dot={true}
-                                activeDot={{r: 6}} />
-                        </ComposedChart>
-                    </ResponsiveContainer>
+                    <ComposedChart
+                        data={lineChartData}
+                        xAxisDataKey={'time'}
+                        barDataKey={'visitors'}
+                        barName={'Visitors'}
+                        barColor={COLORS[2]}
+                        lineType={'linear'}
+                        lineDataKey={'visitors'}
+                        lineName={'Visitors'}
+                        lineColor={COLORS[3]} />
                 </Paper>
             )
         case 'PieChart':
@@ -679,16 +648,21 @@ class ComponentChartsPage extends React.Component {
                         style={{height: '100%', padding: 20}}>
                         <Grid item xs={6} style={{height: '50%'}}>
                             <ResponsiveContainer>
-                                <LineChart data={lineChartData}>
-                                    <Line type='monotone' dataKey='visitors' stroke={COLORS[3]} strokeWidth={2} />
-                                </LineChart>
+                                <LineChart
+                                    data={lineChartData}
+                                    lineType={'monotone'}
+                                    lineDataKey={'visitors'}
+                                    lineName={'Visitors'}
+                                    lineColor={COLORS[3]} />
                             </ResponsiveContainer>
                         </Grid>
                         <Grid item xs={6} style={{height: '50%'}}>
                             <ResponsiveContainer>
-                                <BarChart data={lineChartData}>
-                                    <Bar dataKey='visitors' name='visitors' fill={COLORS[2]} />
-                                </BarChart>
+                                <BarChart
+                                    data={lineChartData}
+                                    barDataKey={'visitors'}
+                                    barName={'Visitors'}
+                                    barColor={COLORS[2]} />
                             </ResponsiveContainer>
                         </Grid>
                         <Grid item xs={6} style={{height: '50%'}}>
