@@ -662,6 +662,7 @@ class ComponentChartsPage extends React.Component {
                 <Paper key={block.i}>
                     <ResponsiveContainer>
                         <Treemap
+                            isAnimationActive={false}
                             data={treeMapData}
                             dataKey="size"
                             ratio={4/3}
