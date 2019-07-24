@@ -17,12 +17,14 @@ import {Responsive, WidthProvider} from 'react-grid-layout'
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 import { AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid,
-    Line, Legend, ResponsiveContainer, PieChart, Pie, Bar,
-    Sector, Cell, RadarChart, Radar, PolarGrid, PolarAngleAxis,
+    Line, Legend, ResponsiveContainer, Bar,
+    Sector, Cell, PolarGrid, PolarAngleAxis,
     PolarRadiusAxis, RadialBarChart, RadialBar,
     ScatterChart, Scatter, Treemap, ReferenceLine } from 'recharts'
 
-import { LineChart, BarChart, ComposedChart, SimpleDateAxisTick } from '@stickyboard/recharts';
+import { LineChart, BarChart, ComposedChart,
+    PieChart, RadarChart, SimpleDateAxisTick
+} from '@stickyboard/recharts';
 
 import {
     showMessageSnackbar,
@@ -561,39 +563,21 @@ class ComponentChartsPage extends React.Component {
         case 'PieChart':
             return (
                 <Paper key={block.i}>
-                    <ResponsiveContainer>
-                        <PieChart onMouseEnter={this.onPieEnter}
-                            margin={{top: 20, right: 20, bottom: 20, left: 20}}>
-                            <Pie
-                                data={pieChartData}
-                                dataKey={'value'}
-                                cx={'50%'}
-                                cy={'50%'}
-                                labelLine={false}
-                                outerRadius={'80%'}
-                                fill="#777777">
-                                    {pieChartData.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)}
-                            </Pie>
-                            <Tooltip />
-                            <Legend />
-                        </PieChart>
-                    </ResponsiveContainer>
+                    <PieChart
+                        data={pieChartData}
+                        colorArray={COLORS} />
                 </Paper>
             )
         case 'RadarChart':
             return (
                 <Paper key={block.i}>
-                    <ResponsiveContainer>
-                        <RadarChart cx={'50%'} cy={'50%'} outerRadius={'80%'} data={radarChartData}
-                            margin={{top: 20, right: 20, bottom: 20, left: 20}}>
-                            <Radar name="Mike" dataKey="A" stroke="#ffed00" fill={COLORS[4]} fillOpacity={0.8}/>
-                            <Radar name="Lily" dataKey="B" stroke="#66d522" fill={COLORS[5]} fillOpacity={0.8}/>
-                            <PolarGrid />
-                            <Legend />
-                            <PolarAngleAxis dataKey="subject" />
-                            <PolarRadiusAxis angle={30} domain={[0, 150]}/>
-                        </RadarChart>
-                    </ResponsiveContainer>
+                    <RadarChart
+                        data={radarChartData}
+                        polarAngleAxisKey={'subject'}
+                        radarAttrArray={[
+                            { name: 'Mike', dataKey: 'A', stroke: '#ffed00', fill: COLORS[4] },
+                            { name: 'Lily', dataKey: 'B', stroke: '#66d522', fill: COLORS[5] },
+                        ]} />
                 </Paper>
             )
         case 'AreaChart':
