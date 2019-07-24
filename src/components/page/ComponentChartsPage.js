@@ -16,14 +16,9 @@ import { teal, deepPurple, indigo, blue, blueGrey, green, lightGreen, red,
 import {Responsive, WidthProvider} from 'react-grid-layout'
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
-import { AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid,
-    Line, Legend, ResponsiveContainer, Bar,
-    Sector, Cell, PolarGrid, PolarAngleAxis,
-    PolarRadiusAxis, RadialBarChart, RadialBar,
-    ScatterChart, Scatter, Treemap, ReferenceLine } from 'recharts'
-
 import { LineChart, BarChart, ComposedChart,
-    PieChart, RadarChart, SimpleDateAxisTick
+    PieChart, RadarChart, AreaChart,
+    ScatterChart, Treemap
 } from '@stickyboard/recharts';
 
 import {
@@ -273,65 +268,6 @@ const treeMapData = [
         ],
     }
 ];
-
-const getPercent = (value, total) => {
-	const ratio = total > 0 ? value / total : 0;
-
-    return toPercent(ratio, 2);
-};
-
-const toPercent = (decimal, fixed = 0) => {
-	return `${(decimal * 100).toFixed(fixed)}%`;
-};
-
-const CustomizedTreeMapContent = (props) => {
-    const { root, depth, x, y, width, height, index, payload, colors, rank, name } = props;
-
-    return (
-        <g>
-            <rect
-                x={x}
-                y={y}
-                width={width}
-                height={height}
-                style={{
-                    fill: depth < 2 ? colors[Math.floor(index / root.children.length * 6)] : 'none',
-                    stroke: '#fff',
-                    strokeWidth: 2 / (depth + 1e-10),
-                    strokeOpacity: 1 / (depth + 1e-10),
-                }}
-            />
-            {
-                depth === 1 ?
-                <text
-                x={x + width / 2}
-                y={y + height / 2 + 7}
-                textAnchor="middle"
-                fill="#fff"
-                fontSize={14}
-                >
-                {name}
-                </text>
-                : null
-            }
-            {
-                depth === 1 ?
-                <text
-                x={x + 4}
-                y={y + 18}
-                fill="#fff"
-                fontSize={16}
-                fillOpacity={0.9}
-                >
-                {index + 1}
-                </text>
-                : null
-            }
-        </g>
-    );
-}
-
-const RADIAN = Math.PI / 180;
 
 const initialLayout = [
     {
@@ -583,46 +519,38 @@ class ComponentChartsPage extends React.Component {
         case 'AreaChart':
             return (
                 <Paper key={block.i}>
-                    <ResponsiveContainer>
-                        <AreaChart data={areaChartData} stackOffset="expand"
-                            margin={{top: 20, right: 20, bottom: 20, left: 20}}>
-                            <XAxis dataKey="month"/>
-                            <YAxis tickFormatter={toPercent}/>
-                            <Tooltip />
-                            <Area type='monotone' dataKey='a' stackId="1" stroke={COLORS[7]} fill={COLORS[7]} />
-                            <Area type='monotone' dataKey='b' stackId="1" stroke={COLORS[9]} fill={COLORS[9]} />
-                            <Area type='monotone' dataKey='c' stackId="1" stroke={COLORS[3]} fill={COLORS[3]} />
-                        </AreaChart>
-                    </ResponsiveContainer>
+                    <AreaChart
+                        data={areaChartData}
+                        xAxisDataKey={'month'}
+                        areaAttrArray={[
+                            { type: 'monotone', dataKey: 'a', stackId: '1', stroke: COLORS[7], fill: COLORS[7] },
+                            { type: 'monotone', dataKey: 'b', stackId: '1', stroke: COLORS[9], fill: COLORS[9] },
+                            { type: 'monotone', dataKey: 'c', stackId: '1', stroke: COLORS[3], fill: COLORS[3] },
+                        ]} />
                 </Paper>
             )
         case 'ScatterChart':
             return (
                 <Paper key={block.i}>
-                    <ResponsiveContainer>
-                        <ScatterChart margin={{top: 20, right: 20, bottom: 20, left: 20}}>
-                            <CartesianGrid />
-                            <XAxis dataKey={'tall'} type="number" name='tall' unit='cm' domain={['auto', 'auto']}/>
-                            <YAxis dataKey={'weight'} type="number" name='weight' unit='kg' domain={['auto', 'auto']}/>
-                            <Scatter name='tall and weight' data={scatterChartData} fill={cyan[500]}/>
-                            <Tooltip cursor={{strokeDasharray: '3 3'}}/>
-                        </ScatterChart>
-                    </ResponsiveContainer>
+                    <ScatterChart
+                        data={scatterChartData}
+                        xAxisAttr={{ dataKey: 'tall', type: 'number', name: 'tall', unit: 'cm', domain: ['auto', 'auto'] }}
+                        yAxisAttr={{ dataKey: 'weight', type: 'number', name: 'weight', unit: 'kg', domain: ['auto', 'auto'] }}
+                        scatterName={'tall and weight'}
+                        scatterColor={cyan[500]} />
                 </Paper>
             )
         case 'TreeMap':
             return (
                 <Paper key={block.i}>
-                    <ResponsiveContainer>
-                        <Treemap
-                            isAnimationActive={false}
-                            data={treeMapData}
-                            dataKey="size"
-                            ratio={4/3}
-                            stroke="#fff"
-                            fill="#787878"
-                            content={<CustomizedTreeMapContent colors={COLORS}/>}/>
-                    </ResponsiveContainer>
+                    <Treemap
+                        isAnimationActive={false}
+                        data={treeMapData}
+                        dataKey="size"
+                        ratio={4/3}
+                        stroke="#fff"
+                        fill="#787878"
+                        colorArray={COLORS} />
                 </Paper>
             )
         case 'TinyChart':
@@ -631,37 +559,35 @@ class ComponentChartsPage extends React.Component {
                     <Grid container spacing={16}
                         style={{height: '100%', padding: 20}}>
                         <Grid item xs={6} style={{height: '50%'}}>
-                            <ResponsiveContainer>
-                                <LineChart
-                                    data={lineChartData}
-                                    lineType={'monotone'}
-                                    lineDataKey={'visitors'}
-                                    lineName={'Visitors'}
-                                    lineColor={COLORS[3]} />
-                            </ResponsiveContainer>
+                            <LineChart
+                                data={lineChartData}
+                                lineType={'monotone'}
+                                lineDataKey={'visitors'}
+                                lineName={'Visitors'}
+                                lineColor={COLORS[3]} />
                         </Grid>
                         <Grid item xs={6} style={{height: '50%'}}>
-                            <ResponsiveContainer>
-                                <BarChart
-                                    data={lineChartData}
-                                    barDataKey={'visitors'}
-                                    barName={'Visitors'}
-                                    barColor={COLORS[2]} />
-                            </ResponsiveContainer>
+                            <BarChart
+                                data={lineChartData}
+                                barDataKey={'visitors'}
+                                barName={'Visitors'}
+                                barColor={COLORS[2]} />
                         </Grid>
                         <Grid item xs={6} style={{height: '50%'}}>
-                            <ResponsiveContainer>
-                                <AreaChart data={areaChartData}>
-                                    <Area type='monotone' dataKey='b' stroke={COLORS[0]} fill={COLORS[0]} />
-                                </AreaChart>
-                            </ResponsiveContainer>
+                            <AreaChart
+                                data={areaChartData}
+                                xAxisDataKey={'month'}
+                                areaAttrArray={[
+                                    { type: 'monotone', dataKey: 'b', stroke: COLORS[0], fill: COLORS[0] },
+                                ]} />
                         </Grid>
                         <Grid item xs={6} style={{height: '50%'}}>
-                            <ResponsiveContainer>
-                                <AreaChart data={areaChartData}>
-                                    <Area type='monotone' dataKey='c' stroke={COLORS[6]} fill={COLORS[6]} />
-                                </AreaChart>
-                            </ResponsiveContainer>
+                            <AreaChart
+                                data={areaChartData}
+                                xAxisDataKey={'month'}
+                                areaAttrArray={[
+                                    { type: 'monotone', dataKey: 'c', stroke: COLORS[6], fill: COLORS[6] },
+                                ]} />
                         </Grid>
                     </Grid>
                 </Paper>
