@@ -10,6 +10,7 @@ import IntroPage from './components/page/IntroPage';
 
 // Component
 import ComponentChartsPage from './components/page/ComponentChartsPage';
+import ComponentHighchartsPage from './components/page/ComponentHighchartsPage';
 
 import NotFoundPage from './components/page/NotFoundPage';
 
@@ -22,6 +23,7 @@ const routes = (
 
             <Route path="components">
                 <Route path="chart" component={ComponentChartsPage}/>
+                <Route path="highcharts" component={ComponentHighchartsPage}/>
             </Route>
         </Route>
         <Route path="*" component={NotFoundPage}/>

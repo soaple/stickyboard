@@ -28,6 +28,12 @@ const SidebarMenuDict = {
         url: '/components/chart',
         value: 201,
         need_permission: false
+    }, {
+        title: 'Highcharts',
+        icon: (<Timeline color={'#FFFFFF'} hovercolor={amber[500]} />),
+        url: '/components/highcharts',
+        value: 202,
+        need_permission: false
     }],
 
 }
