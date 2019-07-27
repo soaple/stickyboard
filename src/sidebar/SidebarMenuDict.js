@@ -32,4 +32,4 @@ const SidebarMenuDict = {
 
 }
 
-module.exports = SidebarMenuDict;
+export default SidebarMenuDict;

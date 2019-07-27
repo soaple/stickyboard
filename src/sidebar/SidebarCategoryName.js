@@ -7,4 +7,4 @@ const SidebarCategoryName = {
 
 }
 
-module.exports = SidebarCategoryName;
+export default SidebarCategoryName;

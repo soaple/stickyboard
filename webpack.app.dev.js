@@ -4,27 +4,27 @@ const webpack = require('webpack')
 const path = require('path')
 
 const config = {
+    mode: 'development',
     entry: path.join(__dirname, 'src', 'app-client.js'),
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'app.bundle.js'
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'babel-loader',
-            query: {
-                cacheDirectory: 'babel_cache',
-                presets: ['es2015', 'react'],
-                plugins: [
-                    'transform-class-properties',
-                    'transform-object-rest-spread'
-                ]
-            }
-        }, {
-            test: /\.json$/,
-            use: 'json-loader'
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env', '@babel/preset-react'],
+                    plugins: [
+                        '@babel/plugin-proposal-class-properties',
+                        '@babel/plugin-proposal-export-default-from',
+                        '@babel/plugin-proposal-object-rest-spread'
+                    ]
+                }
+            },
         }, {
             test: /\.css$/,
             loaders: [
