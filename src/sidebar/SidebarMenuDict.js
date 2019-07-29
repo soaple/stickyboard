@@ -5,6 +5,7 @@ import React from 'react';
 import { amber } from '@material-ui/core/colors';
 
 import Timeline from '@material-ui/icons/Timeline';
+import ViewList from '@material-ui/icons/ViewList';
 
 const SidebarMenuDict = {
 
@@ -33,6 +34,12 @@ const SidebarMenuDict = {
         icon: (<Timeline color={'#FFFFFF'} hovercolor={amber[500]} />),
         url: '/components/highcharts',
         value: 202,
+        need_permission: false
+    }, {
+        title: 'Table',
+        icon: (<ViewList color={'#FFFFFF'} hovercolor={amber[500]} />),
+        url: '/components/table',
+        value: 203,
         need_permission: false
     }],
 

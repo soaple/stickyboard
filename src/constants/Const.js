@@ -4,8 +4,6 @@ var Const = {
 
     DRAWER_WIDTH: 240,
 
-    TABLE_TOOLBAR_HEIGHT: 56,
-
     /**
      * Sort order
      */
