@@ -22,13 +22,13 @@ import { TableWithPagination, RealtimeTable, RealtimeMessageTable
 
 const styles = theme => ({
     root: {
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
         overflow: 'auto',
     },
     paper: {
         // minHeight: 360,
-        // paddingTop: theme.spacing.unit * 3,
-        // paddingBottom: theme.spacing.unit * 4,
+        // paddingTop: theme.spacing(1) * 3,
+        // paddingBottom: theme.spacing(4),
     },
 })
 
@@ -462,4 +462,4 @@ ComponentTablePage.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(ComponentTablePage);
+export default withStyles(styles)(ComponentTablePage);

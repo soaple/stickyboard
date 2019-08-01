@@ -56,4 +56,4 @@ MySnackbar.propTypes = {
     message: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(MySnackbar);
+export default withStyles(styles)(MySnackbar);

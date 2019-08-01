@@ -1,6 +1,5 @@
 // src/redux/reducers/rootReducer.js
 
-import { connect } from 'react-redux';
 import { combineReducers } from 'redux';
 import _ from 'underscore';
 

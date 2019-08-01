@@ -37,14 +37,14 @@ require('../../static/css/react-grid-layout.css');
 
 const styles = theme => ({
     root: {
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
         overflow: 'auto',
     },
     chart: {
         height: 280,
-        marginTop: theme.spacing.unit * 2,
-        marginBottom: theme.spacing.unit * 2,
-        marginLeft: -theme.spacing.unit * 4,
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+        marginLeft: -theme.spacing(4),
     }
 });
 
@@ -620,4 +620,4 @@ ComponentChartsPage.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(ComponentChartsPage);
+export default withStyles(styles)(ComponentChartsPage);

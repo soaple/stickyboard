@@ -44,4 +44,4 @@ FullScreenLayout.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(FullScreenLayout);
+export default withStyles(styles)(FullScreenLayout);

@@ -59,7 +59,7 @@ const MuiTheme = createMuiTheme({
             // },
         },
         MuiSwitch: {
-            checked: {
+            '&$checked': {
                 color: 'rgb(14, 46, 125)',
                 '& + $bar': {
                     backgroundColor: 'rgb(14, 46, 125)',
@@ -71,7 +71,7 @@ const MuiTheme = createMuiTheme({
             // default: {
             //   color: deepOrange[500],
             // },
-            checked: {
+            '&$checked': {
               color: blue[500],
             },
             // disabled: {

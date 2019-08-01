@@ -27,23 +27,23 @@ import Const from '../../constants/Const';
 const styles = theme => ({
     root: {
         height: '100%',
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
         overflow: 'auto',
     },
     paper: {
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
     },
     logoImage: {
         display: 'block',
         // width: '100%',
         height: '50%',
         margin: 'auto',
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
     },
     introduction: {
         // width: '100%',
         height: '50%',
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
     },
     title: {
         height: '15%',
@@ -64,10 +64,10 @@ const styles = theme => ({
     },
     contact: {
         height: '40%',
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
     },
     contactButtonIcon: {
-        marginLeft: theme.spacing.unit,
+        marginLeft: theme.spacing(1),
     },
 });
 
@@ -312,7 +312,7 @@ class IntroPage extends React.Component {
                   </Textfit>
                    <div className={classes.component}>
                        <Button
-                           variant="raised"
+                           variant="contained"
                            size="large"
                            color="primary"
                            onClick={() => { window.open('https://github.com/soaple/stickyboard', '_blank') }}>
@@ -350,4 +350,4 @@ IntroPage.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(IntroPage);
+export default withStyles(styles)(IntroPage);

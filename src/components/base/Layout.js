@@ -92,7 +92,7 @@ const styles = theme => ({
     appBarLogo: {
         width: 48,
         height: 48,
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
     },
     appBarTitle: {
         fontSize: 16,
@@ -105,22 +105,22 @@ const styles = theme => ({
         flex: 1,
     },
     contactButton: {
-        marginRight: theme.spacing.unit * 2,
+        marginRight: theme.spacing(2),
         [theme.breakpoints.up('lg')]: {
-            marginRight: theme.spacing.unit * 4,
+            marginRight: theme.spacing(4),
         },
     },
     contactButtonIcon: {
-        marginLeft: theme.spacing.unit,
+        marginLeft: theme.spacing(1),
     },
     menuIcon: {
         color: StickyBoardColors.colorDark,
     },
     menuCategoryText: {
         display: 'block',
-        marginLeft: theme.spacing.unit * 2,
-        marginTop: theme.spacing.unit * 2,
-        marginBottom: theme.spacing.unit,
+        marginLeft: theme.spacing(2),
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(1),
         fontSize: 14,
         color: StickyBoardColors.colorMediumDark,
     },
@@ -166,7 +166,7 @@ const styles = theme => ({
     content: {
         backgroundColor: StickyBoardColors.contentBackground,
         width: '100%',
-        // padding: theme.spacing.unit * 3,
+        // padding: theme.spacing(1) * 3,
         height: 'calc(100% - 56px)',
         marginTop: 56,
         overflow: 'scroll',
@@ -411,7 +411,7 @@ class Layout extends React.Component {
                                     <Hidden xsDown>
                                         <Button
                                             className={classes.contactButton}
-                                            variant="raised"
+                                            variant="contained"
                                             size="small"
                                             color="primary"
                                             onClick={() => { window.open('https://github.com/soaple/stickyboard', '_blank') }}>
@@ -600,4 +600,4 @@ Layout.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(Layout);
+export default withStyles(styles)(Layout);
