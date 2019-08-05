@@ -559,4 +559,4 @@ ComponentHighchartsPage.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ComponentHighchartsPage);
+export default withStyles(styles, { withTheme: true })(ComponentHighchartsPage);

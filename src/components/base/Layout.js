@@ -600,4 +600,4 @@ Layout.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Layout);
+export default withStyles(styles, { withTheme: true })(Layout);

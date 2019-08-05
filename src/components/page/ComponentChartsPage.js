@@ -620,4 +620,4 @@ ComponentChartsPage.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ComponentChartsPage);
+export default withStyles(styles, { withTheme: true })(ComponentChartsPage);

@@ -25,19 +25,19 @@ const SidebarMenuDict = {
      ******************/
     COMPONENTS: [{
         title: 'Chart',
-        icon: (<Timeline color={'#FFFFFF'} hovercolor={amber[500]} />),
+        icon: (<Timeline />),
         url: '/components/chart',
         value: 201,
         need_permission: false
     }, {
         title: 'Highcharts',
-        icon: (<Timeline color={'#FFFFFF'} hovercolor={amber[500]} />),
+        icon: (<Timeline />),
         url: '/components/highcharts',
         value: 202,
         need_permission: false
     }, {
         title: 'Table',
-        icon: (<ViewList color={'#FFFFFF'} hovercolor={amber[500]} />),
+        icon: (<ViewList />),
         url: '/components/table',
         value: 203,
         need_permission: false

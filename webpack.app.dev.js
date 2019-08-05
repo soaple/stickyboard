@@ -33,6 +33,14 @@ const config = {
             ]
         }]
     },
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        hot: true,
+        inline: true,
+        compress: true,
+        public: 'localhost:8080',
+    },
     plugins: [
         new webpack.DllReferencePlugin({
             context: '.',

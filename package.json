@@ -7,7 +7,7 @@
         "start": "nodemon app.js",
         "build-lib-dev": "webpack --config webpack.lib.dev.js",
         "build-lib-prod": "webpack --config webpack.lib.prod.js",
-        "watch-app-dev": "webpack-dev-server --progress --inline --hot --config=webpack.app.dev.js",
+        "watch-app-dev": "webpack-dev-server --progress --config=webpack.app.dev.js",
         "build-app-dev": "webpack --config webpack.app.dev.js",
         "build-app-prod": "webpack --config webpack.app.prod.js",
         "clean": "rimraf dist",
@@ -80,6 +80,7 @@
         "eslint-plugin-standard": "^2.0.1",
         "node-loader": "^0.6.0",
         "style-loader": "^0.13.1",
+        "uglifyjs-webpack-plugin": "^2.2.0",
         "webpack": "^4.38.0",
         "webpack-cli": "^3.3.6",
         "webpack-dev-server": "^3.7.2"

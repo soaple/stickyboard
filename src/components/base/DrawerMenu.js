@@ -179,4 +179,4 @@ DrawerMenu.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(DrawerMenu);
+export default withStyles(styles, { withTheme: true })(DrawerMenu);

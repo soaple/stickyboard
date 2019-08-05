@@ -350,4 +350,4 @@ IntroPage.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(IntroPage);
+export default withStyles(styles, { withTheme: true })(IntroPage);

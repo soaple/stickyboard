@@ -462,4 +462,4 @@ ComponentTablePage.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ComponentTablePage);
+export default withStyles(styles, { withTheme: true })(ComponentTablePage);

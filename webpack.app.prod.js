@@ -2,6 +2,7 @@
 
 const webpack = require('webpack')
 const path = require('path')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
     mode: 'production',
@@ -33,6 +34,23 @@ const config = {
             ]
         }]
     },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    warnings: false,
+                    parse: {},
+                    compress: {},
+                    mangle: true, // Note `mangle.properties` is `false` by default.
+                    output: null,
+                    toplevel: false,
+                    nameCache: null,
+                    ie8: false,
+                    keep_fnames: false,
+                },
+            }),
+        ],
+    },
     plugins: [
         new webpack.DllReferencePlugin({
             context: '.',
@@ -45,13 +63,6 @@ const config = {
         new webpack.ProvidePlugin({
             'd3': 'd3'
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false },
-            mangle: true,
-            sourcemap: false,
-            beautify: false,
-            dead_code: true
-        })
     ]
 }
 
