@@ -556,7 +556,7 @@ class ComponentChartsPage extends React.Component {
         case 'TinyChart':
             return (
                 <Paper key={block.i}>
-                    <Grid container spacing={16}
+                    <Grid container spacing={8}
                         style={{height: '100%', padding: 20}}>
                         <Grid item xs={6} style={{height: '50%'}}>
                             <LineChart

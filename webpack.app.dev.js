@@ -33,6 +33,11 @@ const config = {
             ]
         }]
     },
+    resolve: {
+        alias: {
+            react: path.resolve('./node_modules/react')
+        }
+    },
     devtool: 'inline-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
