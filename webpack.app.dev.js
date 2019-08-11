@@ -5,7 +5,7 @@ const path = require('path')
 
 const config = {
     mode: 'development',
-    entry: path.join(__dirname, 'src', 'app-client.js'),
+    entry: path.join(__dirname, 'src', 'index.js'),
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'app.bundle.js'

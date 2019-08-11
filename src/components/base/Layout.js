@@ -3,10 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import rootReducer from '../../redux/reducers/rootReducer';
-
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
 import Drawer from '@material-ui/core/Drawer';
@@ -57,12 +53,6 @@ import DateUtil from '../../utils/DateUtil';
 require('react-grid-layout/css/styles.css');
 require('react-resizable/css/styles.css');
 require('../../static/css/react-grid-layout.css');
-
-// React-Redux store
-const store = createStore(rootReducer);
-const unsubscribe = store.subscribe(() => {
-    // console.log(store.getState())
-});
 
 const styles = theme => ({
     root: {
@@ -343,9 +333,13 @@ class Layout extends React.Component {
         const { auth, isSuperuser, anchorEl } = this.state;
         const open = Boolean(anchorEl);
 
+        console.log(this);
+
         const childrenWithExtraProp = React.Children.map(this.props.children, child => {
             return React.cloneElement(child, {
-                store: store,
+                // store: store,
+                // showMessageSnackbar: store.dispatch(showMessageSnackbar('Loading data...')),
+                // hideMessageSnackbar: store.dispatch(hideMessageSnackbar()),
             });
         });
 
@@ -372,225 +366,222 @@ class Layout extends React.Component {
         };
 
         return (
-            <Provider store={store}>
-                {/* Material UI theme provider */}
-                <MuiThemeProvider theme={MuiTheme}>
-                    <div className={classes.root}>
-                        <div className={classes.appFrame}>
-                            {/* AppBar */}
-                            <AppBar
-                                position="absolute"
-                                className={classes.appBar}>
-                                <Toolbar>
-                                    <Hidden lgUp>
-                                        <IconButton
-                                            color="inherit"
-                                            aria-label="open drawer"
-                                            onClick={this.handleMenuDrawerToggle}>
-                                            <MenuIcon style={{color: StickyBoardColors.colorDark}}/>
-                                        </IconButton>
-                                    </Hidden>
-
-                                    <img
-                                        src="/static/image/favicon.png"
-                                        className={classes.appBarLogo} />
-
-                                    <Typography
-                                        type="title"
-                                        color="inherit"
-                                        noWrap
-                                        className={classes.appBarTitle}
-                                        onClick={() =>{ window.location = '/' }}>
-                                        StickyBoard
-                                    </Typography>
-
-                                    <Typography
-                                        className={classes.appBarTitleMargin}>
-                                    </Typography>
-
-                                    <Hidden xsDown>
-                                        <Button
-                                            className={classes.contactButton}
-                                            variant="contained"
-                                            size="small"
-                                            color="primary"
-                                            onClick={() => { window.open('https://github.com/soaple/stickyboard', '_blank') }}>
-                                            Github
-                                            <Mail className={classes.contactButtonIcon} />
-                                        </Button>
-                                    </Hidden>
-
-                                    {(auth || isGuestModeAvailable) &&
-                                        <div>
-                                            <IconButton
-                                                className={classes.avatar}
-                                                aria-owns={open ? 'menu-appbar' : null}
-                                                aria-haspopup="true"
-                                                onClick={this.handleMenu}
-                                                color="inherit">
-                                                <AccountCircle />
-                                            </IconButton>
-
-                                            <Menu
-                                                styles={{width: 500}}
-                                                id="menu-appbar"
-                                                anchorEl={anchorEl}
-                                                anchorOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'right',
-                                                }}
-                                                transformOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'right',
-                                                }}
-                                                open={open}
-                                                onClose={this.handleClose}>
-
-                                                {/* User Menus */}
-                                                <MenuItem onClick={this.onSettingsClicked}>
-                                                    <ListItemIcon>
-                                                        <Person className={classes.menuIcon} />
-                                                    </ListItemIcon>
-                                                    <ListItemText
-                                                        classes={{ primary: classes.primary }}
-                                                        primary="Profile" />
-                                                </MenuItem>
-                                                <MenuItem onClick={this.onSettingsClicked}>
-                                                    <ListItemIcon>
-                                                        <Settings className={classes.menuIcon} />
-                                                    </ListItemIcon>
-                                                    <ListItemText
-                                                        classes={{ primary: classes.primary }}
-                                                        primary="Settings" />
-                                                </MenuItem>
-
-                                                <MenuItem onClick={this.onSignOutClicked}>
-                                                    <ListItemIcon>
-                                                        <PowerSettingsNew className={classes.menuIcon} />
-                                                    </ListItemIcon>
-                                                    <ListItemText
-                                                        classes={{ primary: classes.primary }}
-                                                        primary="Sign out" />
-                                                </MenuItem>
-
-                                                {/* Superuser Menus */}
-                                                {isSuperuser &&
-                                                    <div>
-                                                        <Divider />
-                                                        <span className={classes.menuCategoryText}>SECURITY</span>
-                                                        <MenuItem onClick={() => {
-                                                            window.location = '/security/admin';
-                                                        }}>
-                                                            <ListItemIcon>
-                                                                <Lock className={classes.menuIcon} />
-                                                            </ListItemIcon>
-                                                            <ListItemText
-                                                                classes={{ primary: classes.primary }}
-                                                                primary="Admin" />
-                                                        </MenuItem>
-                                                        <MenuItem onClick={() => {
-                                                            window.location = '/security/group';
-                                                        }}>
-                                                            <ListItemIcon>
-                                                                <Lock className={classes.menuIcon} />
-                                                            </ListItemIcon>
-                                                            <ListItemText
-                                                                classes={{ primary: classes.primary }}
-                                                                primary="Group" />
-                                                        </MenuItem>
-                                                        <MenuItem onClick={() => {
-                                                            window.location = '/security/permission';
-                                                        }}>
-                                                            <ListItemIcon>
-                                                                <Lock className={classes.menuIcon} />
-                                                            </ListItemIcon>
-                                                            <ListItemText
-                                                                classes={{ primary: classes.primary }}
-                                                                primary="Permission" />
-                                                        </MenuItem>
-                                                    </div>}
-                                            </Menu>
-                                        </div>
-                                    }
-
+            <MuiThemeProvider theme={MuiTheme}>
+                <div className={classes.root}>
+                    <div className={classes.appFrame}>
+                        {/* AppBar */}
+                        <AppBar
+                            position="absolute"
+                            className={classes.appBar}>
+                            <Toolbar>
+                                <Hidden lgUp>
                                     <IconButton
+                                        color="inherit"
                                         aria-label="open drawer"
-                                        onClick={this.handleNotiDrawerToggle}>
-                                        <SocialNotifications style={{color: StickyBoardColors.colorDark}}/>
+                                        onClick={this.handleMenuDrawerToggle}>
+                                        <MenuIcon style={{color: StickyBoardColors.colorDark}}/>
                                     </IconButton>
-                                </Toolbar>
-                            </AppBar>
+                                </Hidden>
 
-                            {/* Drawer - Mobile */}
-                            <Hidden lgUp>
-                                <Drawer
-                                    variant="temporary"
-                                    anchor={'left'}
-                                    open={this.state.menuDrawerOpen}
-                                    classes={{
-                                        paper: classes.drawerPaper,
-                                    }}
-                                    onClose={this.handleMenuDrawerToggle}
-                                    ModalProps={{
-                                        keepMounted: true, // Better open performance on mobile.
-                                    }}>
-                                    <DrawerMenu
-                                        isSuperuser={isSuperuser}
-                                        permissionKeyArray={this.state.permissionKeyArray} />
-                                </Drawer>
-                            </Hidden>
+                                <img
+                                    src="/static/image/favicon.png"
+                                    className={classes.appBarLogo} />
 
-                            {/* Drawer - Desktop */}
-                            <Hidden mdDown>
-                                <Drawer
-                                    variant="permanent"
-                                    open
-                                    classes={{
-                                        paper: classes.drawerPaper,
-                                    }}>
-                                    <DrawerMenu
-                                        isSuperuser={isSuperuser}
-                                        permissionKeyArray={this.state.permissionKeyArray} />
-                                </Drawer>
-                            </Hidden>
+                                <Typography
+                                    type="title"
+                                    color="inherit"
+                                    noWrap
+                                    className={classes.appBarTitle}
+                                    onClick={() =>{ window.location = '/' }}>
+                                    StickyBoard
+                                </Typography>
 
-                            {/* Right Drawer - Notification */}
+                                <Typography
+                                    className={classes.appBarTitleMargin}>
+                                </Typography>
+
+                                <Hidden xsDown>
+                                    <Button
+                                        className={classes.contactButton}
+                                        variant="contained"
+                                        size="small"
+                                        color="primary"
+                                        onClick={() => { window.open('https://github.com/soaple/stickyboard', '_blank') }}>
+                                        Github
+                                        <Mail className={classes.contactButtonIcon} />
+                                    </Button>
+                                </Hidden>
+
+                                {(auth || isGuestModeAvailable) &&
+                                    <div>
+                                        <IconButton
+                                            className={classes.avatar}
+                                            aria-owns={open ? 'menu-appbar' : null}
+                                            aria-haspopup="true"
+                                            onClick={this.handleMenu}
+                                            color="inherit">
+                                            <AccountCircle />
+                                        </IconButton>
+
+                                        <Menu
+                                            styles={{width: 500}}
+                                            id="menu-appbar"
+                                            anchorEl={anchorEl}
+                                            anchorOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            transformOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            open={open}
+                                            onClose={this.handleClose}>
+
+                                            {/* User Menus */}
+                                            <MenuItem onClick={this.onSettingsClicked}>
+                                                <ListItemIcon>
+                                                    <Person className={classes.menuIcon} />
+                                                </ListItemIcon>
+                                                <ListItemText
+                                                    classes={{ primary: classes.primary }}
+                                                    primary="Profile" />
+                                            </MenuItem>
+                                            <MenuItem onClick={this.onSettingsClicked}>
+                                                <ListItemIcon>
+                                                    <Settings className={classes.menuIcon} />
+                                                </ListItemIcon>
+                                                <ListItemText
+                                                    classes={{ primary: classes.primary }}
+                                                    primary="Settings" />
+                                            </MenuItem>
+
+                                            <MenuItem onClick={this.onSignOutClicked}>
+                                                <ListItemIcon>
+                                                    <PowerSettingsNew className={classes.menuIcon} />
+                                                </ListItemIcon>
+                                                <ListItemText
+                                                    classes={{ primary: classes.primary }}
+                                                    primary="Sign out" />
+                                            </MenuItem>
+
+                                            {/* Superuser Menus */}
+                                            {isSuperuser &&
+                                                <div>
+                                                    <Divider />
+                                                    <span className={classes.menuCategoryText}>SECURITY</span>
+                                                    <MenuItem onClick={() => {
+                                                        window.location = '/security/admin';
+                                                    }}>
+                                                        <ListItemIcon>
+                                                            <Lock className={classes.menuIcon} />
+                                                        </ListItemIcon>
+                                                        <ListItemText
+                                                            classes={{ primary: classes.primary }}
+                                                            primary="Admin" />
+                                                    </MenuItem>
+                                                    <MenuItem onClick={() => {
+                                                        window.location = '/security/group';
+                                                    }}>
+                                                        <ListItemIcon>
+                                                            <Lock className={classes.menuIcon} />
+                                                        </ListItemIcon>
+                                                        <ListItemText
+                                                            classes={{ primary: classes.primary }}
+                                                            primary="Group" />
+                                                    </MenuItem>
+                                                    <MenuItem onClick={() => {
+                                                        window.location = '/security/permission';
+                                                    }}>
+                                                        <ListItemIcon>
+                                                            <Lock className={classes.menuIcon} />
+                                                        </ListItemIcon>
+                                                        <ListItemText
+                                                            classes={{ primary: classes.primary }}
+                                                            primary="Permission" />
+                                                    </MenuItem>
+                                                </div>}
+                                        </Menu>
+                                    </div>
+                                }
+
+                                <IconButton
+                                    aria-label="open drawer"
+                                    onClick={this.handleNotiDrawerToggle}>
+                                    <SocialNotifications style={{color: StickyBoardColors.colorDark}}/>
+                                </IconButton>
+                            </Toolbar>
+                        </AppBar>
+
+                        {/* Drawer - Mobile */}
+                        <Hidden lgUp>
                             <Drawer
-                                type="temporary"
-                                anchor="right"
-                                open={this.state.notiDrawerOpen}
+                                variant="temporary"
+                                anchor={'left'}
+                                open={this.state.menuDrawerOpen}
                                 classes={{
-                                    paper: classes.notiDrawer,
+                                    paper: classes.drawerPaper,
                                 }}
-                                onClose={this.handleNotiDrawerToggle}
+                                onClose={this.handleMenuDrawerToggle}
                                 ModalProps={{
                                     keepMounted: true, // Better open performance on mobile.
                                 }}>
-                                {this.state.notifications.map((noti, index) => {
-                                    return (
-                                        <Card
-                                            key={index}
-                                            className={classes.notiItem}>
-                                            <CardHeader
-                                                avatar={getNotiAvatarByType(noti.type)}
-                                                title={noti.title}
-                                                subheader={DateUtil.format(noti.time)}/>
-                                        </Card>
-                                    )
-                                })}
+                                <DrawerMenu
+                                    isSuperuser={isSuperuser}
+                                    permissionKeyArray={this.state.permissionKeyArray} />
                             </Drawer>
+                        </Hidden>
 
-                            {/* Message Snackbar */}
-                            <MessageSnackbar />
+                        {/* Drawer - Desktop */}
+                        <Hidden mdDown>
+                            <Drawer
+                                variant="permanent"
+                                open
+                                classes={{
+                                    paper: classes.drawerPaper,
+                                }}>
+                                <DrawerMenu
+                                    isSuperuser={isSuperuser}
+                                    permissionKeyArray={this.state.permissionKeyArray} />
+                            </Drawer>
+                        </Hidden>
 
-                            {/* App content */}
-                            <main className={classes.content}>
-                                {childrenWithExtraProp}
-                            </main>
-                        </div>
+                        {/* Right Drawer - Notification */}
+                        <Drawer
+                            type="temporary"
+                            anchor="right"
+                            open={this.state.notiDrawerOpen}
+                            classes={{
+                                paper: classes.notiDrawer,
+                            }}
+                            onClose={this.handleNotiDrawerToggle}
+                            ModalProps={{
+                                keepMounted: true, // Better open performance on mobile.
+                            }}>
+                            {this.state.notifications.map((noti, index) => {
+                                return (
+                                    <Card
+                                        key={index}
+                                        className={classes.notiItem}>
+                                        <CardHeader
+                                            avatar={getNotiAvatarByType(noti.type)}
+                                            title={noti.title}
+                                            subheader={DateUtil.format(noti.time)}/>
+                                    </Card>
+                                )
+                            })}
+                        </Drawer>
+
+                        {/* Message Snackbar */}
+                        <MessageSnackbar />
+
+                        {/* App content */}
+                        <main className={classes.content}>
+                            {childrenWithExtraProp}
+                        </main>
                     </div>
-                </MuiThemeProvider>
-            </Provider>
+                </div>
+            </MuiThemeProvider>
         )
     }
 }

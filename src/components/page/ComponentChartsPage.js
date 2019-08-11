@@ -375,10 +375,10 @@ class ComponentChartsPage extends React.Component {
 
     componentDidMount () {
         // Temp code!
-        this.props.store.dispatch(showMessageSnackbar('Loading data...'));
-        setTimeout(() => {
-            this.props.store.dispatch(hideMessageSnackbar());
-        }, 3000);
+        // this.props.store.dispatch(showMessageSnackbar('Loading data...'));
+        // setTimeout(() => {
+        //     this.props.store.dispatch(hideMessageSnackbar());
+        // }, 3000);
     }
 
     toggleEditingMode = () => {
