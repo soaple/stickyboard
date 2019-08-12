@@ -19,6 +19,7 @@
     "dependencies": {
         "@material-ui/core": "^4.3.0",
         "@material-ui/icons": "^4.2.1",
+        "@stickyboard/core": "^0.1.0",
         "@stickyboard/highcharts": "^0.1.1",
         "@stickyboard/recharts": "^0.1.4",
         "@stickyboard/table": "^0.1.1",

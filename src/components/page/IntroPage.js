@@ -6,16 +6,17 @@ import PropTypes from 'prop-types';
 import _ from 'underscore'
 
 import { withStyles } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import EditIcon from '@material-ui/icons/Edit';
 import Mail from '@material-ui/icons/Mail';
 
-import { Responsive, WidthProvider } from 'react-grid-layout'
-const ResponsiveReactGridLayout = WidthProvider(Responsive);
+import { Board } from '@stickyboard/core';
 
 // import OpenLayers from '../openlayers/OpenLayers';
 
@@ -25,10 +26,10 @@ import StickyBoardColors from '../../theme/StickyBoardColors';
 import Const from '../../constants/Const';
 
 const styles = theme => ({
-    root: {
-        height: '100%',
-        padding: theme.spacing(2),
-        overflow: 'auto',
+    editButton: {
+        position: 'absolute',
+        right: 16,
+        bottom: 16,
     },
     paper: {
         padding: theme.spacing(2),
@@ -76,8 +77,6 @@ class IntroPage extends React.Component {
         super(props)
 
         this.state = {
-            // React Grid Layout
-            currentBreakpoint: 'lg',
             layouts: {
                 lg: [{"i":"CustomLayout","x":0,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":4,"y":6,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":8,"y":0,"w":4,"h":6},{"i":"Contact","x":8,"y":6,"w":4,"h":6}],
                 md: [{"i":"CustomLayout","x":0,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":4,"y":6,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":8,"y":0,"w":4,"h":6},{"i":"Contact","x":8,"y":6,"w":4,"h":6}],
@@ -86,88 +85,7 @@ class IntroPage extends React.Component {
                 xxs: [{"i":"CustomLayout","x":0,"y":21,"w":4,"h":7},{"i":"Introduction","x":0,"y":0,"w":4,"h":7},{"i":"DatabaseSupport","x":0,"y":28,"w":4,"h":7},{"i":"ChartSupport","x":0,"y":7,"w":4,"h":7},{"i":"MapSupport","x":0,"y":14,"w":4,"h":7},{"i":"Contact","x":0,"y":35,"w":4,"h":7}],
             },
             blocks: [{"i":"CustomLayout"},{"i":"Introduction"},{"i":"DatabaseSupport"},{"i":"ChartSupport"},{"i":"MapSupport"},{"i":"Contact"}],
-            layoutUpdateFlag: true,
-            isEditingMode: true,
-        }
-    }
-
-    componentDidMount () {
-    }
-
-    toggleEditingMode = () => {
-        let currentEditingMode = this.state.isEditingMode;
-
-        let layouts = this.getLayouts(!currentEditingMode);
-        this.setState({
-            layouts: {},
-            layoutUpdateFlag: false,
-            isEditingMode: !currentEditingMode,
-        }, () => {
-            this.setState({
-                layouts: layouts,
-                layoutUpdateFlag: true,
-            })
-        });
-    }
-
-    getLayouts = (isEditingMode) => {
-        let layouts = this.state.layouts;
-        _.each(layouts, (layout) => {
-            layout.forEach((block) => {
-                block.static = !isEditingMode;
-                block.isDraggable = isEditingMode;
-                block.isResizable = isEditingMode;
-                block.minW = 2;
-                block.maxW = 12;
-                block.minH = 2;
-                block.maxH = 16;
-            });
-        });
-
-        return layouts;
-    }
-
-    onBreakpointChange = (breakpoint) => {
-        this.setState({
-            currentBreakpoint: breakpoint,
-            isEditingMode: breakpoint === 'lg' || breakpoint === 'md',
-        });
-    }
-
-    onLayoutChange = (currentLayout, allLayouts) => {
-        // console.log('onLayoutChange', currentLayout, allLayouts);
-
-        if (this.state.layoutUpdateFlag) {
-            this.setState({
-                layouts: allLayouts,
-            }, () => {
-                // Generate tiny layout for saving to the server
-                let newLayouts = {};
-
-                let breakpoints = _.keys(allLayouts);
-                _.each(breakpoints, (breakpoint) => {
-                    let newLayout = [];
-                    let layout = allLayouts[breakpoint];
-                    _.each(layout, (block) => {
-                        let newBlock = {};
-                        newBlock.i = block.i;
-                        newBlock.x = block.x;
-                        newBlock.y = block.y;
-                        newBlock.w = block.w;
-                        newBlock.h = block.h;
-
-                        newLayout.push(newBlock);
-                    });
-
-                    newLayouts[breakpoint] = newLayout;
-                });
-
-                // console.log(newLayouts);
-                // console.log(JSON.stringify(newLayouts[this.state.currentBreakpoint]));
-
-                // TODO: Save the user's personal layout
-                // console.log(JSON.stringify(newLayouts));
-            });
+            isEditingMode: false,
         }
     }
 
@@ -326,20 +244,31 @@ class IntroPage extends React.Component {
     }
 
     render () {
+        const { layouts, isEditingMode } = this.state;
         const { classes, theme } = this.props;
 
         return (
-            <div className={classes.root}>
-                {/* Components */}
-                <ResponsiveReactGridLayout
-                    {...Const.RGL_LAYOUT_PROPS}
-                    layouts={this.getLayouts(this.state.isEditingMode)}
-                    onBreakpointChange={this.onBreakpointChange}
-                    onLayoutChange={this.onLayoutChange}>
+            <div>
+                <Board
+                    layouts={layouts}
+                    onLayoutChange={(newLayouts) => { console.log(newLayouts); }}
+                    isEditingMode={isEditingMode}>
                     {this.state.blocks.map((block, index) => {
                         return this.generateBlock(block, classes)
                     })}
-                </ResponsiveReactGridLayout>
+                </Board>
+
+                <Fab
+                    color="primary"
+                    aria-label="edit"
+                    className={classes.editButton}
+                    onClick={() => {
+                        this.setState(prevState => ({
+                            isEditingMode: !prevState.isEditingMode
+                        }));
+                    }}>
+                    <EditIcon />
+                </Fab>
             </div>
         )
     }
