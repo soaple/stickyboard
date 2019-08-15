@@ -80,7 +80,8 @@ const styles = theme => ({
 
 class IntroPage extends React.Component {
     constructor (props) {
-        super(props)
+        super(props);
+        this.board = React.createRef();
 
         this.state = {
             layouts: {
@@ -255,7 +256,7 @@ class IntroPage extends React.Component {
         return (
             <div>
                 <Board
-                    ref={el => this.board = el}
+                    ref={this.board}
                     layouts={layouts}
                     onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}>
                     {this.state.blocks.map((block, index) => {
@@ -263,19 +264,19 @@ class IntroPage extends React.Component {
                     })}
                 </Board>
 
-                {this.board &&
+                {this.board.current &&
                     <div className={classes.menuContainer}>
                         <Fab
                             color="secondary"
                             aria-label="edit"
-                            onClick={this.board.toggleEditingMode}>
+                            onClick={this.board.current.toggleEditingMode}>
                             <EditIcon />
                         </Fab>
 
                         <Fab
                             color="primary"
                             aria-label="tv"
-                            onClick={this.board.toggleTvMode}>
+                            onClick={this.board.current.toggleTvMode}>
                             <TvIcon />
                         </Fab>
                     </div>}

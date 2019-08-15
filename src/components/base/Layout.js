@@ -333,8 +333,6 @@ class Layout extends React.Component {
         const { auth, isSuperuser, anchorEl } = this.state;
         const open = Boolean(anchorEl);
 
-        console.log(this);
-
         const childrenWithExtraProp = React.Children.map(this.props.children, child => {
             return React.cloneElement(child, {
                 // store: store,
