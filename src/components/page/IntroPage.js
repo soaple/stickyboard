@@ -14,6 +14,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 import EditIcon from '@material-ui/icons/Edit';
+import TvIcon from '@material-ui/icons/Tv';
 import Mail from '@material-ui/icons/Mail';
 
 import { Board } from '@stickyboard/core';
@@ -26,10 +27,15 @@ import StickyBoardColors from '../../theme/StickyBoardColors';
 import Const from '../../constants/Const';
 
 const styles = theme => ({
-    editButton: {
+    menuContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
         position: 'absolute',
+        height: 120,
         right: 16,
         bottom: 16,
+        zIndex: 2000,
     },
     paper: {
         padding: theme.spacing(2),
@@ -85,7 +91,6 @@ class IntroPage extends React.Component {
                 xxs: [{"i":"CustomLayout","x":0,"y":21,"w":4,"h":7},{"i":"Introduction","x":0,"y":0,"w":4,"h":7},{"i":"DatabaseSupport","x":0,"y":28,"w":4,"h":7},{"i":"ChartSupport","x":0,"y":7,"w":4,"h":7},{"i":"MapSupport","x":0,"y":14,"w":4,"h":7},{"i":"Contact","x":0,"y":35,"w":4,"h":7}],
             },
             blocks: [{"i":"CustomLayout"},{"i":"Introduction"},{"i":"DatabaseSupport"},{"i":"ChartSupport"},{"i":"MapSupport"},{"i":"Contact"}],
-            isEditingMode: false,
         }
     }
 
@@ -250,25 +255,30 @@ class IntroPage extends React.Component {
         return (
             <div>
                 <Board
+                    ref={el => this.board = el}
                     layouts={layouts}
-                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}
-                    isEditingMode={isEditingMode}>
+                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}>
                     {this.state.blocks.map((block, index) => {
                         return this.generateBlock(block, classes)
                     })}
                 </Board>
 
-                <Fab
-                    color="primary"
-                    aria-label="edit"
-                    className={classes.editButton}
-                    onClick={() => {
-                        this.setState(prevState => ({
-                            isEditingMode: !prevState.isEditingMode
-                        }));
-                    }}>
-                    <EditIcon />
-                </Fab>
+                {this.board &&
+                    <div className={classes.menuContainer}>
+                        <Fab
+                            color="secondary"
+                            aria-label="edit"
+                            onClick={this.board.toggleEditingMode}>
+                            <EditIcon />
+                        </Fab>
+
+                        <Fab
+                            color="primary"
+                            aria-label="tv"
+                            onClick={this.board.toggleTvMode}>
+                            <TvIcon />
+                        </Fab>
+                    </div>}
             </div>
         )
     }
