@@ -251,7 +251,7 @@ class IntroPage extends React.Component {
             <div>
                 <Board
                     layouts={layouts}
-                    onLayoutChange={(newLayouts) => { console.log(newLayouts); }}
+                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}
                     isEditingMode={isEditingMode}>
                     {this.state.blocks.map((block, index) => {
                         return this.generateBlock(block, classes)
