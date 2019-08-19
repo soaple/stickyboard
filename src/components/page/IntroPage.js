@@ -264,22 +264,21 @@ class IntroPage extends React.Component {
                     })}
                 </Board>
 
-                {this.board.current &&
-                    <div className={classes.menuContainer}>
-                        <Fab
-                            color="secondary"
-                            aria-label="edit"
-                            onClick={this.board.current.toggleEditingMode}>
-                            <EditIcon />
-                        </Fab>
+                <div className={classes.menuContainer}>
+                    <Fab
+                        color="secondary"
+                        aria-label="edit"
+                        onClick={() => { this.board.current.toggleEditingMode(); }}>
+                        <EditIcon />
+                    </Fab>
 
-                        <Fab
-                            color="primary"
-                            aria-label="tv"
-                            onClick={this.board.current.toggleTvMode}>
-                            <TvIcon />
-                        </Fab>
-                    </div>}
+                    <Fab
+                        color="primary"
+                        aria-label="tv"
+                        onClick={() => { this.board.current.toggleTvMode(); }}>
+                        <TvIcon />
+                    </Fab>
+                </div>
             </div>
         )
     }
