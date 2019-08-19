@@ -6,35 +6,40 @@ import PropTypes from 'prop-types';
 import _ from 'underscore'
 
 import { withStyles } from '@material-ui/core/styles';
-
-import Paper from '@material-ui/core/Paper';
+import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 
-import {Responsive, WidthProvider} from 'react-grid-layout'
-const ResponsiveReactGridLayout = WidthProvider(Responsive);
+import EditIcon from '@material-ui/icons/Edit';
+import TvIcon from '@material-ui/icons/Tv';
+
+import { Sticker, Board } from '@stickyboard/core';
+import { TableWithPagination, RealtimeTable, RealtimeMessageTable
+} from '@stickyboard/table';
 
 import StickyBoardColors from '../../theme/StickyBoardColors';
 import Const from '../../constants/Const';
 
-import { TableWithPagination, RealtimeTable, RealtimeMessageTable
-} from '@stickyboard/table';
-
 const styles = theme => ({
     root: {
-        padding: theme.spacing(2),
-        overflow: 'auto',
+        width: '100%',
+        height: '100%',
     },
-    paper: {
-        // minHeight: 360,
-        // paddingTop: theme.spacing(1) * 3,
-        // paddingBottom: theme.spacing(4),
+    menuContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        position: 'absolute',
+        height: 120,
+        right: 16,
+        bottom: 16,
+        zIndex: 2000,
     },
 })
 
 class ComponentTablePage extends React.Component {
     constructor (props) {
-        super(props)
+        super(props);
+        this.board = React.createRef();
 
         this.state = {
             // React Grid Layout
@@ -277,92 +282,6 @@ class ComponentTablePage extends React.Component {
         }
     }
 
-    toggleEditingMode = () => {
-        let currentEditingMode = this.state.isEditingMode;
-
-        let layouts = this.getLayouts(!currentEditingMode);
-        this.setState({
-            layouts: {},
-            layoutUpdateFlag: false,
-            isEditingMode: !currentEditingMode,
-        }, () => {
-            this.setState({
-                layouts: layouts,
-                layoutUpdateFlag: true,
-            })
-        });
-    }
-
-    getLayouts = (isEditingMode) => {
-        let layouts = this.state.layouts;
-        _.each(layouts, (layout) => {
-            layout.forEach((block) => {
-                block.static = !isEditingMode;
-                block.isDraggable = isEditingMode;
-                block.isResizable = isEditingMode;
-                block.minW = 3;
-                block.maxW = 12;
-                block.minH = 4;
-                block.maxH = 16;
-            });
-        });
-
-        return layouts;
-    }
-
-    onBreakpointChange = (breakpoint) => {
-        // console.log('onBreakpointChange', breakpoint);
-
-        this.setState({
-            currentBreakpoint: breakpoint,
-            isEditingMode: breakpoint === 'lg' || breakpoint === 'md',
-        });
-    }
-
-    onLayoutChange = (currentLayout, allLayouts) => {
-        // console.log('onLayoutChange', currentLayout, allLayouts);
-
-        if (this.state.layoutUpdateFlag) {
-            this.setState({
-                layouts: allLayouts,
-            }, () => {
-                // Generate tiny layout for saving to the server
-                let newLayouts = {};
-
-                let breakpoints = _.keys(allLayouts);
-                _.each(breakpoints, (breakpoint) => {
-                    let newLayout = [];
-                    let layout = allLayouts[breakpoint];
-                    _.each(layout, (block) => {
-                        let newBlock = {};
-                        newBlock.i = block.i;
-                        newBlock.x = block.x;
-                        newBlock.y = block.y;
-                        newBlock.w = block.w;
-                        newBlock.h = block.h;
-
-                        newLayout.push(newBlock);
-                    });
-
-                    newLayouts[breakpoint] = newLayout;
-                });
-
-                // console.log(newLayouts);
-                // console.log(JSON.stringify(newLayouts[this.state.currentBreakpoint]));
-
-                // TODO: Save the user's personal layout
-                // console.log(JSON.stringify(newLayouts));
-
-                // Save the user's personal layout
-                // ApiManager.updateAdminLayout(
-                //     CookieManager.getCookie('adminId'),
-                //     this.props.location.pathname,
-                //     JSON.stringify(newLayouts),
-                //     this.createAdminLayoutCallback);
-            });
-        }
-    }
-
     generateBlock = (block, classes) => {
         let COLORS = StickyBoardColors.blockColorArray;
 
@@ -378,80 +297,90 @@ class ComponentTablePage extends React.Component {
         switch (block.i) {
         case 'Table1':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <TableWithPagination
                         title={'Orders'}
                         data={this.state.orders}
                         rowsPerPage={10} />
-                </Paper>
+                </Sticker>
             )
         case 'Table2':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <TableWithPagination
                         title={'Users'}
                         data={this.state.users}
                         rowsPerPage={10} />
-                </Paper>
+                </Sticker>
             )
         case 'RealtimeTable1':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <RealtimeTable
                         title={'Real-time Orders'}
                         data={this.state.recentOrders}
                         dataKey={'recentOrders'}
                         onAnimationEnd={this.onAnimationEnd} />
-                </Paper>
+                </Sticker>
             )
         case 'RealtimeTable2':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <RealtimeTable
                         title={'Real-time Users'}
                         data={this.state.recentUsers}
                         dataKey={'recentUsers'}
                         onAnimationEnd={this.onAnimationEnd} />
-                </Paper>
+                </Sticker>
             )
         case 'RealtimeMessageTable':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <RealtimeMessageTable
                         title={'Real-time Messages'}
                         data={this.state.recentMessages}
                         dataKey={'recentMessages'}
                         onAnimationEnd={this.onAnimationEnd} />
-                </Paper>
+                </Sticker>
             )
         }
     }
 
     render () {
-        const { classes, theme } = this.props
+        const { layouts, isEditingMode } = this.state;
+        const { classes, theme } = this.props;
 
         return (
             <div className={classes.root}>
-                {/* Components */}
-                <ResponsiveReactGridLayout
-                    {...Const.RGL_LAYOUT_PROPS}
-                    layouts={this.getLayouts(this.state.isEditingMode)}
-                    onBreakpointChange={this.onBreakpointChange}
-                    onLayoutChange={this.onLayoutChange}>
+                <Board
+                    ref={this.board}
+                    layouts={layouts}
+                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}>
                     {this.state.blocks.map((block, index) => {
                         return this.generateBlock(block, classes)
                     })}
-                </ResponsiveReactGridLayout>
+                </Board>
+
+                <div className={classes.menuContainer}>
+                    <Fab
+                        color="secondary"
+                        aria-label="edit"
+                        onClick={() => { this.board.current.toggleEditingMode(); }}>
+                        <EditIcon />
+                    </Fab>
+
+                    <Fab
+                        color="primary"
+                        aria-label="tv"
+                        onClick={() => { this.board.current.toggleTvMode(); }}>
+                        <TvIcon />
+                    </Fab>
+                </div>
             </div>
         )
     }

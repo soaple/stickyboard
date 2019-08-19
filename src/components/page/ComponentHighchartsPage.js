@@ -6,16 +6,16 @@ import PropTypes from 'prop-types';
 import _ from 'underscore'
 
 import { withStyles } from '@material-ui/core/styles';
-
-import Paper from '@material-ui/core/Paper';
+import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { teal, deepPurple, indigo, blue, blueGrey, green, lightGreen, red,
     pink, deepOrange, cyan } from '@material-ui/core/colors';
 
-import {Responsive, WidthProvider} from 'react-grid-layout'
-const ResponsiveReactGridLayout = WidthProvider(Responsive);
+import EditIcon from '@material-ui/icons/Edit';
+import TvIcon from '@material-ui/icons/Tv';
 
+import { Sticker, Board } from '@stickyboard/core';
 import { Highcharts, PolarChart, TreeMap, StreamGraph, BoxPlot
 } from '@stickyboard/highcharts';
 
@@ -24,21 +24,21 @@ import Const from '../../constants/Const';
 
 import DateUtil from '../../utils/DateUtil';
 
-require('react-grid-layout/css/styles.css');
-require('react-resizable/css/styles.css');
-require('../../static/css/react-grid-layout.css');
-
 const styles = theme => ({
     root: {
-        padding: theme.spacing(2),
-        overflow: 'auto',
+        width: '100%',
+        height: '100%',
     },
-    chart: {
-        height: 280,
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2),
-        marginLeft: -theme.spacing(4),
-    }
+    menuContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        position: 'absolute',
+        height: 120,
+        right: 16,
+        bottom: 16,
+        zIndex: 2000,
+    },
 });
 
 const lineChartData = [
@@ -324,6 +324,7 @@ const RADIAN = Math.PI / 180;
 class ComponentHighchartsPage extends React.Component {
     constructor (props) {
         super(props);
+        this.board = React.createRef();
 
         this.state = {
             // React Grid Layout
@@ -347,135 +348,46 @@ class ComponentHighchartsPage extends React.Component {
         }
     }
 
-    componentDidMount () {
-    }
-
-    toggleEditingMode = () => {
-        let currentEditingMode = this.state.isEditingMode;
-
-        let layouts = this.getLayouts(!currentEditingMode);
-        this.setState({
-            layouts: {},
-            layoutUpdateFlag: false,
-            isEditingMode: !currentEditingMode,
-        }, () => {
-            this.setState({
-                layouts: layouts,
-                layoutUpdateFlag: true,
-            })
-        });
-    }
-
-    getLayouts = (isEditingMode) => {
-        let layouts = this.state.layouts;
-        _.each(layouts, (layout) => {
-            layout.forEach((block) => {
-                block.static = !isEditingMode;
-                block.isDraggable = isEditingMode;
-                block.isResizable = isEditingMode;
-                block.minW = 3;
-                block.maxW = 12;
-                block.minH = 4;
-                block.maxH = 16;
-            });
-        });
-
-        return layouts;
-    }
-
-    onBreakpointChange = (breakpoint) => {
-        // console.log('onBreakpointChange', breakpoint);
-
-        this.setState({
-            currentBreakpoint: breakpoint,
-            isEditingMode: breakpoint === 'lg' || breakpoint === 'md',
-        });
-    }
-
-    onLayoutChange = (currentLayout, allLayouts) => {
-        // console.log('onLayoutChange', currentLayout, allLayouts);
-
-        if (this.state.layoutUpdateFlag) {
-            this.setState({
-                layouts: allLayouts,
-            }, () => {
-                // Generate tiny layout for saving to the server
-                let newLayouts = {};
-
-                let breakpoints = _.keys(allLayouts);
-                _.each(breakpoints, (breakpoint) => {
-                    let newLayout = [];
-                    let layout = allLayouts[breakpoint];
-                    _.each(layout, (block) => {
-                        let newBlock = {};
-                        newBlock.i = block.i;
-                        newBlock.x = block.x;
-                        newBlock.y = block.y;
-                        newBlock.w = block.w;
-                        newBlock.h = block.h;
-
-                        newLayout.push(newBlock);
-                    });
-
-                    newLayouts[breakpoint] = newLayout;
-                });
-
-                // console.log(newLayouts);
-                // console.log(JSON.stringify(newLayouts[this.state.currentBreakpoint]));
-
-                // TODO: Save the user's personal layout
-                // console.log(JSON.stringify(newLayouts));
-
-                // Save the user's personal layout
-                // ApiManager.updateAdminLayout(
-                //     CookieManager.getCookie('adminId'),
-                //     this.props.location.pathname,
-                //     JSON.stringify(newLayouts),
-                //     this.createAdminLayoutCallback);
-            });
-        }
-    }
-
     generateBlock = (block) => {
         let COLORS = StickyBoardColors.colorArray;
 
         switch (block.i) {
         case 'LineChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <Highcharts
                         chartType={'line'}
                         title={'Line Chart'}
                         data={lineChartData}
                         xAxisDataKey={'time'}
                         yAxisDataKey={'visitors'} />
-                </Paper>
+                </Sticker>
             )
         case 'BarChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <Highcharts
                         chartType={'bar'}
                         title={'Bar Chart'}
                         data={lineChartData}
                         xAxisDataKey={'time'}
                         yAxisDataKey={'visitors'} />
-                </Paper>
+                </Sticker>
             )
         case 'PieChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <Highcharts
                         chartType={'pie'}
                         title={'Pie Chart'}
                         data={pieChartData}
                         xAxisDataKey={'name'}
                         yAxisDataKey={'value'} />
-                </Paper>
+                </Sticker>
             )
         case 'PolarChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <PolarChart
                         chartType={'polar'}
                         title={'Polar Chart'}
@@ -483,72 +395,87 @@ class ComponentHighchartsPage extends React.Component {
                         xAxisDataKey={'name'}
                         yAxisDataKey={'value'}
                         seriesType={'area'} />
-                </Paper>
+                </Sticker>
             )
         case 'AreaChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <Highcharts
                         chartType={'area'}
                         title={'Area Chart'}
                         data={pieChartData}
                         xAxisDataKey={'name'}
                         yAxisDataKey={'value'} />
-                </Paper>
+                </Sticker>
             )
         case 'ScatterChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <Highcharts
                         chartType={'scatter'}
                         title={'Scatter Chart'}
                         data={lineChartData}
                         xAxisDataKey={'time'}
                         yAxisDataKey={'visitors'} />
-                </Paper>
+                </Sticker>
             )
         case 'TreeMap':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <TreeMap
                         title={'Tree Map'}
                         data={lineChartData} />
-                </Paper>
+                </Sticker>
             )
         case 'StreamGraph':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <StreamGraph
                         title={'Stream Graph'}
                         data={lineChartData} />
-                </Paper>
+                </Sticker>
             )
         case 'BoxPlot':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <BoxPlot
                         title={'Box Plot'}
                         data={lineChartData} />
-                </Paper>
+                </Sticker>
             )
         }
     }
 
     render () {
-        const { classes, theme } = this.props
+        const { layouts, isEditingMode } = this.state;
+        const { classes, theme } = this.props;
 
         return (
             <div className={classes.root}>
-                {/* Components */}
-                <ResponsiveReactGridLayout
-                    {...Const.RGL_LAYOUT_PROPS}
-                    layouts={this.getLayouts(this.state.isEditingMode)}
-                    onBreakpointChange={this.onBreakpointChange}
-                    onLayoutChange={this.onLayoutChange}>
+                <Board
+                    ref={this.board}
+                    layouts={layouts}
+                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}>
                     {this.state.blocks.map((block, index) => {
                         return this.generateBlock(block, classes)
                     })}
-                </ResponsiveReactGridLayout>
+                </Board>
+
+                <div className={classes.menuContainer}>
+                    <Fab
+                        color="secondary"
+                        aria-label="edit"
+                        onClick={() => { this.board.current.toggleEditingMode(); }}>
+                        <EditIcon />
+                    </Fab>
+
+                    <Fab
+                        color="primary"
+                        aria-label="tv"
+                        onClick={() => { this.board.current.toggleTvMode(); }}>
+                        <TvIcon />
+                    </Fab>
+                </div>
             </div>
         )
     }

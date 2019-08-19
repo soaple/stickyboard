@@ -6,16 +6,13 @@ import PropTypes from 'prop-types';
 import _ from 'underscore'
 
 import { withStyles } from '@material-ui/core/styles';
-
-import Paper from '@material-ui/core/Paper';
+import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { teal, deepPurple, indigo, blue, blueGrey, green, lightGreen, red,
-    pink, deepOrange, cyan } from '@material-ui/core/colors';
 
-import {Responsive, WidthProvider} from 'react-grid-layout'
-const ResponsiveReactGridLayout = WidthProvider(Responsive);
+import EditIcon from '@material-ui/icons/Edit';
+import TvIcon from '@material-ui/icons/Tv';
 
+import { Sticker, Board } from '@stickyboard/core';
 import { LineChart, BarChart, ComposedChart,
     PieChart, RadarChart, AreaChart,
     ScatterChart, Treemap
@@ -31,21 +28,21 @@ import Const from '../../constants/Const';
 
 import DateUtil from '../../utils/DateUtil';
 
-require('react-grid-layout/css/styles.css');
-require('react-resizable/css/styles.css');
-require('../../static/css/react-grid-layout.css');
-
 const styles = theme => ({
     root: {
-        padding: theme.spacing(2),
-        overflow: 'auto',
+        width: '100%',
+        height: '100%',
     },
-    chart: {
-        height: 280,
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2),
-        marginLeft: -theme.spacing(4),
-    }
+    menuContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        position: 'absolute',
+        height: 120,
+        right: 16,
+        bottom: 16,
+        zIndex: 2000,
+    },
 });
 
 const lineChartData = [
@@ -346,7 +343,8 @@ const initialLayout = [
 
 class ComponentChartsPage extends React.Component {
     constructor (props) {
-        super(props)
+        super(props);
+        this.board = React.createRef();
 
         var endDate = new Date()
         var startDate = new Date(endDate.getTime() - 7 * 24 * 60 * 60 * 1000)
@@ -373,94 +371,13 @@ class ComponentChartsPage extends React.Component {
         }
     }
 
-    componentDidMount () {
-        // Temp code!
-        // this.props.store.dispatch(showMessageSnackbar('Loading data...'));
-        // setTimeout(() => {
-        //     this.props.store.dispatch(hideMessageSnackbar());
-        // }, 3000);
-    }
-
-    toggleEditingMode = () => {
-        let currentEditingMode = this.state.isEditingMode;
-
-        let layouts = this.getLayouts(!currentEditingMode);
-        this.setState({
-            layouts: {},
-            layoutUpdateFlag: false,
-            isEditingMode: !currentEditingMode,
-        }, () => {
-            this.setState({
-                layouts: layouts,
-                layoutUpdateFlag: true,
-            })
-        });
-    }
-
-    getLayouts = (isEditingMode) => {
-        let layouts = this.state.layouts;
-        _.each(layouts, (layout) => {
-            layout.forEach((block) => {
-                block.static = !isEditingMode;
-                block.isDraggable = isEditingMode;
-                block.isResizable = isEditingMode;
-                block.minW = 3;
-                block.maxW = 12;
-                block.minH = 4;
-                block.maxH = 16;
-            });
-        });
-
-        return layouts;
-    }
-
-    onBreakpointChange = (breakpoint) => {
-        // console.log('onBreakpointChange', breakpoint);
-
-        this.setState({
-            currentBreakpoint: breakpoint,
-            isEditingMode: breakpoint === 'lg' || breakpoint === 'md',
-        });
-    }
-
-    onLayoutChange = (currentLayout, allLayouts) => {
-        // console.log('onLayoutChange', currentLayout, allLayouts);
-
-        if (this.state.layoutUpdateFlag) {
-            this.setState({
-                layouts: allLayouts,
-            }, () => {
-                // Generate tiny layout for saving to the server
-                let newLayouts = {};
-
-                let breakpoints = _.keys(allLayouts);
-                _.each(breakpoints, (breakpoint) => {
-                    let newLayout = [];
-                    let layout = allLayouts[breakpoint];
-                    _.each(layout, (block) => {
-                        let newBlock = {};
-                        newBlock.i = block.i;
-                        newBlock.x = block.x;
-                        newBlock.y = block.y;
-                        newBlock.w = block.w;
-                        newBlock.h = block.h;
-
-                        newLayout.push(newBlock);
-                    });
-
-                    newLayouts[breakpoint] = newLayout;
-                });
-            });
-        }
-    }
-
     generateBlock = (block) => {
         let COLORS = StickyBoardColors.colorArray;
 
         switch (block.i) {
         case 'LineChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <LineChart
                         data={lineChartData}
                         xAxisDataKey={'time'}
@@ -468,22 +385,22 @@ class ComponentChartsPage extends React.Component {
                         lineDataKey={'visitors'}
                         lineName={'Visitors'}
                         lineColor={COLORS[0]} />
-                </Paper>
+                </Sticker>
             )
         case 'BarChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <BarChart
                         data={lineChartData}
                         xAxisDataKey={'time'}
                         barDataKey={'visitors'}
                         barName={'Visitors'}
                         barColor={COLORS[1]} />
-                </Paper>
+                </Sticker>
             )
         case 'ComposedChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <ComposedChart
                         data={lineChartData}
                         xAxisDataKey={'time'}
@@ -494,19 +411,19 @@ class ComponentChartsPage extends React.Component {
                         lineDataKey={'visitors'}
                         lineName={'Visitors'}
                         lineColor={COLORS[3]} />
-                </Paper>
+                </Sticker>
             )
         case 'PieChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <PieChart
                         data={pieChartData}
                         colorArray={COLORS} />
-                </Paper>
+                </Sticker>
             )
         case 'RadarChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <RadarChart
                         data={radarChartData}
                         polarAngleAxisKey={'subject'}
@@ -514,11 +431,11 @@ class ComponentChartsPage extends React.Component {
                             { name: 'Mike', dataKey: 'A', stroke: '#ffed00', fill: COLORS[4] },
                             { name: 'Lily', dataKey: 'B', stroke: '#66d522', fill: COLORS[5] },
                         ]} />
-                </Paper>
+                </Sticker>
             )
         case 'AreaChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <AreaChart
                         data={areaChartData}
                         xAxisDataKey={'month'}
@@ -527,22 +444,22 @@ class ComponentChartsPage extends React.Component {
                             { type: 'monotone', dataKey: 'b', stackId: '1', stroke: COLORS[9], fill: COLORS[9] },
                             { type: 'monotone', dataKey: 'c', stackId: '1', stroke: COLORS[3], fill: COLORS[3] },
                         ]} />
-                </Paper>
+                </Sticker>
             )
         case 'ScatterChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <ScatterChart
                         data={scatterChartData}
                         xAxisAttr={{ dataKey: 'tall', type: 'number', name: 'tall', unit: 'cm', domain: ['auto', 'auto'] }}
                         yAxisAttr={{ dataKey: 'weight', type: 'number', name: 'weight', unit: 'kg', domain: ['auto', 'auto'] }}
                         scatterName={'tall and weight'}
-                        scatterColor={cyan[500]} />
-                </Paper>
+                        scatterColor={COLORS[1]} />
+                </Sticker>
             )
         case 'TreeMap':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <Treemap
                         isAnimationActive={false}
                         data={treeMapData}
@@ -551,11 +468,11 @@ class ComponentChartsPage extends React.Component {
                         stroke="#fff"
                         fill="#787878"
                         colorArray={COLORS} />
-                </Paper>
+                </Sticker>
             )
         case 'TinyChart':
             return (
-                <Paper key={block.i}>
+                <Sticker key={block.i}>
                     <Grid container spacing={8}
                         style={{height: '100%', padding: 20}}>
                         <Grid item xs={6} style={{height: '50%'}}>
@@ -590,26 +507,41 @@ class ComponentChartsPage extends React.Component {
                                 ]} />
                         </Grid>
                     </Grid>
-                </Paper>
+                </Sticker>
             )
         }
     }
 
     render () {
-        const { classes, theme } = this.props
+        const { layouts, isEditingMode } = this.state;
+        const { classes, theme } = this.props;
 
         return (
             <div className={classes.root}>
-                {/* Components */}
-                <ResponsiveReactGridLayout
-                    {...Const.RGL_LAYOUT_PROPS}
-                    layouts={this.getLayouts(this.state.isEditingMode)}
-                    onBreakpointChange={this.onBreakpointChange}
-                    onLayoutChange={this.onLayoutChange}>
+                <Board
+                    ref={this.board}
+                    layouts={layouts}
+                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}>
                     {this.state.blocks.map((block, index) => {
                         return this.generateBlock(block, classes)
                     })}
-                </ResponsiveReactGridLayout>
+                </Board>
+
+                <div className={classes.menuContainer}>
+                    <Fab
+                        color="secondary"
+                        aria-label="edit"
+                        onClick={() => { this.board.current.toggleEditingMode(); }}>
+                        <EditIcon />
+                    </Fab>
+
+                    <Fab
+                        color="primary"
+                        aria-label="tv"
+                        onClick={() => { this.board.current.toggleTvMode(); }}>
+                        <TvIcon />
+                    </Fab>
+                </div>
             </div>
         )
     }
