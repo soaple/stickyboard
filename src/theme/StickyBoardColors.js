@@ -19,7 +19,8 @@ const StickyBoardColors = {
     drawerUserBackground: grey[800],
     drawerMenuSelectedBackground: grey[300],
 
-    contentBackground: grey[200],
+    // contentBackground: grey[200],
+    contentBackground: '#ffffff',
 
     colorTransparent: '#00000000',
     colorLight: '#ffffff',

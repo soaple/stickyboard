@@ -7,7 +7,7 @@ import _ from 'underscore'
 
 import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import TextField from '@material-ui/core/TextField';
@@ -17,7 +17,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import TvIcon from '@material-ui/icons/Tv';
 import Mail from '@material-ui/icons/Mail';
 
-import { Board } from '@stickyboard/core';
+import { Sticker, Board } from '@stickyboard/core';
 
 // import OpenLayers from '../openlayers/OpenLayers';
 
@@ -27,6 +27,10 @@ import StickyBoardColors from '../../theme/StickyBoardColors';
 import Const from '../../constants/Const';
 
 const styles = theme => ({
+    root: {
+        width: '100%',
+        height: '100%',
+    },
     menuContainer: {
         display: 'flex',
         flexDirection: 'column',
@@ -36,9 +40,6 @@ const styles = theme => ({
         right: 16,
         bottom: 16,
         zIndex: 2000,
-    },
-    paper: {
-        padding: theme.spacing(2),
     },
     logoImage: {
         display: 'block',
@@ -99,9 +100,8 @@ class IntroPage extends React.Component {
         switch (block.i) {
         case 'Introduction':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <img
                         src='../static/image/StickyBoard_logo.png'
                         className={classes.logoImage}/>
@@ -116,13 +116,12 @@ class IntroPage extends React.Component {
                             {'StickyBoard is on-demand dashboard solution based on React. Users can make their own dashboard with locating component.'}
                         </p>
                     </Textfit>
-                </Paper>
+                </Sticker>
             )
         case 'DatabaseSupport':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <Textfit
                         mode="single"
                         min={12}
@@ -138,13 +137,12 @@ class IntroPage extends React.Component {
                             className={classes.image}
                             src="/static/image/intro_database.png"/>
                     </div>
-                </Paper>
+                </Sticker>
             )
         case 'CustomLayout':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <Textfit
                         mode="single"
                         min={12}
@@ -160,13 +158,12 @@ class IntroPage extends React.Component {
                             className={classes.image}
                             src="/static/image/intro_custom_layout.png"/>
                     </div>
-                </Paper>
+                </Sticker>
             )
         case 'ChartSupport':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <Textfit
                         mode="single"
                         min={12}
@@ -182,13 +179,12 @@ class IntroPage extends React.Component {
                             className={classes.image}
                             src="/static/image/intro_components.png"/>
                     </div>
-                </Paper>
+                </Sticker>
             )
         case 'MapSupport':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <Textfit
                         mode="single"
                         min={12}
@@ -209,13 +205,12 @@ class IntroPage extends React.Component {
                             latitude={37.504296}/>
                     </div>
                     */}
-                </Paper>
+                </Sticker>
             )
         case 'Contact':
             return (
-                <Paper
-                    key={block.i}
-                    className={classes.paper}>
+                <Sticker
+                    key={block.i}>
                     <Textfit
                        mode="single"
                        min={12}
@@ -244,7 +239,7 @@ class IntroPage extends React.Component {
                            <Mail className={classes.contactButtonIcon} />
                        </Button>
                    </div>
-                </Paper>
+                </Sticker>
             )
         }
     }
@@ -254,7 +249,7 @@ class IntroPage extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <div>
+            <div className={classes.root}>
                 <Board
                     ref={this.board}
                     layouts={layouts}
