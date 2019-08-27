@@ -6,6 +6,7 @@ import { amber } from '@material-ui/core/colors';
 
 import Timeline from '@material-ui/icons/Timeline';
 import ViewList from '@material-ui/icons/ViewList';
+import AvTimer from '@material-ui/icons/AvTimer';
 
 const SidebarMenuDict = {
 
@@ -40,6 +41,12 @@ const SidebarMenuDict = {
         icon: (<ViewList />),
         url: '/components/table',
         value: 203,
+        need_permission: false
+    }, {
+        title: 'Number',
+        icon: (<AvTimer />),
+        url: '/components/number',
+        value: 204,
         need_permission: false
     }],
 

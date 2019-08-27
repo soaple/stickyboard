@@ -16,6 +16,7 @@ import IntroPage from '../page/IntroPage';
 import ComponentChartsPage from '../page/ComponentChartsPage';
 import ComponentHighchartsPage from '../page/ComponentHighchartsPage';
 import ComponentTablePage from '../page/ComponentTablePage';
+import ComponentNumberPage from '../page/ComponentNumberPage';
 
 import NotFoundPage from '../page/NotFoundPage';
 
@@ -28,6 +29,7 @@ const App = ({ store }) => (
                     <Route path='/components/chart' component={ComponentChartsPage}/>
                     <Route path='/components/highcharts' component={ComponentHighchartsPage}/>
                     <Route path='/components/table' component={ComponentTablePage}/>
+                    <Route path='/components/number' component={ComponentNumberPage}/>
                     <Route path='*' component={NotFoundPage}/>
                 </Switch>
             </Router>

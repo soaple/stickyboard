@@ -360,7 +360,6 @@ class ComponentChartsPage extends React.Component {
                 xxs: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":0,"y":6,"w":4,"h":6},{"i":"ComposedChart","x":0,"y":12,"w":4,"h":6},{"i":"RadarChart","x":0,"y":24,"w":4,"h":6},{"i":"PieChart","x":0,"y":18,"w":4,"h":6},{"i":"AreaChart","x":0,"y":30,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":4,"h":6},{"i":"TreeMap","x":0,"y":42,"w":4,"h":6},{"i":"TinyChart","x":0,"y":48,"w":4,"h":6}],
             },
             blocks: [{"i":"LineChart"},{"i":"BarChart"},{"i":"ComposedChart"},{"i":"RadarChart"},{"i":"PieChart"},{"i":"AreaChart"},{"i":"ScatterChart"},{"i":"TreeMap"},{"i":"TinyChart"}],
-            layoutUpdateFlag: true,
             isEditingMode: true,
             // Data
             data: [],
