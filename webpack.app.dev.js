@@ -38,7 +38,7 @@ const config = {
             react: path.resolve('./node_modules/react')
         }
     },
-    devtool: 'inline-source-map',
+    // devtool: 'inline-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         hot: true,
