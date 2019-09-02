@@ -16,7 +16,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import TvIcon from '@material-ui/icons/Tv';
 import Mail from '@material-ui/icons/Mail';
 
-import { Sticker, Board } from '@stickyboard/core';
+// import { Board, Sticker } from '@stickyboard/core';
+import { Board, Sticker } from '@stickyboard/core';
 
 // import OpenLayers from '../openlayers/OpenLayers';
 
