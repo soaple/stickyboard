@@ -7,6 +7,8 @@ import { amber } from '@material-ui/core/colors';
 import Timeline from '@material-ui/icons/Timeline';
 import ViewList from '@material-ui/icons/ViewList';
 import AvTimer from '@material-ui/icons/AvTimer';
+import Map from '@material-ui/icons/Map';
+import Layers from '@material-ui/icons/Layers';
 
 const SidebarMenuDict = {
 
@@ -47,6 +49,23 @@ const SidebarMenuDict = {
         icon: (<AvTimer />),
         url: '/components/number',
         value: 204,
+        need_permission: false
+    }],
+
+    /******************
+     * Layering Menus
+     ******************/
+    LAYERING: [{
+        title: 'Map',
+        icon: (<Map />),
+        url: '/layering/map',
+        value: 301,
+        need_permission: false
+    }, {
+        title: 'HeatMap',
+        icon: (<Layers />),
+        url: '/layering/heatmap',
+        value: 302,
         need_permission: false
     }],
 
