@@ -43,7 +43,8 @@ const styles = theme => ({
 
 class ComponentWeatherPage extends React.Component {
     constructor (props) {
-        super(props)
+        super(props);
+        this.board = React.createRef();
 
         this.state = {
             // React Grid Layout
