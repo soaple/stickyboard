@@ -130,17 +130,7 @@ class ComponentNumberPage extends React.Component {
     }
 
     generateBlock = (block, classes) => {
-        let COLORS = StickyBoardColors.blockColorArray;
         let data = this.state.data;
-
-        const opts = {
-            // height: '100%',
-            width: '100%',
-            height: '80%',
-            playerVars: { // https://developers.google.com/youtube/player_parameters
-                autoplay: 0
-            }
-        };
 
         switch (block.i) {
         case 'DAU':

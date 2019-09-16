@@ -16,6 +16,7 @@ import ComponentChartsPage from '../page/ComponentChartsPage';
 import ComponentHighchartsPage from '../page/ComponentHighchartsPage';
 import ComponentTablePage from '../page/ComponentTablePage';
 import ComponentNumberPage from '../page/ComponentNumberPage';
+import ComponentWeatherPage from '../page/ComponentWeatherPage';
 // Layering
 import LayeringMapPage from '../page/LayeringMapPage';
 import LayeringHeatMapPage from '../page/LayeringHeatMapPage';
@@ -33,6 +34,7 @@ const App = ({ store }) => (
                     <Route path='/components/highcharts' component={ComponentHighchartsPage}/>
                     <Route path='/components/table' component={ComponentTablePage}/>
                     <Route path='/components/number' component={ComponentNumberPage}/>
+                    <Route path='/components/weather' component={ComponentWeatherPage}/>
                     {/* Layering */}
                     <Route path="/layering/map" component={LayeringMapPage}/>
                     <Route path="/layering/heatmap" component={LayeringHeatMapPage}/>
