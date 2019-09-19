@@ -17,9 +17,10 @@ import {
     Weather3daysWidget,
     Weather7daysWidget
 } from '@stickyboard/openweathermap';
-
-// import YahooWeatherWidget from '../ui/YahooWeatherWidget';
-// import YahooWeatherForecastWidget from '../ui/YahooWeatherForecastWidget';
+import {
+    YahooWeatherWidget,
+    YahooWeatherForecastWidget
+} from '@stickyboard/yahoo-weather';
 
 import StickyBoardColors from '../../theme/StickyBoardColors';
 import Const from '../../constants/Const';
@@ -90,21 +91,17 @@ class ComponentWeatherPage extends React.Component {
             case 'YahooWeather':
                 return (
                     <Sticker key={block.i}>
-                        {
-                        // <YahooWeatherWidget
-                        //     defaultColor={StickyBoardColors.colorDark}
-                        //     valueColor={StickyBoardColors.colorDark} />
-                        }
+                        <YahooWeatherWidget
+                            defaultColor={StickyBoardColors.colorDark}
+                            valueColor={StickyBoardColors.colorDark} />
                     </Sticker>
                 )
             case 'YahooWeatherForecast':
                 return (
                     <Sticker key={block.i}>
-                        {
-                        // <YahooWeatherForecastWidget
-                        //     defaultColor={StickyBoardColors.colorDark}
-                        //     valueColor={StickyBoardColors.colorDark} />
-                        }
+                        <YahooWeatherForecastWidget
+                            defaultColor={StickyBoardColors.colorDark}
+                            valueColor={StickyBoardColors.colorDark} />
                     </Sticker>
                 )
         }
