@@ -58,7 +58,10 @@ const config = {
         new webpack.ProvidePlugin({
             'd3': 'd3'
         })
-    ]
+    ],
+    node: {
+        fs: 'empty'
+    }
 }
 
 module.exports = config
