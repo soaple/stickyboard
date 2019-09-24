@@ -26,6 +26,7 @@
         "@stickyboard/openweathermap": "^0.1.0",
         "@stickyboard/recharts": "^0.1.5",
         "@stickyboard/table": "^0.1.2",
+        "@stickyboard/yahoo-weather": "^0.1.0",
         "autosuggest-highlight": "^3.1.1",
         "body-parser": "^1.19.0",
         "classnames": "^2.2.6",
