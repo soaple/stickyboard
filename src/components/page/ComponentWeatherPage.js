@@ -68,40 +68,40 @@ class ComponentWeatherPage extends React.Component {
                 return (
                     <Sticker key={block.i}>
                         <WeatherWidget
-                            defaultColor={StickyBoardColors.colorDark}
-                            valueColor={StickyBoardColors.colorDark} />
+                            latitude={37.504296}
+                            longitude={127.024792} />
                     </Sticker>
                 )
             case 'OpenWeatherMap3days':
                 return (
                     <Sticker key={block.i}>
                         <Weather3daysWidget
-                            defaultColor={StickyBoardColors.colorDark}
-                            valueColor={StickyBoardColors.colorDark} />
+                            latitude={37.504296}
+                            longitude={127.024792} />
                     </Sticker>
                 )
             case 'OpenWeatherMap7days':
                 return (
                     <Sticker key={block.i}>
                         <Weather7daysWidget
-                            defaultColor={StickyBoardColors.colorDark}
-                            valueColor={StickyBoardColors.colorDark} />
+                            latitude={37.504296}
+                            longitude={127.024792} />
                     </Sticker>
                 )
             case 'YahooWeather':
                 return (
                     <Sticker key={block.i}>
                         <YahooWeatherWidget
-                            defaultColor={StickyBoardColors.colorDark}
-                            valueColor={StickyBoardColors.colorDark} />
+                            latitude={37.504296}
+                            longitude={127.024792} />
                     </Sticker>
                 )
             case 'YahooWeatherForecast':
                 return (
                     <Sticker key={block.i}>
                         <YahooWeatherForecastWidget
-                            defaultColor={StickyBoardColors.colorDark}
-                            valueColor={StickyBoardColors.colorDark} />
+                            latitude={37.504296}
+                            longitude={127.024792} />
                     </Sticker>
                 )
         }
