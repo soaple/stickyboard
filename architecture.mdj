@@ -1795,8 +1795,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFb92qGhPzf++4="
 									},
-									"name": "page_id",
-									"type": "Int",
+									"name": "route",
+									"type": "String",
 									"length": 0
 								},
 								{
@@ -2102,8 +2102,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFjzxKlUA4f20o="
 									},
-									"name": "page_id",
-									"type": "Int",
+									"name": "route",
+									"type": "String",
 									"length": 0,
 									"foreignKey": true
 								},

@@ -14,8 +14,8 @@ var UserLayout = MySqlConn.define('stkbd_user_layout', {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false
     },
-    page_id: {
-        type: Sequelize.INTEGER.UNSIGNED,
+    route: {
+        type: Sequelize.STRING(255),
         allowNull: false
     },
     layout: {
@@ -26,7 +26,7 @@ var UserLayout = MySqlConn.define('stkbd_user_layout', {
     indexes: [
         {
             unique: true,
-            fields: ['user_id', 'page_id']
+            fields: ['user_id', 'route']
         }
     ],
     freezeTableName: true, // Model tableName will be the same as the model name

@@ -10,8 +10,8 @@ var Permission = MySqlConn.define('stkbd_permission', {
         primaryKey: true,
         autoIncrement: true
     },
-    page_id: {
-        type: Sequelize.INTEGER.UNSIGNED,
+    route: {
+        type: Sequelize.STRING(255),
         allowNull: false
     },
     name: {
