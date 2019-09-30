@@ -4,7 +4,6 @@
 var User = require('./User/User');
 var UserProfile = require('./User/UserProfile');
 var UserLayout = require('./User/UserLayout');
-var Page = require('./User/Page');
 var Group = require('./User/Group');
 var GroupUser = require('./User/GroupUser');
 var Permission = require('./User/Permission');
@@ -19,9 +18,6 @@ var ModelRelations = {
         UserProfile.belongsTo(User, {foreignKey: 'user_id'});
         UserLayout.belongsTo(User, {foreignKey: 'user_id'});
 
-        Page.hasMany(UserLayout, {foreignKey: 'page_id'});
-        UserLayout.belongsTo(Page, {foreignKey: 'page_id'});
-
         Group.hasMany(GroupUser, {foreignKey: 'group_id'});
         Group.hasMany(GroupPermission, {foreignKey: 'group_id'});
 
@@ -29,8 +25,6 @@ var ModelRelations = {
         GroupUser.belongsTo(Group, {foreignKey: 'group_id'});
 
         Permission.hasMany(GroupPermission, {foreignKey: 'permission_id'});
-        Page.hasMany(Permission, {foreignKey: 'page_id'});
-        Permission.belongsTo(Page, {foreignKey: 'page_id'});
 
         GroupPermission.belongsTo(Group, {foreignKey: 'group_id'});
         GroupPermission.belongsTo(Permission, {foreignKey: 'permission_id'});

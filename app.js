@@ -31,7 +31,6 @@ ModelRelations.defineRelations();
 var UserRoute = require('./src/database/models/MySQL/User/routes/UserRoute');
 // var UserProfileRoute = require('./src/database/models/MySQL/User/routes/UserProfileRoute');
 var UserLayoutRoute = require('./src/database/models/MySQL/User/routes/UserLayoutRoute');
-var PageRoute = require('./src/database/models/MySQL/User/routes/PageRoute');
 var GroupRoute = require('./src/database/models/MySQL/User/routes/GroupRoute');
 var GroupUserRoute = require('./src/database/models/MySQL/User/routes/GroupUserRoute');
 var GroupPermissionRoute = require('./src/database/models/MySQL/User/routes/GroupPermissionRoute');
@@ -79,12 +78,6 @@ router.post('/user/:userId/layout/$', function (req, res) { UserLayoutRoute.crea
 router.get('/user/:userId/layout/$', function (req, res) { UserLayoutRoute.read(req, res) });
 router.put('/user/:userId/layout/$', function (req, res) { UserLayoutRoute.update(req, res) });
 router.delete('/user/:userId/layout/$', function (req, res) { UserLayoutRoute.delete(req, res) });
-
-// Page
-router.post('/page/:pageId/$', function (req, res) { PageRoute.create(req, res) });
-router.get('/page/:pageId/$', function (req, res) { PageRoute.read(req, res) });
-router.put('/page/:pageId/$', function (req, res) { PageRoute.update(req, res) });
-router.delete('/page/:pageId/$', function (req, res) { PageRoute.delete(req, res) });
 
 // Group
 router.get('/group/$', function (req, res) { GroupRoute.readAll(req, res) });
