@@ -17,7 +17,7 @@ const envLoadResult = require('dotenv').config({ path: envFilePath });
 if (envLoadResult.error) {
     throw envLoadResult.error;
 }
-console.log(envLoadResult.parsed);
+// console.log(envLoadResult.parsed);
 
 // Database connections
 // var Secret = require('./src/utils/Secret')
