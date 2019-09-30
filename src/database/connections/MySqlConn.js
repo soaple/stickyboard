@@ -2,14 +2,14 @@
 
 var Sequelize = require('sequelize');
 
-const DB_DATABASE = process.env.DB_DATABASE;
-const DB_USER = process.env.DB_USER;
-const DB_PASS = process.env.DB_PASS;
+const database = process.env.DB_DATABASE;
+const username = process.env.DB_USER;
+const password = process.env.DB_PASS;
 
 const MySqlConn = new Sequelize(database, username, password, {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
+    dialect: process.env.DB_DIALECT,
 
     pool: {
         max: 5,

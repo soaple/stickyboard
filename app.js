@@ -12,7 +12,12 @@ var cors = require('cors');
 var morgan = require('morgan');
 
 // Load .env configuration
-require('dotenv').config();
+const envFilePath = process.env.NODE_ENV === 'production' ? '.env' : '.env.development';
+const envLoadResult = require('dotenv').config({ path: envFilePath });
+if (envLoadResult.error) {
+    throw envLoadResult.error;
+}
+console.log(envLoadResult.parsed);
 
 // Database connections
 // var Secret = require('./src/utils/Secret')
