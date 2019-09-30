@@ -4,7 +4,7 @@ var Sequelize = require('sequelize')
 
 var MySqlConn = require('../../../connections/MySqlConn');
 
-var GroupPermission = MySqlConn.define('group_permission', {
+var GroupPermission = MySqlConn.define('stkbd_group_permission', {
     id: {
         type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,

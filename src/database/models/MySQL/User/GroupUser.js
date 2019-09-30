@@ -4,7 +4,7 @@ var Sequelize = require('sequelize')
 
 var MySqlConn = require('../../../connections/MySqlConn');
 
-var GroupAdmin = MySqlConn.define('group_user', {
+var GroupAdmin = MySqlConn.define('stkbd_group_user', {
     id: {
         type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,

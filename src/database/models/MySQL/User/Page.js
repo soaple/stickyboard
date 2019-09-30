@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 
 var MySqlConn = require('../../../connections/MySqlConn');
 
-var Page = MySqlConn.define('page', {
+var Page = MySqlConn.define('stkbd_page', {
     id: {
         type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,
