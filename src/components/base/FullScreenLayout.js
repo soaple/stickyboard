@@ -14,26 +14,23 @@ const styles = theme => ({
     root: {
         width: '100%',
         height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
         overflow: 'auto',
         background: StickyBoardColors.contentBackground,
     },
 });
 
 class FullScreenLayout extends React.Component {
-    render () {
+    render() {
         const { classes, theme } = this.props;
 
         return (
             <MuiThemeProvider theme={MuiTheme}>
-                {/* Wrap the whole content by Material UI */}
-                <Grid container spacing={0}>
-                    <Grid item xs={12} sm={12}>
-                        {/* Body */}
-                        <div className={classes.root}>
-                            {this.props.children}
-                        </div>
-                    </Grid>
-                </Grid>
+                {/* Root */}
+                <div className={classes.root}>
+                    {this.props.children}
+                </div>
             </MuiThemeProvider>
         )
     }

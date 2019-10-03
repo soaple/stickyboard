@@ -9,7 +9,10 @@ import { Provider } from 'react-redux';
 // Layout
 import Layout from './Layout';
 import FullScreenLayout from './FullScreenLayout';
-
+// Signing
+import SignInPage from '../page/SignInPage';
+import SignUpPage from '../page/SignUpPage';
+// Index
 import IntroPage from '../page/IntroPage';
 // Component
 import ComponentChartsPage from '../page/ComponentChartsPage';
@@ -25,23 +28,38 @@ import NotFoundPage from '../page/NotFoundPage';
 
 const App = ({ store }) => (
     <Provider store={store}>
-        <Layout>
-            <Router>
-                <Switch>
-                    <Route exact path='/' component={IntroPage}/>
-                    {/* Components */}
-                    <Route path='/components/chart' component={ComponentChartsPage}/>
-                    <Route path='/components/highcharts' component={ComponentHighchartsPage}/>
-                    <Route path='/components/table' component={ComponentTablePage}/>
-                    <Route path='/components/number' component={ComponentNumberPage}/>
-                    <Route path='/components/weather' component={ComponentWeatherPage}/>
-                    {/* Layering */}
-                    <Route path="/layering/map" component={LayeringMapPage}/>
-                    <Route path="/layering/heatmap" component={LayeringHeatMapPage}/>
-                    <Route path='*' component={NotFoundPage}/>
-                </Switch>
-            </Router>
-        </Layout>
+        <Router>
+            <Switch>
+                {/* Signing pages (FullScreenLayout) */}
+                <Route path={['/signin', '/signup']}>
+                    <FullScreenLayout>
+                        <Switch>
+                            <Route path='/signin' component={SignInPage}/>
+                            <Route path='/signup' component={SignUpPage}/>
+                        </Switch>
+                    </FullScreenLayout>
+                </Route>
+
+                {/* other pages (Layout) */}
+                <Route path='/'>
+                    <Layout>
+                        <Switch>
+                            <Route exact path='/' component={IntroPage}/>
+                            {/* Components */}
+                            <Route path='/components/chart' component={ComponentChartsPage}/>
+                            <Route path='/components/highcharts' component={ComponentHighchartsPage}/>
+                            <Route path='/components/table' component={ComponentTablePage}/>
+                            <Route path='/components/number' component={ComponentNumberPage}/>
+                            <Route path='/components/weather' component={ComponentWeatherPage}/>
+                            {/* Layering */}
+                            <Route path="/layering/map" component={LayeringMapPage}/>
+                            <Route path="/layering/heatmap" component={LayeringHeatMapPage}/>
+                            <Route path='*' component={NotFoundPage}/>
+                        </Switch>
+                    </Layout>
+                </Route>
+            </Switch>
+        </Router>
     </Provider>
 )
 

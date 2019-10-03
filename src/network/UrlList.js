@@ -1,45 +1,45 @@
 // src/network/UrlList.js
 
-const BASE_URL = 'http://' + window.location.host + '/api/'
+const BASE_URL = window.location.origin + '/api/'
 
 var UrlList = {
 
-    // Admin
-    getAdminUrl: function () {
-        return BASE_URL + 'admin/'
+    // User
+    getUserUrl: function () {
+        return BASE_URL + 'user/'
     },
 
-    getAdminSignUpUrl: function () {
-        return this.getAdminUrl() + 'signup/'
+    getUserSignUpUrl: function () {
+        return this.getUserUrl() + 'signup/'
     },
 
-    getAdminSignInUrl: function () {
-        return this.getAdminUrl() + 'signin/'
+    getUserSignInUrl: function () {
+        return this.getUserUrl() + 'signin/'
     },
 
-    getAdminSignOutUrl: function () {
-        return this.getAdminUrl() + 'signout/'
+    getUserSignOutUrl: function () {
+        return this.getUserUrl() + 'signout/'
     },
 
-    getAdminIdUrl: function (adminId) {
-        return this.getAdminUrl() + adminId + '/'
+    getUserIdUrl: function (userId) {
+        return this.getUserUrl() + userId + '/'
     },
 
-    getAdminPasswordUrl: function (adminId) {
-        return this.getAdminIdUrl(adminId) + 'password/'
+    getUserPasswordUrl: function (userId) {
+        return this.getUserIdUrl(userId) + 'password/'
     },
 
-    getAdminGroupUrl: function (adminId) {
-        return this.getAdminIdUrl(adminId) + 'group/'
+    getUserGroupUrl: function (userId) {
+        return this.getUserIdUrl(userId) + 'group/'
     },
 
-    getAdminPermissionUrl: function (adminId) {
-        return this.getAdminIdUrl(adminId) + 'permission/'
+    getUserPermissionUrl: function (userId) {
+        return this.getUserIdUrl(userId) + 'permission/'
     },
 
-    // Admin Layout
-    getAdminLayoutUrl: function (adminId) {
-        return this.getAdminIdUrl(adminId) + 'layout/'
+    // User Layout
+    getUserLayoutUrl: function (userId) {
+        return this.getUserIdUrl(userId) + 'layout/'
     },
 
     // Group
@@ -51,13 +51,13 @@ var UrlList = {
         return this.getGroupUrl() + groupId + '/'
     },
 
-    // GroupAdmin
-    getGroupAdminUrl: function (groupId) {
-        return this.getGroupIdUrl(groupId) + 'admin/'
+    // GroupUser
+    getGroupUserUrl: function (groupId) {
+        return this.getGroupIdUrl(groupId) + 'user/'
     },
 
-    getGroupAdminIdUrl: function (groupId, adminId) {
-        return this.getGroupAdminUrl(groupId) + adminId + '/'
+    getGroupUserIdUrl: function (groupId, userId) {
+        return this.getGroupUserUrl(groupId) + userId + '/'
     },
 
     // GroupPermission
@@ -77,7 +77,7 @@ var UrlList = {
     getPermissionIdUrl: function (permissionId) {
         return this.getPermissionUrl() + permissionId + '/'
     },
-    
+
 }
 
 module.exports = UrlList;

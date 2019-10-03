@@ -5,67 +5,67 @@ import UrlList from './UrlList';
 
 const ApiManager = {
 
-    // Admin
-    signUp: function (admin, callback) {
-        RestClient.sendPostRequest(UrlList.getAdminSignUpUrl(), admin, callback)
+    // User
+    signUp: function (user, callback) {
+        RestClient.sendPostRequest(UrlList.getUserSignUpUrl(), user, callback)
     },
 
     signIn: function (email, password, callback) {
         var params = {email: email, password: password}
-        RestClient.sendPostRequest(UrlList.getAdminSignInUrl(), params, callback)
+        RestClient.sendPostRequest(UrlList.getUserSignInUrl(), params, callback)
     },
 
     signOut: function (callback) {
-        RestClient.sendPostRequest(UrlList.getAdminSignInUrl(), callback)
+        RestClient.sendPostRequest(UrlList.getUserSignInUrl(), callback)
     },
 
-    readAdmins: function (offset, limit, callback) {
+    readUsers: function (offset, limit, callback) {
         var params = {offset: offset, limit: limit}
-        RestClient.sendGetRequestWithParams(UrlList.getAdminUrl(), params, callback)
+        RestClient.sendGetRequestWithParams(UrlList.getUserUrl(), params, callback)
     },
 
-    readAdminsByKeyword: function (keyword, callback) {
+    readUsersByKeyword: function (keyword, callback) {
         var params = {keyword: keyword}
-        RestClient.sendGetRequestWithParams(UrlList.getAdminUrl(), params, callback)
+        RestClient.sendGetRequestWithParams(UrlList.getUserUrl(), params, callback)
     },
 
-    readAdmin: function (adminId, callback) {
-        RestClient.sendGetRequest(UrlList.getAdminIdUrl(adminId), callback)
+    readUser: function (userId, callback) {
+        RestClient.sendGetRequest(UrlList.getUserIdUrl(userId), callback)
     },
 
-    readAdminGroup: function (adminId, callback) {
-        RestClient.sendGetRequest(UrlList.getAdminGroupUrl(adminId), callback)
+    readUserGroup: function (userId, callback) {
+        RestClient.sendGetRequest(UrlList.getUserGroupUrl(userId), callback)
     },
 
-    readAdminPermissions: function (adminId, callback) {
-        RestClient.sendGetRequest(UrlList.getAdminPermissionUrl(adminId), callback)
+    readUserPermissions: function (userId, callback) {
+        RestClient.sendGetRequest(UrlList.getUserPermissionUrl(userId), callback)
     },
 
-    updateAdmin: function (admin, callback) {
-        RestClient.sendPutRequest(UrlList.getAdminIdUrl(admin.id), admin, callback)
+    updateUser: function (user, callback) {
+        RestClient.sendPutRequest(UrlList.getUserIdUrl(user.id), user, callback)
     },
 
-    updatePassword: function (adminId, newPassword, callback) {
-        RestClient.sendPutRequest(UrlList.getAdminPasswordUrl(adminId), {password: newPassword}, callback)
+    updatePassword: function (userId, newPassword, callback) {
+        RestClient.sendPutRequest(UrlList.getUserPasswordUrl(userId), {password: newPassword}, callback)
     },
 
-    deleteAdmin: function (adminId, callback) {
-        RestClient.sendDeleteRequest(UrlList.getAdminIdUrl(adminId), callback)
+    deleteUser: function (userId, callback) {
+        RestClient.sendDeleteRequest(UrlList.getUserIdUrl(userId), callback)
     },
 
-    // Admin Layout
-    readAdminLayout: function (adminId, route, callback) {
+    // User Layout
+    readUserLayout: function (userId, route, callback) {
         var params = {route: route}
-        RestClient.sendGetRequestWithParams(UrlList.getAdminLayoutUrl(adminId), params, callback)
+        RestClient.sendGetRequestWithParams(UrlList.getUserLayoutUrl(userId), params, callback)
     },
 
-    updateAdminLayout: function (adminId, route, layout, callback) {
+    updateUserLayout: function (userId, route, layout, callback) {
         var params = {route: route, layout: layout}
-        RestClient.sendPutRequest(UrlList.getAdminLayoutUrl(adminId), params, callback)
+        RestClient.sendPutRequest(UrlList.getUserLayoutUrl(userId), params, callback)
     },
 
-    deleteAdminLayout: function (adminId, route, callback) {
-        RestClient.sendDeleteRequest(UrlList.getAdminLayoutUrl(adminId), callback)
+    deleteUserLayout: function (userId, route, callback) {
+        RestClient.sendDeleteRequest(UrlList.getUserLayoutUrl(userId), callback)
     },
 
     // Group
@@ -85,17 +85,17 @@ const ApiManager = {
         RestClient.sendDeleteRequest(UrlList.getGroupIdUrl(groupId), callback)
     },
 
-    // GroupAdmin
-    createGroupAdmin: function (groupId, adminId, callback) {
-        RestClient.sendPostRequest(UrlList.getGroupAdminUrl(groupId), {adminId: adminId}, callback)
+    // GroupUser
+    createGroupUser: function (groupId, userId, callback) {
+        RestClient.sendPostRequest(UrlList.getGroupUserUrl(groupId), {userId: userId}, callback)
     },
 
-    readGroupAdmins: function (groupId, callback) {
-        RestClient.sendGetRequest(UrlList.getGroupAdminUrl(groupId), callback)
+    readGroupUsers: function (groupId, callback) {
+        RestClient.sendGetRequest(UrlList.getGroupUserUrl(groupId), callback)
     },
 
-    deleteGroupAdmin: function (groupId, adminId, callback) {
-        RestClient.sendDeleteRequest(UrlList.getGroupAdminIdUrl(groupId, adminId), callback)
+    deleteGroupUser: function (groupId, userId, callback) {
+        RestClient.sendDeleteRequest(UrlList.getGroupUserIdUrl(groupId, userId), callback)
     },
 
     // GroupPermission
@@ -130,4 +130,4 @@ const ApiManager = {
 
 }
 
-module.exports = ApiManager;
+export default ApiManager;

@@ -137,9 +137,9 @@ const MuiTheme = createMuiTheme({
             // },
         },
         MuiIconButton: {
-            root: {
-              height: 36,
-            },
+            // root: {
+            //   height: 36,
+            // },
         },
     },
 });
