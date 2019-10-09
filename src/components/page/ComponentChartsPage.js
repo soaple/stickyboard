@@ -3,14 +3,8 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-import _ from 'underscore'
-
 import { withStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
-
-import EditIcon from '@material-ui/icons/Edit';
-import TvIcon from '@material-ui/icons/Tv';
 
 import { Sticker, Board } from '@stickyboard/core';
 import { LineChart, BarChart, ComposedChart,
@@ -18,34 +12,11 @@ import { LineChart, BarChart, ComposedChart,
     ScatterChart, Treemap
 } from '@stickyboard/recharts';
 
-import ApiManager from 'network/ApiManager';
-import StatusCode from 'network/StatusCode';
-import CookieManager from 'network/CookieManager';
-
-import {
-    showMessageSnackbar,
-    hideMessageSnackbar,
-} from '../../redux/actions/actions'
-
-import StickyBoardColors from '../../theme/StickyBoardColors';
-import Const from '../../constants/Const';
-
-import DateUtil from '../../utils/DateUtil';
+import PageBase from 'components/base/PageBase';
+import StickyBoardColors from 'theme/StickyBoardColors';
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        height: '100%',
-    },
-    menuContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'absolute',
-        height: 120,
-        right: 16,
-        bottom: 16,
-        zIndex: 2000,
     },
 });
 
@@ -278,57 +249,13 @@ const initialLayout = {
     xxs: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":0,"y":6,"w":4,"h":6},{"i":"ComposedChart","x":0,"y":12,"w":4,"h":6},{"i":"RadarChart","x":0,"y":24,"w":4,"h":6},{"i":"PieChart","x":0,"y":18,"w":4,"h":6},{"i":"AreaChart","x":0,"y":30,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":4,"h":6},{"i":"TreeMap","x":0,"y":42,"w":4,"h":6},{"i":"TinyChart","x":0,"y":48,"w":4,"h":6}],
 };
 
+const initialBlocks = [{"i":"LineChart"},{"i":"BarChart"},{"i":"ComposedChart"},{"i":"RadarChart"},{"i":"PieChart"},{"i":"AreaChart"},{"i":"ScatterChart"},{"i":"TreeMap"},{"i":"TinyChart"}];
+
 class ComponentChartsPage extends React.Component {
     constructor (props) {
         super(props);
-        this.board = React.createRef();
-
-        var endDate = new Date()
-        var startDate = new Date(endDate.getTime() - 7 * 24 * 60 * 60 * 1000)
 
         this.state = {
-            // React Grid Layout
-            currentBreakpoint: 'lg',
-            layouts: undefined,
-            blocks: [{"i":"LineChart"},{"i":"BarChart"},{"i":"ComposedChart"},{"i":"RadarChart"},{"i":"PieChart"},{"i":"AreaChart"},{"i":"ScatterChart"},{"i":"TreeMap"},{"i":"TinyChart"}],
-            isEditingMode: true,
-            // Data
-            data: [],
-            // Chart scaling
-            left : 0,
-            right : 0,
-            animation: true,
-        }
-    }
-
-    componentDidMount() {
-        this.initializeLayout();
-    }
-
-    initializeLayout = () => {
-        const userId = CookieManager.getCookie('userId');
-        if (userId) {
-            ApiManager.readUserLayout(
-                userId,
-                window.location.pathname,
-                this.readUserLayoutCallback);
-        } else {
-            this.setState({
-                layouts: initialLayout
-            });
-        }
-    }
-
-    onSaveLayout = () => {
-        console.log('onSaveLayout', this.state.layouts);
-
-        const userId = CookieManager.getCookie('userId');
-        if (userId) {
-            ApiManager.updateUserLayout(
-                userId,
-                window.location.pathname,
-                JSON.stringify(this.state.layouts),
-                this.updateUserLayoutCallback);
         }
     }
 
@@ -434,9 +361,8 @@ class ComponentChartsPage extends React.Component {
         case 'TinyChart':
             return (
                 <Sticker key={block.i}>
-                    <Grid container spacing={8}
-                        style={{height: '100%', padding: 20}}>
-                        <Grid item xs={6} style={{height: '50%'}}>
+                    <Grid container spacing={2} style={{height: '100%'}}>
+                        <Grid item xs={6}>
                             <LineChart
                                 data={lineChartData}
                                 lineType={'monotone'}
@@ -444,14 +370,14 @@ class ComponentChartsPage extends React.Component {
                                 lineName={'Visitors'}
                                 lineColor={COLORS[3]} />
                         </Grid>
-                        <Grid item xs={6} style={{height: '50%'}}>
+                        <Grid item xs={6}>
                             <BarChart
                                 data={lineChartData}
                                 barDataKey={'visitors'}
                                 barName={'Visitors'}
                                 barColor={COLORS[2]} />
                         </Grid>
-                        <Grid item xs={6} style={{height: '50%'}}>
+                        <Grid item xs={6}>
                             <AreaChart
                                 data={areaChartData}
                                 xAxisDataKey={'month'}
@@ -459,7 +385,7 @@ class ComponentChartsPage extends React.Component {
                                     { type: 'monotone', dataKey: 'b', stroke: COLORS[0], fill: COLORS[0] },
                                 ]} />
                         </Grid>
-                        <Grid item xs={6} style={{height: '50%'}}>
+                        <Grid item xs={6}>
                             <AreaChart
                                 data={areaChartData}
                                 xAxisDataKey={'month'}
@@ -473,72 +399,14 @@ class ComponentChartsPage extends React.Component {
         }
     }
 
-    readUserLayoutCallback = (statusCode, response) => {
-        switch (statusCode) {
-        case StatusCode.OK:
-            console.log(JSON.parse(response.layout));
-            this.setState({
-                layouts: JSON.parse(response.layout),
-            });
-            break;
-        case StatusCode.NOT_FOUND:
-            this.setState({
-                layouts: initialLayout
-            });
-            break;
-        default:
-            alert(response.msg);
-            break;
-        }
-    }
-
-    updateUserLayoutCallback = (statusCode, response) => {
-        switch (statusCode) {
-        case StatusCode.OK:
-            console.log(response);
-            break;
-        default:
-            alert(response.msg);
-            break;
-        }
-    }
-
-    render () {
-        const { layouts, isEditingMode } = this.state;
+    render() {
         const { classes, theme } = this.props;
 
-        if (!layouts) {
-            return null;
-        }
-
         return (
-            <div className={classes.root}>
-                <Board
-                    ref={this.board}
-                    layouts={layouts}
-                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}
-                    onSaveLayout={this.onSaveLayout}>
-                    {this.state.blocks.map((block, index) => {
-                        return this.generateBlock(block, classes)
-                    })}
-                </Board>
-
-                <div className={classes.menuContainer}>
-                    <Fab
-                        color="secondary"
-                        aria-label="edit"
-                        onClick={() => { this.board.current.toggleEditingMode(); }}>
-                        <EditIcon />
-                    </Fab>
-
-                    <Fab
-                        color="primary"
-                        aria-label="tv"
-                        onClick={() => { this.board.current.toggleTvMode(); }}>
-                        <TvIcon />
-                    </Fab>
-                </div>
-            </div>
+            <PageBase
+                generateBlock={this.generateBlock}
+                initialLayout={initialLayout}
+                initialBlocks={initialBlocks} />
         )
     }
 }

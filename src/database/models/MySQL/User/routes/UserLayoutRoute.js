@@ -63,13 +63,13 @@ var UserLayoutRoute = {
     // Update
     update: function (req, res) {
         var userId = req.params.userId;
-        var route = req.body.route;
-        var layout = req.body.layout;
+        var { route, layout, blocks } = req.body;
 
         var updateObj = {
             user_id: userId,
             route: route,
             layout: layout,
+            blocks: blocks,
         }
         var whereObj = {
             where: {

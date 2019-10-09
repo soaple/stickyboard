@@ -56,18 +56,17 @@ const ApiManager = {
     // User Profile
 
     // User Layout
-    createUserLayout: function (userId, route, callback) {
-        var params = { route: route };
-        RestClient.sendPostRequest(UrlList.getUserLayoutUrl(userId), params, callback)
-    },
-
     readUserLayout: function (userId, route, callback) {
         var params = { route: route };
         RestClient.sendGetRequestWithParams(UrlList.getUserLayoutUrl(userId), params, callback)
     },
 
-    updateUserLayout: function (userId, route, layout, callback) {
-        var params = { route: route, layout: layout };
+    updateUserLayout: function (userId, route, layout, blocks, callback) {
+        var params = {
+            route: route,
+            layout: layout,
+            blocks: blocks,
+        };
         RestClient.sendPutRequest(UrlList.getUserLayoutUrl(userId), params, callback)
     },
 

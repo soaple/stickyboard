@@ -22,6 +22,10 @@ var UserLayout = MySqlConn.define('stkbd_user_layout', {
         type: Sequelize.TEXT,
         allowNull: false
     },
+    blocks: {
+        type: Sequelize.TEXT,
+        allowNull: false
+    },
 }, {
     indexes: [
         {
