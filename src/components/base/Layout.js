@@ -39,6 +39,10 @@ import Info from '@material-ui/icons/Info';
 import Warning from '@material-ui/icons/Warning';
 import ErrorOutline from '@material-ui/icons/ErrorOutline';
 
+import ApiManager from 'network/ApiManager';
+import StatusCode from 'network/StatusCode';
+import CookieManager from 'network/CookieManager';
+
 import MessageSnackbar from '../../containers/MessageSnackbar';
 
 import DrawerMenu from './DrawerMenu';
@@ -259,8 +263,8 @@ class Layout extends React.Component {
             notiDrawerOpen: false,
             anchorEl: null,
             // Auth
-            auth: false,
-            isSuperuser: false,
+            auth: CookieManager.getCookie('userId') !== undefined,
+            isSuperuser: CookieManager.getCookie('isSuperuser') === 'true',
         }
     }
 
@@ -284,12 +288,16 @@ class Layout extends React.Component {
         this.setState({ auth: checked });
     }
 
-    handleMenu = event => {
+    handleMenu = (event) => {
         this.setState({ anchorEl: event.currentTarget });
     }
 
     handleClose = () => {
         this.setState({ anchorEl: null });
+    }
+
+    onSignInClicked = () => {
+        window.location = '/signin';
     }
 
     onSettingsClicked = () => {
@@ -300,6 +308,7 @@ class Layout extends React.Component {
 
     onSignOutClicked = () => {
         if (this.state.auth || !isGuestModeAvailable) {
+            CookieManager.deleteAllCookie();
             window.location = '/signin';
         }
     }
@@ -411,16 +420,44 @@ class Layout extends React.Component {
                                 </Hidden>
 
                                 {(auth || isGuestModeAvailable) &&
-                                    <div>
-                                        <IconButton
-                                            className={classes.avatar}
-                                            aria-owns={open ? 'menu-appbar' : null}
-                                            aria-haspopup="true"
-                                            onClick={this.handleMenu}
-                                            color="inherit">
-                                            <AccountCircle />
-                                        </IconButton>
+                                    <IconButton
+                                        className={classes.avatar}
+                                        aria-owns={open ? 'menu-appbar' : null}
+                                        aria-haspopup="true"
+                                        onClick={this.handleMenu}
+                                        color="inherit">
+                                        <AccountCircle />
+                                    </IconButton>}
 
+                                    {/* Not auth user menu */}
+                                    {!auth &&
+                                        <Menu
+                                            styles={{width: 500}}
+                                            id="menu-appbar"
+                                            anchorEl={anchorEl}
+                                            anchorOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            transformOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            open={open}
+                                            onClose={this.handleClose}>
+
+                                            <MenuItem onClick={this.onSignInClicked}>
+                                                <ListItemIcon>
+                                                    <PowerSettingsNew className={classes.menuIcon} />
+                                                </ListItemIcon>
+                                                <ListItemText
+                                                    classes={{ primary: classes.primary }}
+                                                    primary="Sign In" />
+                                            </MenuItem>
+                                        </Menu>}
+
+                                    {/* Auth user menu */}
+                                    {auth &&
                                         <Menu
                                             styles={{width: 500}}
                                             id="menu-appbar"
@@ -499,9 +536,7 @@ class Layout extends React.Component {
                                                             primary="Permission" />
                                                     </MenuItem>
                                                 </div>}
-                                        </Menu>
-                                    </div>
-                                }
+                                        </Menu>}
 
                                 <IconButton
                                     aria-label="open drawer"

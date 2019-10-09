@@ -71,7 +71,7 @@ router.put('/user/:userId/$', function (req, res) { UserRoute.update(req, res) }
 router.put('/user/:userId/password/$', function (req, res) { UserRoute.updatePassword(req, res) });
 router.delete('/user/:userId/$', function (req, res) { UserRoute.delete(req, res) });
 
-// User profile
+// User Profile
 
 // User Layout
 router.post('/user/:userId/layout/$', function (req, res) { UserLayoutRoute.create(req, res) });

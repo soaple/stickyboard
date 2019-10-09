@@ -18,6 +18,10 @@ import { LineChart, BarChart, ComposedChart,
     ScatterChart, Treemap
 } from '@stickyboard/recharts';
 
+import ApiManager from 'network/ApiManager';
+import StatusCode from 'network/StatusCode';
+import CookieManager from 'network/CookieManager';
+
 import {
     showMessageSnackbar,
     hideMessageSnackbar,
@@ -370,6 +374,14 @@ class ComponentChartsPage extends React.Component {
         }
     }
 
+    onSaveLayout = () => {
+        console.log('onSaveLayout', this.state.layouts);
+        ApiManager.updateUserLayout(
+            CookieManager.getCookie('userId'),
+            window.location.pathname,
+            JSON.stringify(this.state.layouts));
+    }
+
     generateBlock = (block) => {
         let COLORS = StickyBoardColors.colorArray;
 
@@ -520,7 +532,8 @@ class ComponentChartsPage extends React.Component {
                 <Board
                     ref={this.board}
                     layouts={layouts}
-                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}>
+                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}
+                    onSaveLayout={this.onSaveLayout}>
                     {this.state.blocks.map((block, index) => {
                         return this.generateBlock(block, classes)
                     })}
