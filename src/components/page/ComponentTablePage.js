@@ -3,57 +3,34 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-import _ from 'underscore'
-
 import { withStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
-import Grid from '@material-ui/core/Grid';
 
-import EditIcon from '@material-ui/icons/Edit';
-import TvIcon from '@material-ui/icons/Tv';
-
-import { Sticker, Board } from '@stickyboard/core';
+import { Sticker } from '@stickyboard/core';
 import { TableWithPagination, RealtimeTable, RealtimeMessageTable
 } from '@stickyboard/table';
 
-import StickyBoardColors from '../../theme/StickyBoardColors';
-import Const from '../../constants/Const';
+import PageBase from 'components/base/PageBase';
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        height: '100%',
     },
-    menuContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'absolute',
-        height: 120,
-        right: 16,
-        bottom: 16,
-        zIndex: 2000,
-    },
-})
+});
+
+const initialLayout = {
+    lg: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":6,"y":0,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable2","x":4,"y":7,"w":4,"h":7},{"i":"RealtimeMessageTable","x":8,"y":7,"w":4,"h":7}],
+    md: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":6,"y":0,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable2","x":4,"y":7,"w":4,"h":7},{"i":"RealtimeMessageTable","x":8,"y":7,"w":4,"h":7}],
+    sm: [{"i":"Table1","x":0,"y":0,"w":8,"h":7},{"i":"Table2","x":0,"y":7,"w":8,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":8,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":4,"h":6},{"i":"RealtimeMessageTable","x":4,"y":20,"w":4,"h":6}],
+    xs: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":0,"y":7,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":6,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":6,"h":6},{"i":"RealtimeMessageTable","x":0,"y":26,"w":6,"h":6}],
+    xxs: [{"i":"Table1","x":0,"y":0,"w":4,"h":7},{"i":"Table2","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":4,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":4,"h":6},{"i":"RealtimeMessageTable","x":0,"y":26,"w":4,"h":6}],
+};
+
+const initialBlocks = [{"i":"Table1"},{"i":"Table2"},{"i":"RealtimeTable1"},{"i":"RealtimeTable2"},{"i":"RealtimeMessageTable"}];
 
 class ComponentTablePage extends React.Component {
     constructor (props) {
         super(props);
-        this.board = React.createRef();
 
         this.state = {
-            // React Grid Layout
-            currentBreakpoint: 'lg',
-            layouts: {
-                lg: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":6,"y":0,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable2","x":4,"y":7,"w":4,"h":7},{"i":"RealtimeMessageTable","x":8,"y":7,"w":4,"h":7}],
-                md: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":6,"y":0,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable2","x":4,"y":7,"w":4,"h":7},{"i":"RealtimeMessageTable","x":8,"y":7,"w":4,"h":7}],
-                sm: [{"i":"Table1","x":0,"y":0,"w":8,"h":7},{"i":"Table2","x":0,"y":7,"w":8,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":8,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":4,"h":6},{"i":"RealtimeMessageTable","x":4,"y":20,"w":4,"h":6}],
-                xs: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":0,"y":7,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":6,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":6,"h":6},{"i":"RealtimeMessageTable","x":0,"y":26,"w":6,"h":6}],
-                xxs: [{"i":"Table1","x":0,"y":0,"w":4,"h":7},{"i":"Table2","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":4,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":4,"h":6},{"i":"RealtimeMessageTable","x":0,"y":26,"w":4,"h":6}],
-            },
-            blocks: [{"i":"Table1"},{"i":"Table2"},{"i":"RealtimeTable1"},{"i":"RealtimeTable2"},{"i":"RealtimeMessageTable"}],
-            layoutUpdateFlag: true,
-            isEditingMode: true,
             // Data
             orders: [
                 {
@@ -282,9 +259,7 @@ class ComponentTablePage extends React.Component {
         }
     }
 
-    generateBlock = (block, classes) => {
-        let COLORS = StickyBoardColors.blockColorArray;
-
+    generateBlock = (block) => {
         const opts = {
             // height: '100%',
             width: '100%',
@@ -351,37 +326,14 @@ class ComponentTablePage extends React.Component {
         }
     }
 
-    render () {
-        const { layouts, isEditingMode } = this.state;
+    render() {
         const { classes, theme } = this.props;
 
         return (
-            <div className={classes.root}>
-                <Board
-                    ref={this.board}
-                    layouts={layouts}
-                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}>
-                    {this.state.blocks.map((block, index) => {
-                        return this.generateBlock(block, classes)
-                    })}
-                </Board>
-
-                <div className={classes.menuContainer}>
-                    <Fab
-                        color="secondary"
-                        aria-label="edit"
-                        onClick={() => { this.board.current.toggleEditingMode(); }}>
-                        <EditIcon />
-                    </Fab>
-
-                    <Fab
-                        color="primary"
-                        aria-label="tv"
-                        onClick={() => { this.board.current.toggleTvMode(); }}>
-                        <TvIcon />
-                    </Fab>
-                </div>
-            </div>
+            <PageBase
+                generateBlock={this.generateBlock}
+                initialLayout={initialLayout}
+                initialBlocks={initialBlocks} />
         )
     }
 }

@@ -3,44 +3,18 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-import _ from 'underscore'
-
 import { withStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
-import Typography from '@material-ui/core/Typography';
-import Chip from '@material-ui/core/Chip';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import EditIcon from '@material-ui/icons/Edit';
-import TvIcon from '@material-ui/icons/Tv';
 import Mail from '@material-ui/icons/Mail';
-
-// import { Board, Sticker } from '@stickyboard/core';
-import { Board, Sticker } from '@stickyboard/core';
-
-// import OpenLayers from '../openlayers/OpenLayers';
-
 import { Textfit } from 'react-textfit';
 
-import StickyBoardColors from '../../theme/StickyBoardColors';
-import Const from '../../constants/Const';
+import { Sticker } from '@stickyboard/core';
+import { OpenLayers } from '@stickyboard/openlayers';
+
+import PageBase from 'components/base/PageBase';
 
 const styles = theme => ({
-    root: {
-        width: '100%',
-        height: '100%',
-    },
-    menuContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'absolute',
-        height: 120,
-        right: 16,
-        bottom: 16,
-        zIndex: 2000,
-    },
     logoImage: {
         display: 'block',
         // width: '100%',
@@ -79,24 +53,27 @@ const styles = theme => ({
     },
 });
 
+const initialLayout = {
+    lg: [{"i":"CustomLayout","x":0,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":4,"y":6,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":8,"y":0,"w":4,"h":6},{"i":"Contact","x":8,"y":6,"w":4,"h":6}],
+    md: [{"i":"CustomLayout","x":0,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":4,"y":6,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":8,"y":0,"w":4,"h":6},{"i":"Contact","x":8,"y":6,"w":4,"h":6}],
+    sm: [{"i":"CustomLayout","x":4,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":0,"y":12,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":0,"y":6,"w":4,"h":6},{"i":"Contact","x":4,"y":12,"w":4,"h":6}],
+    xs: [{"i":"CustomLayout","x":3,"y":6,"w":3,"h":6},{"i":"Introduction","x":0,"y":0,"w":3,"h":6},{"i":"DatabaseSupport","x":0,"y":12,"w":3,"h":6},{"i":"ChartSupport","x":3,"y":0,"w":3,"h":6},{"i":"MapSupport","x":0,"y":6,"w":3,"h":6},{"i":"Contact","x":3,"y":12,"w":3,"h":6}],
+    xxs: [{"i":"CustomLayout","x":0,"y":21,"w":4,"h":7},{"i":"Introduction","x":0,"y":0,"w":4,"h":7},{"i":"DatabaseSupport","x":0,"y":28,"w":4,"h":7},{"i":"ChartSupport","x":0,"y":7,"w":4,"h":7},{"i":"MapSupport","x":0,"y":14,"w":4,"h":7},{"i":"Contact","x":0,"y":35,"w":4,"h":7}],
+};
+
+const initialBlocks = [{"i":"CustomLayout"},{"i":"Introduction"},{"i":"DatabaseSupport"},{"i":"ChartSupport"},{"i":"MapSupport"},{"i":"Contact"}];
+
 class IntroPage extends React.Component {
     constructor (props) {
         super(props);
-        this.board = React.createRef();
 
         this.state = {
-            layouts: {
-                lg: [{"i":"CustomLayout","x":0,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":4,"y":6,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":8,"y":0,"w":4,"h":6},{"i":"Contact","x":8,"y":6,"w":4,"h":6}],
-                md: [{"i":"CustomLayout","x":0,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":4,"y":6,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":8,"y":0,"w":4,"h":6},{"i":"Contact","x":8,"y":6,"w":4,"h":6}],
-                sm: [{"i":"CustomLayout","x":4,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":0,"y":12,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":0,"y":6,"w":4,"h":6},{"i":"Contact","x":4,"y":12,"w":4,"h":6}],
-                xs: [{"i":"CustomLayout","x":3,"y":6,"w":3,"h":6},{"i":"Introduction","x":0,"y":0,"w":3,"h":6},{"i":"DatabaseSupport","x":0,"y":12,"w":3,"h":6},{"i":"ChartSupport","x":3,"y":0,"w":3,"h":6},{"i":"MapSupport","x":0,"y":6,"w":3,"h":6},{"i":"Contact","x":3,"y":12,"w":3,"h":6}],
-                xxs: [{"i":"CustomLayout","x":0,"y":21,"w":4,"h":7},{"i":"Introduction","x":0,"y":0,"w":4,"h":7},{"i":"DatabaseSupport","x":0,"y":28,"w":4,"h":7},{"i":"ChartSupport","x":0,"y":7,"w":4,"h":7},{"i":"MapSupport","x":0,"y":14,"w":4,"h":7},{"i":"Contact","x":0,"y":35,"w":4,"h":7}],
-            },
-            blocks: [{"i":"CustomLayout"},{"i":"Introduction"},{"i":"DatabaseSupport"},{"i":"ChartSupport"},{"i":"MapSupport"},{"i":"Contact"}],
         }
     }
 
-    generateBlock = (block, classes) => {
+    generateBlock = (block) => {
+        const { classes } = this.props;
+
         switch (block.i) {
         case 'Introduction':
             return (
@@ -194,7 +171,6 @@ class IntroPage extends React.Component {
                         style={{color: this.props.valueColor ? this.props.valueColor : this.props.defaultColor}}>
                         <p>{'Supports map and layer components'}</p>
                     </Textfit>
-                    {/*
                     <div className={classes.component}>
                         <OpenLayers
                             isHeatmapMode={false}
@@ -204,7 +180,6 @@ class IntroPage extends React.Component {
                             longitude={127.024792}
                             latitude={37.504296}/>
                     </div>
-                    */}
                 </Sticker>
             )
         case 'Contact':
@@ -244,37 +219,14 @@ class IntroPage extends React.Component {
         }
     }
 
-    render () {
-        const { layouts, isEditingMode } = this.state;
+    render() {
         const { classes, theme } = this.props;
 
         return (
-            <div className={classes.root}>
-                <Board
-                    ref={this.board}
-                    layouts={layouts}
-                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}>
-                    {this.state.blocks.map((block, index) => {
-                        return this.generateBlock(block, classes)
-                    })}
-                </Board>
-
-                <div className={classes.menuContainer}>
-                    <Fab
-                        color="secondary"
-                        aria-label="edit"
-                        onClick={() => { this.board.current.toggleEditingMode(); }}>
-                        <EditIcon />
-                    </Fab>
-
-                    <Fab
-                        color="primary"
-                        aria-label="tv"
-                        onClick={() => { this.board.current.toggleTvMode(); }}>
-                        <TvIcon />
-                    </Fab>
-                </div>
-            </div>
+            <PageBase
+                generateBlock={this.generateBlock}
+                initialLayout={initialLayout}
+                initialBlocks={initialBlocks} />
         )
     }
 }

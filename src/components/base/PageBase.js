@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import EditIcon from '@material-ui/icons/Edit';
 import TvIcon from '@material-ui/icons/Tv';
 
-import { Sticker, Board } from '@stickyboard/core';
+import { Board } from '@stickyboard/core';
 
 import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
@@ -140,7 +140,7 @@ class PageBase extends React.Component {
                     onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}
                     onSaveLayout={this.onSaveLayout}>
                     {blocks.map((block, index) => {
-                        return generateBlock(block, classes);
+                        return generateBlock(block);
                     })}
                 </Board>
 

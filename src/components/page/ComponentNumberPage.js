@@ -3,56 +3,36 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-import _ from 'underscore'
-
 import { withStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
-import Grid from '@material-ui/core/Grid';
-import EditIcon from '@material-ui/icons/Edit';
-import TvIcon from '@material-ui/icons/Tv';
+
 import PersonIcon from '@material-ui/icons/Person';
 
-import { Sticker, Board } from '@stickyboard/core';
+import { Sticker } from '@stickyboard/core';
 import { NumberWidget, NumberWithChartWidget } from '@stickyboard/number';
 
-import StickyBoardColors from '../../theme/StickyBoardColors';
-import Const from '../../constants/Const';
+import PageBase from 'components/base/PageBase';
+import StickyBoardColors from 'theme/StickyBoardColors';
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        height: '100%',
-    },
-    menuContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'absolute',
-        height: 120,
-        right: 16,
-        bottom: 16,
-        zIndex: 2000,
     },
 });
+
+const initialLayout = {
+    lg: [{"i":"DAU","x":0,"y":8,"w":3,"h":2},{"i":"WAU","x":3,"y":8,"w":3,"h":2},{"i":"MAU","x":6,"y":0,"w":3,"h":2},{"i":"ARPU","x":9,"y":0,"w":3,"h":2},{"i":"DAU2","x":0,"y":0,"w":6,"h":8},{"i":"WAU2","x":3,"y":10,"w":3,"h":4},{"i":"MAU2","x":6,"y":2,"w":6,"h":8},{"i":"ARPU2","x":0,"y":10,"w":3,"h":4},{"i":"DAU3","x":6,"y":10,"w":3,"h":4},{"i":"WAU3","x":9,"y":10,"w":3,"h":4}],
+    md: [{"i":"DAU","x":0,"y":8,"w":3,"h":2},{"i":"WAU","x":3,"y":8,"w":3,"h":2},{"i":"MAU","x":6,"y":0,"w":3,"h":2},{"i":"ARPU","x":9,"y":0,"w":3,"h":2},{"i":"DAU2","x":0,"y":0,"w":6,"h":8},{"i":"WAU2","x":3,"y":10,"w":3,"h":4},{"i":"MAU2","x":6,"y":2,"w":6,"h":8},{"i":"ARPU2","x":0,"y":10,"w":3,"h":4},{"i":"DAU3","x":6,"y":10,"w":3,"h":4},{"i":"WAU3","x":9,"y":10,"w":3,"h":4}],
+    sm: [{"i":"DAU","x":0,"y":8,"w":2,"h":2},{"i":"WAU","x":2,"y":8,"w":2,"h":2},{"i":"MAU","x":4,"y":0,"w":2,"h":2},{"i":"ARPU","x":6,"y":0,"w":2,"h":2},{"i":"DAU2","x":0,"y":0,"w":4,"h":8},{"i":"WAU2","x":2,"y":10,"w":2,"h":4},{"i":"MAU2","x":4,"y":2,"w":4,"h":8},{"i":"ARPU2","x":0,"y":10,"w":2,"h":4},{"i":"DAU3","x":4,"y":10,"w":2,"h":4},{"i":"WAU3","x":6,"y":10,"w":2,"h":4}],
+    xs: [{"i":"DAU","x":0,"y":8,"w":3,"h":2},{"i":"WAU","x":0,"y":10,"w":3,"h":2},{"i":"MAU","x":3,"y":0,"w":3,"h":2},{"i":"ARPU","x":3,"y":2,"w":3,"h":2},{"i":"DAU2","x":0,"y":0,"w":3,"h":8},{"i":"WAU2","x":3,"y":12,"w":3,"h":4},{"i":"MAU2","x":3,"y":4,"w":3,"h":8},{"i":"ARPU2","x":0,"y":12,"w":3,"h":4},{"i":"DAU3","x":0,"y":16,"w":3,"h":4},{"i":"WAU3","x":3,"y":16,"w":3,"h":4}],
+    xxs: [{"i":"DAU","x":0,"y":12,"w":2,"h":2},{"i":"WAU","x":2,"y":12,"w":2,"h":2},{"i":"MAU","x":0,"y":5,"w":2,"h":2},{"i":"ARPU","x":2,"y":5,"w":2,"h":2},{"i":"DAU2","x":0,"y":0,"w":4,"h":5},{"i":"WAU2","x":2,"y":14,"w":2,"h":4},{"i":"MAU2","x":0,"y":7,"w":4,"h":5},{"i":"ARPU2","x":0,"y":14,"w":2,"h":4},{"i":"DAU3","x":0,"y":18,"w":2,"h":4},{"i":"WAU3","x":2,"y":18,"w":2,"h":4}],
+};
+
+const initialBlocks = [{"i":"DAU"},{"i":"WAU"},{"i":"MAU"},{"i":"ARPU"},{"i":"DAU2"},{"i":"WAU2"},{"i":"MAU2"},{"i":"ARPU2"},{"i":"DAU3"},{"i":"WAU3"}];
 
 class ComponentNumberPage extends React.Component {
     constructor (props) {
         super(props);
-        this.board = React.createRef();
 
         this.state = {
-            // React Grid Layout
-            currentBreakpoint: 'lg',
-            layouts: {
-                lg: [{"i":"DAU","x":0,"y":8,"w":3,"h":2},{"i":"WAU","x":3,"y":8,"w":3,"h":2},{"i":"MAU","x":6,"y":0,"w":3,"h":2},{"i":"ARPU","x":9,"y":0,"w":3,"h":2},{"i":"DAU2","x":0,"y":0,"w":6,"h":8},{"i":"WAU2","x":3,"y":10,"w":3,"h":4},{"i":"MAU2","x":6,"y":2,"w":6,"h":8},{"i":"ARPU2","x":0,"y":10,"w":3,"h":4},{"i":"DAU3","x":6,"y":10,"w":3,"h":4},{"i":"WAU3","x":9,"y":10,"w":3,"h":4}],
-                md: [{"i":"DAU","x":0,"y":8,"w":3,"h":2},{"i":"WAU","x":3,"y":8,"w":3,"h":2},{"i":"MAU","x":6,"y":0,"w":3,"h":2},{"i":"ARPU","x":9,"y":0,"w":3,"h":2},{"i":"DAU2","x":0,"y":0,"w":6,"h":8},{"i":"WAU2","x":3,"y":10,"w":3,"h":4},{"i":"MAU2","x":6,"y":2,"w":6,"h":8},{"i":"ARPU2","x":0,"y":10,"w":3,"h":4},{"i":"DAU3","x":6,"y":10,"w":3,"h":4},{"i":"WAU3","x":9,"y":10,"w":3,"h":4}],
-                sm: [{"i":"DAU","x":0,"y":8,"w":2,"h":2},{"i":"WAU","x":2,"y":8,"w":2,"h":2},{"i":"MAU","x":4,"y":0,"w":2,"h":2},{"i":"ARPU","x":6,"y":0,"w":2,"h":2},{"i":"DAU2","x":0,"y":0,"w":4,"h":8},{"i":"WAU2","x":2,"y":10,"w":2,"h":4},{"i":"MAU2","x":4,"y":2,"w":4,"h":8},{"i":"ARPU2","x":0,"y":10,"w":2,"h":4},{"i":"DAU3","x":4,"y":10,"w":2,"h":4},{"i":"WAU3","x":6,"y":10,"w":2,"h":4}],
-                xs: [{"i":"DAU","x":0,"y":8,"w":3,"h":2},{"i":"WAU","x":0,"y":10,"w":3,"h":2},{"i":"MAU","x":3,"y":0,"w":3,"h":2},{"i":"ARPU","x":3,"y":2,"w":3,"h":2},{"i":"DAU2","x":0,"y":0,"w":3,"h":8},{"i":"WAU2","x":3,"y":12,"w":3,"h":4},{"i":"MAU2","x":3,"y":4,"w":3,"h":8},{"i":"ARPU2","x":0,"y":12,"w":3,"h":4},{"i":"DAU3","x":0,"y":16,"w":3,"h":4},{"i":"WAU3","x":3,"y":16,"w":3,"h":4}],
-                xxs: [{"i":"DAU","x":0,"y":12,"w":2,"h":2},{"i":"WAU","x":2,"y":12,"w":2,"h":2},{"i":"MAU","x":0,"y":5,"w":2,"h":2},{"i":"ARPU","x":2,"y":5,"w":2,"h":2},{"i":"DAU2","x":0,"y":0,"w":4,"h":5},{"i":"WAU2","x":2,"y":14,"w":2,"h":4},{"i":"MAU2","x":0,"y":7,"w":4,"h":5},{"i":"ARPU2","x":0,"y":14,"w":2,"h":4},{"i":"DAU3","x":0,"y":18,"w":2,"h":4},{"i":"WAU3","x":2,"y":18,"w":2,"h":4}],
-            },
-            blocks: [{"i":"DAU"},{"i":"WAU"},{"i":"MAU"},{"i":"ARPU"},{"i":"DAU2"},{"i":"WAU2"},{"i":"MAU2"},{"i":"ARPU2"},{"i":"DAU3"},{"i":"WAU3"}],
-            layoutUpdateFlag: true,
-            isEditingMode: true,
             // Data
             data: [
                 {
@@ -129,7 +109,7 @@ class ComponentNumberPage extends React.Component {
         }, 1100);
     }
 
-    generateBlock = (block, classes) => {
+    generateBlock = (block) => {
         let data = this.state.data;
 
         switch (block.i) {
@@ -266,37 +246,14 @@ class ComponentNumberPage extends React.Component {
         }
     }
 
-    render () {
-        const { layouts, isEditingMode } = this.state;
-        const { classes, theme } = this.props
+    render() {
+        const { classes, theme } = this.props;
 
         return (
-            <div className={classes.root}>
-                <Board
-                    ref={this.board}
-                    layouts={layouts}
-                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}>
-                    {this.state.blocks.map((block, index) => {
-                        return this.generateBlock(block, classes)
-                    })}
-                </Board>
-
-                <div className={classes.menuContainer}>
-                    <Fab
-                        color="secondary"
-                        aria-label="edit"
-                        onClick={() => { this.board.current.toggleEditingMode(); }}>
-                        <EditIcon />
-                    </Fab>
-
-                    <Fab
-                        color="primary"
-                        aria-label="tv"
-                        onClick={() => { this.board.current.toggleTvMode(); }}>
-                        <TvIcon />
-                    </Fab>
-                </div>
-            </div>
+            <PageBase
+                generateBlock={this.generateBlock}
+                initialLayout={initialLayout}
+                initialBlocks={initialBlocks} />
         )
     }
 }

@@ -3,41 +3,16 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-import _ from 'underscore'
-
 import { withStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { teal, deepPurple, indigo, blue, blueGrey, green, lightGreen, red,
-    pink, deepOrange, cyan } from '@material-ui/core/colors';
 
-import EditIcon from '@material-ui/icons/Edit';
-import TvIcon from '@material-ui/icons/Tv';
-
-import { Sticker, Board } from '@stickyboard/core';
+import { Sticker } from '@stickyboard/core';
 import { Highcharts, PolarChart, TreeMap, StreamGraph, BoxPlot
 } from '@stickyboard/highcharts';
 
-import StickyBoardColors from '../../theme/StickyBoardColors';
-import Const from '../../constants/Const';
-
-import DateUtil from '../../utils/DateUtil';
+import PageBase from 'components/base/PageBase';
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        height: '100%',
-    },
-    menuContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'absolute',
-        height: 120,
-        right: 16,
-        bottom: 16,
-        zIndex: 2000,
     },
 });
 
@@ -321,36 +296,26 @@ const CustomizedTreeMapContent = (props) => {
 
 const RADIAN = Math.PI / 180;
 
+const initialLayout = {
+    lg: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"PieChart","x":8,"y":0,"w":4,"h":6},{"i":"PolarChart","x":4,"y":6,"w":4,"h":6},{"i":"BoxPlot","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"StreamGraph","x":8,"y":12,"w":4,"h":6}],
+    md: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"PieChart","x":8,"y":0,"w":4,"h":6},{"i":"PolarChart","x":4,"y":6,"w":4,"h":6},{"i":"BoxPlot","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"StreamGraph","x":8,"y":12,"w":4,"h":6}],
+    sm: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"PieChart","x":0,"y":6,"w":4,"h":6},{"i":"PolarChart","x":0,"y":12,"w":4,"h":6},{"i":"AreaChart","x":4,"y":12,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":18,"w":4,"h":6},{"i":"TreeMap","x":4,"y":18,"w":4,"h":6},{"i":"StreamGraph","x":0,"y":24,"w":8,"h":6},{"i":"BoxPlot","x":4,"y":6,"w":4,"h":6}],
+    xs: [{"i":"LineChart","x":0,"y":0,"w":6,"h":6},{"i":"BarChart","x":0,"y":6,"w":6,"h":6},{"i":"PieChart","x":0,"y":12,"w":6,"h":6},{"i":"PolarChart","x":0,"y":18,"w":6,"h":6},{"i":"AreaChart","x":0,"y":30,"w":6,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":6,"h":6},{"i":"TreeMap","x":0,"y":42,"w":6,"h":6},{"i":"StreamGraph","x":0,"y":48,"w":6,"h":6},{"i":"BoxPlot","x":0,"y":24,"w":6,"h":6}],
+    xxs: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":0,"y":6,"w":4,"h":6},{"i":"PieChart","x":0,"y":12,"w":4,"h":6},{"i":"PolarChart","x":0,"y":18,"w":4,"h":6},{"i":"AreaChart","x":0,"y":30,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":4,"h":6},{"i":"TreeMap","x":0,"y":42,"w":4,"h":6},{"i":"StreamGraph","x":0,"y":48,"w":4,"h":6},{"i":"BoxPlot","x":0,"y":24,"w":4,"h":6}],
+};
+
+const initialBlocks = [{"i":"LineChart"},{"i":"BarChart"},{"i":"PieChart"},{"i":"PolarChart"},{"i":"AreaChart"},{"i":"ScatterChart"},{"i":"TreeMap"},{"i":"StreamGraph"},{"i":"BoxPlot"}];
+
 class ComponentHighchartsPage extends React.Component {
     constructor (props) {
         super(props);
         this.board = React.createRef();
 
         this.state = {
-            // React Grid Layout
-            currentBreakpoint: 'lg',
-            layouts: {
-                lg: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"PieChart","x":8,"y":0,"w":4,"h":6},{"i":"PolarChart","x":4,"y":6,"w":4,"h":6},{"i":"BoxPlot","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"StreamGraph","x":8,"y":12,"w":4,"h":6}],
-                md: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"PieChart","x":8,"y":0,"w":4,"h":6},{"i":"PolarChart","x":4,"y":6,"w":4,"h":6},{"i":"BoxPlot","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"StreamGraph","x":8,"y":12,"w":4,"h":6}],
-                sm: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"PieChart","x":0,"y":6,"w":4,"h":6},{"i":"PolarChart","x":0,"y":12,"w":4,"h":6},{"i":"AreaChart","x":4,"y":12,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":18,"w":4,"h":6},{"i":"TreeMap","x":4,"y":18,"w":4,"h":6},{"i":"StreamGraph","x":0,"y":24,"w":8,"h":6},{"i":"BoxPlot","x":4,"y":6,"w":4,"h":6}],
-                xs: [{"i":"LineChart","x":0,"y":0,"w":6,"h":6},{"i":"BarChart","x":0,"y":6,"w":6,"h":6},{"i":"PieChart","x":0,"y":12,"w":6,"h":6},{"i":"PolarChart","x":0,"y":18,"w":6,"h":6},{"i":"AreaChart","x":0,"y":30,"w":6,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":6,"h":6},{"i":"TreeMap","x":0,"y":42,"w":6,"h":6},{"i":"StreamGraph","x":0,"y":48,"w":6,"h":6},{"i":"BoxPlot","x":0,"y":24,"w":6,"h":6}],
-                xxs: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":0,"y":6,"w":4,"h":6},{"i":"PieChart","x":0,"y":12,"w":4,"h":6},{"i":"PolarChart","x":0,"y":18,"w":4,"h":6},{"i":"AreaChart","x":0,"y":30,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":4,"h":6},{"i":"TreeMap","x":0,"y":42,"w":4,"h":6},{"i":"StreamGraph","x":0,"y":48,"w":4,"h":6},{"i":"BoxPlot","x":0,"y":24,"w":4,"h":6}],
-            },
-            blocks: [{"i":"LineChart"},{"i":"BarChart"},{"i":"PieChart"},{"i":"PolarChart"},{"i":"AreaChart"},{"i":"ScatterChart"},{"i":"TreeMap"},{"i":"StreamGraph"},{"i":"BoxPlot"}],
-            layoutUpdateFlag: true,
-            isEditingMode: true,
-            // Data
-            data: [],
-            // Chart scaling
-            left : 0,
-            right : 0,
-            animation: true,
         }
     }
 
     generateBlock = (block) => {
-        let COLORS = StickyBoardColors.colorArray;
-
         switch (block.i) {
         case 'LineChart':
             return (
@@ -446,37 +411,14 @@ class ComponentHighchartsPage extends React.Component {
         }
     }
 
-    render () {
-        const { layouts, isEditingMode } = this.state;
+    render() {
         const { classes, theme } = this.props;
 
         return (
-            <div className={classes.root}>
-                <Board
-                    ref={this.board}
-                    layouts={layouts}
-                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}>
-                    {this.state.blocks.map((block, index) => {
-                        return this.generateBlock(block, classes)
-                    })}
-                </Board>
-
-                <div className={classes.menuContainer}>
-                    <Fab
-                        color="secondary"
-                        aria-label="edit"
-                        onClick={() => { this.board.current.toggleEditingMode(); }}>
-                        <EditIcon />
-                    </Fab>
-
-                    <Fab
-                        color="primary"
-                        aria-label="tv"
-                        onClick={() => { this.board.current.toggleTvMode(); }}>
-                        <TvIcon />
-                    </Fab>
-                </div>
-            </div>
+            <PageBase
+                generateBlock={this.generateBlock}
+                initialLayout={initialLayout}
+                initialBlocks={initialBlocks} />
         )
     }
 }
