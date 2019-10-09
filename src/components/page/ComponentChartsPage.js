@@ -270,80 +270,13 @@ const treeMapData = [
     }
 ];
 
-const initialLayout = [
-    {
-        checked: true,
-        blockId: 'LineChart',
-        x: 0,
-        y: 0,
-        w: 4,
-        h: 6,
-    },
-    {
-        checked: true,
-        blockId: 'BarChart',
-        x: 4,
-        y: 0,
-        w: 4,
-        h: 6,
-    },
-    {
-        checked: true,
-        blockId: 'ComposedChart',
-        x: 8,
-        y: 0,
-        w: 4,
-        h: 6,
-    },
-    {
-        checked: true,
-        blockId: 'PieChart',
-        x: 0,
-        y: 6,
-        w: 4,
-        h: 6,
-    },
-    {
-        checked: true,
-        blockId: 'RadarChart',
-        x: 4,
-        y: 6,
-        w: 4,
-        h: 6,
-    },
-    {
-        checked: true,
-        blockId: 'AreaChart',
-        x: 8,
-        y: 6,
-        w: 4,
-        h: 6,
-    },
-    {
-        checked: true,
-        blockId: 'ScatterChart',
-        x: 0,
-        y: 12,
-        w: 4,
-        h: 6,
-    },
-    {
-        checked: true,
-        blockId: 'TreeMap',
-        x: 4,
-        y: 12,
-        w: 4,
-        h: 6,
-    },
-    {
-        checked: true,
-        blockId: 'TinyChart',
-        x: 8,
-        y: 12,
-        w: 4,
-        h: 6,
-    },
-];
+const initialLayout = {
+    lg: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":8,"y":0,"w":4,"h":6},{"i":"RadarChart","x":4,"y":6,"w":4,"h":6},{"i":"PieChart","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"TinyChart","x":8,"y":12,"w":4,"h":6}],
+    md: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":8,"y":0,"w":4,"h":6},{"i":"RadarChart","x":4,"y":6,"w":4,"h":6},{"i":"PieChart","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"TinyChart","x":8,"y":12,"w":4,"h":6}],
+    sm: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":0,"y":6,"w":4,"h":6},{"i":"RadarChart","x":0,"y":12,"w":4,"h":6},{"i":"PieChart","x":4,"y":6,"w":4,"h":6},{"i":"AreaChart","x":4,"y":12,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":18,"w":4,"h":6},{"i":"TreeMap","x":4,"y":18,"w":4,"h":6},{"i":"TinyChart","x":0,"y":24,"w":8,"h":9}],
+    xs: [{"i":"LineChart","x":0,"y":0,"w":6,"h":6},{"i":"BarChart","x":0,"y":6,"w":6,"h":6},{"i":"ComposedChart","x":0,"y":12,"w":6,"h":6},{"i":"RadarChart","x":0,"y":24,"w":6,"h":6},{"i":"PieChart","x":0,"y":18,"w":6,"h":6},{"i":"AreaChart","x":0,"y":30,"w":6,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":6,"h":6},{"i":"TreeMap","x":0,"y":42,"w":6,"h":6},{"i":"TinyChart","x":0,"y":48,"w":6,"h":6}],
+    xxs: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":0,"y":6,"w":4,"h":6},{"i":"ComposedChart","x":0,"y":12,"w":4,"h":6},{"i":"RadarChart","x":0,"y":24,"w":4,"h":6},{"i":"PieChart","x":0,"y":18,"w":4,"h":6},{"i":"AreaChart","x":0,"y":30,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":4,"h":6},{"i":"TreeMap","x":0,"y":42,"w":4,"h":6},{"i":"TinyChart","x":0,"y":48,"w":4,"h":6}],
+};
 
 class ComponentChartsPage extends React.Component {
     constructor (props) {
@@ -356,13 +289,7 @@ class ComponentChartsPage extends React.Component {
         this.state = {
             // React Grid Layout
             currentBreakpoint: 'lg',
-            layouts: {
-                lg: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":8,"y":0,"w":4,"h":6},{"i":"RadarChart","x":4,"y":6,"w":4,"h":6},{"i":"PieChart","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"TinyChart","x":8,"y":12,"w":4,"h":6}],
-                md: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":8,"y":0,"w":4,"h":6},{"i":"RadarChart","x":4,"y":6,"w":4,"h":6},{"i":"PieChart","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"TinyChart","x":8,"y":12,"w":4,"h":6}],
-                sm: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":0,"y":6,"w":4,"h":6},{"i":"RadarChart","x":0,"y":12,"w":4,"h":6},{"i":"PieChart","x":4,"y":6,"w":4,"h":6},{"i":"AreaChart","x":4,"y":12,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":18,"w":4,"h":6},{"i":"TreeMap","x":4,"y":18,"w":4,"h":6},{"i":"TinyChart","x":0,"y":24,"w":8,"h":9}],
-                xs: [{"i":"LineChart","x":0,"y":0,"w":6,"h":6},{"i":"BarChart","x":0,"y":6,"w":6,"h":6},{"i":"ComposedChart","x":0,"y":12,"w":6,"h":6},{"i":"RadarChart","x":0,"y":24,"w":6,"h":6},{"i":"PieChart","x":0,"y":18,"w":6,"h":6},{"i":"AreaChart","x":0,"y":30,"w":6,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":6,"h":6},{"i":"TreeMap","x":0,"y":42,"w":6,"h":6},{"i":"TinyChart","x":0,"y":48,"w":6,"h":6}],
-                xxs: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":0,"y":6,"w":4,"h":6},{"i":"ComposedChart","x":0,"y":12,"w":4,"h":6},{"i":"RadarChart","x":0,"y":24,"w":4,"h":6},{"i":"PieChart","x":0,"y":18,"w":4,"h":6},{"i":"AreaChart","x":0,"y":30,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":4,"h":6},{"i":"TreeMap","x":0,"y":42,"w":4,"h":6},{"i":"TinyChart","x":0,"y":48,"w":4,"h":6}],
-            },
+            layouts: undefined,
             blocks: [{"i":"LineChart"},{"i":"BarChart"},{"i":"ComposedChart"},{"i":"RadarChart"},{"i":"PieChart"},{"i":"AreaChart"},{"i":"ScatterChart"},{"i":"TreeMap"},{"i":"TinyChart"}],
             isEditingMode: true,
             // Data
@@ -374,12 +301,35 @@ class ComponentChartsPage extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.initializeLayout();
+    }
+
+    initializeLayout = () => {
+        const userId = CookieManager.getCookie('userId');
+        if (userId) {
+            ApiManager.readUserLayout(
+                userId,
+                window.location.pathname,
+                this.readUserLayoutCallback);
+        } else {
+            this.setState({
+                layouts: initialLayout
+            });
+        }
+    }
+
     onSaveLayout = () => {
         console.log('onSaveLayout', this.state.layouts);
-        ApiManager.updateUserLayout(
-            CookieManager.getCookie('userId'),
-            window.location.pathname,
-            JSON.stringify(this.state.layouts));
+
+        const userId = CookieManager.getCookie('userId');
+        if (userId) {
+            ApiManager.updateUserLayout(
+                userId,
+                window.location.pathname,
+                JSON.stringify(this.state.layouts),
+                this.updateUserLayoutCallback);
+        }
     }
 
     generateBlock = (block) => {
@@ -523,9 +473,43 @@ class ComponentChartsPage extends React.Component {
         }
     }
 
+    readUserLayoutCallback = (statusCode, response) => {
+        switch (statusCode) {
+        case StatusCode.OK:
+            console.log(JSON.parse(response.layout));
+            this.setState({
+                layouts: JSON.parse(response.layout),
+            });
+            break;
+        case StatusCode.NOT_FOUND:
+            this.setState({
+                layouts: initialLayout
+            });
+            break;
+        default:
+            alert(response.msg);
+            break;
+        }
+    }
+
+    updateUserLayoutCallback = (statusCode, response) => {
+        switch (statusCode) {
+        case StatusCode.OK:
+            console.log(response);
+            break;
+        default:
+            alert(response.msg);
+            break;
+        }
+    }
+
     render () {
         const { layouts, isEditingMode } = this.state;
         const { classes, theme } = this.props;
+
+        if (!layouts) {
+            return null;
+        }
 
         return (
             <div className={classes.root}>

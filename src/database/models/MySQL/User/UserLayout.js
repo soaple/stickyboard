@@ -19,7 +19,7 @@ var UserLayout = MySqlConn.define('stkbd_user_layout', {
         allowNull: false
     },
     layout: {
-        type: Sequelize.STRING(2048),
+        type: Sequelize.TEXT,
         allowNull: false
     },
 }, {

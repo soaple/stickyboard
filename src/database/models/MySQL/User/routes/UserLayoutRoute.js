@@ -44,7 +44,7 @@ var UserLayoutRoute = {
 
         console.log(userId, route)
 
-        UserLayout.find({
+        UserLayout.findOne({
             where: {
                 user_id: userId,
                 route: route,
