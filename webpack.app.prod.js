@@ -34,6 +34,12 @@ const config = {
             ]
         }]
     },
+    resolve: {
+        modules: ['src', 'node_modules'],
+        alias: {
+            react: path.resolve('./node_modules/react')
+        }
+    },
     optimization: {
         minimizer: [
             new UglifyJsPlugin({
