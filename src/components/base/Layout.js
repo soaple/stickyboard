@@ -26,8 +26,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 
-import Mail from '@material-ui/icons/Mail';
-
 import MenuIcon from '@material-ui/icons/Menu';
 import Lock from '@material-ui/icons/Lock';
 import Person from '@material-ui/icons/Person';
@@ -378,25 +376,25 @@ class Layout extends React.Component {
                     <div className={classes.appFrame}>
                         {/* AppBar */}
                         <AppBar
-                            position="absolute"
+                            position='absolute'
                             className={classes.appBar}>
                             <Toolbar>
                                 <Hidden lgUp>
                                     <IconButton
-                                        color="inherit"
-                                        aria-label="open drawer"
+                                        color='inherit'
+                                        aria-label='open drawer'
                                         onClick={this.handleMenuDrawerToggle}>
                                         <MenuIcon style={{color: StickyBoardColors.colorDark}}/>
                                     </IconButton>
                                 </Hidden>
 
                                 <img
-                                    src="/static/image/favicon.png"
+                                    src='/static/image/favicon.png'
                                     className={classes.appBarLogo} />
 
                                 <Typography
-                                    type="title"
-                                    color="inherit"
+                                    type='title'
+                                    color='inherit'
                                     noWrap
                                     className={classes.appBarTitle}
                                     onClick={() =>{ window.location = '/' }}>
@@ -408,24 +406,21 @@ class Layout extends React.Component {
                                 </Typography>
 
                                 <Hidden xsDown>
-                                    <Button
-                                        className={classes.contactButton}
-                                        variant="contained"
-                                        size="small"
-                                        color="primary"
-                                        onClick={() => { window.open('https://github.com/soaple/stickyboard', '_blank') }}>
-                                        Github
-                                        <Mail className={classes.contactButtonIcon} />
-                                    </Button>
+                                    <iframe
+                                        src='https://ghbtns.com/github-btn.html?user=soaple&repo=stickyboard&type=star&count=true&size=large'
+                                        frameborder='0'
+                                        scrolling='0'
+                                        width='130px'
+                                        height='30px' />
                                 </Hidden>
 
                                 {(auth || isGuestModeAvailable) &&
                                     <IconButton
                                         className={classes.avatar}
                                         aria-owns={open ? 'menu-appbar' : null}
-                                        aria-haspopup="true"
+                                        aria-haspopup='true'
                                         onClick={this.handleMenu}
-                                        color="inherit">
+                                        color='inherit'>
                                         <AccountCircle />
                                     </IconButton>}
 
@@ -433,7 +428,7 @@ class Layout extends React.Component {
                                     {!auth &&
                                         <Menu
                                             styles={{width: 500}}
-                                            id="menu-appbar"
+                                            id='menu-appbar'
                                             anchorEl={anchorEl}
                                             anchorOrigin={{
                                                 vertical: 'top',
@@ -452,7 +447,7 @@ class Layout extends React.Component {
                                                 </ListItemIcon>
                                                 <ListItemText
                                                     classes={{ primary: classes.primary }}
-                                                    primary="Sign In" />
+                                                    primary='Sign In' />
                                             </MenuItem>
                                         </Menu>}
 
@@ -460,7 +455,7 @@ class Layout extends React.Component {
                                     {auth &&
                                         <Menu
                                             styles={{width: 500}}
-                                            id="menu-appbar"
+                                            id='menu-appbar'
                                             anchorEl={anchorEl}
                                             anchorOrigin={{
                                                 vertical: 'top',
@@ -480,7 +475,7 @@ class Layout extends React.Component {
                                                 </ListItemIcon>
                                                 <ListItemText
                                                     classes={{ primary: classes.primary }}
-                                                    primary="Profile" />
+                                                    primary='Profile' />
                                             </MenuItem>
                                             <MenuItem onClick={this.onSettingsClicked}>
                                                 <ListItemIcon>
@@ -488,7 +483,7 @@ class Layout extends React.Component {
                                                 </ListItemIcon>
                                                 <ListItemText
                                                     classes={{ primary: classes.primary }}
-                                                    primary="Settings" />
+                                                    primary='Settings' />
                                             </MenuItem>
 
                                             <MenuItem onClick={this.onSignOutClicked}>
@@ -497,7 +492,7 @@ class Layout extends React.Component {
                                                 </ListItemIcon>
                                                 <ListItemText
                                                     classes={{ primary: classes.primary }}
-                                                    primary="Sign out" />
+                                                    primary='Sign out' />
                                             </MenuItem>
 
                                             {/* Superuser Menus */}
@@ -513,7 +508,7 @@ class Layout extends React.Component {
                                                         </ListItemIcon>
                                                         <ListItemText
                                                             classes={{ primary: classes.primary }}
-                                                            primary="Admin" />
+                                                            primary='Admin' />
                                                     </MenuItem>
                                                     <MenuItem onClick={() => {
                                                         window.location = '/security/group';
@@ -523,7 +518,7 @@ class Layout extends React.Component {
                                                         </ListItemIcon>
                                                         <ListItemText
                                                             classes={{ primary: classes.primary }}
-                                                            primary="Group" />
+                                                            primary='Group' />
                                                     </MenuItem>
                                                     <MenuItem onClick={() => {
                                                         window.location = '/security/permission';
@@ -533,13 +528,13 @@ class Layout extends React.Component {
                                                         </ListItemIcon>
                                                         <ListItemText
                                                             classes={{ primary: classes.primary }}
-                                                            primary="Permission" />
+                                                            primary='Permission' />
                                                     </MenuItem>
                                                 </div>}
                                         </Menu>}
 
                                 <IconButton
-                                    aria-label="open drawer"
+                                    aria-label='open drawer'
                                     onClick={this.handleNotiDrawerToggle}>
                                     <SocialNotifications style={{color: StickyBoardColors.colorDark}}/>
                                 </IconButton>
@@ -549,7 +544,7 @@ class Layout extends React.Component {
                         {/* Drawer - Mobile */}
                         <Hidden lgUp>
                             <Drawer
-                                variant="temporary"
+                                variant='temporary'
                                 anchor={'left'}
                                 open={this.state.menuDrawerOpen}
                                 classes={{
@@ -568,7 +563,7 @@ class Layout extends React.Component {
                         {/* Drawer - Desktop */}
                         <Hidden mdDown>
                             <Drawer
-                                variant="permanent"
+                                variant='permanent'
                                 open
                                 classes={{
                                     paper: classes.drawerPaper,
@@ -581,8 +576,8 @@ class Layout extends React.Component {
 
                         {/* Right Drawer - Notification */}
                         <Drawer
-                            type="temporary"
-                            anchor="right"
+                            type='temporary'
+                            anchor='right'
                             open={this.state.notiDrawerOpen}
                             classes={{
                                 paper: classes.notiDrawer,

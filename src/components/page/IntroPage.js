@@ -54,14 +54,14 @@ const styles = theme => ({
 });
 
 const initialLayout = {
-    lg: [{"i":"CustomLayout","x":0,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":4,"y":6,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":8,"y":0,"w":4,"h":6},{"i":"Contact","x":8,"y":6,"w":4,"h":6}],
-    md: [{"i":"CustomLayout","x":0,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":4,"y":6,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":8,"y":0,"w":4,"h":6},{"i":"Contact","x":8,"y":6,"w":4,"h":6}],
-    sm: [{"i":"CustomLayout","x":4,"y":6,"w":4,"h":6},{"i":"Introduction","x":0,"y":0,"w":4,"h":6},{"i":"DatabaseSupport","x":0,"y":12,"w":4,"h":6},{"i":"ChartSupport","x":4,"y":0,"w":4,"h":6},{"i":"MapSupport","x":0,"y":6,"w":4,"h":6},{"i":"Contact","x":4,"y":12,"w":4,"h":6}],
-    xs: [{"i":"CustomLayout","x":3,"y":6,"w":3,"h":6},{"i":"Introduction","x":0,"y":0,"w":3,"h":6},{"i":"DatabaseSupport","x":0,"y":12,"w":3,"h":6},{"i":"ChartSupport","x":3,"y":0,"w":3,"h":6},{"i":"MapSupport","x":0,"y":6,"w":3,"h":6},{"i":"Contact","x":3,"y":12,"w":3,"h":6}],
-    xxs: [{"i":"CustomLayout","x":0,"y":21,"w":4,"h":7},{"i":"Introduction","x":0,"y":0,"w":4,"h":7},{"i":"DatabaseSupport","x":0,"y":28,"w":4,"h":7},{"i":"ChartSupport","x":0,"y":7,"w":4,"h":7},{"i":"MapSupport","x":0,"y":14,"w":4,"h":7},{"i":"Contact","x":0,"y":35,"w":4,"h":7}],
+    lg: [{'i':'CustomLayout','x':0,'y':6,'w':4,'h':6},{'i':'Introduction','x':0,'y':0,'w':4,'h':6},{'i':'DatabaseSupport','x':4,'y':6,'w':4,'h':6},{'i':'ChartSupport','x':4,'y':0,'w':4,'h':6},{'i':'MapSupport','x':8,'y':0,'w':4,'h':6},{'i':'Contact','x':8,'y':6,'w':4,'h':6}],
+    md: [{'i':'CustomLayout','x':0,'y':6,'w':4,'h':6},{'i':'Introduction','x':0,'y':0,'w':4,'h':6},{'i':'DatabaseSupport','x':4,'y':6,'w':4,'h':6},{'i':'ChartSupport','x':4,'y':0,'w':4,'h':6},{'i':'MapSupport','x':8,'y':0,'w':4,'h':6},{'i':'Contact','x':8,'y':6,'w':4,'h':6}],
+    sm: [{'i':'CustomLayout','x':4,'y':6,'w':4,'h':6},{'i':'Introduction','x':0,'y':0,'w':4,'h':6},{'i':'DatabaseSupport','x':0,'y':12,'w':4,'h':6},{'i':'ChartSupport','x':4,'y':0,'w':4,'h':6},{'i':'MapSupport','x':0,'y':6,'w':4,'h':6},{'i':'Contact','x':4,'y':12,'w':4,'h':6}],
+    xs: [{'i':'CustomLayout','x':3,'y':6,'w':3,'h':6},{'i':'Introduction','x':0,'y':0,'w':3,'h':6},{'i':'DatabaseSupport','x':0,'y':12,'w':3,'h':6},{'i':'ChartSupport','x':3,'y':0,'w':3,'h':6},{'i':'MapSupport','x':0,'y':6,'w':3,'h':6},{'i':'Contact','x':3,'y':12,'w':3,'h':6}],
+    xxs: [{'i':'CustomLayout','x':0,'y':21,'w':4,'h':7},{'i':'Introduction','x':0,'y':0,'w':4,'h':7},{'i':'DatabaseSupport','x':0,'y':28,'w':4,'h':7},{'i':'ChartSupport','x':0,'y':7,'w':4,'h':7},{'i':'MapSupport','x':0,'y':14,'w':4,'h':7},{'i':'Contact','x':0,'y':35,'w':4,'h':7}],
 };
 
-const initialBlocks = [{"i":"CustomLayout"},{"i":"Introduction"},{"i":"DatabaseSupport"},{"i":"ChartSupport"},{"i":"MapSupport"},{"i":"Contact"}];
+const initialBlocks = [{'i':'CustomLayout'},{'i':'Introduction'},{'i':'DatabaseSupport'},{'i':'ChartSupport'},{'i':'MapSupport'},{'i':'Contact'}];
 
 class IntroPage extends React.Component {
     constructor (props) {
@@ -83,7 +83,7 @@ class IntroPage extends React.Component {
                         src='../static/image/StickyBoard_logo.png'
                         className={classes.logoImage}/>
                     <Textfit
-                        mode="multi"
+                        mode='multi'
                         min={12}
                         max={200}
                         forceSingleModeWidth={false}
@@ -100,7 +100,7 @@ class IntroPage extends React.Component {
                 <Sticker
                     key={block.i}>
                     <Textfit
-                        mode="single"
+                        mode='single'
                         min={12}
                         max={200}
                         forceSingleModeWidth={false}
@@ -112,7 +112,7 @@ class IntroPage extends React.Component {
                         <span className={classes.alignHelper} />
                         <img
                             className={classes.image}
-                            src="/static/image/intro_database.png"/>
+                            src='/static/image/intro_database.png'/>
                     </div>
                 </Sticker>
             )
@@ -121,7 +121,7 @@ class IntroPage extends React.Component {
                 <Sticker
                     key={block.i}>
                     <Textfit
-                        mode="single"
+                        mode='single'
                         min={12}
                         max={200}
                         forceSingleModeWidth={false}
@@ -133,7 +133,7 @@ class IntroPage extends React.Component {
                         <span className={classes.alignHelper} />
                         <img
                             className={classes.image}
-                            src="/static/image/intro_custom_layout.png"/>
+                            src='/static/image/intro_custom_layout.png'/>
                     </div>
                 </Sticker>
             )
@@ -142,7 +142,7 @@ class IntroPage extends React.Component {
                 <Sticker
                     key={block.i}>
                     <Textfit
-                        mode="single"
+                        mode='single'
                         min={12}
                         max={200}
                         forceSingleModeWidth={false}
@@ -154,7 +154,7 @@ class IntroPage extends React.Component {
                         <span className={classes.alignHelper} />
                         <img
                             className={classes.image}
-                            src="/static/image/intro_components.png"/>
+                            src='/static/image/intro_components.png'/>
                     </div>
                 </Sticker>
             )
@@ -163,7 +163,7 @@ class IntroPage extends React.Component {
                 <Sticker
                     key={block.i}>
                     <Textfit
-                        mode="single"
+                        mode='single'
                         min={12}
                         max={200}
                         forceSingleModeWidth={false}
@@ -187,33 +187,33 @@ class IntroPage extends React.Component {
                 <Sticker
                     key={block.i}>
                     <Textfit
-                       mode="single"
-                       min={12}
-                       max={200}
-                       forceSingleModeWidth={false}
-                       className={classes.title}
-                       style={{color: this.props.valueColor ? this.props.valueColor : this.props.defaultColor}}>
-                       <p>{'Github'}</p>
-                   </Textfit>
-                   <Textfit
-                      mode="multi"
-                      min={12}
-                      max={200}
-                      forceSingleModeWidth={false}
-                      className={classes.contact}
-                      style={{color: this.props.valueColor ? this.props.valueColor : this.props.defaultColor}}>
-                      <p>{'Visit our Github page!'}</p>
-                  </Textfit>
-                   <div className={classes.component}>
-                       <Button
-                           variant="contained"
-                           size="large"
-                           color="primary"
-                           onClick={() => { window.open('https://github.com/soaple/stickyboard', '_blank') }}>
-                           Github
-                           <Mail className={classes.contactButtonIcon} />
-                       </Button>
-                   </div>
+                        mode='multi'
+                        min={12}
+                        max={200}
+                        forceSingleModeWidth={false}
+                        className={classes.contact}
+                        style={{color: this.props.valueColor ? this.props.valueColor : this.props.defaultColor}}>
+                        <p>{'Visit our Github page!'}</p>
+                    </Textfit>
+                    <div className={classes.component}>
+                        <div>
+                            <iframe
+                                src='https://ghbtns.com/github-btn.html?user=soaple&repo=stickyboard&type=star&count=true&size=large'
+                                frameborder='0'
+                                scrolling='0'
+                                width='160px'
+                                height='30px' />
+                        </div>
+                        <br />
+                        <div>
+                            <iframe
+                                src='https://ghbtns.com/github-btn.html?user=soaple&type=follow&count=true&size=large'
+                                frameborder='0'
+                                scrolling='0'
+                                width='160px'
+                                height='30px' />
+                        </div>
+                    </div>
                 </Sticker>
             )
         }
