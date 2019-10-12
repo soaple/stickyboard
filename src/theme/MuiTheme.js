@@ -29,11 +29,11 @@ const MuiTheme = createMuiTheme({
             //     backgroundColor: red[500],
             //     color: theme.palette.getContrastText(theme.palette.background.appBar)
             // },
-            colorPrimary: {
-                // backgroundColor: blueGrey[700],
-                backgroundColor: grey[50],
-                color: '#fff',
-            },
+            // colorPrimary: {
+            //     // backgroundColor: blueGrey[700],
+            //     backgroundColor: grey[50],
+            //     color: '#fff',
+            // },
             // colorAccent: {
             //     backgroundColor: purple[500],
             //     color: theme.palette.getContrastText(theme.palette.secondary.A200)
@@ -117,25 +117,25 @@ const MuiTheme = createMuiTheme({
                 // backgroundColor: blueGrey[500]
             }
         },
-        MuiTableCell: {
-            root: {
-              // border: '1px solid ' + grey[300],
-              borderBottom: '1px solid ' + grey[300],
-              textAlign: 'center',
-              padding: 0,
-            },
-            head: {
-                background: grey[200],
-                fontSize: 14,
-                color: grey[900],
-            },
-            // paddingNone: {
-            //     padding: 8,
-            //     '&:last-child': {
-            //       paddingRight: 8
-            //     }
-            // },
-        },
+        // MuiTableCell: {
+        //     root: {
+        //       // border: '1px solid ' + grey[300],
+        //       borderBottom: '1px solid ' + grey[300],
+        //       textAlign: 'center',
+        //       padding: 0,
+        //     },
+        //     head: {
+        //         background: grey[200],
+        //         fontSize: 14,
+        //         color: grey[900],
+        //     },
+        //     // paddingNone: {
+        //     //     padding: 8,
+        //     //     '&:last-child': {
+        //     //       paddingRight: 8
+        //     //     }
+        //     // },
+        // },
         MuiIconButton: {
             // root: {
             //   height: 36,

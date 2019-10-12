@@ -260,15 +260,6 @@ class ComponentTablePage extends React.Component {
     }
 
     generateBlock = (block) => {
-        const opts = {
-            // height: '100%',
-            width: '100%',
-            height: '80%',
-            playerVars: { // https://developers.google.com/youtube/player_parameters
-                autoplay: 0
-            }
-        };
-
         switch (block.i) {
         case 'Table1':
             return (
