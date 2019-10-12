@@ -153,7 +153,6 @@ class DrawerMenu extends React.Component {
                                                 {menu.icon}
                                             </ListItemIcon>
                                             <ListItemText
-                                                inset
                                                 disableTypography={true}
                                                 primary={menu.title}
                                                 className={isSelected ? classes.menuItemTextSelected : classes.menuItemText}/>
