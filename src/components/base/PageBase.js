@@ -7,6 +7,16 @@ import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
 
+import SpeedDial from '@material-ui/lab/SpeedDial';
+import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
+import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
+import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
+import SaveIcon from '@material-ui/icons/Save';
+import PrintIcon from '@material-ui/icons/Print';
+import ShareIcon from '@material-ui/icons/Share';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+import MenuIcon from '@material-ui/icons/Menu';
 import EditIcon from '@material-ui/icons/Edit';
 import TvIcon from '@material-ui/icons/Tv';
 
@@ -39,6 +49,17 @@ const styles = theme => ({
         bottom: 16,
         zIndex: 2000,
     },
+    speedDial: {
+        position: 'absolute',
+        '&.MuiSpeedDial-directionUp, &.MuiSpeedDial-directionLeft': {
+            bottom: theme.spacing(2),
+            right: theme.spacing(2),
+        },
+        '&.MuiSpeedDial-directionDown, &.MuiSpeedDial-directionRight': {
+            top: theme.spacing(2),
+            left: theme.spacing(2),
+        },
+    },
 });
 
 class PageBase extends React.Component {
@@ -52,12 +73,8 @@ class PageBase extends React.Component {
             layouts: undefined,
             blocks: undefined,
             isEditingMode: true,
-            // Data
-            data: [],
-            // Chart scaling
-            left : 0,
-            right : 0,
-            animation: true,
+            // SpeedDial
+            isMenuOpen: false,
         }
     }
 
@@ -84,6 +101,14 @@ class PageBase extends React.Component {
         }
     }
 
+    handleCloseMenu = () => {
+        this.setState({ isMenuOpen: false });
+    };
+
+    handleOpenMenu = () => {
+        this.setState({ isMenuOpen: true });
+    };
+
     onSaveLayout = () => {
         const userId = CookieManager.getCookie('userId');
         if (userId) {
@@ -99,7 +124,6 @@ class PageBase extends React.Component {
     readUserLayoutCallback = (statusCode, response) => {
         switch (statusCode) {
         case StatusCode.OK:
-            console.log(response)
             this.setState({
                 layouts: JSON.parse(response.layout),
                 blocks: JSON.parse(response.blocks),
@@ -125,7 +149,7 @@ class PageBase extends React.Component {
     }
 
     render() {
-        const { layouts, blocks, isEditingMode } = this.state;
+        const { layouts, blocks, isEditingMode, isMenuOpen } = this.state;
         const { classes, theme, generateBlock } = this.props;
 
         if (!layouts || !blocks) {
@@ -145,19 +169,24 @@ class PageBase extends React.Component {
                 </Board>
 
                 <div className={classes.menuContainer}>
-                    <Fab
-                        color="secondary"
-                        aria-label="edit"
-                        onClick={() => { this.board.current.toggleEditingMode(); }}>
-                        <EditIcon />
-                    </Fab>
+                    <SpeedDial
+                        ariaLabel='SpeedDial'
+                        className={classes.speedDial}
+                        icon={<MenuIcon />}
+                        onClose={this.handleCloseMenu}
+                        onOpen={this.handleOpenMenu}
+                        open={isMenuOpen}
+                        direction={'up'}>
+                            <SpeedDialAction
+                                icon={<EditIcon />}
+                                tooltipTitle={'Toggle Edit mode'}
+                                onClick={() => { this.board.current.toggleEditingMode(); }} />
 
-                    <Fab
-                        color="primary"
-                        aria-label="tv"
-                        onClick={() => { this.board.current.toggleTvMode(); }}>
-                        <TvIcon />
-                    </Fab>
+                            <SpeedDialAction
+                                icon={<TvIcon />}
+                                tooltipTitle={'Toggle TV mode'}
+                                onClick={() => { this.board.current.toggleTvMode(); }} />
+                    </SpeedDial>
                 </div>
             </div>
         )

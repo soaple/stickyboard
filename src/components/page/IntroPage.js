@@ -199,7 +199,7 @@ class IntroPage extends React.Component {
                         <div>
                             <iframe
                                 src='https://ghbtns.com/github-btn.html?user=soaple&repo=stickyboard&type=star&count=true&size=large'
-                                frameborder='0'
+                                frameBorder='0'
                                 scrolling='0'
                                 width='160px'
                                 height='30px' />
@@ -208,7 +208,7 @@ class IntroPage extends React.Component {
                         <div>
                             <iframe
                                 src='https://ghbtns.com/github-btn.html?user=soaple&type=follow&count=true&size=large'
-                                frameborder='0'
+                                frameBorder='0'
                                 scrolling='0'
                                 width='160px'
                                 height='30px' />

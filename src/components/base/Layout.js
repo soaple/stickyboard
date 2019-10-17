@@ -408,7 +408,7 @@ class Layout extends React.Component {
                                 <Hidden xsDown>
                                     <iframe
                                         src='https://ghbtns.com/github-btn.html?user=soaple&repo=stickyboard&type=star&count=true&size=large'
-                                        frameborder='0'
+                                        frameBorder='0'
                                         scrolling='0'
                                         width='130px'
                                         height='30px' />

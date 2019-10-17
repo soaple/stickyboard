@@ -42,8 +42,6 @@ var UserLayoutRoute = {
         var userId = req.params.userId;
         var route = req.query.route;
 
-        console.log(userId, route)
-
         UserLayout.findOne({
             where: {
                 user_id: userId,
