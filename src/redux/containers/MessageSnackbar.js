@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import {
     showMessageSnackbar,
     hideMessageSnackbar,
-} from '../redux/actions/actions';
+} from '../actions';
 
-import MySnackbar from '../components/ui/MySnackbar';
+import MySnackbar from 'components/ui/MySnackbar';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -18,7 +18,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onClick: () => {
+        showMessageSnackbar: (message) => {
+            dispatch(showMessageSnackbar(message));
+        },
+        hideMessageSnackbar: () => {
             dispatch(hideMessageSnackbar());
         }
     }

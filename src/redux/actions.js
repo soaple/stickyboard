@@ -1,4 +1,4 @@
-// src/redux/actions/actions.js
+// src/redux/actions.js
 
 /*
  * action types

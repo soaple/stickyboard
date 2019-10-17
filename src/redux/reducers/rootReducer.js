@@ -6,7 +6,7 @@ import _ from 'underscore';
 import {
     SHOW_MESSAGE_SNACKBAR,
     HIDE_MESSAGE_SNACKBAR,
-} from '../actions/actions';
+} from '../actions';
 
 const initialState = {
     // Message Snackbar

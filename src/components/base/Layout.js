@@ -3,6 +3,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {
+    showMessageSnackbar,
+    hideMessageSnackbar,
+} from 'redux/actions';
+
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
 import Drawer from '@material-ui/core/Drawer';
@@ -41,7 +46,7 @@ import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
 import CookieManager from 'network/CookieManager';
 
-import MessageSnackbar from '../../containers/MessageSnackbar';
+import MessageSnackbar from 'redux/containers/MessageSnackbar';
 
 import DrawerMenu from './DrawerMenu';
 
@@ -266,7 +271,7 @@ class Layout extends React.Component {
         }
     }
 
-    componentWillMount () {
+    componentDidMount () {
         if (this.state.auth || !isGuestModeAvailable) {
             if (document.cookie === undefined || document.cookie === '') {
                 window.location = '/signin'

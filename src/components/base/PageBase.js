@@ -26,11 +26,6 @@ import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
 import CookieManager from 'network/CookieManager';
 
-import {
-    showMessageSnackbar,
-    hideMessageSnackbar,
-} from 'redux/actions/actions'
-
 import StickyBoardColors from 'theme/StickyBoardColors';
 import Const from 'constants/Const';
 
