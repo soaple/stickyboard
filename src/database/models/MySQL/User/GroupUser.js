@@ -1,10 +1,10 @@
-// src/models/MySQL/GroupAdmin.js
+// src/models/MySQL/GroupUser.js
 
 var Sequelize = require('sequelize')
 
 var MySqlConn = require('../../../connections/MySqlConn');
 
-var GroupAdmin = MySqlConn.define('stkbd_group_user', {
+var GroupUser = MySqlConn.define('stkbd_group_user', {
     id: {
         type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,
@@ -24,4 +24,4 @@ var GroupAdmin = MySqlConn.define('stkbd_group_user', {
     updatedAt: false
 })
 
-module.exports = GroupAdmin
+module.exports = GroupUser;

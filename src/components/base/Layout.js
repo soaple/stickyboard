@@ -309,7 +309,7 @@ class Layout extends React.Component {
         }
     }
 
-    readAdminPermissionsCallback = (statusCode, response) => {
+    readUserPermissionsCallback = (statusCode, response) => {
         switch (statusCode) {
         case StatusCode.OK:
             // console.log('---------------------')
@@ -497,36 +497,16 @@ class Layout extends React.Component {
                                             {isSuperuser &&
                                                 <div>
                                                     <Divider />
-                                                    <span className={classes.menuCategoryText}>SECURITY</span>
+                                                    <span className={classes.menuCategoryText}>SUPER USER</span>
                                                     <MenuItem onClick={() => {
-                                                        window.location = '/security/admin';
+                                                        window.location = '/superuser';
                                                     }}>
                                                         <ListItemIcon>
                                                             <Lock className={classes.menuIcon} />
                                                         </ListItemIcon>
                                                         <ListItemText
                                                             classes={{ primary: classes.primary }}
-                                                            primary='Admin' />
-                                                    </MenuItem>
-                                                    <MenuItem onClick={() => {
-                                                        window.location = '/security/group';
-                                                    }}>
-                                                        <ListItemIcon>
-                                                            <Lock className={classes.menuIcon} />
-                                                        </ListItemIcon>
-                                                        <ListItemText
-                                                            classes={{ primary: classes.primary }}
-                                                            primary='Group' />
-                                                    </MenuItem>
-                                                    <MenuItem onClick={() => {
-                                                        window.location = '/security/permission';
-                                                    }}>
-                                                        <ListItemIcon>
-                                                            <Lock className={classes.menuIcon} />
-                                                        </ListItemIcon>
-                                                        <ListItemText
-                                                            classes={{ primary: classes.primary }}
-                                                            primary='Permission' />
+                                                            primary='SuperUser' />
                                                     </MenuItem>
                                                 </div>}
                                         </Menu>}

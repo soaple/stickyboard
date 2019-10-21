@@ -80,8 +80,8 @@ var Secret = {
                     // console.log(decoded)
                     var admin = decoded.admin
 
-                    PermissionChecker.checkPermission(admin.id, req.url, function (isAdminHasPermission) {
-                        if (admin.is_superuser || isAdminHasPermission) {
+                    PermissionChecker.checkPermission(admin.id, req.url, function (isUserHasPermission) {
+                        if (admin.is_superuser || isUserHasPermission) {
                             // if everything is good, save to request for use in other routes
                             req.decoded = decoded
                             next()
