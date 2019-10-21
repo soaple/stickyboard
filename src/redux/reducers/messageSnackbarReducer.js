@@ -7,7 +7,6 @@ import {
 
 const initialState = {
     open: false,
-    shownTime: null,
     message: 'Loading...',
 }
 
@@ -22,14 +21,12 @@ function messageSnackbarReducer(state = initialState, action) {
             return {
                 ...state,
                 open: action.open,
-                shownTime: new Date().getTime(),
                 message: message,
             }
         case HIDE_MESSAGE_SNACKBAR:
             return {
                 ...state,
                 open: action.open,
-                shownTime: null,
             }
         default:
             return state;

@@ -21,8 +21,7 @@ const styles = theme => ({
 
 class MessageSnackbar extends React.Component {
     render () {
-        const { classes, theme } = this.props;
-        const { open, message } = this.props;
+        const { classes, theme, open, message } = this.props;
 
         return (
             <Snackbar
@@ -31,6 +30,9 @@ class MessageSnackbar extends React.Component {
                     horizontal: 'center',
                 }}
                 open={open}
+                ContentProps={{
+                    'aria-describedby': 'message-id',
+                }}
                 message={
                     <div>
                         <CircularProgress

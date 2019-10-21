@@ -191,7 +191,7 @@ class PageBase extends React.Component {
                 {/* Message Snackbar */}
                 <MessageSnackbar
                     open={messageSnackbar.open}
-                    message={messageSnackbar.message || 'Loading...'} />
+                    message={messageSnackbar.message} />
             </div>
         )
     }
