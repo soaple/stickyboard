@@ -89,7 +89,7 @@ class PageBase extends React.Component {
     initializeLayout = () => {
         const userId = CookieManager.getCookie('userId');
         if (userId) {
-            this.props.showMessageSnackbar();
+            this.props.showMessageSnackbar('Loading...');
             ApiManager.readUserLayout(
                 userId,
                 window.location.pathname,

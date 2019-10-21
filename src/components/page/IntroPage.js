@@ -66,7 +66,6 @@ const initialBlocks = [{'i':'CustomLayout'},{'i':'Introduction'},{'i':'DatabaseS
 class IntroPage extends React.Component {
     constructor (props) {
         super(props);
-        console.log(props);
 
         this.state = {
         }

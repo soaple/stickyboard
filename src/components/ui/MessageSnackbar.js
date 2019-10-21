@@ -35,7 +35,7 @@ class MessageSnackbar extends React.Component {
                     <div>
                         <CircularProgress
                             style={{ color: StickyBoardColors.progressColor }}
-                            thickness={7} />
+                            thickness={4} />
                         <span
                             className={classes.snackBarMessage}
                             id="message-id">
