@@ -19,6 +19,9 @@ if (envLoadResult.error) {
 }
 // console.log(envLoadResult.parsed);
 
+// Load StickyBoard config file
+const stickyboardConfig = require('./stickyboard.config');
+
 // Database connections
 // var Secret = require('./src/utils/Secret')
 var MySqlConn = require('./src/database/connections/MySqlConn');
@@ -126,8 +129,7 @@ case 'development':
 }
 
 app.get('*', function (req, res) {
-    console.log(appBundleUrl)
-    res.render('index', { 'APP_BUNDLE_URL': appBundleUrl });
+    res.render('index', { ...stickyboardConfig, 'APP_BUNDLE_URL': appBundleUrl });
 });
 
 // WARNING: Do not use {force: true} option! It drops all data!

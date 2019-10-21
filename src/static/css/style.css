@@ -1,14 +1,13 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 html, body {
-    height: 100%;
     font-family: 'Nanum Gothic', serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 html,
 body,
-#main,
-#main > div {
+#root {
     height: 100%;
 }
 

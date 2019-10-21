@@ -3,21 +3,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>StickyBoard</title>
+        <title><%= title %></title>
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Meta tags for preview -->
-        <meta name="description" content="On-Demand Dashboard Solution based on React" />
-        <meta property="og:title" content="StickyBoard" />
-        <meta property="og:description" content="On-Demand Dashboard Solution based on React" />
-        <meta property="og:image" content="/static/image/StickyBoard_logo_only.png" />
+        <meta name="description" content="<%= description %>" />
+        <meta property="og:title" content="<%= title %>" />
+        <meta property="og:description" content="<%= description %>" />
+        <meta property="og:image" content="<%= meta_image %>" />
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="/static/image/favicon.png" type="image/x-icon">
-        <link rel="icon" href="/static/image/favicon.png" type="image/x-icon">
+        <link rel="shortcut icon" href="<%= favicon %>" type="image/x-icon">
+        <link rel="icon" href="<%= favicon %>" type="image/x-icon">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -29,7 +29,7 @@
         <link rel="stylesheet" href="/static/css/style.css">
     </head>
     <body>
-        <div id="root" style="height: 100%;"></div>
+        <div id="root"></div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
