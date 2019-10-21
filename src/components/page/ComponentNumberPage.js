@@ -10,7 +10,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import { Sticker } from '@stickyboard/core';
 import { NumberWidget, NumberWithChartWidget } from '@stickyboard/number';
 
-import PageBase from 'components/base/PageBase';
+import PageBaseContainer from 'redux/containers/PageBaseContainer';
 import StickyBoardColors from 'theme/StickyBoardColors';
 
 const styles = theme => ({
@@ -250,7 +250,7 @@ class ComponentNumberPage extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <PageBase
+            <PageBaseContainer
                 generateBlock={this.generateBlock}
                 initialLayout={initialLayout}
                 initialBlocks={initialBlocks} />

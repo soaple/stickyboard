@@ -16,7 +16,7 @@ import {
     YahooWeatherForecastWidget
 } from '@stickyboard/yahoo-weather';
 
-import PageBase from 'components/base/PageBase';
+import PageBaseContainer from 'redux/containers/PageBaseContainer';
 
 const styles = theme => ({
     root: {
@@ -90,7 +90,7 @@ class ComponentWeatherPage extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <PageBase
+            <PageBaseContainer
                 generateBlock={this.generateBlock}
                 initialLayout={initialLayout}
                 initialBlocks={initialBlocks} />

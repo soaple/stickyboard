@@ -3,11 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-    showMessageSnackbar,
-    hideMessageSnackbar,
-} from 'redux/actions';
-
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
 import Drawer from '@material-ui/core/Drawer';
@@ -45,8 +40,6 @@ import ErrorOutline from '@material-ui/icons/ErrorOutline';
 import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
 import CookieManager from 'network/CookieManager';
-
-import MessageSnackbar from 'redux/containers/MessageSnackbar';
 
 import DrawerMenu from './DrawerMenu';
 
@@ -348,8 +341,8 @@ class Layout extends React.Component {
         const childrenWithExtraProp = React.Children.map(this.props.children, child => {
             return React.cloneElement(child, {
                 // store: store,
-                // showMessageSnackbar: store.dispatch(showMessageSnackbar('Loading data...')),
-                // hideMessageSnackbar: store.dispatch(hideMessageSnackbar()),
+                // showMessageSnackbar: this.props.showMessageSnackbar,
+                // hideMessageSnackbar: this.props.hideMessageSnackbar,
             });
         });
 
@@ -604,9 +597,6 @@ class Layout extends React.Component {
                                 )
                             })}
                         </Drawer>
-
-                        {/* Message Snackbar */}
-                        <MessageSnackbar />
 
                         {/* App content */}
                         <main className={classes.content}>

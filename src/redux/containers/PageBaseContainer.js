@@ -1,4 +1,4 @@
-// src/components/containers/MessageSnackbar.js
+// src/components/containers/PageBaseContainer.js
 
 import { connect } from 'react-redux'
 
@@ -7,12 +7,15 @@ import {
     hideMessageSnackbar,
 } from '../actions';
 
-import MySnackbar from 'components/ui/MySnackbar';
+import PageBase from 'components/base/PageBase';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        open: state.messageSnackbar.open,
-        message: state.messageSnackbar.message,
+        ...state,
+        messageSnackbar: {
+            open: state.messageSnackbar.open,
+            message: state.messageSnackbar.message,
+        }
     }
 }
 
@@ -27,9 +30,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const MessageSnackbar = connect(
+const PageBaseContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(MySnackbar);
+)(PageBase);
 
-export default MessageSnackbar;
+export default PageBaseContainer;

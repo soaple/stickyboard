@@ -26,6 +26,8 @@ import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
 import CookieManager from 'network/CookieManager';
 
+import MessageSnackbar from 'components/ui/MessageSnackbar';
+
 import StickyBoardColors from 'theme/StickyBoardColors';
 import Const from 'constants/Const';
 
@@ -87,6 +89,7 @@ class PageBase extends React.Component {
     initializeLayout = () => {
         const userId = CookieManager.getCookie('userId');
         if (userId) {
+            this.props.showMessageSnackbar();
             ApiManager.readUserLayout(
                 userId,
                 window.location.pathname,
@@ -117,6 +120,7 @@ class PageBase extends React.Component {
     }
 
     readUserLayoutCallback = (statusCode, response) => {
+        this.props.hideMessageSnackbar();
         switch (statusCode) {
         case StatusCode.OK:
             this.setState({
@@ -145,7 +149,7 @@ class PageBase extends React.Component {
 
     render() {
         const { layouts, blocks, isEditingMode, isMenuOpen } = this.state;
-        const { classes, theme, generateBlock } = this.props;
+        const { classes, theme, generateBlock, messageSnackbar } = this.props;
 
         if (!layouts || !blocks) {
             return null;
@@ -183,6 +187,11 @@ class PageBase extends React.Component {
                                 onClick={() => { this.board.current.toggleTvMode(); }} />
                     </SpeedDial>
                 </div>
+
+                {/* Message Snackbar */}
+                <MessageSnackbar
+                    open={messageSnackbar.open}
+                    message={messageSnackbar.message || 'Loading...'} />
             </div>
         )
     }

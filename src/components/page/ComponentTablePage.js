@@ -9,7 +9,7 @@ import { Sticker } from '@stickyboard/core';
 import { TableWithPagination, RealtimeTable, RealtimeMessageTable
 } from '@stickyboard/table';
 
-import PageBase from 'components/base/PageBase';
+import PageBaseContainer from 'redux/containers/PageBaseContainer';
 
 const styles = theme => ({
     root: {
@@ -321,7 +321,7 @@ class ComponentTablePage extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <PageBase
+            <PageBaseContainer
                 generateBlock={this.generateBlock}
                 initialLayout={initialLayout}
                 initialBlocks={initialBlocks} />

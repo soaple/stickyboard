@@ -12,7 +12,7 @@ import { Textfit } from 'react-textfit';
 import { Sticker } from '@stickyboard/core';
 import { OpenLayers } from '@stickyboard/openlayers';
 
-import PageBase from 'components/base/PageBase';
+import PageBaseContainer from 'redux/containers/PageBaseContainer';
 
 const styles = theme => ({
     logoImage: {
@@ -66,6 +66,7 @@ const initialBlocks = [{'i':'CustomLayout'},{'i':'Introduction'},{'i':'DatabaseS
 class IntroPage extends React.Component {
     constructor (props) {
         super(props);
+        console.log(props);
 
         this.state = {
         }
@@ -223,7 +224,7 @@ class IntroPage extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <PageBase
+            <PageBaseContainer
                 generateBlock={this.generateBlock}
                 initialLayout={initialLayout}
                 initialBlocks={initialBlocks} />

@@ -1,4 +1,4 @@
-// src/components/ui/MySnackbar.js
+// src/components/ui/MessageSnackbar.js
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -19,7 +19,7 @@ const styles = theme => ({
     },
 })
 
-class MySnackbar extends React.Component {
+class MessageSnackbar extends React.Component {
     render () {
         const { classes, theme } = this.props;
         const { open, message } = this.props;
@@ -47,7 +47,7 @@ class MySnackbar extends React.Component {
     }
 }
 
-MySnackbar.propTypes = {
+MessageSnackbar.propTypes = {
     // Style props
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
@@ -56,4 +56,4 @@ MySnackbar.propTypes = {
     message: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(MySnackbar);
+export default withStyles(styles, { withTheme: true })(MessageSnackbar);

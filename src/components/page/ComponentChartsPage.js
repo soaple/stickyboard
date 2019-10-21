@@ -12,7 +12,7 @@ import { LineChart, BarChart, ComposedChart,
     ScatterChart, Treemap
 } from '@stickyboard/recharts';
 
-import PageBase from 'components/base/PageBase';
+import PageBaseContainer from 'redux/containers/PageBaseContainer';
 import StickyBoardColors from 'theme/StickyBoardColors';
 
 const styles = theme => ({
@@ -403,7 +403,7 @@ class ComponentChartsPage extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <PageBase
+            <PageBaseContainer
                 generateBlock={this.generateBlock}
                 initialLayout={initialLayout}
                 initialBlocks={initialBlocks} />
