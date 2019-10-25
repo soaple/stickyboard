@@ -9,4 +9,6 @@ On-demand dashboard solution based on React
 http://stickyboard.co.kr/
 
 # License
-This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).
+This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).<br/>
+However, this project has a dependency on Highcharts.js from [@stickyboard/highcharts](https://github.com/soaple/stickyboard-highcharts).<br/>
+For commercial use, you have to buy a valid [Highcharts license](http://www.highcharts.com).
