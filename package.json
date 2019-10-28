@@ -92,6 +92,7 @@
         "eslint-plugin-promise": "^3.8.0",
         "eslint-plugin-react": "^6.9.0",
         "eslint-plugin-standard": "^2.0.1",
+        "file-loader": "^4.2.0",
         "node-loader": "^0.6.0",
         "style-loader": "^0.13.1",
         "uglifyjs-webpack-plugin": "^2.2.0",

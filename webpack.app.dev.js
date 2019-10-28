@@ -32,6 +32,20 @@ const config = {
                 'style-loader',
                 'css-loader'
             ]
+        }, {
+            test: /\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+            use: {
+                loader: 'file-loader',
+                options: {
+                    name(file) {
+                        if (process.env.NODE_ENV === 'development') {
+                            return '[path][name].[ext]';
+                        }
+
+                        return '[contenthash].[ext]';
+                    },
+                },
+            }
         }]
     },
     resolve: {
