@@ -6,7 +6,7 @@ var StatusCode = require('../network/StatusCode')
 var PermissionChecker = require('./PermissionChecker')
 
 var Secret = {
-    key: 'UqxLBy&Suj(wc4(q%^ho*zv{}ENZ5]x$o,5V?&B#gs;1X#(i>g@=+anY;Zf@^!f',
+    key: process.env.SECRET_KEY,
 
     verifyToken: function (req, res, next) {
         // check header or url parameters or post parameters for token
