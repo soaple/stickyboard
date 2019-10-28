@@ -8,7 +8,8 @@ const config = {
     entry: path.join(__dirname, 'src', 'index.js'),
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'app.bundle.js'
+        filename: 'app.bundle.js',
+        publicPath: 'http://localhost:8080/',
     },
     module: {
         rules: [{
@@ -45,7 +46,7 @@ const config = {
         hot: true,
         inline: true,
         compress: true,
-        public: 'localhost:8080',
+        port: 8080,
     },
     plugins: [
         new webpack.DllReferencePlugin({
@@ -58,7 +59,7 @@ const config = {
         }),
         new webpack.ProvidePlugin({
             'd3': 'd3'
-        })
+        }),
     ],
     node: {
         fs: 'empty'

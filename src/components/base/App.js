@@ -4,30 +4,72 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Loadable from 'react-loadable';
 
 // Layout
 import Layout from './Layout';
 import FullScreenLayout from './FullScreenLayout';
+// Loading
+import LoadingPage from 'components/page/LoadingPage';
 // Signing
-import SignInPage from 'components/page/SignInPage';
-import SignUpPage from 'components/page/SignUpPage';
+const SignInPage = Loadable({
+    loader: () => import('components/page/SignInPage'),
+    loading: LoadingPage,
+});
+const SignUpPage = Loadable({
+    loader: () => import('components/page/SignUpPage'),
+    loading: LoadingPage,
+});
 // Index
-import IntroPage from 'components/page/IntroPage';
+const IntroPage = Loadable({
+    loader: () => import('components/page/IntroPage'),
+    loading: LoadingPage,
+});
 // Component
-import ComponentChartsPage from 'components/page/ComponentChartsPage';
-import ComponentHighchartsPage from 'components/page/ComponentHighchartsPage';
-import ComponentTablePage from 'components/page/ComponentTablePage';
-import ComponentNumberPage from 'components/page/ComponentNumberPage';
-import ComponentWeatherPage from 'components/page/ComponentWeatherPage';
+const ComponentChartsPage= Loadable({
+    loader: () => import('components/page/ComponentChartsPage'),
+    loading: LoadingPage,
+});
+const ComponentHighchartsPage= Loadable({
+    loader: () => import('components/page/ComponentHighchartsPage'),
+    loading: LoadingPage,
+});
+const ComponentTablePage= Loadable({
+    loader: () => import('components/page/ComponentTablePage'),
+    loading: LoadingPage,
+});
+const ComponentNumberPage= Loadable({
+    loader: () => import('components/page/ComponentNumberPage'),
+    loading: LoadingPage,
+});
+const ComponentWeatherPage= Loadable({
+    loader: () => import('components/page/ComponentWeatherPage'),
+    loading: LoadingPage,
+});
 // Layering
-import LayeringMapPage from 'components/page/LayeringMapPage';
-import LayeringHeatMapPage from 'components/page/LayeringHeatMapPage';
+const LayeringMapPage= Loadable({
+    loader: () => import('components/page/LayeringMapPage'),
+    loading: LoadingPage,
+});
+const LayeringHeatMapPage= Loadable({
+    loader: () => import('components/page/LayeringHeatMapPage'),
+    loading: LoadingPage,
+});
 // Setting
-import SettingsPage from 'components/page/SettingsPage';
+const SettingsPage= Loadable({
+    loader: () => import('components/page/SettingsPage'),
+    loading: LoadingPage,
+});
 // Superuser
-import SuperuserPage from 'components/page/SuperuserPage';
+const SuperuserPage= Loadable({
+    loader: () => import('components/page/SuperuserPage'),
+    loading: LoadingPage,
+});
 // Not found
-import NotFoundPage from 'components/page/NotFoundPage';
+const NotFoundPage= Loadable({
+    loader: () => import('components/page/NotFoundPage'),
+    loading: LoadingPage,
+});
 
 const App = () => (
     <Router>
