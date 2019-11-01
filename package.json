@@ -4,6 +4,7 @@
     "private": true,
     "author": "soaple",
     "scripts": {
+        "start": "pm2-runtime start ecosystem.config.js --env production --name stickyboard",
         "build-lib-dev": "webpack --config webpack.lib.dev.js",
         "build-lib-prod": "webpack --config webpack.lib.prod.js",
         "watch-app-dev": "webpack-dev-server --progress --config=webpack.app.dev.js",
@@ -12,7 +13,6 @@
         "clean": "rimraf dist",
         "watch": "npm run clean && npm run build-lib-dev && npm run watch-app-dev",
         "build": "npm run clean && npm run build-lib-prod && npm run build-app-prod",
-        "start": "pm2-runtime start ecosystem.config.js --env production",
         "dev": "NODE_ENV=development NODE_PATH=src nodemon app.js",
         "production": "NODE_ENV=production NODE_PATH=src node app.js"
     },
