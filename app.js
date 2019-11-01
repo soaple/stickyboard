@@ -12,7 +12,7 @@ var cors = require('cors');
 var morgan = require('morgan');
 
 // Load .env configuration
-const envFilePath = process.env.NODE_ENV === 'production' ? '.env' : '.env.development';
+const envFilePath = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
 const envLoadResult = require('dotenv').config({ path: envFilePath });
 if (envLoadResult.error) {
     throw envLoadResult.error;
