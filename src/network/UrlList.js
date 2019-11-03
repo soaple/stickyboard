@@ -6,76 +6,76 @@ var UrlList = {
 
     // User
     getUserUrl: function () {
-        return BASE_URL + 'user/'
+        return `${BASE_URL}user/`
     },
 
     getUserSignUpUrl: function () {
-        return this.getUserUrl() + 'signup/'
+        return `${this.getUserUrl()}signup/`
     },
 
     getUserSignInUrl: function () {
-        return this.getUserUrl() + 'signin/'
+        return `${this.getUserUrl()}signin/`
     },
 
     getUserSignOutUrl: function () {
-        return this.getUserUrl() + 'signout/'
+        return `${this.getUserUrl()}signout/`
     },
 
     getUserIdUrl: function (userId) {
-        return this.getUserUrl() + userId + '/'
+        return `${this.getUserUrl()}${userId}/`
     },
 
     getUserPasswordUrl: function (userId) {
-        return this.getUserIdUrl(userId) + 'password/'
+        return `${this.getUserIdUrl(userId)}password/`
     },
 
     getUserGroupUrl: function (userId) {
-        return this.getUserIdUrl(userId) + 'group/'
+        return `${this.getUserIdUrl(userId)}group/`
     },
 
     getUserPermissionUrl: function (userId) {
-        return this.getUserIdUrl(userId) + 'permission/'
+        return `${this.getUserIdUrl(userId)}permission/`
     },
 
     // User Layout
     getUserLayoutUrl: function (userId) {
-        return this.getUserIdUrl(userId) + 'layout/'
+        return `${this.getUserIdUrl(userId)}layout/`
     },
 
     // Group
     getGroupUrl: function () {
-        return BASE_URL + 'group/'
+        return `${BASE_URL}group/`
     },
 
     getGroupIdUrl: function (groupId) {
-        return this.getGroupUrl() + groupId + '/'
+        return `${this.getGroupUrl()}${groupId}/`
     },
 
     // GroupUser
     getGroupUserUrl: function (groupId) {
-        return this.getGroupIdUrl(groupId) + 'user/'
+        return `${this.getGroupIdUrl(groupId)}user/`
     },
 
     getGroupUserIdUrl: function (groupId, userId) {
-        return this.getGroupUserUrl(groupId) + userId + '/'
+        return `${this.getGroupUserUrl(groupId)}${userId}/`
     },
 
     // GroupPermission
     getGroupPermissionUrl: function (groupId) {
-        return this.getGroupIdUrl(groupId) + 'permission/'
+        return `${this.getGroupIdUrl(groupId)}permission/`
     },
 
     getGroupPermissionIdUrl: function (groupId, permissionId) {
-        return this.getGroupPermissionUrl(groupId) + permissionId + '/'
+        return `${this.getGroupPermissionUrl(groupId)}${permissionId}/`
     },
 
     // Permission
     getPermissionUrl: function (groupId) {
-        return BASE_URL + 'permission/'
+        return `${BASE_URL}permission/`
     },
 
     getPermissionIdUrl: function (permissionId) {
-        return this.getPermissionUrl() + permissionId + '/'
+        return `${this.getPermissionUrl()}${permissionId}/`
     },
 
 }
