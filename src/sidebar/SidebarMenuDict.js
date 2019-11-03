@@ -1,9 +1,5 @@
 // src/sidebar/SidebarMenuDict.js
 
-import React from 'react';
-
-import { amber } from '@material-ui/core/colors';
-
 import Timeline from '@material-ui/icons/Timeline';
 import ViewList from '@material-ui/icons/ViewList';
 import AvTimer from '@material-ui/icons/AvTimer';
