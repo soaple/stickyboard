@@ -1,5 +1,7 @@
 // src/sidebar/SidebarMenuDict.js
 
+import React from 'react';
+
 import Timeline from '@material-ui/icons/Timeline';
 import ViewList from '@material-ui/icons/ViewList';
 import AvTimer from '@material-ui/icons/AvTimer';
