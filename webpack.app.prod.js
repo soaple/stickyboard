@@ -2,7 +2,7 @@
 
 const webpack = require('webpack')
 const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const config = {
     mode: 'production',
@@ -57,18 +57,20 @@ const config = {
     },
     optimization: {
         minimizer: [
-            new UglifyJsPlugin({
-                uglifyOptions: {
+            new TerserPlugin({
+                cache: true,
+                parallel: true,
+                terserOptions: {
                     warnings: false,
-                    parse: {},
-                    compress: {},
-                    mangle: true, // Note `mangle.properties` is `false` by default.
-                    output: null,
-                    toplevel: false,
-                    nameCache: null,
-                    ie8: false,
-                    keep_fnames: false,
+                    compress: {
+                        warnings: false,
+                        unused: true,
+                    },
+                    ecma: 6,
+                    mangle: true,
+                    unused: true,
                 },
+                sourceMap: true,
             }),
         ],
     },
