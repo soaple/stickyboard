@@ -60,7 +60,7 @@ const config = {
         hot: true,
         inline: true,
         compress: true,
-        port: 8080,
+        public: 'localhost:8080',
     },
     plugins: [
         new webpack.DllReferencePlugin({
