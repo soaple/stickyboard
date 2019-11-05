@@ -15,20 +15,20 @@ const SignUpPage = loadable(() => import('components/page/SignUpPage'));
 // Index
 const IntroPage = loadable(() => import('components/page/IntroPage'));
 // Component
-const ComponentChartsPage= Loadable(() => import('components/page/ComponentChartsPage'));
-const ComponentHighchartsPage= Loadable(() => import('components/page/ComponentHighchartsPage'));
-const ComponentTablePage= Loadable(() => import('components/page/ComponentTablePage'));
-const ComponentNumberPage= Loadable(() => import('components/page/ComponentNumberPage'));
-const ComponentWeatherPage= Loadable(() => import('components/page/ComponentWeatherPage'));
+const ComponentChartsPage= loadable(() => import('components/page/ComponentChartsPage'));
+const ComponentHighchartsPage= loadable(() => import('components/page/ComponentHighchartsPage'));
+const ComponentTablePage= loadable(() => import('components/page/ComponentTablePage'));
+const ComponentNumberPage= loadable(() => import('components/page/ComponentNumberPage'));
+const ComponentWeatherPage= loadable(() => import('components/page/ComponentWeatherPage'));
 // Layering
-const LayeringMapPage= Loadable(() => import('components/page/LayeringMapPage'));
-const LayeringHeatMapPage= Loadable(() => import('components/page/LayeringHeatMapPage'));
+const LayeringMapPage= loadable(() => import('components/page/LayeringMapPage'));
+const LayeringHeatMapPage= loadable(() => import('components/page/LayeringHeatMapPage'));
 // Setting
-const SettingsPage= Loadable(() => import('components/page/SettingsPage'));
+const SettingsPage= loadable(() => import('components/page/SettingsPage'));
 // Superuser
-const SuperuserPage= Loadable(() => import('components/page/SuperuserPage'));
+const SuperuserPage= loadable(() => import('components/page/SuperuserPage'));
 // Not found
-const NotFoundPage= Loadable(() => import('components/page/NotFoundPage'));
+const NotFoundPage= loadable(() => import('components/page/NotFoundPage'));
 
 const App = () => (
     <Router>
