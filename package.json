@@ -23,7 +23,7 @@
         "@material-ui/lab": "^4.0.0-alpha.29",
         "@stickyboard/core": "^0.1.6",
         "@stickyboard/highcharts": "^0.1.4",
-        "@stickyboard/number": "^0.1.2",
+        "@stickyboard/number": "^0.1.3",
         "@stickyboard/openlayers": "^0.1.1",
         "@stickyboard/openweathermap": "^0.1.0",
         "@stickyboard/recharts": "^0.1.8",

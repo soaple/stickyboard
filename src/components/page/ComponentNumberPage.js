@@ -90,168 +90,165 @@ class ComponentNumberPage extends React.Component {
 
     startGeneratingRandomData = () => {
         setInterval(() => {
-            let data = this.state.data;
+            let { data } = this.state;
             data.push({
                 index: data.length + 2,
                 time: new Date().getTime(),
                 value: Math.random() * 1000,
             });
 
-            // if (data.length > 7) {
-            //     data.splice(0, 1);
-            // }
+            if (data.length > 7) {
+                data.splice(0, 1);
+            }
 
             this.setState({
                 data: data.slice(),
-                // left : this.state.left - 45,
-                // right : this.state.right,
             });
         }, 1100);
     }
 
-    generateBlock = (block) => {
-        let data = this.state.data;
-
-        switch (block.i) {
-        case 'DAU':
-            return (
-                <Sticker key={block.i}>
-                    <NumberWidget
-                        icon={<PersonIcon />}
-                        backgroundColor={StickyBoardColors.colorArray[0]}
-                        defaultColor={StickyBoardColors.colorLight}
-                        valueColor={StickyBoardColors.colorLight}
-                        title={'Daily Active User'}
-                        value={128}
-                        unit={''} />
-                </Sticker>
-            )
-        case 'WAU':
-            return (
-                <Sticker key={block.i}>
-                    <NumberWidget
-                        icon={<PersonIcon />}
-                        backgroundColor={StickyBoardColors.colorArray[1]}
-                        defaultColor={StickyBoardColors.colorLight}
-                        valueColor={StickyBoardColors.colorLight}
-                        title={'Weekly Active User'}
-                        value={7089}
-                        unit={''} />
-                </Sticker>
-            )
-        case 'MAU':
-            return (
-                <Sticker key={block.i}>
-                    <NumberWidget
-                        icon={<PersonIcon />}
-                        backgroundColor={StickyBoardColors.colorArray[2]}
-                        defaultColor={StickyBoardColors.colorDark}
-                        valueColor={StickyBoardColors.colorDark}
-                        title={'Monthly Active User'}
-                        value={143120}
-                        unit={''} />
-                </Sticker>
-            )
-        case 'ARPU':
-            return (
-                <Sticker key={block.i}>
-                    <NumberWidget
-                        icon={<PersonIcon />}
-                        backgroundColor={StickyBoardColors.colorArray[3]}
-                        defaultColor={StickyBoardColors.colorLight}
-                        valueColor={StickyBoardColors.colorLight}
-                        title={'ARPU'}
-                        value={258}
-                        unit={'$'} />
-                </Sticker>
-            )
-        case 'DAU2':
-            return (
-                <Sticker key={block.i}>
-                    <NumberWithChartWidget
-                        icon={<PersonIcon />}
-                        backgroundColor={StickyBoardColors.colorArray[4]}
-                        defaultColor={StickyBoardColors.colorDark}
-                        valueColor={StickyBoardColors.colorDark}
-                        title={'Daily Active User'}
-                        unit={''}
-                        data={data} />
-                </Sticker>
-            )
-        case 'WAU2':
-            return (
-                <Sticker key={block.i}>
-                    <NumberWithChartWidget
-                        icon={<PersonIcon />}
-                        backgroundColor={StickyBoardColors.colorArray[5]}
-                        defaultColor={StickyBoardColors.colorLight}
-                        valueColor={StickyBoardColors.colorLight}
-                        title={'Weekly Active User'}
-                        unit={''}
-                        data={data} />
-                </Sticker>
-            )
-        case 'MAU2':
-            return (
-                <Sticker key={block.i}>
-                    <NumberWithChartWidget
-                        icon={<PersonIcon />}
-                        backgroundColor={StickyBoardColors.colorArray[6]}
-                        defaultColor={StickyBoardColors.colorLight}
-                        valueColor={StickyBoardColors.colorLight}
-                        title={'Monthly Active User'}
-                        unit={''}
-                        data={data} />
-                </Sticker>
-            )
-        case 'ARPU2':
-            return (
-                <Sticker key={block.i}>
-                    <NumberWithChartWidget
-                        icon={<PersonIcon />}
-                        backgroundColor={StickyBoardColors.colorArray[7]}
-                        defaultColor={StickyBoardColors.colorLight}
-                        valueColor={StickyBoardColors.colorLight}
-                        title={'ARPU'}
-                        unit={'$'}
-                        data={data} />
-                </Sticker>
-            )
-        case 'DAU3':
-            return (
-                <Sticker key={block.i}>
-                    <NumberWithChartWidget
-                        icon={<PersonIcon />}
-                        backgroundColor={StickyBoardColors.colorArray[8]}
-                        defaultColor={StickyBoardColors.colorLight}
-                        valueColor={StickyBoardColors.colorLight}
-                        title={'Daily Active User'}
-                        unit={''}
-                        data={data} />
-                </Sticker>
-            )
-        case 'WAU3':
-            return (
-                <Sticker key={block.i}>
-                    <NumberWithChartWidget
-                        icon={<PersonIcon />}
-                        backgroundColor={StickyBoardColors.colorArray[9]}
-                        defaultColor={StickyBoardColors.colorLight}
-                        valueColor={StickyBoardColors.colorLight}
-                        title={'Weekly Active User'}
-                        unit={''}
-                        data={data} />
-                </Sticker>
-            )
-        }
-    }
-
     render() {
+        const { data } = this.state;
         const { classes, theme } = this.props;
+
+        const generateBlock = (block) => {
+            switch (block.i) {
+            case 'DAU':
+                return (
+                    <Sticker key={block.i}>
+                        <NumberWidget
+                            icon={<PersonIcon />}
+                            backgroundColor={StickyBoardColors.colorArray[0]}
+                            defaultColor={StickyBoardColors.colorLight}
+                            valueColor={StickyBoardColors.colorLight}
+                            title={'Daily Active User'}
+                            value={128}
+                            unit={''} />
+                    </Sticker>
+                )
+            case 'WAU':
+                return (
+                    <Sticker key={block.i}>
+                        <NumberWidget
+                            icon={<PersonIcon />}
+                            backgroundColor={StickyBoardColors.colorArray[1]}
+                            defaultColor={StickyBoardColors.colorLight}
+                            valueColor={StickyBoardColors.colorLight}
+                            title={'Weekly Active User'}
+                            value={7089}
+                            unit={''} />
+                    </Sticker>
+                )
+            case 'MAU':
+                return (
+                    <Sticker key={block.i}>
+                        <NumberWidget
+                            icon={<PersonIcon />}
+                            backgroundColor={StickyBoardColors.colorArray[2]}
+                            defaultColor={StickyBoardColors.colorDark}
+                            valueColor={StickyBoardColors.colorDark}
+                            title={'Monthly Active User'}
+                            value={143120}
+                            unit={''} />
+                    </Sticker>
+                )
+            case 'ARPU':
+                return (
+                    <Sticker key={block.i}>
+                        <NumberWidget
+                            icon={<PersonIcon />}
+                            backgroundColor={StickyBoardColors.colorArray[3]}
+                            defaultColor={StickyBoardColors.colorLight}
+                            valueColor={StickyBoardColors.colorLight}
+                            title={'ARPU'}
+                            value={258}
+                            unit={'$'} />
+                    </Sticker>
+                )
+            case 'DAU2':
+                return (
+                    <Sticker key={block.i}>
+                        <NumberWithChartWidget
+                            icon={<PersonIcon />}
+                            backgroundColor={StickyBoardColors.colorArray[4]}
+                            defaultColor={StickyBoardColors.colorDark}
+                            valueColor={StickyBoardColors.colorDark}
+                            title={'Daily Active User'}
+                            unit={''}
+                            data={data} />
+                    </Sticker>
+                )
+            case 'WAU2':
+                return (
+                    <Sticker key={block.i}>
+                        <NumberWithChartWidget
+                            icon={<PersonIcon />}
+                            backgroundColor={StickyBoardColors.colorArray[5]}
+                            defaultColor={StickyBoardColors.colorLight}
+                            valueColor={StickyBoardColors.colorLight}
+                            title={'Weekly Active User'}
+                            unit={''}
+                            data={data} />
+                    </Sticker>
+                )
+            case 'MAU2':
+                return (
+                    <Sticker key={block.i}>
+                        <NumberWithChartWidget
+                            icon={<PersonIcon />}
+                            backgroundColor={StickyBoardColors.colorArray[6]}
+                            defaultColor={StickyBoardColors.colorLight}
+                            valueColor={StickyBoardColors.colorLight}
+                            title={'Monthly Active User'}
+                            unit={''}
+                            data={data} />
+                    </Sticker>
+                )
+            case 'ARPU2':
+                return (
+                    <Sticker key={block.i}>
+                        <NumberWithChartWidget
+                            icon={<PersonIcon />}
+                            backgroundColor={StickyBoardColors.colorArray[7]}
+                            defaultColor={StickyBoardColors.colorLight}
+                            valueColor={StickyBoardColors.colorLight}
+                            title={'ARPU'}
+                            unit={'$'}
+                            data={data} />
+                    </Sticker>
+                )
+            case 'DAU3':
+                return (
+                    <Sticker key={block.i}>
+                        <NumberWithChartWidget
+                            icon={<PersonIcon />}
+                            backgroundColor={StickyBoardColors.colorArray[8]}
+                            defaultColor={StickyBoardColors.colorLight}
+                            valueColor={StickyBoardColors.colorLight}
+                            title={'Daily Active User'}
+                            unit={''}
+                            data={data} />
+                    </Sticker>
+                )
+            case 'WAU3':
+                return (
+                    <Sticker key={block.i}>
+                        <NumberWithChartWidget
+                            icon={<PersonIcon />}
+                            backgroundColor={StickyBoardColors.colorArray[9]}
+                            defaultColor={StickyBoardColors.colorLight}
+                            valueColor={StickyBoardColors.colorLight}
+                            title={'Weekly Active User'}
+                            unit={''}
+                            data={data} />
+                    </Sticker>
+                )
+            }
+        }
 
         return (
             <PageBaseContainer
-                generateBlock={this.generateBlock}
+                generateBlock={generateBlock}
                 initialLayout={initialLayout}
                 initialBlocks={initialBlocks} />
         )
