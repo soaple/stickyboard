@@ -16,15 +16,23 @@ const styles = theme => ({
     },
 });
 
+// const initialLayout = {
+//     lg: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":6,"y":0,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable2","x":4,"y":7,"w":4,"h":7},{"i":"RealtimeMessageTable","x":8,"y":7,"w":4,"h":7}],
+//     md: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":6,"y":0,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable2","x":4,"y":7,"w":4,"h":7},{"i":"RealtimeMessageTable","x":8,"y":7,"w":4,"h":7}],
+//     sm: [{"i":"Table1","x":0,"y":0,"w":8,"h":7},{"i":"Table2","x":0,"y":7,"w":8,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":8,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":4,"h":6},{"i":"RealtimeMessageTable","x":4,"y":20,"w":4,"h":6}],
+//     xs: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":0,"y":7,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":6,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":6,"h":6},{"i":"RealtimeMessageTable","x":0,"y":26,"w":6,"h":6}],
+//     xxs: [{"i":"Table1","x":0,"y":0,"w":4,"h":7},{"i":"Table2","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":4,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":4,"h":6},{"i":"RealtimeMessageTable","x":0,"y":26,"w":4,"h":6}],
+// };
 const initialLayout = {
-    lg: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":6,"y":0,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable2","x":4,"y":7,"w":4,"h":7},{"i":"RealtimeMessageTable","x":8,"y":7,"w":4,"h":7}],
-    md: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":6,"y":0,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable2","x":4,"y":7,"w":4,"h":7},{"i":"RealtimeMessageTable","x":8,"y":7,"w":4,"h":7}],
-    sm: [{"i":"Table1","x":0,"y":0,"w":8,"h":7},{"i":"Table2","x":0,"y":7,"w":8,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":8,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":4,"h":6},{"i":"RealtimeMessageTable","x":4,"y":20,"w":4,"h":6}],
-    xs: [{"i":"Table1","x":0,"y":0,"w":6,"h":7},{"i":"Table2","x":0,"y":7,"w":6,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":6,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":6,"h":6},{"i":"RealtimeMessageTable","x":0,"y":26,"w":6,"h":6}],
-    xxs: [{"i":"Table1","x":0,"y":0,"w":4,"h":7},{"i":"Table2","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":4,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":4,"h":6},{"i":"RealtimeMessageTable","x":0,"y":26,"w":4,"h":6}],
+    lg: [{"i":"Table1","x":0,"y":0,"w":6,"h":14},{"i":"Table2","x":6,"y":0,"w":6,"h":14}],
+    md: [{"i":"Table1","x":0,"y":0,"w":6,"h":14},{"i":"Table2","x":6,"y":0,"w":6,"h":14}],
+    sm: [{"i":"Table1","x":0,"y":0,"w":8,"h":14},{"i":"Table2","x":0,"y":7,"w":8,"h":14}],
+    xs: [{"i":"Table1","x":0,"y":0,"w":6,"h":14},{"i":"Table2","x":0,"y":7,"w":6,"h":14}],
+    xxs: [{"i":"Table1","x":0,"y":0,"w":4,"h":14},{"i":"Table2","x":0,"y":7,"w":4,"h":14}],
 };
 
-const initialBlocks = [{"i":"Table1"},{"i":"Table2"},{"i":"RealtimeTable1"},{"i":"RealtimeTable2"},{"i":"RealtimeMessageTable"}];
+// const initialBlocks = [{"i":"Table1"},{"i":"Table2"},{"i":"RealtimeTable1"},{"i":"RealtimeTable2"},{"i":"RealtimeMessageTable"}];
+const initialBlocks = [{"i":"Table1"},{"i":"Table2"}];
 
 class ComponentTablePage extends React.Component {
     constructor (props) {
@@ -192,7 +200,7 @@ class ComponentTablePage extends React.Component {
     }
 
     componentDidMount () {
-        this.startGeneratingRealtimeData();
+        // this.startGeneratingRealtimeData();
     }
 
     startGeneratingRealtimeData = () => {
@@ -202,11 +210,11 @@ class ComponentTablePage extends React.Component {
             let recentOrders = this.state.recentOrders;
             let randomIndex = Math.floor(Math.random() * orders.length);
 
-            // recentOrders.unshift(orders[randomIndex]);
-            recentOrders.push(orders[randomIndex]);
-            // if (recentOrders.length > 10) {
-            //     recentOrders = recentOrders.slice(1, 10);
-            // }
+            recentOrders.unshift(orders[randomIndex]);
+            // recentOrders.push(orders[randomIndex]);
+            if (recentOrders.length > 10) {
+                recentOrders.pop();
+            }
 
             this.setState({
                 recentOrders: recentOrders
@@ -219,11 +227,11 @@ class ComponentTablePage extends React.Component {
             let recentUsers = this.state.recentUsers;
             let randomIndex = Math.floor(Math.random() * users.length);
 
-            // recentOrders.unshift(orders[randomIndex]);
-            recentUsers.push(users[randomIndex]);
-            // if (recentUsers.length > 10) {
-            //     recentUsers = recentUsers.slice(1, 10);
-            // }
+            recentUsers.unshift(users[randomIndex]);
+            // recentUsers.push(users[randomIndex]);
+            if (recentUsers.length > 10) {
+                recentUsers.pop();
+            }
 
             this.setState({
                 recentUsers: recentUsers
@@ -236,11 +244,10 @@ class ComponentTablePage extends React.Component {
             let recentMessages = this.state.recentMessages;
             let randomIndex = Math.floor(Math.random() * messages.length);
 
-            // recentOrders.unshift(orders[randomIndex]);
             recentMessages.push(messages[randomIndex]);
-            // if (recentMessages.length > 10) {
-            //     recentMessages = recentMessages.slice(1, 10);
-            // }
+            if (recentMessages.length > 10) {
+                recentMessages.splice(9, 1);
+            }
 
             this.setState({
                 recentMessages: recentMessages
@@ -259,70 +266,70 @@ class ComponentTablePage extends React.Component {
         }
     }
 
-    generateBlock = (block) => {
-        switch (block.i) {
-        case 'Table1':
-            return (
-                <Sticker
-                    key={block.i}>
-                    <TableWithPagination
-                        title={'Orders'}
-                        data={this.state.orders}
-                        rowsPerPage={10} />
-                </Sticker>
-            )
-        case 'Table2':
-            return (
-                <Sticker
-                    key={block.i}>
-                    <TableWithPagination
-                        title={'Users'}
-                        data={this.state.users}
-                        rowsPerPage={10} />
-                </Sticker>
-            )
-        case 'RealtimeTable1':
-            return (
-                <Sticker
-                    key={block.i}>
-                    <RealtimeTable
-                        title={'Real-time Orders'}
-                        data={this.state.recentOrders}
-                        dataKey={'recentOrders'}
-                        onAnimationEnd={this.onAnimationEnd} />
-                </Sticker>
-            )
-        case 'RealtimeTable2':
-            return (
-                <Sticker
-                    key={block.i}>
-                    <RealtimeTable
-                        title={'Real-time Users'}
-                        data={this.state.recentUsers}
-                        dataKey={'recentUsers'}
-                        onAnimationEnd={this.onAnimationEnd} />
-                </Sticker>
-            )
-        case 'RealtimeMessageTable':
-            return (
-                <Sticker
-                    key={block.i}>
-                    <RealtimeMessageTable
-                        title={'Real-time Messages'}
-                        data={this.state.recentMessages}
-                        dataKey={'recentMessages'}
-                        onAnimationEnd={this.onAnimationEnd} />
-                </Sticker>
-            )
-        }
-    }
-
     render() {
         const { classes, theme } = this.props;
 
+        const generateBlock = (block) => {
+            switch (block.i) {
+            case 'Table1':
+                return (
+                    <Sticker
+                        key={block.i}>
+                        <TableWithPagination
+                            title={'Orders'}
+                            data={this.state.orders}
+                            rowsPerPage={10} />
+                    </Sticker>
+                )
+            case 'Table2':
+                return (
+                    <Sticker
+                        key={block.i}>
+                        <TableWithPagination
+                            title={'Users'}
+                            data={this.state.users}
+                            rowsPerPage={10} />
+                    </Sticker>
+                )
+            case 'RealtimeTable1':
+                return (
+                    <Sticker
+                        key={block.i}>
+                        <RealtimeTable
+                            title={'Real-time Orders'}
+                            data={this.state.recentOrders}
+                            dataKey={'recentOrders'}
+                            onAnimationEnd={this.onAnimationEnd} />
+                    </Sticker>
+                )
+            case 'RealtimeTable2':
+                return (
+                    <Sticker
+                        key={block.i}>
+                        <RealtimeTable
+                            title={'Real-time Users'}
+                            data={this.state.recentUsers}
+                            dataKey={'recentUsers'}
+                            onAnimationEnd={this.onAnimationEnd} />
+                    </Sticker>
+                )
+            case 'RealtimeMessageTable':
+                return (
+                    <Sticker
+                        key={block.i}>
+                        <RealtimeMessageTable
+                            title={'Real-time Messages'}
+                            data={this.state.recentMessages}
+                            dataKey={'recentMessages'}
+                            onAnimationEnd={this.onAnimationEnd} />
+                    </Sticker>
+                )
+            }
+        };
+
         return (
             <PageBaseContainer
-                generateBlock={this.generateBlock}
+                generateBlock={generateBlock}
                 initialLayout={initialLayout}
                 initialBlocks={initialBlocks} />
         )
