@@ -4,7 +4,7 @@
 
 <p align="center">
     <a target="_blank" rel="noopener noreferrer" href="https://youtu.be/KIMlB9vfslM">
-        <img width="218" height="259" src="https://github.com/soaple/stickyboard/blob/master/src/static/image/github_youtube_thumbnail.png?raw=true">
+        <img width="360" height="225" src="https://github.com/soaple/stickyboard/blob/master/src/static/image/github_youtube_thumbnail.png?raw=true">
     </a>
 </p>
 
