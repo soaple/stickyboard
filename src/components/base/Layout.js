@@ -24,9 +24,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 import Divider from '@material-ui/core/Divider';
 
 import MenuIcon from '@material-ui/icons/Menu';
+import ColorLens from '@material-ui/icons/ColorLens';
 import Lock from '@material-ui/icons/Lock';
 import Person from '@material-ui/icons/Person';
 import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew';
@@ -43,8 +47,9 @@ import CookieManager from 'network/CookieManager';
 
 import DrawerMenu from './DrawerMenu';
 
-import MuiTheme from '../../theme/MuiTheme';
-import StickyBoardColors from '../../theme/StickyBoardColors';
+import MuiTheme from 'theme/MuiTheme';
+import StickyBoardThemes from 'theme/StickyBoardThemes';
+import StickyBoardColors from 'theme/StickyBoardColors';
 
 import Const from '../../constants/Const';
 
@@ -257,7 +262,11 @@ class Layout extends React.Component {
             // Drawer
             menuDrawerOpen: false,
             notiDrawerOpen: false,
-            anchorEl: null,
+            // Theme menu
+            selectedThemeIndex: 0,
+            themeMenuAnchorElem: null,
+            // User menu
+            userMenuAnchorElem: null,
             // Auth
             auth: CookieManager.getCookie('userId') !== undefined,
             isSuperuser: CookieManager.getCookie('isSuperuser') === 'true',
@@ -280,16 +289,27 @@ class Layout extends React.Component {
         this.setState({ notiDrawerOpen: !this.state.notiDrawerOpen });
     }
 
-    handleChange = (event, checked) => {
-        this.setState({ auth: checked });
+    openThemeMenu = (event) => {
+        this.setState({ themeMenuAnchorElem: event.currentTarget });
     }
 
-    handleMenu = (event) => {
-        this.setState({ anchorEl: event.currentTarget });
+    closeThemeMenu = () => {
+        this.setState({ themeMenuAnchorElem: null });
     }
 
-    handleClose = () => {
-        this.setState({ anchorEl: null });
+    onThemeChange = (event, index) => {
+        this.setState({
+            selectedThemeIndex: index,
+            themeMenuAnchorElem: null
+        });
+    }
+
+    openUserMenu = (event) => {
+        this.setState({ userMenuAnchorElem: event.currentTarget });
+    }
+
+    closeUserMenu = () => {
+        this.setState({ userMenuAnchorElem: null });
     }
 
     onSignInClicked = () => {
@@ -335,8 +355,16 @@ class Layout extends React.Component {
 
     render () {
         const { classes, theme } = this.props;
-        const { auth, isSuperuser, anchorEl } = this.state;
-        const open = Boolean(anchorEl);
+        const {
+            selectedThemeIndex,
+            themeMenuAnchorElem,
+            userMenuAnchorElem,
+            auth,
+            isSuperuser,
+        } = this.state;
+
+        const isThemeMenuOpened = Boolean(themeMenuAnchorElem);
+        const isUserMenuOpened = Boolean(userMenuAnchorElem);
 
         const childrenWithExtraProp = React.Children.map(this.props.children, child => {
             return React.cloneElement(child, {
@@ -403,6 +431,7 @@ class Layout extends React.Component {
                                     className={classes.appBarTitleMargin}>
                                 </Typography>
 
+                                {/* GitHub Star */}
                                 <Hidden xsDown>
                                     <iframe
                                         src='https://ghbtns.com/github-btn.html?user=soaple&repo=stickyboard&type=star&count=true&size=large'
@@ -412,12 +441,49 @@ class Layout extends React.Component {
                                         height='30px' />
                                 </Hidden>
 
+                                {/* Theme select menu */}
+                                <IconButton
+                                    className={classes.avatar}
+                                    aria-owns={isThemeMenuOpened ? 'menu-appbar' : null}
+                                    aria-haspopup='true'
+                                    onClick={this.openThemeMenu}
+                                    color='inherit'>
+                                    <ColorLens />
+                                </IconButton>
+
+                                <Menu
+                                    styles={{width: 500}}
+                                    id='menu-appbar'
+                                    anchorEl={themeMenuAnchorElem}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={isThemeMenuOpened}
+                                    onClose={this.closeThemeMenu}>
+                                    {Object.keys(StickyBoardThemes).map((themeKey, index) => {
+                                        return (
+                                            <MenuItem
+                                                key={themeKey}
+                                                selected={index === selectedThemeIndex}
+                                                onClick={event => this.onThemeChange(event, index)}>
+                                                {themeKey}
+                                            </MenuItem>
+                                        );
+                                    })}
+                                </Menu>
+
+                                {/* User menu */}
                                 {(auth || isGuestModeAvailable) &&
                                     <IconButton
                                         className={classes.avatar}
-                                        aria-owns={open ? 'menu-appbar' : null}
+                                        aria-owns={isUserMenuOpened ? 'menu-appbar' : null}
                                         aria-haspopup='true'
-                                        onClick={this.handleMenu}
+                                        onClick={this.openUserMenu}
                                         color='inherit'>
                                         <AccountCircle />
                                     </IconButton>}
@@ -427,7 +493,7 @@ class Layout extends React.Component {
                                         <Menu
                                             styles={{width: 500}}
                                             id='menu-appbar'
-                                            anchorEl={anchorEl}
+                                            anchorEl={userMenuAnchorElem}
                                             anchorOrigin={{
                                                 vertical: 'top',
                                                 horizontal: 'right',
@@ -436,8 +502,8 @@ class Layout extends React.Component {
                                                 vertical: 'top',
                                                 horizontal: 'right',
                                             }}
-                                            open={open}
-                                            onClose={this.handleClose}>
+                                            open={isUserMenuOpened}
+                                            onClose={this.closeUserMenu}>
 
                                             <MenuItem onClick={this.onSignInClicked}>
                                                 <ListItemIcon>
@@ -454,7 +520,7 @@ class Layout extends React.Component {
                                         <Menu
                                             styles={{width: 500}}
                                             id='menu-appbar'
-                                            anchorEl={anchorEl}
+                                            anchorEl={userMenuAnchorElem}
                                             anchorOrigin={{
                                                 vertical: 'top',
                                                 horizontal: 'right',
@@ -463,8 +529,8 @@ class Layout extends React.Component {
                                                 vertical: 'top',
                                                 horizontal: 'right',
                                             }}
-                                            open={open}
-                                            onClose={this.handleClose}>
+                                            open={isUserMenuOpened}
+                                            onClose={this.closeUserMenu}>
 
                                             {/* User Menus */}
                                             <MenuItem onClick={this.onSettingsClicked}>
