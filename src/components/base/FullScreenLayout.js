@@ -3,12 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { blueGrey } from '@material-ui/core/colors';
-
-import MuiTheme from '../../theme/MuiTheme';
-import StickyBoardColors from '../../theme/StickyBoardColors';
 
 const styles = theme => ({
     root: {
@@ -17,7 +14,7 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         overflow: 'auto',
-        background: StickyBoardColors.contentBackground,
+        background: theme.colors.contentBackground,
     },
 });
 
@@ -26,12 +23,9 @@ class FullScreenLayout extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <MuiThemeProvider theme={MuiTheme}>
-                {/* Root */}
-                <div className={classes.root}>
-                    {this.props.children}
-                </div>
-            </MuiThemeProvider>
+            <div className={classes.root}>
+                {this.props.children}
+            </div>
         )
     }
 }

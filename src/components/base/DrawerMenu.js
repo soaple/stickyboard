@@ -19,8 +19,6 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import SidebarMenuDict from '../../sidebar/SidebarMenuDict';
 import SidebarCategoryName from '../../sidebar/SidebarCategoryName';
 
-import StickyBoardColors from '../../theme/StickyBoardColors';
-
 import Const from '../../constants/Const';
 
 const styles = theme => ({
@@ -32,7 +30,7 @@ const styles = theme => ({
         maxWidth: 360,
     },
     menuCategory: {
-        color: StickyBoardColors.colorMediumDark,
+        color: theme.colors.drawerMenuCategoryText,
         fontWeight: 400,
         fontSize: 12,
     },
@@ -41,27 +39,22 @@ const styles = theme => ({
     },
     menuItemSelected: {
         marginTop: 0,
-        background: StickyBoardColors.drawerMenuSelectedBackground,
-        borderRight: '10px solid ' + StickyBoardColors.primaryColor,
+        background: theme.colors.drawerMenuSelectedBackground,
+        borderRight: '10px solid ' + theme.colors.drawerMenuSelectedPin,
     },
     menuItemIcon: {
-        color: StickyBoardColors.colorDark,
+        color: theme.colors.colorDark,
     },
     menuItemText: {
-        color: StickyBoardColors.colorDark,
+        color: theme.colors.colorDark,
         fontWeight: 500,
         fontSize: 14,
     },
     menuItemTextSelected: {
-        color: StickyBoardColors.colorDark,
+        color: theme.colors.colorDark,
         fontWeight: 700,
         fontSize: 14,
     },
-    bottomArea: {
-        // height: 160,
-        height: 0,
-        backgroundColor: StickyBoardColors.drawerContainerBackground,
-    }
 });
 
 class DrawerMenu extends React.Component {
@@ -163,10 +156,6 @@ class DrawerMenu extends React.Component {
                         </div>
                     )
                 })}
-
-                {/* Bottom area */}
-                <div className={classes.bottomArea}>
-                </div>
             </div>
         )
     }

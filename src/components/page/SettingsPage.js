@@ -21,8 +21,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 import sha256 from 'sha256'
 
-import StickyBoardColors from 'theme/StickyBoardColors';
-
 const styles = theme => ({
     root: {
         padding: theme.spacing(2),
@@ -34,10 +32,7 @@ const styles = theme => ({
     accountIconContainer: {
         marginTop: theme.spacing(2),
         textAlign: 'center',
-        color: StickyBoardColors.colorDark,
-        // '&:hover': {
-        //     color: StickyBoardColors.colorMediumDark,
-        // },
+        color: theme.colors.colorDark,
     },
     accountIcon: {
         fontSize: 112,
@@ -52,13 +47,9 @@ const styles = theme => ({
         marginTop: theme.spacing(4),
         width: '100%',
         height: '48px',
-        backgroundColor: StickyBoardColors.buttonColor01,
-        '&:hover': {
-            backgroundColor: StickyBoardColors.buttonColor01Hover,
-        },
     },
     chip: {
-        backgroundColor: StickyBoardColors.colorMediumDark,
+        backgroundColor: theme.colors.colorDark,
     },
 });
 
@@ -85,8 +76,8 @@ class SettingsPage extends React.Component {
     }
 
     componentDidMount () {
-        ApiManager.readUser(CookieManager.getCookie('adminId'), this.readUserCallback)
-        ApiManager.readUserGroup(CookieManager.getCookie('adminId'), this.readUserGroupCallback)
+        ApiManager.readUser(CookieManager.getCookie('userId'), this.readUserCallback)
+        ApiManager.readUserGroup(CookieManager.getCookie('userId'), this.readUserGroupCallback)
     }
 
     onChangeValue = (key, value) => {
@@ -214,9 +205,9 @@ class SettingsPage extends React.Component {
 
                             <Button
                                 className={classes.button}
-                                variant="raised"
-                                size="small"
-                                color="primary"
+                                variant='contained'
+                                size='small'
+                                color='primary'
                                 onClick={this.onUpdateBtnClicked}>
                                 {'Update Profile'}
                             </Button>
@@ -244,9 +235,9 @@ class SettingsPage extends React.Component {
                                 fullWidth={true}/>
                             <Button
                                 className={classes.button}
-                                variant="raised"
-                                size="small"
-                                color="primary"
+                                variant='contained'
+                                size='small'
+                                color='secondary'
                                 onClick={this.onChangePasswordBtnClicked}>
                                 {'Change Password'}
                             </Button>
@@ -257,13 +248,13 @@ class SettingsPage extends React.Component {
                     <Grid item xs={12} md={6}>
                         <Paper className={classes.paper}>
                             <h4>Permissions</h4>
-                            <div className="panel panel-default">
-                                <div className="panel-heading">
-                                    <h5 className="panel-title">{
+                            <div className='panel panel-default'>
+                                <div className='panel-heading'>
+                                    <h5 className='panel-title'>{
                                         this.state.group ? 'Group name: ' + this.state.group.name : 'No group'}
                                     </h5>
                                 </div>
-                                <div className="panel-body">
+                                <div className='panel-body'>
                                     <div>
                                         {this.state.groupPermissions.map((permission, index) => (
                                              <Chip

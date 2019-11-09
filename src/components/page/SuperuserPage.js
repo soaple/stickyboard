@@ -14,8 +14,6 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 
 import { TableWithPagination } from '@stickyboard/table';
 
-import StickyBoardColors from 'theme/StickyBoardColors';
-
 import Const from 'constants/Const';
 
 const styles = theme => ({

@@ -13,7 +13,6 @@ import { LineChart, BarChart, ComposedChart,
 } from '@stickyboard/recharts';
 
 import PageBaseContainer from 'redux/containers/PageBaseContainer';
-import StickyBoardColors from 'theme/StickyBoardColors';
 
 const styles = theme => ({
     root: {
@@ -260,7 +259,8 @@ class ComponentChartsPage extends React.Component {
     }
 
     generateBlock = (block) => {
-        let COLORS = StickyBoardColors.colorArray;
+        const { theme } = this.props;
+        let colors = theme.colors.colorArray;
 
         switch (block.i) {
         case 'LineChart':
@@ -272,7 +272,7 @@ class ComponentChartsPage extends React.Component {
                         lineType={'linear'}
                         lineDataKey={'visitors'}
                         lineName={'Visitors'}
-                        lineColor={COLORS[0]} />
+                        lineColor={colors[0]} />
                 </Sticker>
             )
         case 'BarChart':
@@ -283,7 +283,7 @@ class ComponentChartsPage extends React.Component {
                         xAxisDataKey={'time'}
                         barDataKey={'visitors'}
                         barName={'Visitors'}
-                        barColor={COLORS[1]} />
+                        barColor={colors[1]} />
                 </Sticker>
             )
         case 'ComposedChart':
@@ -294,11 +294,11 @@ class ComponentChartsPage extends React.Component {
                         xAxisDataKey={'time'}
                         barDataKey={'visitors'}
                         barName={'Visitors'}
-                        barColor={COLORS[2]}
+                        barColor={colors[2]}
                         lineType={'linear'}
                         lineDataKey={'visitors'}
                         lineName={'Visitors'}
-                        lineColor={COLORS[3]} />
+                        lineColor={colors[3]} />
                 </Sticker>
             )
         case 'PieChart':
@@ -306,7 +306,7 @@ class ComponentChartsPage extends React.Component {
                 <Sticker key={block.i}>
                     <PieChart
                         data={pieChartData}
-                        colorArray={COLORS} />
+                        colorArray={colors} />
                 </Sticker>
             )
         case 'RadarChart':
@@ -316,8 +316,8 @@ class ComponentChartsPage extends React.Component {
                         data={radarChartData}
                         polarAngleAxisKey={'subject'}
                         radarAttrArray={[
-                            { name: 'Mike', dataKey: 'A', stroke: '#ffed00', fill: COLORS[4] },
-                            { name: 'Lily', dataKey: 'B', stroke: '#66d522', fill: COLORS[5] },
+                            { name: 'Mike', dataKey: 'A', stroke: '#ffed00', fill: colors[4] },
+                            { name: 'Lily', dataKey: 'B', stroke: '#66d522', fill: colors[5] },
                         ]} />
                 </Sticker>
             )
@@ -328,9 +328,9 @@ class ComponentChartsPage extends React.Component {
                         data={areaChartData}
                         xAxisDataKey={'month'}
                         areaAttrArray={[
-                            { type: 'monotone', dataKey: 'a', stackId: '1', stroke: COLORS[7], fill: COLORS[7] },
-                            { type: 'monotone', dataKey: 'b', stackId: '1', stroke: COLORS[9], fill: COLORS[9] },
-                            { type: 'monotone', dataKey: 'c', stackId: '1', stroke: COLORS[3], fill: COLORS[3] },
+                            { type: 'monotone', dataKey: 'a', stackId: '1', stroke: colors[7], fill: colors[7] },
+                            { type: 'monotone', dataKey: 'b', stackId: '1', stroke: colors[9], fill: colors[9] },
+                            { type: 'monotone', dataKey: 'c', stackId: '1', stroke: colors[3], fill: colors[3] },
                         ]} />
                 </Sticker>
             )
@@ -342,7 +342,7 @@ class ComponentChartsPage extends React.Component {
                         xAxisAttr={{ dataKey: 'tall', type: 'number', name: 'tall', unit: 'cm', domain: ['auto', 'auto'] }}
                         yAxisAttr={{ dataKey: 'weight', type: 'number', name: 'weight', unit: 'kg', domain: ['auto', 'auto'] }}
                         scatterName={'tall and weight'}
-                        scatterColor={COLORS[1]} />
+                        scatterColor={colors[1]} />
                 </Sticker>
             )
         case 'TreeMap':
@@ -355,7 +355,7 @@ class ComponentChartsPage extends React.Component {
                         ratio={4/3}
                         stroke="#fff"
                         fill="#787878"
-                        colorArray={COLORS} />
+                        colorArray={colors} />
                 </Sticker>
             )
         case 'TinyChart':
@@ -368,21 +368,21 @@ class ComponentChartsPage extends React.Component {
                                 lineType={'monotone'}
                                 lineDataKey={'visitors'}
                                 lineName={'Visitors'}
-                                lineColor={COLORS[3]} />
+                                lineColor={colors[3]} />
                         </Grid>
                         <Grid item xs={6}>
                             <BarChart
                                 data={lineChartData}
                                 barDataKey={'visitors'}
                                 barName={'Visitors'}
-                                barColor={COLORS[2]} />
+                                barColor={colors[2]} />
                         </Grid>
                         <Grid item xs={6}>
                             <AreaChart
                                 data={areaChartData}
                                 xAxisDataKey={'month'}
                                 areaAttrArray={[
-                                    { type: 'monotone', dataKey: 'b', stroke: COLORS[0], fill: COLORS[0] },
+                                    { type: 'monotone', dataKey: 'b', stroke: colors[0], fill: colors[0] },
                                 ]} />
                         </Grid>
                         <Grid item xs={6}>
@@ -390,7 +390,7 @@ class ComponentChartsPage extends React.Component {
                                 data={areaChartData}
                                 xAxisDataKey={'month'}
                                 areaAttrArray={[
-                                    { type: 'monotone', dataKey: 'c', stroke: COLORS[6], fill: COLORS[6] },
+                                    { type: 'monotone', dataKey: 'c', stroke: colors[6], fill: colors[6] },
                                 ]} />
                         </Grid>
                     </Grid>

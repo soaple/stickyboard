@@ -8,9 +8,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import StickyBoardColors from '../../theme/StickyBoardColors';
-
 const styles = theme => ({
+    progress: {
+        color: theme.colors.progress,
+    },
     snackBarMessage: {
         position: 'absolute',
         top: '50%',
@@ -36,7 +37,7 @@ class MessageSnackbar extends React.Component {
                 message={
                     <div>
                         <CircularProgress
-                            style={{ color: StickyBoardColors.progressColor }}
+                            className={classes.progress}
                             thickness={4} />
                         <span
                             className={classes.snackBarMessage}

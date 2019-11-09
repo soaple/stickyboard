@@ -19,13 +19,11 @@ import { deepOrange } from '@material-ui/core/colors';
 
 import sha256 from 'sha256'
 
-import StickyBoardColors from '../../theme/StickyBoardColors';
-
 const styles = theme => ({
     root: {
         flexGrow: 1,
         width: '100%',
-        color: StickyBoardColors.colorDark,
+        color: theme.colors.colorDark,
     },
     container: {
         width: '100%',
@@ -48,17 +46,12 @@ const styles = theme => ({
         },
     },
     textField: {
-        color: StickyBoardColors.colorDark,
+        color: theme.colors.colorDark,
     },
     signUpButton: {
         marginTop: theme.spacing(4),
         width: '100%',
         height: '48px',
-        backgroundColor: StickyBoardColors.buttonColor01,
-        color: '#fff',
-        '&:hover': {
-            backgroundColor: StickyBoardColors.buttonColor01Hover,
-        },
     },
 });
 

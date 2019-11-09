@@ -11,7 +11,6 @@ import { Sticker } from '@stickyboard/core';
 import { NumberWidget, NumberWithChartWidget } from '@stickyboard/number';
 
 import PageBaseContainer from 'redux/containers/PageBaseContainer';
-import StickyBoardColors from 'theme/StickyBoardColors';
 
 const styles = theme => ({
     root: {
@@ -118,9 +117,9 @@ class ComponentNumberPage extends React.Component {
                     <Sticker key={block.i}>
                         <NumberWidget
                             icon={<PersonIcon />}
-                            backgroundColor={StickyBoardColors.colorArray[0]}
-                            defaultColor={StickyBoardColors.colorLight}
-                            valueColor={StickyBoardColors.colorLight}
+                            backgroundColor={theme.colors.colorArray[0]}
+                            defaultColor={theme.colors.colorLight}
+                            valueColor={theme.colors.colorLight}
                             title={'Daily Active User'}
                             value={128}
                             unit={''} />
@@ -131,9 +130,9 @@ class ComponentNumberPage extends React.Component {
                     <Sticker key={block.i}>
                         <NumberWidget
                             icon={<PersonIcon />}
-                            backgroundColor={StickyBoardColors.colorArray[1]}
-                            defaultColor={StickyBoardColors.colorLight}
-                            valueColor={StickyBoardColors.colorLight}
+                            backgroundColor={theme.colors.colorArray[1]}
+                            defaultColor={theme.colors.colorLight}
+                            valueColor={theme.colors.colorLight}
                             title={'Weekly Active User'}
                             value={7089}
                             unit={''} />
@@ -144,9 +143,9 @@ class ComponentNumberPage extends React.Component {
                     <Sticker key={block.i}>
                         <NumberWidget
                             icon={<PersonIcon />}
-                            backgroundColor={StickyBoardColors.colorArray[2]}
-                            defaultColor={StickyBoardColors.colorDark}
-                            valueColor={StickyBoardColors.colorDark}
+                            backgroundColor={theme.colors.colorArray[2]}
+                            defaultColor={theme.colors.colorDark}
+                            valueColor={theme.colors.colorDark}
                             title={'Monthly Active User'}
                             value={143120}
                             unit={''} />
@@ -157,9 +156,9 @@ class ComponentNumberPage extends React.Component {
                     <Sticker key={block.i}>
                         <NumberWidget
                             icon={<PersonIcon />}
-                            backgroundColor={StickyBoardColors.colorArray[3]}
-                            defaultColor={StickyBoardColors.colorLight}
-                            valueColor={StickyBoardColors.colorLight}
+                            backgroundColor={theme.colors.colorArray[3]}
+                            defaultColor={theme.colors.colorLight}
+                            valueColor={theme.colors.colorLight}
                             title={'ARPU'}
                             value={258}
                             unit={'$'} />
@@ -170,9 +169,9 @@ class ComponentNumberPage extends React.Component {
                     <Sticker key={block.i}>
                         <NumberWithChartWidget
                             icon={<PersonIcon />}
-                            backgroundColor={StickyBoardColors.colorArray[4]}
-                            defaultColor={StickyBoardColors.colorDark}
-                            valueColor={StickyBoardColors.colorDark}
+                            backgroundColor={theme.colors.colorArray[4]}
+                            defaultColor={theme.colors.colorDark}
+                            valueColor={theme.colors.colorDark}
                             title={'Daily Active User'}
                             unit={''}
                             data={data} />
@@ -183,9 +182,9 @@ class ComponentNumberPage extends React.Component {
                     <Sticker key={block.i}>
                         <NumberWithChartWidget
                             icon={<PersonIcon />}
-                            backgroundColor={StickyBoardColors.colorArray[5]}
-                            defaultColor={StickyBoardColors.colorLight}
-                            valueColor={StickyBoardColors.colorLight}
+                            backgroundColor={theme.colors.colorArray[5]}
+                            defaultColor={theme.colors.colorLight}
+                            valueColor={theme.colors.colorLight}
                             title={'Weekly Active User'}
                             unit={''}
                             data={data} />
@@ -196,9 +195,9 @@ class ComponentNumberPage extends React.Component {
                     <Sticker key={block.i}>
                         <NumberWithChartWidget
                             icon={<PersonIcon />}
-                            backgroundColor={StickyBoardColors.colorArray[6]}
-                            defaultColor={StickyBoardColors.colorLight}
-                            valueColor={StickyBoardColors.colorLight}
+                            backgroundColor={theme.colors.colorArray[6]}
+                            defaultColor={theme.colors.colorLight}
+                            valueColor={theme.colors.colorLight}
                             title={'Monthly Active User'}
                             unit={''}
                             data={data} />
@@ -209,9 +208,9 @@ class ComponentNumberPage extends React.Component {
                     <Sticker key={block.i}>
                         <NumberWithChartWidget
                             icon={<PersonIcon />}
-                            backgroundColor={StickyBoardColors.colorArray[7]}
-                            defaultColor={StickyBoardColors.colorLight}
-                            valueColor={StickyBoardColors.colorLight}
+                            backgroundColor={theme.colors.colorArray[7]}
+                            defaultColor={theme.colors.colorLight}
+                            valueColor={theme.colors.colorLight}
                             title={'ARPU'}
                             unit={'$'}
                             data={data} />
@@ -222,9 +221,9 @@ class ComponentNumberPage extends React.Component {
                     <Sticker key={block.i}>
                         <NumberWithChartWidget
                             icon={<PersonIcon />}
-                            backgroundColor={StickyBoardColors.colorArray[8]}
-                            defaultColor={StickyBoardColors.colorLight}
-                            valueColor={StickyBoardColors.colorLight}
+                            backgroundColor={theme.colors.colorArray[8]}
+                            defaultColor={theme.colors.colorLight}
+                            valueColor={theme.colors.colorLight}
                             title={'Daily Active User'}
                             unit={''}
                             data={data} />
@@ -235,9 +234,9 @@ class ComponentNumberPage extends React.Component {
                     <Sticker key={block.i}>
                         <NumberWithChartWidget
                             icon={<PersonIcon />}
-                            backgroundColor={StickyBoardColors.colorArray[9]}
-                            defaultColor={StickyBoardColors.colorLight}
-                            valueColor={StickyBoardColors.colorLight}
+                            backgroundColor={theme.colors.colorArray[9]}
+                            defaultColor={theme.colors.colorLight}
+                            valueColor={theme.colors.colorLight}
                             title={'Weekly Active User'}
                             unit={''}
                             data={data} />

@@ -28,7 +28,6 @@ import CookieManager from 'network/CookieManager';
 
 import MessageSnackbar from 'components/ui/MessageSnackbar';
 
-import StickyBoardColors from 'theme/StickyBoardColors';
 import Const from 'constants/Const';
 
 const styles = theme => ({
