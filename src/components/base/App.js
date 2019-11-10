@@ -47,7 +47,7 @@ class App extends React.Component {
         const initialThemeKey = LocalStorageManager.getItem(
             LocalStorageConst.KEY.THEME_KEY,
             themeKeys[0]);
-        const initialTheme = StickyBoardThemes[initialThemeKey];
+        const initialTheme = StickyBoardThemes[initialThemeKey] || StickyBoardThemes[themeKeys[0]];
 
         this.state = {
             selectedThemeKey: initialThemeKey,
