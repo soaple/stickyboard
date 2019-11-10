@@ -61,6 +61,23 @@ const ThemeLight = {
                 backgroundColor: grey[100],     // Drawer background color
             }
         },
+        MuiIconButton: {
+            root: {
+                color: grey[800],
+            }
+        },
+        MuiFab: {
+            primary: {
+                backgroundColor: amber[500],
+                color: grey[800],
+            }
+        },
+        MuiSpeedDialAction:{
+            fab: {
+                backgroundColor: grey[50],
+                color: grey[800],
+            }
+        },
     },
 };
 

@@ -86,7 +86,7 @@ const styles = theme => ({
     },
     appBarTitle: {
         fontSize: 16,
-        color: theme.colors.colorDark,
+        // color: theme.colors.colorDark,
         '&:hover': {
             cursor: 'pointer',
         }
@@ -104,7 +104,7 @@ const styles = theme => ({
         marginLeft: theme.spacing(1),
     },
     menuIcon: {
-        color: theme.colors.colorDark,
+        // color: theme.colors.colorDark,
     },
     menuCategoryText: {
         display: 'block',
@@ -115,7 +115,7 @@ const styles = theme => ({
         color: theme.colors.drawerMenuCategoryText,
     },
     notiIcon: {
-        color: theme.colors.colorDark,
+        // color: theme.colors.colorDark,
     },
     notiDrawer: {
         width: '80%',
@@ -143,7 +143,7 @@ const styles = theme => ({
     avatar: {
         width: 56,
         height: 56,
-        color: theme.colors.colorDark,
+        // color: theme.colors.colorDark,
     },
     drawerPaper: {
         width: Const.DRAWER_WIDTH,

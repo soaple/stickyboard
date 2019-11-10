@@ -27,11 +27,13 @@ const ThemeDark = {
         colorLight: '#ffffff',
         colorDark: grey[800],
         // Content
-        contentBackground: grey[800],
+        contentBackground: grey[600],
         // Drawer menu
         drawerMenuCategoryText: grey[400],
         drawerMenuSelectedBackground: grey[600],
         drawerMenuSelectedPin: amber[500],
+        // Speed dial
+        speedDialColor: amber[500],
         // Progress
         progress: amber[500],
         // Color set for StickyBoard components (e.g., charts, number...)
@@ -61,6 +63,23 @@ const ThemeDark = {
                 backgroundColor: grey[700],     // Drawer background color
             }
         },
+        MuiIconButton: {
+            root: {
+                color: '#ffffff',
+            }
+        },
+        MuiFab: {
+            primary: {
+                backgroundColor: amber[500],
+                color: grey[800],
+            }
+        },
+        MuiSpeedDialAction:{
+            fab: {
+                backgroundColor: grey[800],
+                color: '#ffffff',
+            }
+        }
     },
 };
 

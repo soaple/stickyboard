@@ -43,15 +43,15 @@ const styles = theme => ({
         borderRight: '10px solid ' + theme.colors.drawerMenuSelectedPin,
     },
     menuItemIcon: {
-        color: theme.colors.colorDark,
+        // color: theme.colors.colorDark,
     },
     menuItemText: {
-        color: theme.colors.colorDark,
+        // color: theme.colors.colorDark,
         fontWeight: 500,
         fontSize: 14,
     },
     menuItemTextSelected: {
-        color: theme.colors.colorDark,
+        // color: theme.colors.colorDark,
         fontWeight: 700,
         fontSize: 14,
     },
