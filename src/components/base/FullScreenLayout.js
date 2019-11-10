@@ -14,7 +14,7 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         overflow: 'auto',
-        background: theme.colors.contentBackground,
+        backgroundColor: theme.colors.contentBackground,
     },
 });
 

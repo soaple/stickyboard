@@ -32,6 +32,7 @@ import Const from 'constants/Const';
 
 const styles = theme => ({
     root: {
+        backgroundColor: theme.colors.contentBackground,
     },
     menuContainer: {
         display: 'flex',

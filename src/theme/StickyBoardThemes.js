@@ -6,6 +6,7 @@ import ThemeSunset from 'theme/collections/ThemeSunset';
 import ThemeGrass from 'theme/collections/ThemeGrass';
 import ThemeOcean from 'theme/collections/ThemeOcean';
 import ThemeMoonlight from 'theme/collections/ThemeMoonlight';
+import ThemeSoaple from 'theme/collections/ThemeSoaple';
 
 const StickyBoardThemes = {
     Light: ThemeLight,
@@ -14,9 +15,7 @@ const StickyBoardThemes = {
     Grass: ThemeGrass,
     Ocean: ThemeOcean,
     Moonlight: ThemeMoonlight,
-    // Soaple: {
-    //
-    // }
+    Soaple: ThemeSoaple,
 };
 
 export default StickyBoardThemes;
