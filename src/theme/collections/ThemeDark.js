@@ -72,6 +72,9 @@ const ThemeDark = {
             primary: {
                 backgroundColor: amber[500],
                 color: grey[800],
+                '&:hover': {
+                    backgroundColor: amber[700],
+                }
             }
         },
         MuiSpeedDialAction:{
