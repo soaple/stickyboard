@@ -11,7 +11,7 @@
 
 ## StickyBoard
 
-Fully customizable Web Admin/Dashboard solution based on React
+Fully customizable Web Admin/Dashboard starter kit based on React
 
 ## Demo
 
