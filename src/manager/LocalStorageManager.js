@@ -7,6 +7,14 @@ const LocalStorageManager = {
     setItem: (key, value) => {
         window.localStorage.setItem(key, value);
     },
+    removeItem: (key) => {
+        window.localStorage.removeItem(key);
+    },
+    removeAll: () => {
+        Object.keys(window.localStorage).map((key) => {
+            window.localStorage.removeItem(key);
+        });
+    }
 };
 
 export default LocalStorageManager;
