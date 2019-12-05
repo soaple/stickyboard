@@ -421,7 +421,7 @@ class Layout extends React.Component {
                                 color='inherit'
                                 noWrap
                                 className={classes.appBarTitle}
-                                onClick={() =>{ window.location = '/' }}>
+                                onClick={() => { window.location = '/' }}>
                                 StickyBoard
                             </Typography>
 
