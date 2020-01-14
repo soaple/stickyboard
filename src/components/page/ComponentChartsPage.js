@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 import { Sticker } from '@stickyboard/core';
-import { LineChart, BarChart, ComposedChart,
+import { LineChart, BarChart, StackedBarChart, ComposedChart,
     PieChart, RadarChart, AreaChart,
     ScatterChart, Treemap
 } from '@stickyboard/recharts';
@@ -24,46 +24,57 @@ const lineChartData = [
         index: 1,
         time: new Date('2018-03-01 00:00:00').getTime(),
         visitors: 121,
+        staff: 12,
     }, {
         index: 2,
         time: new Date('2018-03-02 00:00:00').getTime(),
         visitors: 140,
+        staff: 16,
     }, {
         index: 3,
         time: new Date('2018-03-03 00:00:00').getTime(),
         visitors: 150,
+        staff: 22,
     }, {
         index: 4,
         time: new Date('2018-03-04 00:00:00').getTime(),
         visitors: 107,
+        staff: 6,
     }, {
         index: 5,
         time: new Date('2018-03-05 00:00:00').getTime(),
         visitors: 98,
+        staff: 10,
     }, {
         index: 6,
         time: new Date('2018-03-06 00:00:00').getTime(),
         visitors: 118,
+        staff: 14,
     }, {
         index: 7,
         time: new Date('2018-03-07 00:00:00').getTime(),
         visitors: 130,
+        staff: 16,
     }, {
         index: 8,
         time: new Date('2018-03-08 00:00:00').getTime(),
         visitors: 121,
+        staff: 9,
     }, {
         index: 9,
         time: new Date('2018-03-09 00:00:00').getTime(),
         visitors: 89,
+        staff: 4,
     }, {
         index: 10,
         time: new Date('2018-03-10 00:00:00').getTime(),
         visitors: 170,
+        staff: 25,
     }, {
         index: 11,
         time: new Date('2018-03-11 00:00:00').getTime(),
         visitors: 190,
+        staff: 30,
     }
 ];
 
@@ -241,14 +252,14 @@ const treeMapData = [
 ];
 
 const initialLayout = {
-    lg: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":8,"y":0,"w":4,"h":6},{"i":"RadarChart","x":4,"y":6,"w":4,"h":6},{"i":"PieChart","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"TinyChart","x":8,"y":12,"w":4,"h":6}],
-    md: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":8,"y":0,"w":4,"h":6},{"i":"RadarChart","x":4,"y":6,"w":4,"h":6},{"i":"PieChart","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"TinyChart","x":8,"y":12,"w":4,"h":6}],
-    sm: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":0,"y":6,"w":4,"h":6},{"i":"RadarChart","x":0,"y":12,"w":4,"h":6},{"i":"PieChart","x":4,"y":6,"w":4,"h":6},{"i":"AreaChart","x":4,"y":12,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":18,"w":4,"h":6},{"i":"TreeMap","x":4,"y":18,"w":4,"h":6},{"i":"TinyChart","x":0,"y":24,"w":8,"h":9}],
-    xs: [{"i":"LineChart","x":0,"y":0,"w":6,"h":6},{"i":"BarChart","x":0,"y":6,"w":6,"h":6},{"i":"ComposedChart","x":0,"y":12,"w":6,"h":6},{"i":"RadarChart","x":0,"y":24,"w":6,"h":6},{"i":"PieChart","x":0,"y":18,"w":6,"h":6},{"i":"AreaChart","x":0,"y":30,"w":6,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":6,"h":6},{"i":"TreeMap","x":0,"y":42,"w":6,"h":6},{"i":"TinyChart","x":0,"y":48,"w":6,"h":6}],
-    xxs: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":0,"y":6,"w":4,"h":6},{"i":"ComposedChart","x":0,"y":12,"w":4,"h":6},{"i":"RadarChart","x":0,"y":24,"w":4,"h":6},{"i":"PieChart","x":0,"y":18,"w":4,"h":6},{"i":"AreaChart","x":0,"y":30,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":36,"w":4,"h":6},{"i":"TreeMap","x":0,"y":42,"w":4,"h":6},{"i":"TinyChart","x":0,"y":48,"w":4,"h":6}],
+    lg: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":4,"y":0,"w":4,"h":6},{"i":"StackedBarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":8,"y":0,"w":4,"h":6},{"i":"RadarChart","x":4,"y":6,"w":4,"h":6},{"i":"PieChart","x":0,"y":6,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":12,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"TinyChart","x":8,"y":12,"w":4,"h":6}],
+    md: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":0,"y":6,"w":4,"h":6},{"i":"StackedBarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":8,"y":0,"w":4,"h":6},{"i":"RadarChart","x":4,"y":6,"w":4,"h":6},{"i":"PieChart","x":0,"y":12,"w":4,"h":6},{"i":"AreaChart","x":8,"y":6,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":18,"w":4,"h":6},{"i":"TreeMap","x":4,"y":12,"w":4,"h":6},{"i":"TinyChart","x":8,"y":12,"w":4,"h":6}],
+    sm: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":0,"y":18,"w":4,"h":6},{"i":"StackedBarChart","x":4,"y":0,"w":4,"h":6},{"i":"ComposedChart","x":4,"y":6,"w":4,"h":6},{"i":"RadarChart","x":0,"y":6,"w":4,"h":6},{"i":"PieChart","x":4,"y":12,"w":4,"h":6},{"i":"AreaChart","x":4,"y":18,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":24,"w":8,"h":6},{"i":"TreeMap","x":0,"y":12,"w":4,"h":6},{"i":"TinyChart","x":0,"y":30,"w":8,"h":9}],
+    xs: [{"i":"LineChart","x":0,"y":0,"w":6,"h":6},{"i":"BarChart","x":0,"y":12,"w":6,"h":6},{"i":"StackedBarChart","x":0,"y":6,"w":6,"h":6},{"i":"ComposedChart","x":0,"y":18,"w":6,"h":6},{"i":"RadarChart","x":0,"y":30,"w":6,"h":6},{"i":"PieChart","x":0,"y":24,"w":6,"h":6},{"i":"AreaChart","x":0,"y":36,"w":6,"h":6},{"i":"ScatterChart","x":0,"y":42,"w":6,"h":6},{"i":"TreeMap","x":0,"y":48,"w":6,"h":6},{"i":"TinyChart","x":0,"y":54,"w":6,"h":9}],
+    xxs: [{"i":"LineChart","x":0,"y":0,"w":4,"h":6},{"i":"BarChart","x":0,"y":18,"w":4,"h":6},{"i":"StackedBarChart","x":0,"y":6,"w":4,"h":6},{"i":"ComposedChart","x":0,"y":12,"w":4,"h":6},{"i":"RadarChart","x":0,"y":30,"w":4,"h":6},{"i":"PieChart","x":0,"y":24,"w":4,"h":6},{"i":"AreaChart","x":0,"y":36,"w":4,"h":6},{"i":"ScatterChart","x":0,"y":42,"w":4,"h":6},{"i":"TreeMap","x":0,"y":48,"w":4,"h":6},{"i":"TinyChart","x":0,"y":54,"w":4,"h":6}]
 };
 
-const initialBlocks = [{"i":"LineChart"},{"i":"BarChart"},{"i":"ComposedChart"},{"i":"RadarChart"},{"i":"PieChart"},{"i":"AreaChart"},{"i":"ScatterChart"},{"i":"TreeMap"},{"i":"TinyChart"}];
+const initialBlocks = [{"i":"LineChart"},{"i":"BarChart"},{"i":"StackedBarChart"},{"i":"ComposedChart"},{"i":"RadarChart"},{"i":"PieChart"},{"i":"AreaChart"},{"i":"ScatterChart"},{"i":"TreeMap"},{"i":"TinyChart"}];
 
 class ComponentChartsPage extends React.Component {
     constructor (props) {
@@ -284,6 +295,25 @@ class ComponentChartsPage extends React.Component {
                         barDataKey={'visitors'}
                         barName={'Visitors'}
                         barColor={colors[1]} />
+                </Sticker>
+            )
+        case 'StackedBarChart':
+            return (
+                <Sticker key={block.i}>
+                    <StackedBarChart
+                        data={lineChartData}
+                        xAxisDataKey={'time'}
+                        barDataArray={[
+                            {
+                                key: 'visitors',
+                                name: 'Visitors',
+                                color: colors[0],
+                            }, {
+                                key: 'staff',
+                                name: 'Staff',
+                                color: colors[1],
+                            }
+                        ]} />
                 </Sticker>
             )
         case 'ComposedChart':
