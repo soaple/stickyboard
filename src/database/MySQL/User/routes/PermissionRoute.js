@@ -1,8 +1,8 @@
 // src/models/MySQL/PermissionRoute.js
 
-var StatusCode = require('../../../../../network/StatusCode');
+var StatusCode = require('network/StatusCode');
 
-var Permission = require('../Permission')
+var Permission = require('../models/Permission')
 
 var PermissionRoute = {
     // Create

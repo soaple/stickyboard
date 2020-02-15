@@ -88,7 +88,7 @@ class PageBase extends React.Component {
         const userId = CookieManager.getCookie('userId');
         if (userId) {
             this.props.showMessageSnackbar('Loading...');
-            ApiManager.readUserLayout(
+            ApiManager.StickyBoard.readUserLayout(
                 userId,
                 window.location.pathname,
                 this.readUserLayoutCallback);
@@ -108,7 +108,7 @@ class PageBase extends React.Component {
     onSaveLayout = () => {
         const userId = CookieManager.getCookie('userId');
         if (userId) {
-            ApiManager.updateUserLayout(
+            ApiManager.StickyBoard.updateUserLayout(
                 userId,
                 window.location.pathname,
                 JSON.stringify(this.state.layouts),

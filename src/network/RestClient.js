@@ -9,9 +9,9 @@ var RestClient = {
     // GET
     sendGetRequest: function (url, callback) {
         var option = {url: url}
-        var accessToken = CookieManager.getCookie('accessToken')
-        if (accessToken) {
-            option.headers = {'x-access-token': accessToken}
+        var token = CookieManager.getCookie('token')
+        if (token) {
+            option.headers = {'Authorization': `Bearer ${token}`};
         }
 
         request.get(option, function (error, response, body) {
@@ -33,9 +33,9 @@ var RestClient = {
     // GET with params
     sendGetRequestWithParams: function (url, params, callback) {
         var option = {url: url, qs: params}
-        var accessToken = CookieManager.getCookie('accessToken')
-        if (accessToken) {
-            option.headers = {'x-access-token': accessToken}
+        var token = CookieManager.getCookie('token')
+        if (token) {
+            option.headers = {'Authorization': `Bearer ${token}`};
         }
 
         request.get(option, function (error, response, body) {
@@ -57,9 +57,9 @@ var RestClient = {
     // POST
     sendPostRequest: function (url, data, callback) {
         var option = {url: url, form: data}
-        var accessToken = CookieManager.getCookie('accessToken')
-        if (accessToken) {
-            option.headers = {'x-access-token': accessToken}
+        var token = CookieManager.getCookie('token')
+        if (token) {
+            option.headers = {'Authorization': `Bearer ${token}`};
         }
 
         request.post(option, function (error, response, body) {
@@ -100,9 +100,9 @@ var RestClient = {
     // PUT
     sendPutRequest: function (url, data, callback) {
         var option = {url: url, form: data}
-        var accessToken = CookieManager.getCookie('accessToken')
-        if (accessToken) {
-            option.headers = {'x-access-token': accessToken}
+        var token = CookieManager.getCookie('token')
+        if (token) {
+            option.headers = {'Authorization': `Bearer ${token}`};
         }
 
         request.put(option, function (error, response, body) {
@@ -124,9 +124,9 @@ var RestClient = {
     // DELETE
     sendDeleteRequest: function (url, callback) {
         var option = {url: url}
-        var accessToken = CookieManager.getCookie('accessToken')
-        if (accessToken) {
-            option.headers = {'x-access-token': accessToken}
+        var token = CookieManager.getCookie('token')
+        if (token) {
+            option.headers = {'Authorization': `Bearer ${token}`};
         }
 
         request.delete(option, function (error, response, body) {

@@ -1,8 +1,8 @@
 // src/models/MySQL/GroupRoute.js
 
-var StatusCode = require('../../../../../network/StatusCode');
+var StatusCode = require('network/StatusCode');
 
-var Group = require('../Group')
+var Group = require('../models/Group')
 
 var GroupRoute = {
     // Create

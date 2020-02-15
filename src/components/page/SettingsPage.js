@@ -76,8 +76,8 @@ class SettingsPage extends React.Component {
     }
 
     componentDidMount () {
-        ApiManager.readUser(CookieManager.getCookie('userId'), this.readUserCallback)
-        ApiManager.readUserGroup(CookieManager.getCookie('userId'), this.readUserGroupCallback)
+        ApiManager.StickyBoard.readUser(CookieManager.getCookie('userId'), this.readUserCallback)
+        ApiManager.StickyBoard.readUserGroup(CookieManager.getCookie('userId'), this.readUserGroupCallback)
     }
 
     onChangeValue = (key, value) => {
@@ -91,7 +91,7 @@ class SettingsPage extends React.Component {
             name: this.state.name,
         }
 
-        ApiManager.updateUser(admin, this.updateUserCallback)
+        ApiManager.StickyBoard.updateUser(admin, this.updateUserCallback)
     }
 
     onChangePasswordBtnClicked = () => {
@@ -111,7 +111,7 @@ class SettingsPage extends React.Component {
             return
         }
 
-        ApiManager.updatePassword(
+        ApiManager.StickyBoard.updatePassword(
             CookieManager.getCookie('adminId'),
             sha256(this.state.password),
             this.updatePasswordCallback)

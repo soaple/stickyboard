@@ -2,7 +2,7 @@
 
 var Sequelize = require('sequelize')
 
-var MySqlConn = require('../../../connections/MySqlConn');
+var MySqlConn = require('database/connections/MySqlConn');
 
 var UserProfile = MySqlConn.define('stkbd_user_profile', {
     id: {

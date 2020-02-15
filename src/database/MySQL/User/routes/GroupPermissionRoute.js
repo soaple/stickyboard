@@ -1,9 +1,9 @@
 // src/models/MySQL/GroupPermissionRoute.js
 
-var StatusCode = require('../../../../../network/StatusCode');
+var StatusCode = require('network/StatusCode');
 
-var GroupPermission = require('../GroupPermission')
-var Permission = require('../Permission')
+var GroupPermission = require('../models/GroupPermission')
+var Permission = require('../models/Permission')
 
 var GroupPermissionRoute = {
     // Create

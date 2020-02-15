@@ -1,9 +1,9 @@
 // src/models/MySQL/UserLayoutRoute.js
 
-var StatusCode = require('../../../../../network/StatusCode');
+var StatusCode = require('network/StatusCode');
 
-var UserLayout = require('../UserLayout')
-var User = require('../User')
+var UserLayout = require('../models/UserLayout')
+var User = require('../models/User')
 
 var UserLayoutRoute = {
     // Create

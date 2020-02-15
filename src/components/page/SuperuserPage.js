@@ -37,7 +37,7 @@ class SuperuserPage extends React.Component {
     }
 
     componentDidMount () {
-        ApiManager.readUsers(
+        ApiManager.StickyBoard.readUsers(
             0,
             itemsPerPage,
             this.readUsersCallback)

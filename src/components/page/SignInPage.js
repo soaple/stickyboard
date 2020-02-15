@@ -95,7 +95,7 @@ class SignInPage extends React.Component {
             return
         }
 
-        ApiManager.signIn(
+        ApiManager.Auth.signIn(
             this.state.email,
             sha256(this.state.password),
             this.signInCallback)

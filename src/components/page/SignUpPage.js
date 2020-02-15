@@ -115,7 +115,7 @@ class SignUpPage extends React.Component {
             name: this.state.name,
         }
 
-        ApiManager.signUp(newUser, this.signUpCallback)
+        ApiManager.Auth.signUp(newUser, this.signUpCallback)
     }
 
     openAlertDialog = (alertMessage) => {

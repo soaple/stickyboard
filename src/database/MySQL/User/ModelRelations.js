@@ -1,13 +1,13 @@
 // src/database/models/MySQL/ModelRelations.js
 
 // User models
-var User = require('./User/User');
-var UserProfile = require('./User/UserProfile');
-var UserLayout = require('./User/UserLayout');
-var Group = require('./User/Group');
-var GroupUser = require('./User/GroupUser');
-var Permission = require('./User/Permission');
-var GroupPermission = require('./User/GroupPermission');
+var User = require('./models/User');
+var UserProfile = require('./models/UserProfile');
+var UserLayout = require('./models/UserLayout');
+var Group = require('./models/Group');
+var GroupUser = require('./models/GroupUser');
+var Permission = require('./models/Permission');
+var GroupPermission = require('./models/GroupPermission');
 
 var ModelRelations = {
     defineRelations: function () {
