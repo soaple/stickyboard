@@ -18,21 +18,7 @@ passport.use(
                 password: password,
             },
         })
-        .then(response => response.toJSON())
         .asCallback(done);
-        // .then((user) => {
-        //     if (!user) {
-        //         return done(null, false, {
-        //             message: 'Incorrect email or password.',
-        //         });
-        //     }
-        //     return done(null, user, {
-        //         message: 'Signed in Successfully',
-        //     });
-        // })
-        // .catch((error) => {
-        //     return done(error, false);
-        // });
     })
 );
 
@@ -50,18 +36,7 @@ passport.use(
                 email: jwtPayload.email,
             },
         })
-        .then(response => response.toJSON())
         .asCallback(done);
-        // .then((user) => {
-        //     if (!user) {
-        //         return done(null, false);
-        //     }
-        //
-        //     return done(null, user);
-        // })
-        // .catch((error) => {
-        //     return done(error, false);
-        // });
     })
 );
 
