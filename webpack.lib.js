@@ -3,20 +3,26 @@
 const webpack = require('webpack')
 const path = require('path')
 
+const NODE_ENV = process.env.NODE_ENV || 'production';
+const isProductionMode = NODE_ENV === 'production';
+console.log('================ webpack.lib.js ================');
+console.log(`process.env.NODE_ENV: ${process.env.NODE_ENV}`)
+console.log(`isProductionMode: ${isProductionMode}`);
+console.log('================================================');
+
 module.exports = {
-    mode: 'production',
+    mode: NODE_ENV,
     entry: {
         'lib': [
             'react',
             'react-dom',
+            'react-router-dom',
             'react-dropzone',
-            'react-router',
-            'request',
+            'redux',
+            'react-redux',
+            'styled-components',
             '@material-ui/core',
             '@material-ui/icons',
-            'underscore',
-            'json-loader',
-            'dateformat'
         ],
     },
 
@@ -31,13 +37,6 @@ module.exports = {
             path: path.join(__dirname, 'dist', '[name]-manifest.json'),
             name: '[name]_lib'
         }),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: { warnings: false },
-        //     mangle: true,
-        //     sourcemap: false,
-        //     beautify: false,
-        //     dead_code: true
-        // }),
     ],
     node: {
         fs: 'empty'
