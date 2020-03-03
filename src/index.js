@@ -1,5 +1,9 @@
 // src/index.js
 
+// For IE 11 support
+import 'react-app-polyfill/stable';
+import 'react-app-polyfill/ie11';
+// React
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
