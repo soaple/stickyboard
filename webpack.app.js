@@ -88,7 +88,8 @@ const config = {
         modules: ['src', 'node_modules'],
         alias: {
             react: path.resolve('./node_modules/react')
-        }
+        },
+        symlinks: false,
     },
     plugins: [
         new webpack.DllReferencePlugin({
