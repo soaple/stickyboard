@@ -158,7 +158,7 @@ class PageBase extends React.Component {
                 <Board
                     ref={this.board}
                     layouts={layouts}
-                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); }}
+                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); console.log(JSON.stringify(newLayouts))}}
                     onSaveLayout={this.onSaveLayout}>
                     {blocks.map((block, index) => {
                         return generateBlock(block);
