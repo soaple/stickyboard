@@ -96,6 +96,8 @@ const config = {
             manifest: require(path.join(__dirname, 'dist', 'lib-manifest.json'))
         }),
         new webpack.DefinePlugin(envKeys),
+        // Ignore all locale files of moment.js
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
     node: {
         fs: 'empty'

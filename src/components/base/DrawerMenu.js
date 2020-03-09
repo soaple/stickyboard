@@ -36,11 +36,17 @@ const styles = theme => ({
     },
     menuItem: {
         marginTop: 0,
+        '&:hover': {
+            color: theme.palette.primary.main,
+        },
     },
     menuItemSelected: {
         marginTop: 0,
         background: theme.colors.drawerMenuSelectedBackground,
         borderRight: '10px solid ' + theme.colors.drawerMenuSelectedPin,
+        '&:hover': {
+            color: theme.palette.primary.main,
+        },
     },
     menuItemIcon: {
         // color: theme.colors.colorDark,
