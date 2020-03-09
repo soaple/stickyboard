@@ -60,6 +60,7 @@
         "react-autosuggest": "^9.4.3",
         "react-dom": "^16.8.6",
         "react-dropzone": "^3.11.0",
+        "react-ga": "^2.7.0",
         "react-grid-layout": "^0.16.6",
         "react-paginate": "^5.3.1",
         "react-redux": "^5.1.1",
