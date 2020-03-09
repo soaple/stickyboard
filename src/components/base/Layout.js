@@ -643,7 +643,9 @@ class Layout extends React.Component {
                     </Drawer>
 
                     {/* App content */}
-                    <main className={classes.content}>
+                    <main
+                        id='stickyboard-container'
+                        className={classes.content}>
                         {childrenWithExtraProp}
                     </main>
                 </div>
