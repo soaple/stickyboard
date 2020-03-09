@@ -414,6 +414,8 @@ class ComponentChartsPage extends React.Component {
                     <Sticker key={block.i}>
                         <StackedBarChart
                             data={lineChartData}
+                            showBarLabel={false}
+                            showTotalSumLabel={false}
                             xAxisDataKey={'time'}
                             barDataArray={[
                                 {
