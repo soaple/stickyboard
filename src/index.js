@@ -10,6 +10,7 @@ if (GA_TRACKING_ID) {
     const gaTrackingIdRegExp = new RegExp(/(UA-[0-9]*-[0-9])/i);
     if (gaTrackingIdRegExp.test(GA_TRACKING_ID)) {
         ReactGA.initialize(GA_TRACKING_ID);
+        ReactGA.pageview(window.location.pathname + window.location.search);
     }
 }
 // React
