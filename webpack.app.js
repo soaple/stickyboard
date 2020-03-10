@@ -13,7 +13,7 @@ console.log(`isWebpackDevServerMode: ${isWebpackDevServerMode}`);
 console.log('================================================');
 
 // Load .env configuration
-const envFilePath = isProductionMode ? '.env' : '.env.development';
+const envFilePath = isProductionMode ? '.env.production' : '.env.development';
 const envLoadResult = require('dotenv').config({ path: envFilePath }).parsed;
 if (envLoadResult.error) {
     throw envLoadResult.error;
