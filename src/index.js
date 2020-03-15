@@ -11,6 +11,8 @@ if (GA_TRACKING_ID) {
     if (gaTrackingIdRegExp.test(GA_TRACKING_ID)) {
         ReactGA.initialize(GA_TRACKING_ID);
         ReactGA.pageview(window.location.pathname + window.location.search);
+    } else {
+        console.err('Google Analytics tracking ID is invalid.')
     }
 }
 // React
