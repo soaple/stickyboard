@@ -1,19 +1,21 @@
 // src/components/page/ComponentTablePage.js
 
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
 import { Sticker } from '@stickyboard/core';
-import { TableWithPagination, RealtimeTable, RealtimeMessageTable
+import {
+    TableWithPagination,
+    RealtimeTable,
+    RealtimeMessageTable,
 } from '@stickyboard/table';
 
 import PageBaseContainer from 'redux/containers/PageBaseContainer';
 
-const styles = theme => ({
-    root: {
-    },
+const styles = (theme) => ({
+    root: {},
 });
 
 // const initialLayout = {
@@ -24,18 +26,33 @@ const styles = theme => ({
 //     xxs: [{"i":"Table1","x":0,"y":0,"w":4,"h":7},{"i":"Table2","x":0,"y":7,"w":4,"h":7},{"i":"RealtimeTable1","x":0,"y":14,"w":4,"h":6},{"i":"RealtimeTable2","x":0,"y":20,"w":4,"h":6},{"i":"RealtimeMessageTable","x":0,"y":26,"w":4,"h":6}],
 // };
 const initialLayout = {
-    lg: [{"i":"Table1","x":0,"y":0,"w":6,"h":14},{"i":"Table2","x":6,"y":0,"w":6,"h":14}],
-    md: [{"i":"Table1","x":0,"y":0,"w":6,"h":14},{"i":"Table2","x":6,"y":0,"w":6,"h":14}],
-    sm: [{"i":"Table1","x":0,"y":0,"w":8,"h":14},{"i":"Table2","x":0,"y":7,"w":8,"h":14}],
-    xs: [{"i":"Table1","x":0,"y":0,"w":6,"h":14},{"i":"Table2","x":0,"y":7,"w":6,"h":14}],
-    xxs: [{"i":"Table1","x":0,"y":0,"w":4,"h":14},{"i":"Table2","x":0,"y":7,"w":4,"h":14}],
+    lg: [
+        { i: 'Table1', x: 0, y: 0, w: 6, h: 14 },
+        { i: 'Table2', x: 6, y: 0, w: 6, h: 14 },
+    ],
+    md: [
+        { i: 'Table1', x: 0, y: 0, w: 6, h: 14 },
+        { i: 'Table2', x: 6, y: 0, w: 6, h: 14 },
+    ],
+    sm: [
+        { i: 'Table1', x: 0, y: 14, w: 8, h: 14 },
+        { i: 'Table2', x: 0, y: 0, w: 8, h: 14 },
+    ],
+    xs: [
+        { i: 'Table1', x: 0, y: 14, w: 6, h: 14 },
+        { i: 'Table2', x: 0, y: 0, w: 6, h: 14 },
+    ],
+    xxs: [
+        { i: 'Table1', x: 0, y: 14, w: 4, h: 14 },
+        { i: 'Table2', x: 0, y: 0, w: 4, h: 14 },
+    ],
 };
 
 // const initialBlocks = [{"i":"Table1"},{"i":"Table2"},{"i":"RealtimeTable1"},{"i":"RealtimeTable2"},{"i":"RealtimeMessageTable"}];
-const initialBlocks = [{"i":"Table1"},{"i":"Table2"}];
+const initialBlocks = [{ i: 'Table1' }, { i: 'Table2' }];
 
 class ComponentTablePage extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -45,39 +62,47 @@ class ComponentTablePage extends React.Component {
                     id: 112304987,
                     product: 'Milk',
                     payment: '3.99$',
-                }, {
+                },
+                {
                     id: 112304988,
                     product: 'Cola',
                     payment: '1.99$',
-                }, {
+                },
+                {
                     id: 112304989,
                     product: 'Wet Tissue',
                     payment: '5.80$',
-                }, {
+                },
+                {
                     id: 112304990,
                     product: 'Popcorn',
                     payment: '2.45$',
-                }, {
+                },
+                {
                     id: 112304991,
                     product: 'Dish',
                     payment: '12.99$',
-                }, {
+                },
+                {
                     id: 112304992,
                     product: 'Trash bag',
                     payment: '15.99$',
-                }, {
+                },
+                {
                     id: 112304993,
                     product: 'Bowl set',
                     payment: '25.99$',
-                }, {
+                },
+                {
                     id: 112304994,
                     product: 'Cake',
                     payment: '20.10$',
-                }, {
+                },
+                {
                     id: 112304995,
                     product: 'Eggs',
                     payment: '7.89$',
-                }
+                },
             ],
             users: [
                 {
@@ -180,7 +205,7 @@ class ComponentTablePage extends React.Component {
                         name: 'Inje Lee',
                         imgUrl: '/static/image/man.jpg',
                     },
-                    message: 'Why don\'t you taking a break with a cup of tea?',
+                    message: "Why don't you taking a break with a cup of tea?",
                 },
                 {
                     id: 1120397,
@@ -196,10 +221,10 @@ class ComponentTablePage extends React.Component {
             recentOrders: [],
             recentUsers: [],
             recentMessages: [],
-        }
+        };
     }
 
-    componentDidMount () {
+    componentDidMount() {
         // this.startGeneratingRealtimeData();
     }
 
@@ -217,8 +242,8 @@ class ComponentTablePage extends React.Component {
             }
 
             this.setState({
-                recentOrders: recentOrders
-            })
+                recentOrders: recentOrders,
+            });
         }, 2000);
 
         // Users
@@ -234,8 +259,8 @@ class ComponentTablePage extends React.Component {
             }
 
             this.setState({
-                recentUsers: recentUsers
-            })
+                recentUsers: recentUsers,
+            });
         }, 1500);
 
         // Messages
@@ -250,10 +275,10 @@ class ComponentTablePage extends React.Component {
             }
 
             this.setState({
-                recentMessages: recentMessages
-            })
+                recentMessages: recentMessages,
+            });
         }, 3000);
-    }
+    };
 
     onAnimationEnd = (dataKey) => {
         let data = this.state[dataKey];
@@ -264,66 +289,66 @@ class ComponentTablePage extends React.Component {
                 [dataKey]: data,
             });
         }
-    }
+    };
 
     render() {
         const { classes, theme } = this.props;
 
         const generateBlock = (block) => {
             switch (block.i) {
-            case 'Table1':
-                return (
-                    <Sticker
-                        key={block.i}>
-                        <TableWithPagination
-                            title={'Orders'}
-                            data={this.state.orders}
-                            rowsPerPage={10} />
-                    </Sticker>
-                )
-            case 'Table2':
-                return (
-                    <Sticker
-                        key={block.i}>
-                        <TableWithPagination
-                            title={'Users'}
-                            data={this.state.users}
-                            rowsPerPage={10} />
-                    </Sticker>
-                )
-            case 'RealtimeTable1':
-                return (
-                    <Sticker
-                        key={block.i}>
-                        <RealtimeTable
-                            title={'Real-time Orders'}
-                            data={this.state.recentOrders}
-                            dataKey={'recentOrders'}
-                            onAnimationEnd={this.onAnimationEnd} />
-                    </Sticker>
-                )
-            case 'RealtimeTable2':
-                return (
-                    <Sticker
-                        key={block.i}>
-                        <RealtimeTable
-                            title={'Real-time Users'}
-                            data={this.state.recentUsers}
-                            dataKey={'recentUsers'}
-                            onAnimationEnd={this.onAnimationEnd} />
-                    </Sticker>
-                )
-            case 'RealtimeMessageTable':
-                return (
-                    <Sticker
-                        key={block.i}>
-                        <RealtimeMessageTable
-                            title={'Real-time Messages'}
-                            data={this.state.recentMessages}
-                            dataKey={'recentMessages'}
-                            onAnimationEnd={this.onAnimationEnd} />
-                    </Sticker>
-                )
+                case 'Table1':
+                    return (
+                        <Sticker key={block.i}>
+                            <TableWithPagination
+                                title={'Orders'}
+                                data={this.state.orders}
+                                rowsPerPage={10}
+                            />
+                        </Sticker>
+                    );
+                case 'Table2':
+                    return (
+                        <Sticker key={block.i}>
+                            <TableWithPagination
+                                title={'Users'}
+                                data={this.state.users}
+                                rowsPerPage={10}
+                            />
+                        </Sticker>
+                    );
+                case 'RealtimeTable1':
+                    return (
+                        <Sticker key={block.i}>
+                            <RealtimeTable
+                                title={'Real-time Orders'}
+                                data={this.state.recentOrders}
+                                dataKey={'recentOrders'}
+                                onAnimationEnd={this.onAnimationEnd}
+                            />
+                        </Sticker>
+                    );
+                case 'RealtimeTable2':
+                    return (
+                        <Sticker key={block.i}>
+                            <RealtimeTable
+                                title={'Real-time Users'}
+                                data={this.state.recentUsers}
+                                dataKey={'recentUsers'}
+                                onAnimationEnd={this.onAnimationEnd}
+                            />
+                        </Sticker>
+                    );
+                case 'RealtimeMessageTable':
+                    return (
+                        <Sticker key={block.i}>
+                            <RealtimeMessageTable
+                                title={'Real-time Messages'}
+                                data={this.state.recentMessages}
+                                dataKey={'recentMessages'}
+                                onAnimationEnd={this.onAnimationEnd}
+                            />
+                        </Sticker>
+                    );
             }
         };
 
@@ -331,8 +356,9 @@ class ComponentTablePage extends React.Component {
             <PageBaseContainer
                 generateBlock={generateBlock}
                 initialLayout={initialLayout}
-                initialBlocks={initialBlocks} />
-        )
+                initialBlocks={initialBlocks}
+            />
+        );
     }
 }
 
