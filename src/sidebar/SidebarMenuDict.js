@@ -6,6 +6,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 
 import Timeline from '@material-ui/icons/Timeline';
 import ViewList from '@material-ui/icons/ViewList';
+import TableChart from '@material-ui/icons/TableChart';
 import AvTimer from '@material-ui/icons/AvTimer';
 import WbSunny from '@material-ui/icons/WbSunny';
 import Map from '@material-ui/icons/Map';
@@ -57,16 +58,22 @@ const SidebarMenuDict = {
         value: 203,
         need_permission: false
     }, {
+        title: 'SmartTable',
+        icon: (<TableChart />),
+        url: '/components/smart-table',
+        value: 204,
+        need_permission: false
+    }, {
         title: 'Number',
         icon: (<AvTimer />),
         url: '/components/number',
-        value: 204,
+        value: 205,
         need_permission: false
     }, {
         title: 'Weather',
         icon: (<WbSunny />),
         url: '/components/weather',
-        value: 205,
+        value: 206,
         need_permission: false
     }],
 
