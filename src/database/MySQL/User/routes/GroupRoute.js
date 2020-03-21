@@ -35,7 +35,7 @@ var GroupRoute = {
     read: function (req, res) {
         var groupId = req.params.groupId
 
-        Group.findById(groupId)
+        Group.findByPk(groupId)
         .then(function (result) {
             res.json(result)
         })

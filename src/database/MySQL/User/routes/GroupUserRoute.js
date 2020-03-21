@@ -57,7 +57,7 @@ var GroupUserRoute = {
         var groupId = req.params.groupId
         var userId = req.params.userId
 
-        GroupUser.findById(groupId)
+        GroupUser.findByPk(groupId)
         .then(function (result) {
             res.json(result)
         })

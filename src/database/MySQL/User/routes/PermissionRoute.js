@@ -39,7 +39,7 @@ var PermissionRoute = {
     read: function (req, res) {
         var permissionId = req.params.permissionId
 
-        Permission.findById(permissionId)
+        Permission.findByPk(permissionId)
         .then(function (result) {
             res.json(result)
         })
