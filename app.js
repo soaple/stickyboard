@@ -26,9 +26,12 @@ const stickyboardConfig = require('./stickyboard.config');
 // var Secret = require('utils/Secret')
 const MySqlConn = require('database/connections/MySqlConn');
 
-// Define MySQL model relations
+// Define MySQL USER model relations
 const UserModelRelations = require('database/MySQL/User/ModelRelations');
 UserModelRelations.defineRelations();
+// Define MySQL MyApp's model relations
+// const MyAppModelRelations = require('database/MySQL/MyApp/ModelRelations');
+// MyAppModelRelations.defineRelations();
 
 // Auth
 const AuthRoute = require('auth/AuthRoute');
@@ -43,8 +46,8 @@ const StkbdPermissionRoute = require('database/MySQL/User/routes/PermissionRoute
 
 // GraphQL
 const graphqlHTTP = require('express-graphql');
-const graphqlSchema = require('graphql/schema');
-const graphqlRoot = require('graphql/root');
+const graphqlSchema = require('graphql/MyApp/schemas/schema');
+const graphqlRoot = require('graphql/MyApp/resolvers/root');
 
 // Initialize the app
 const app = new Express();
