@@ -41,8 +41,13 @@ const StkbdGroupPermissionRoute = require('database/MySQL/User/routes/GroupPermi
 const StkbdPermissionRoute = require('database/MySQL/User/routes/PermissionRoute');
 // MySQL MyApp's models route
 
+// GraphQL
+const graphqlHTTP = require('express-graphql');
+const graphqlSchema = require('graphql/schema');
+const graphqlRoot = require('graphql/root');
+
 // Initialize the app
-const app = new Express()
+const app = new Express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -125,6 +130,18 @@ router.delete('/stkbd/permission/:permissionId/$', StkbdPermissionRoute.delete);
 *******************************/
 
 app.use('/api', passport.authenticate('jwt', { session: false }), router);
+
+/******************************
+    GraphQL routing
+*******************************/
+app.use(
+    '/graphql',
+    graphqlHTTP({
+        schema: graphqlSchema,
+        rootValue: graphqlRoot,
+        graphiql: true,
+    })
+);
 
 // Set port and running environment
 const port = process.env.PORT || 3000

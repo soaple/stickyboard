@@ -10,6 +10,8 @@ import { SmartTable } from '@stickyboard/smart-table';
 
 import PageBaseContainer from 'redux/containers/PageBaseContainer';
 
+// var User = require('database/MySQL/User/models/User');
+
 const styles = (theme) => ({
     root: {},
 });
@@ -41,7 +43,8 @@ class ComponentSmartTablePage extends React.Component {
                 case 'SmartTable':
                     return (
                         <Sticker key={block.i}>
-                            <SmartTable />
+                            <SmartTable
+                                model={User} />
                         </Sticker>
                     );
             }
