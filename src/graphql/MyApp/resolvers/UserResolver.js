@@ -8,7 +8,7 @@ const UserResolver = {
     },
 
     readUsers: ({ offset, limit }) => {
-        return User.findAll({
+        return User.findAndCountAll({
             where: {
             },
             offset: offset,

@@ -12,11 +12,16 @@ const UserPostSchema = {
             created: Date
             updated: Date
         }
+
+        type ${MODEL_NAME}Page {
+            count: Int!
+            rows: [${MODEL_NAME}]
+        }
     `,
 
     query: `
         readUserPost(id: Int!): ${MODEL_NAME}
-        readUserPosts(offset: Int!, limit: Int!): [${MODEL_NAME}]
+        readUserPosts(offset: Int!, limit: Int!): ${MODEL_NAME}Page
     `,
 };
 

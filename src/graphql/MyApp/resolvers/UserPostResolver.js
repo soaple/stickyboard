@@ -8,7 +8,7 @@ const UserPostResolver = {
     },
 
     readUserPosts: ({ offset, limit }) => {
-        return UserPost.findAll({
+        return UserPost.findAndCountAll({
             where: {
             },
             offset: offset,
