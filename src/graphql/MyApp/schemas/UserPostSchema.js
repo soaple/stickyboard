@@ -1,8 +1,10 @@
 // src/graphql/MyApp/schemas/UserPostSchema.js
 
+const MODEL_NAME = 'UserPost';
+
 const UserPostSchema = {
     model: `
-        type UserPost {
+        type ${MODEL_NAME} {
             id: Int!
             title: String!
             content: String!
@@ -10,7 +12,8 @@ const UserPostSchema = {
     `,
 
     query: `
-        getUserPost(id: Int!): UserPost
+        readUserPost(id: Int!): ${MODEL_NAME}
+        readUserPosts(offset: Int!, limit: Int!): [${MODEL_NAME}]
     `,
 };
 

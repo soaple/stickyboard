@@ -1,15 +1,18 @@
 // src/graphql/MyApp/schemas/UserSchema.js
 
+const MODEL_NAME = 'User';
+
 const UserSchema = {
     model: `
-        type User {
+        type ${MODEL_NAME} {
             id: Int!
             email: String!
         }
     `,
 
     query: `
-        getUser(id: Int!): User
+        readUser(id: Int!): ${MODEL_NAME}
+        readUsers(offset: Int!, limit: Int!): [${MODEL_NAME}]
     `,
 };
 

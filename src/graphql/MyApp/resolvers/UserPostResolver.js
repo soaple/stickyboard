@@ -3,8 +3,17 @@
 const UserPost = require('database/MySQL/MyApp/models/UserPost');
 
 const UserPostResolver = {
-    getUserPost: ({ id }) => {
+    readUserPost: ({ id }) => {
         return UserPost.findByPk(id);
+    },
+
+    readUsers: ({ offset, limit }) => {
+        return UserPost.findAll({
+            where: {
+            },
+            offset: offset,
+            limit: limit,
+        });
     },
 };
 

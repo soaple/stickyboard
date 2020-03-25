@@ -44,7 +44,19 @@ class ComponentSmartTablePage extends React.Component {
                     return (
                         <Sticker key={block.i}>
                             <SmartTable
-                                model={User} />
+                                title={'Users'}
+                                columns={[
+                                    { name: 'id', label: 'ID' },
+                                    { name: 'email', label: 'Email' },
+                                ]}
+                                queryName={{
+                                    create: 'createUser',
+                                    readItems: 'readUsers',
+                                    read: 'readUser',
+                                    update: 'updateUser',
+                                    delete: 'deleteUser',
+                                }}
+                            />
                         </Sticker>
                     );
             }
