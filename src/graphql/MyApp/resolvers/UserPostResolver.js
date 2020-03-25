@@ -7,7 +7,7 @@ const UserPostResolver = {
         return UserPost.findByPk(id);
     },
 
-    readUsers: ({ offset, limit }) => {
+    readUserPosts: ({ offset, limit }) => {
         return UserPost.findAll({
             where: {
             },

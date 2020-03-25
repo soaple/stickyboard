@@ -8,6 +8,9 @@ const UserPostSchema = {
             id: Int!
             title: String!
             content: String!
+            hits: Int!
+            created: Date
+            updated: Date
         }
     `,
 

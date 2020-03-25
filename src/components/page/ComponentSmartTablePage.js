@@ -17,14 +17,29 @@ const styles = (theme) => ({
 });
 
 const initialLayout = {
-    lg: [{ i: 'SmartTable', x: 0, y: 0, w: 6, h: 14 }],
-    md: [{ i: 'SmartTable', x: 0, y: 0, w: 6, h: 14 }],
-    sm: [{ i: 'SmartTable', x: 0, y: 14, w: 8, h: 14 }],
-    xs: [{ i: 'SmartTable', x: 0, y: 14, w: 6, h: 14 }],
-    xxs: [{ i: 'SmartTable', x: 0, y: 14, w: 4, h: 14 }],
+    lg: [
+        { i: 'UsersTable', x: 0, y: 0, w: 6, h: 15 },
+        { i: 'UserPostsTable', x: 6, y: 0, w: 6, h: 15 },
+    ],
+    md: [
+        { i: 'UsersTable', x: 0, y: 0, w: 6, h: 15 },
+        { i: 'UserPostsTable', x: 6, y: 0, w: 6, h: 15 },
+    ],
+    sm: [
+        { i: 'UsersTable', x: 0, y: 0, w: 8, h: 15 },
+        { i: 'UserPostsTable', x: 0, y: 15, w: 8, h: 15 },
+    ],
+    xs: [
+        { i: 'UsersTable', x: 0, y: 0, w: 6, h: 15 },
+        { i: 'UserPostsTable', x: 0, y: 15, w: 6, h: 15 },
+    ],
+    xxs: [
+        { i: 'UsersTable', x: 0, y: 0, w: 4, h: 15 },
+        { i: 'UserPostsTable', x: 0, y: 15, w: 4, h: 15 },
+    ],
 };
 
-const initialBlocks = [{ i: 'SmartTable' }];
+const initialBlocks = [{ i: 'UsersTable' }, { i: 'UserPostsTable' }];
 
 class ComponentSmartTablePage extends React.Component {
     constructor(props) {
@@ -40,7 +55,7 @@ class ComponentSmartTablePage extends React.Component {
 
         const generateBlock = (block) => {
             switch (block.i) {
-                case 'SmartTable':
+                case 'UsersTable':
                     return (
                         <Sticker key={block.i}>
                             <SmartTable
@@ -48,6 +63,14 @@ class ComponentSmartTablePage extends React.Component {
                                 columns={[
                                     { name: 'id', label: 'ID' },
                                     { name: 'email', label: 'Email' },
+                                    {
+                                        name: 'date_joined',
+                                        label: 'Date Joined',
+                                    },
+                                    {
+                                        name: 'last_online',
+                                        label: 'Last Online',
+                                    },
                                 ]}
                                 queryName={{
                                     create: 'createUser',
@@ -55,6 +78,29 @@ class ComponentSmartTablePage extends React.Component {
                                     read: 'readUser',
                                     update: 'updateUser',
                                     delete: 'deleteUser',
+                                }}
+                            />
+                        </Sticker>
+                    );
+                case 'UserPostsTable':
+                    return (
+                        <Sticker key={block.i}>
+                            <SmartTable
+                                title={'User Posts'}
+                                columns={[
+                                    { name: 'id', label: 'ID' },
+                                    { name: 'title', label: 'Title' },
+                                    { name: 'content', label: 'Content' },
+                                    { name: 'hits', label: 'Hits' },
+                                    { name: 'created', label: 'Created' },
+                                    { name: 'updated', label: 'Updated' },
+                                ]}
+                                queryName={{
+                                    create: 'createUserPost',
+                                    readItems: 'readUserPosts',
+                                    read: 'readUserPost',
+                                    update: 'updateUserPost',
+                                    delete: 'deleteUserPost',
                                 }}
                             />
                         </Sticker>

@@ -7,6 +7,8 @@ const UserSchema = {
         type ${MODEL_NAME} {
             id: Int!
             email: String!
+            date_joined: Date
+            last_online: Date
         }
     `,
 

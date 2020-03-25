@@ -6,6 +6,8 @@ const UserSchema = require('./UserSchema');
 const UserPostSchema = require('./UserPostSchema');
 
 const schema = buildSchema(`
+    scalar Date
+
     ${UserSchema.model}
     ${UserPostSchema.model}
 
