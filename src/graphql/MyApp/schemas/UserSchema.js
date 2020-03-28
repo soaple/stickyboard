@@ -21,6 +21,10 @@ const UserSchema = {
         readUser(id: Int!): ${MODEL_NAME}
         readUsers(offset: Int!, limit: Int!): ${MODEL_NAME}Page
     `,
+
+    mutation: `
+        createUser(email: String!, password: String!): ${MODEL_NAME}
+    `,
 };
 
 module.exports = UserSchema;

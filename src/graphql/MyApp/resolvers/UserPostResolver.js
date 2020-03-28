@@ -9,12 +9,13 @@ const UserPostResolver = {
 
     readUserPosts: ({ offset, limit }) => {
         return UserPost.findAndCountAll({
-            where: {
-            },
+            where: {},
             offset: offset,
             limit: limit,
         });
     },
+
+    createUserPost: async ({ title, content }) => {},
 };
 
 module.exports = UserPostResolver;

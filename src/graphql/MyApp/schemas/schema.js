@@ -15,6 +15,11 @@ const schema = buildSchema(`
         ${UserSchema.query}
         ${UserPostSchema.query}
     }
+
+    type Mutation {
+        ${UserSchema.mutation}
+        ${UserPostSchema.mutation}
+    }
 `);
 
 module.exports = schema;

@@ -23,6 +23,10 @@ const UserPostSchema = {
         readUserPost(id: Int!): ${MODEL_NAME}
         readUserPosts(offset: Int!, limit: Int!): ${MODEL_NAME}Page
     `,
+
+    mutation: `
+        createUserPost(title: String!, content: String!): ${MODEL_NAME}
+    `,
 };
 
 module.exports = UserPostSchema;

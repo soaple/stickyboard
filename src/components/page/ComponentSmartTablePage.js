@@ -61,15 +61,35 @@ class ComponentSmartTablePage extends React.Component {
                             <SmartTable
                                 title={'Users'}
                                 columns={[
-                                    { name: 'id', label: 'ID' },
-                                    { name: 'email', label: 'Email' },
+                                    {
+                                        name: 'id',
+                                        label: 'ID',
+                                        show: true,
+                                        required: false,
+                                    },
+                                    {
+                                        name: 'password',
+                                        label: 'Password',
+                                        show: false,
+                                        required: true,
+                                    },
+                                    {
+                                        name: 'email',
+                                        label: 'Email',
+                                        show: true,
+                                        required: true,
+                                    },
                                     {
                                         name: 'date_joined',
                                         label: 'Date Joined',
+                                        show: true,
+                                        required: false,
                                     },
                                     {
                                         name: 'last_online',
                                         label: 'Last Online',
+                                        show: true,
+                                        required: false,
                                     },
                                 ]}
                                 queryName={{
@@ -88,12 +108,42 @@ class ComponentSmartTablePage extends React.Component {
                             <SmartTable
                                 title={'User Posts'}
                                 columns={[
-                                    { name: 'id', label: 'ID' },
-                                    { name: 'title', label: 'Title' },
-                                    { name: 'content', label: 'Content' },
-                                    { name: 'hits', label: 'Hits' },
-                                    { name: 'created', label: 'Created' },
-                                    { name: 'updated', label: 'Updated' },
+                                    {
+                                        name: 'id',
+                                        label: 'ID',
+                                        show: true,
+                                        required: false,
+                                    },
+                                    {
+                                        name: 'title',
+                                        label: 'Title',
+                                        show: true,
+                                        required: true,
+                                    },
+                                    {
+                                        name: 'content',
+                                        label: 'Content',
+                                        show: true,
+                                        required: true,
+                                    },
+                                    {
+                                        name: 'hits',
+                                        label: 'Hits',
+                                        show: true,
+                                        required: false,
+                                    },
+                                    {
+                                        name: 'created',
+                                        label: 'Created',
+                                        show: true,
+                                        required: false,
+                                    },
+                                    {
+                                        name: 'updated',
+                                        label: 'Updated',
+                                        show: true,
+                                        required: false,
+                                    },
                                 ]}
                                 queryName={{
                                     create: 'createUserPost',

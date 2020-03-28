@@ -15,6 +15,13 @@ const UserResolver = {
             limit: limit,
         });
     },
+
+    createUser: async ({ email, password }) => {
+        return await User.create({
+            email: email,
+            password: password,
+        }, { returning: true });
+    },
 };
 
 module.exports = UserResolver;
