@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 import { Sticker } from '@stickyboard/core';
-import { SmartTable } from '@stickyboard/smart-table';
+import { SmartTable, InputType } from '@stickyboard/smart-table';
 
 import PageBaseContainer from 'redux/containers/PageBaseContainer';
 
@@ -59,37 +59,47 @@ class ComponentSmartTablePage extends React.Component {
                     return (
                         <Sticker key={block.i}>
                             <SmartTable
-                                title={'Users'}
+                                title={'User'}
                                 columns={[
                                     {
                                         name: 'id',
                                         label: 'ID',
+                                        type: InputType.NUMBER,
                                         show: true,
                                         required: false,
-                                    },
-                                    {
-                                        name: 'password',
-                                        label: 'Password',
-                                        show: false,
-                                        required: true,
+                                        updatable: false,
                                     },
                                     {
                                         name: 'email',
                                         label: 'Email',
+                                        type: InputType.TEXT,
                                         show: true,
                                         required: true,
+                                        updatable: true,
+                                    },
+                                    {
+                                        name: 'password',
+                                        label: 'Password',
+                                        type: InputType.PASSWORD,
+                                        show: false,
+                                        required: true,
+                                        updatable: true,
                                     },
                                     {
                                         name: 'date_joined',
                                         label: 'Date Joined',
+                                        type: InputType.DATE,
                                         show: true,
                                         required: false,
+                                        updatable: true,
                                     },
                                     {
                                         name: 'last_online',
                                         label: 'Last Online',
+                                        type: InputType.DATE,
                                         show: true,
                                         required: false,
+                                        updatable: true,
                                     },
                                 ]}
                                 queryName={{
@@ -106,43 +116,55 @@ class ComponentSmartTablePage extends React.Component {
                     return (
                         <Sticker key={block.i}>
                             <SmartTable
-                                title={'User Posts'}
+                                title={'User Post'}
                                 columns={[
                                     {
                                         name: 'id',
                                         label: 'ID',
+                                        type: InputType.NUMBER,
                                         show: true,
                                         required: false,
+                                        updatable: false,
                                     },
                                     {
                                         name: 'title',
                                         label: 'Title',
+                                        type: InputType.TEXT,
                                         show: true,
                                         required: true,
+                                        updatable: true,
                                     },
                                     {
                                         name: 'content',
                                         label: 'Content',
+                                        type: InputType.TEXT,
                                         show: true,
                                         required: true,
+                                        updatable: true,
                                     },
                                     {
                                         name: 'hits',
                                         label: 'Hits',
+                                        type: InputType.NUMBER,
                                         show: true,
                                         required: false,
+                                        updatable: true,
                                     },
                                     {
                                         name: 'created',
                                         label: 'Created',
+                                        type: InputType.DATE,
                                         show: true,
                                         required: false,
+                                        updatable: true,
                                     },
                                     {
                                         name: 'updated',
                                         label: 'Updated',
+                                        type: InputType.DATE,
                                         show: true,
                                         required: false,
+                                        updatable: true,
                                     },
                                 ]}
                                 queryName={{

@@ -7,6 +7,7 @@ const UserSchema = {
         type ${MODEL_NAME} {
             id: Int!
             email: String!
+            password: String!
             date_joined: Date
             last_online: Date
         }
@@ -24,6 +25,7 @@ const UserSchema = {
 
     mutation: `
         createUser(email: String!, password: String!): ${MODEL_NAME}
+        updateUser(id: Int!, email: String!, password: String!, date_joined: Date, last_online: Date): ${MODEL_NAME}
     `,
 };
 
