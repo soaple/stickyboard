@@ -12,13 +12,18 @@ const schema = buildSchema(`
     ${UserPostSchema.model}
 
     type Query {
-        ${UserSchema.query}
-        ${UserPostSchema.query}
+        ${UserSchema.query.read}
+        ${UserSchema.query.readItems}
+
+        ${UserPostSchema.query.read}
+        ${UserPostSchema.query.readItems}
     }
 
     type Mutation {
-        ${UserSchema.mutation}
-        ${UserPostSchema.mutation}
+        ${UserSchema.mutation.create}
+        ${UserSchema.mutation.update}
+        
+        ${UserPostSchema.mutation.create}
     }
 `);
 

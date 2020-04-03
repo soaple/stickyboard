@@ -10,6 +10,9 @@ import { SmartTable, InputType } from '@stickyboard/smart-table';
 
 import PageBaseContainer from 'redux/containers/PageBaseContainer';
 
+import UserSchema from 'graphql/MyApp/schemas/UserSchema';
+import UserPostSchema from 'graphql/MyApp/schemas/UserPostSchema';
+
 // var User = require('database/MySQL/User/models/User');
 
 const styles = (theme) => ({
@@ -102,13 +105,15 @@ class ComponentSmartTablePage extends React.Component {
                                         updatable: true,
                                     },
                                 ]}
-                                queryName={{
-                                    create: 'createUser',
-                                    readItems: 'readUsers',
-                                    read: 'readUser',
-                                    update: 'updateUser',
-                                    delete: 'deleteUser',
-                                }}
+                                schema={UserSchema}
+
+                                // queryName={{
+                                //     create: 'createUser',
+                                //     readItems: 'readUsers',
+                                //     read: 'readUser',
+                                //     update: 'updateUser',
+                                //     delete: 'deleteUser',
+                                // }}
                             />
                         </Sticker>
                     );
@@ -167,13 +172,15 @@ class ComponentSmartTablePage extends React.Component {
                                         updatable: true,
                                     },
                                 ]}
-                                queryName={{
-                                    create: 'createUserPost',
-                                    readItems: 'readUserPosts',
-                                    read: 'readUserPost',
-                                    update: 'updateUserPost',
-                                    delete: 'deleteUserPost',
-                                }}
+                                schema={UserPostSchema}
+
+                                // queryName={{
+                                //     create: 'createUserPost',
+                                //     readItems: 'readUserPosts',
+                                //     read: 'readUserPost',
+                                //     update: 'updateUserPost',
+                                //     delete: 'deleteUserPost',
+                                // }}
                             />
                         </Sticker>
                     );

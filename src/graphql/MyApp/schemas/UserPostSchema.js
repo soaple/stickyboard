@@ -19,14 +19,15 @@ const UserPostSchema = {
         }
     `,
 
-    query: `
-        readUserPost(id: Int!): ${MODEL_NAME}
-        readUserPosts(offset: Int!, limit: Int!): ${MODEL_NAME}Page
-    `,
+    query: {
+        read: `readUserPost(id: Int!): ${MODEL_NAME}`,
+        readItems: `readUserPosts(offset: Int!, limit: Int!): ${MODEL_NAME}Page`,
+    },
 
-    mutation: `
-        createUserPost(title: String!, content: String!): ${MODEL_NAME}
-    `,
+    mutation: {
+        create: `createUserPost(title: String!, content: String!): ${MODEL_NAME}`,
+        update: `updateUserPost(id: Int!, title: String!, content: String!, hit: Int!, created: Date, updated: Date): ${MODEL_NAME}`,
+    },
 };
 
 module.exports = UserPostSchema;

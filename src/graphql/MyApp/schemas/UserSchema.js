@@ -18,15 +18,15 @@ const UserSchema = {
         }
     `,
 
-    query: `
-        readUser(id: Int!): ${MODEL_NAME}
-        readUsers(offset: Int!, limit: Int!): ${MODEL_NAME}Page
-    `,
+    query: {
+        read: `readUser(id: Int!): ${MODEL_NAME}`,
+        readItems: `readUsers(offset: Int!, limit: Int!): ${MODEL_NAME}Page`,
+    },
 
-    mutation: `
-        createUser(email: String!, password: String!): ${MODEL_NAME}
-        updateUser(id: Int!, email: String!, password: String!, date_joined: Date, last_online: Date): ${MODEL_NAME}
-    `,
+    mutation: {
+        create: `createUser(email: String!, password: String!): ${MODEL_NAME}`,
+        update: `updateUser(id: Int!, email: String!, password: String!, date_joined: Date, last_online: Date): ${MODEL_NAME}`,
+    },
 };
 
 module.exports = UserSchema;
