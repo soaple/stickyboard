@@ -106,14 +106,6 @@ class ComponentSmartTablePage extends React.Component {
                                     },
                                 ]}
                                 schema={UserSchema}
-
-                                // queryName={{
-                                //     create: 'createUser',
-                                //     readItems: 'readUsers',
-                                //     read: 'readUser',
-                                //     update: 'updateUser',
-                                //     delete: 'deleteUser',
-                                // }}
                             />
                         </Sticker>
                     );
@@ -173,14 +165,6 @@ class ComponentSmartTablePage extends React.Component {
                                     },
                                 ]}
                                 schema={UserPostSchema}
-
-                                // queryName={{
-                                //     create: 'createUserPost',
-                                //     readItems: 'readUserPosts',
-                                //     read: 'readUserPost',
-                                //     update: 'updateUserPost',
-                                //     delete: 'deleteUserPost',
-                                // }}
                             />
                         </Sticker>
                     );
