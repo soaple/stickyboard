@@ -1,6 +1,6 @@
 // src/components/base/PageBase.js
 
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -30,7 +30,7 @@ import MessageSnackbar from 'components/ui/MessageSnackbar';
 
 import Const from 'constants/Const';
 
-const styles = theme => ({
+const styles = (theme) => ({
     root: {
         backgroundColor: theme.colors.contentBackground,
     },
@@ -58,7 +58,7 @@ const styles = theme => ({
 });
 
 class PageBase extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.board = React.createRef();
 
@@ -70,7 +70,7 @@ class PageBase extends React.Component {
             isEditingMode: true,
             // SpeedDial
             isMenuOpen: false,
-        }
+        };
     }
 
     componentDidMount() {
@@ -82,7 +82,7 @@ class PageBase extends React.Component {
             layouts: this.props.initialLayout,
             blocks: this.props.initialBlocks,
         });
-    }
+    };
 
     initializeLayout = () => {
         const userId = CookieManager.getCookie('userId');
@@ -91,11 +91,12 @@ class PageBase extends React.Component {
             ApiManager.StickyBoard.readUserLayout(
                 userId,
                 window.location.pathname,
-                this.readUserLayoutCallback);
+                this.readUserLayoutCallback
+            );
         } else {
             this.setInitialLayout();
         }
-    }
+    };
 
     handleCloseMenu = () => {
         this.setState({ isMenuOpen: false });
@@ -113,37 +114,38 @@ class PageBase extends React.Component {
                 window.location.pathname,
                 JSON.stringify(this.state.layouts),
                 JSON.stringify(this.state.blocks),
-                this.updateUserLayoutCallback);
+                this.updateUserLayoutCallback
+            );
         }
-    }
+    };
 
     readUserLayoutCallback = (statusCode, response) => {
         this.props.hideMessageSnackbar();
         switch (statusCode) {
-        case StatusCode.OK:
-            this.setState({
-                layouts: JSON.parse(response.layout),
-                blocks: JSON.parse(response.blocks),
-            });
-            break;
-        case StatusCode.NOT_FOUND:
-            this.setInitialLayout();
-            break;
-        default:
-            alert(response.msg);
-            break;
+            case StatusCode.OK:
+                this.setState({
+                    layouts: JSON.parse(response.layout),
+                    blocks: JSON.parse(response.blocks),
+                });
+                break;
+            case StatusCode.NOT_FOUND:
+                this.setInitialLayout();
+                break;
+            default:
+                alert(response.msg);
+                break;
         }
-    }
+    };
 
     updateUserLayoutCallback = (statusCode, response) => {
         switch (statusCode) {
-        case StatusCode.OK:
-            break;
-        default:
-            alert(response.msg);
-            break;
+            case StatusCode.OK:
+                break;
+            default:
+                alert(response.msg);
+                break;
         }
-    }
+    };
 
     render() {
         const { layouts, blocks, isEditingMode, isMenuOpen } = this.state;
@@ -158,7 +160,10 @@ class PageBase extends React.Component {
                 <Board
                     ref={this.board}
                     layouts={layouts}
-                    onLayoutChange={(newLayouts) => { this.setState({ layouts: newLayouts }); console.log(JSON.stringify(newLayouts))}}
+                    onLayoutChange={(newLayouts) => {
+                        this.setState({ layouts: newLayouts });
+                        console.log(JSON.stringify(newLayouts));
+                    }}
                     onSaveLayout={this.onSaveLayout}>
                     {blocks.map((block, index) => {
                         return generateBlock(block);
@@ -167,31 +172,38 @@ class PageBase extends React.Component {
 
                 <div className={classes.menuContainer}>
                     <SpeedDial
-                        ariaLabel='SpeedDial'
+                        ariaLabel="SpeedDial"
                         className={classes.speedDial}
                         icon={<MenuIcon />}
                         onClose={this.handleCloseMenu}
                         onOpen={this.handleOpenMenu}
                         open={isMenuOpen}
                         direction={'up'}>
-                            <SpeedDialAction
-                                icon={<EditIcon />}
-                                tooltipTitle={'Toggle Edit mode'}
-                                onClick={() => { this.board.current.toggleEditingMode(); }} />
+                        <SpeedDialAction
+                            icon={<EditIcon />}
+                            tooltipTitle={'Toggle Edit mode'}
+                            onClick={() => {
+                                this.board.current.toggleEditingMode();
+                            }}
+                        />
 
-                            <SpeedDialAction
-                                icon={<TvIcon />}
-                                tooltipTitle={'Toggle TV mode'}
-                                onClick={() => { this.board.current.toggleTvMode(); }} />
+                        <SpeedDialAction
+                            icon={<TvIcon />}
+                            tooltipTitle={'Toggle TV mode'}
+                            onClick={() => {
+                                this.board.current.toggleTvMode();
+                            }}
+                        />
                     </SpeedDial>
                 </div>
 
                 {/* Message Snackbar */}
                 <MessageSnackbar
                     open={messageSnackbar.open}
-                    message={messageSnackbar.message} />
+                    message={messageSnackbar.message}
+                />
             </div>
-        )
+        );
     }
 }
 
