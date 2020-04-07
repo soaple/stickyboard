@@ -1,4 +1,11 @@
 const stkbd_group = {
+    columns: [
+        {"name":"id","type":"Int","required":false,"updatable":false},
+{"name":"name","type":"String","required":true,"updatable":true},
+{"name":"description","type":"String","required":true,"updatable":true},
+{"name":"created","type":"Date","required":false,"updatable":true},
+{"name":"updated","type":"Date","required":false,"updatable":true}
+    ],
     model: `
         type stkbd_group {
             id: Int!

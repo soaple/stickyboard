@@ -1,4 +1,13 @@
 const myapp_user_post = {
+    columns: [
+        {"name":"id","type":"Int","required":false,"updatable":false},
+{"name":"user_id","type":"Int","required":true,"updatable":true},
+{"name":"title","type":"String","required":true,"updatable":true},
+{"name":"content","type":"String","required":true,"updatable":true},
+{"name":"hits","type":"Int","required":true,"updatable":true},
+{"name":"created","type":"Date","required":false,"updatable":true},
+{"name":"updated","type":"Date","required":false,"updatable":true}
+    ],
     model: `
         type myapp_user_post {
             id: Int!

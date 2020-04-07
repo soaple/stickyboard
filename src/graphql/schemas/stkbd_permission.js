@@ -1,4 +1,15 @@
 const stkbd_permission = {
+    columns: [
+        {"name":"id","type":"Int","required":false,"updatable":false},
+{"name":"route","type":"String","required":true,"updatable":true},
+{"name":"name","type":"String","required":true,"updatable":true},
+{"name":"description","type":"String","required":true,"updatable":true},
+{"name":"key","type":"String","required":true,"updatable":true},
+{"name":"read_write","type":"Boolean","required":true,"updatable":true},
+{"name":"level","type":"Int","required":true,"updatable":true},
+{"name":"created","type":"Date","required":false,"updatable":true},
+{"name":"updated","type":"Date","required":false,"updatable":true}
+    ],
     model: `
         type stkbd_permission {
             id: Int!

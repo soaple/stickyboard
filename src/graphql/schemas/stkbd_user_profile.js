@@ -1,4 +1,18 @@
 const stkbd_user_profile = {
+    columns: [
+        {"name":"id","type":"Int","required":false,"updatable":false},
+{"name":"user_id","type":"Int","required":true,"updatable":true},
+{"name":"name","type":"String","required":true,"updatable":true},
+{"name":"gender","type":"Int","required":false,"updatable":true},
+{"name":"company","type":"String","required":true,"updatable":true},
+{"name":"department","type":"String","required":true,"updatable":true},
+{"name":"position","type":"String","required":true,"updatable":true},
+{"name":"mobile","type":"String","required":true,"updatable":true},
+{"name":"office","type":"String","required":true,"updatable":true},
+{"name":"is_superuser","type":"Boolean","required":true,"updatable":true},
+{"name":"date_joined","type":"Date","required":false,"updatable":true},
+{"name":"last_online","type":"Date","required":false,"updatable":true}
+    ],
     model: `
         type stkbd_user_profile {
             id: Int!

@@ -65,7 +65,6 @@ const sequelizeModels = [
 
 // const graphqlBasePath = `${process.env.NODE_PATH}/graphql`;
 // const schemaPath = path.resolve(graphqlBasePath, 'schemas');
-// // const resolverPath = path.resolve(graphqlBasePath, 'resolvers');
 //
 // // Generate schema files from Sequelize model
 // sequelizeModels.forEach((sequelizeModel) => {
@@ -84,13 +83,7 @@ const sequelizeModels = [
 //         fs.mkdirSync(schemaPath);
 //     }
 //
-//     // Create a resolver path if it doesn't exist
-//     // if (!fs.existsSync(resolverPath)) {
-//     //     fs.mkdirSync(resolverPath);
-//     // }
-//
 //     const schema = graphqlHelper.generateSchema(sequelizeModel);
-//     // const resolver = graphqlHelper.generateResolver(sequelizeModel);
 //
 //     fs.writeFile(
 //         path.resolve(schemaPath, schemaFileName),
@@ -104,7 +97,7 @@ const sequelizeModels = [
 //
 // // Generate buildSchema file
 // const buildSchema = graphqlHelper.generateBuildSchemaFileContent(sequelizeModels);
-// const buildSchemaFileName = `typeDefs.js`
+// const buildSchemaFileName = `schema.js`
 // fs.writeFile(
 //     path.resolve(schemaPath, buildSchemaFileName),
 //     buildSchema,
@@ -114,7 +107,7 @@ const sequelizeModels = [
 //     }
 // );
 
-const typeDefs = require('graphql/schemas/typeDefs');
+const typeDefs = require('graphql/schemas/schema');
 const resolvers = graphqlHelper.generateResolvers(sequelizeModels);
 const graphqlSchema = makeExecutableSchema({ typeDefs, resolvers });
 
