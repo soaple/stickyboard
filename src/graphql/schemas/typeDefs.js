@@ -1,6 +1,4 @@
-const { buildSchema } = require('graphql');
-
-const schema = buildSchema(`
+const schema = `
     scalar Date
 
     type stkbd_user {
@@ -158,6 +156,6 @@ update_myapp_user(id: Int!, email: String!, password: String!, date_joined: Date
 create_myapp_user_post(user_id: Int!, title: String!, content: String!, hits: Int!): myapp_user_post
 update_myapp_user_post(id: Int!, user_id: Int!, title: String!, content: String!, hits: Int!, created: Date!, updated: Date!): myapp_user_post
     }
-`);
+`;
 
 module.exports = schema;

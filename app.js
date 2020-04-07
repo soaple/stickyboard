@@ -45,6 +45,7 @@ const StkbdPermissionRoute = require('database/MySQL/User/routes/PermissionRoute
 // MySQL MyApp's models route
 
 // GraphQL
+const { makeExecutableSchema } = require('graphql-tools');
 const graphqlHTTP = require('express-graphql');
 const graphqlHelper = require('@stickyboard/graphql-helper');
 
@@ -62,69 +63,60 @@ const sequelizeModels = [
     require('database/MySQL/MyApp/models/UserPost'),
 ];
 
+// const graphqlBasePath = `${process.env.NODE_PATH}/graphql`;
+// const schemaPath = path.resolve(graphqlBasePath, 'schemas');
+// // const resolverPath = path.resolve(graphqlBasePath, 'resolvers');
+//
+// // Generate schema files from Sequelize model
+// sequelizeModels.forEach((sequelizeModel) => {
+//     const schemaFileName = `${sequelizeModel.name}.js`
+//
+//     graphqlBasePath.split('/').reduce((parentDir, childDir) => {
+//         const curDir = path.resolve(parentDir, childDir);
+//         if (!fs.existsSync(curDir)) {
+//             fs.mkdirSync(curDir);
+//         }
+//         return curDir;
+//     });
+//
+//     // Create a schema path if it doesn't exist
+//     if (!fs.existsSync(schemaPath)) {
+//         fs.mkdirSync(schemaPath);
+//     }
+//
+//     // Create a resolver path if it doesn't exist
+//     // if (!fs.existsSync(resolverPath)) {
+//     //     fs.mkdirSync(resolverPath);
+//     // }
+//
+//     const schema = graphqlHelper.generateSchema(sequelizeModel);
+//     // const resolver = graphqlHelper.generateResolver(sequelizeModel);
+//
+//     fs.writeFile(
+//         path.resolve(schemaPath, schemaFileName),
+//         schema,
+//         function(err) {
+//             if (err) throw err;
+//             console.log(`${schemaFileName} created.`);
+//         }
+//     );
+// });
+//
+// // Generate buildSchema file
+// const buildSchema = graphqlHelper.generateBuildSchemaFileContent(sequelizeModels);
+// const buildSchemaFileName = `typeDefs.js`
+// fs.writeFile(
+//     path.resolve(schemaPath, buildSchemaFileName),
+//     buildSchema,
+//     function(err) {
+//         if (err) throw err;
+//         console.log(`${buildSchemaFileName} created.`);
+//     }
+// );
 
-let schemaList = [];
-const graphqlBasePath = `${process.env.NODE_PATH}/graphql`;
-const schemaPath = path.resolve(graphqlBasePath, 'schemas');
-// const resolverPath = path.resolve(graphqlBasePath, 'resolvers');
-
-// Generate schema files from Sequelize model
-sequelizeModels.forEach((sequelizeModel) => {
-    const schemaFileName = `${sequelizeModel.name}.js`
-
-    graphqlBasePath.split('/').reduce((parentDir, childDir) => {
-        const curDir = path.resolve(parentDir, childDir);
-        if (!fs.existsSync(curDir)) {
-            fs.mkdirSync(curDir);
-        }
-        return curDir;
-    });
-
-    // Create a schema path if it doesn't exist
-    if (!fs.existsSync(schemaPath)) {
-        fs.mkdirSync(schemaPath);
-    }
-
-    // Create a resolver path if it doesn't exist
-    // if (!fs.existsSync(resolverPath)) {
-    //     fs.mkdirSync(resolverPath);
-    // }
-
-    const schema = graphqlHelper.generateSchema(sequelizeModel);
-    // const resolver = graphqlHelper.generateResolver(sequelizeModel);
-
-    fs.writeFile(
-        path.resolve(schemaPath, schemaFileName),
-        schema,
-        function(err) {
-            if (err) throw err;
-            console.log(`${schemaFileName} created.`);
-        }
-    );
-
-    schemaList.push(schema);
-});
-
-// Generate buildSchema file
-const buildSchema = graphqlHelper.generateBuildSchemaFileContent(sequelizeModels);
-const buildSchemaFileName = `schema.js`
-fs.writeFile(
-    path.resolve(schemaPath, buildSchemaFileName),
-    buildSchema,
-    function(err) {
-        if (err) throw err;
-        console.log(`${buildSchemaFileName} created.`);
-    }
-);
-
-const graphqlSchema = require('graphql/schemas/schema');
-
-// const graphqlSchema = graphqlHelper.generateSchemas(sequelizeModels);
-const graphqlRoot = graphqlHelper.generateResolvers(sequelizeModels);
-// const graphqlSchema = require('graphql/MyApp/schemas/schema');
-// const graphqlRoot = require('graphql/MyApp/resolvers/root');
-console.log(graphqlSchema)
-console.log(graphqlRoot)
+const typeDefs = require('graphql/schemas/typeDefs');
+const resolvers = graphqlHelper.generateResolvers(sequelizeModels);
+const graphqlSchema = makeExecutableSchema({ typeDefs, resolvers });
 
 // Initialize the app
 const app = new Express();
@@ -218,7 +210,6 @@ app.use(
     '/graphql',
     graphqlHTTP({
         schema: graphqlSchema,
-        rootValue: graphqlRoot,
         graphiql: true,
     })
 );
