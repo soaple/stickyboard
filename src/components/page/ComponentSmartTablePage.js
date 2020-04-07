@@ -10,8 +10,10 @@ import { SmartTable, InputType } from '@stickyboard/smart-table';
 
 import PageBaseContainer from 'redux/containers/PageBaseContainer';
 
-import UserSchema from 'graphql/MyApp/schemas/UserSchema';
-import UserPostSchema from 'graphql/MyApp/schemas/UserPostSchema';
+// import UserSchema from 'graphql/MyApp/schemas/UserSchema';
+// import UserPostSchema from 'graphql/MyApp/schemas/UserPostSchema';
+import UserSchema from 'graphql/schemas/myapp_user';
+import UserPostSchema from 'graphql/schemas/myapp_user_post';
 
 // var User = require('database/MySQL/User/models/User');
 

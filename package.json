@@ -1,6 +1,10 @@
 {
     "name": "StickyBoard",
     "version": "1.0.0",
+    "engines": {
+        "node": "12.16.0",
+        "npm": "6.13.7"
+    },
     "private": true,
     "author": "soaple",
     "scripts": {
