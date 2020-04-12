@@ -57,11 +57,11 @@ var UserRoute = {
     read: function (req, res) {
         var userId = req.params.userId
 
-        if (parseInt(userId) !== req.decoded.user.id) {
+        if (parseInt(userId) !== req.user.id) {
             res.status(StatusCode.PERMISSION_DENIED).json({msg: '권한이 없습니다.'})
         }
 
-        User.findById(userId)
+        User.findByPk(userId)
         .then(function (result) {
             delete result.dataValues.password
             res.json(result)

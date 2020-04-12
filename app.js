@@ -26,9 +26,12 @@ const stickyboardConfig = require('./stickyboard.config');
 // var Secret = require('utils/Secret')
 const MySqlConn = require('database/connections/MySqlConn');
 
-// Define MySQL model relations
+// Define MySQL USER model relations
 const UserModelRelations = require('database/MySQL/User/ModelRelations');
 UserModelRelations.defineRelations();
+// Define MySQL MyApp's model relations
+// const MyAppModelRelations = require('database/MySQL/MyApp/ModelRelations');
+// MyAppModelRelations.defineRelations();
 
 // Auth
 const AuthRoute = require('auth/AuthRoute');
@@ -41,8 +44,39 @@ const StkbdGroupPermissionRoute = require('database/MySQL/User/routes/GroupPermi
 const StkbdPermissionRoute = require('database/MySQL/User/routes/PermissionRoute');
 // MySQL MyApp's models route
 
+// GraphQL
+const { makeExecutableSchema } = require('graphql-tools');
+const graphqlHTTP = require('express-graphql');
+const graphqlHelper = require('@stickyboard/graphql-helper');
+
+const sequelizeModels = [
+    // MySQL USER models
+    require('database/MySQL/User/models/User'),
+    require('database/MySQL/User/models/UserProfile'),
+    require('database/MySQL/User/models/UserLayout'),
+    require('database/MySQL/User/models/Group'),
+    require('database/MySQL/User/models/GroupUser'),
+    require('database/MySQL/User/models/Permission'),
+    require('database/MySQL/User/models/GroupPermission'),
+    // MySQL MyApp's models
+    require('database/MySQL/MyApp/models/User'),
+    require('database/MySQL/MyApp/models/UserPost'),
+];
+
+const graphqlBasePath = `${process.env.NODE_PATH}/graphql`;
+const schemaPath = graphqlHelper.syncSchema(
+    fs,
+    path,
+    graphqlBasePath,
+    sequelizeModels,
+    { overwrite: false }
+);
+const typeDefs = require(schemaPath);
+const resolvers = graphqlHelper.generateResolvers(sequelizeModels);
+const graphqlSchema = makeExecutableSchema({ typeDefs, resolvers });
+
 // Initialize the app
-const app = new Express()
+const app = new Express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -125,6 +159,17 @@ router.delete('/stkbd/permission/:permissionId/$', StkbdPermissionRoute.delete);
 *******************************/
 
 app.use('/api', passport.authenticate('jwt', { session: false }), router);
+
+/******************************
+    GraphQL routing
+*******************************/
+app.use(
+    '/graphql',
+    graphqlHTTP({
+        schema: graphqlSchema,
+        graphiql: true,
+    })
+);
 
 // Set port and running environment
 const port = process.env.PORT || 3000

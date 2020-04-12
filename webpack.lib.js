@@ -21,8 +21,6 @@ module.exports = {
             'redux',
             'react-redux',
             'styled-components',
-            '@material-ui/core',
-            '@material-ui/icons',
         ],
     },
 

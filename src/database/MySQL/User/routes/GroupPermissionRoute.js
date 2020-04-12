@@ -59,7 +59,7 @@ var GroupPermissionRoute = {
         var groupId = req.params.groupId
         var permissionId = req.params.permissionId
 
-        GroupPermission.findById(groupId)
+        GroupPermission.findByPk(groupId)
         .then(function (result) {
             res.json(result)
         })

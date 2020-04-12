@@ -19,6 +19,7 @@ const IntroPage = loadable(() => import('components/page/IntroPage'));
 const ComponentChartsPage= loadable(() => import('components/page/ComponentChartsPage'));
 const ComponentHighchartsPage= loadable(() => import('components/page/ComponentHighchartsPage'));
 const ComponentTablePage= loadable(() => import('components/page/ComponentTablePage'));
+const ComponentSmartTablePage= loadable(() => import('components/page/ComponentSmartTablePage'));
 const ComponentNumberPage= loadable(() => import('components/page/ComponentNumberPage'));
 const ComponentWeatherPage= loadable(() => import('components/page/ComponentWeatherPage'));
 // Layering
@@ -100,6 +101,7 @@ class App extends React.Component {
                                     <Route path='/components/chart' component={ComponentChartsPage} />
                                     <Route path='/components/highcharts' component={ComponentHighchartsPage} />
                                     <Route path='/components/table' component={ComponentTablePage} />
+                                    <Route path='/components/smart-table' component={ComponentSmartTablePage} />
                                     <Route path='/components/number' component={ComponentNumberPage} />
                                     <Route path='/components/weather' component={ComponentWeatherPage} />
                                     {/* Layering */}
