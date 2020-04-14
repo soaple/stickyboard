@@ -1,71 +1,129 @@
 // src/components/sticker/index.js
 
-import LineChartSticker from './LineChartSticker';
-import BarChartSticker from './BarChartSticker';
-import ComposedChartSticker from './ComposedChartSticker';
-import MultiLineChartSticker from './MultiLineChartSticker';
-import PieChartSticker from './PieChartSticker';
-import AreaChartSticker from './AreaChartSticker';
-import RadarChartSticker from './RadarChartSticker';
-import ScatterChartSticker from './ScatterChartSticker';
-import TinyChartSticker from './TinyChartSticker';
-import TreeMapSticker from './TreeMapSticker';
-import StackedBarChartSticker from './StackedBarChartSticker';
+// Recharts
+import RechartsLineChart from './RechartsLineChart';
+import RechartsBarChart from './RechartsBarChart';
+import RechartsComposedChart from './RechartsComposedChart';
+import RechartsMultiLineChart from './RechartsMultiLineChart';
+import RechartsPieChart from './RechartsPieChart';
+import RechartsAreaChart from './RechartsAreaChart';
+import RechartsRadarChart from './RechartsRadarChart';
+import RechartsScatterChart from './RechartsScatterChart';
+import RechartsTinyChart from './RechartsTinyChart';
+import RechartsTreeMap from './RechartsTreeMap';
+import RechartsStackedBarChart from './RechartsStackedBarChart';
+// Highcharts
+import HighchartsLineChart from './HighchartsLineChart';
+import HighchartsBarChart from './HighchartsBarChart';
+import HighchartsPieChart from './HighchartsPieChart';
+import HighchartsPolarChart from './HighchartsPolarChart';
+import HighchartsAreaChart from './HighchartsAreaChart';
+import HighchartsScatterChart from './HighchartsScatterChart';
+import HighchartsTreeMap from './HighchartsTreeMap';
+import HighchartsStreamGraph from './HighchartsStreamGraph';
+import HighchartsBoxPlot from './HighchartsBoxPlot';
 
 export default {
-    LineChart: {
-        Name: 'LineChart',
-        Description: 'LineChart sample',
-        Component: LineChartSticker,
+    // Recharts
+    RechartsLineChart: {
+        Name: 'RechartsLineChart',
+        Description: 'RechartsLineChart sample',
+        Component: RechartsLineChart,
     },
-    BarChart: {
-        Name: 'BarChart',
-        Description: 'BarChart sample',
-        Component: BarChartSticker,
+    RechartsBarChart: {
+        Name: 'RechartsBarChart',
+        Description: 'RechartsBarChart sample',
+        Component: RechartsBarChart,
     },
-    ComposedChart: {
-        Name: 'ComposedChart',
-        Description: 'ComposedChart sample',
-        Component: ComposedChartSticker,
+    RechartsComposedChart: {
+        Name: 'RechartsComposedChart',
+        Description: 'RechartsComposedChart sample',
+        Component: RechartsComposedChart,
     },
-    MultiLineChart: {
-        Name: 'MultiLineChart',
-        Description: 'MultiLineChart sample',
-        Component: MultiLineChartSticker,
+    RechartsMultiLineChart: {
+        Name: 'RechartsMultiLineChart',
+        Description: 'RechartsMultiLineChart sample',
+        Component: RechartsMultiLineChart,
     },
-    PieChart: {
-        Name: 'PieChart',
-        Description: 'PieChart sample',
-        Component: PieChartSticker,
+    RechartsPieChart: {
+        Name: 'RechartsPieChart',
+        Description: 'RechartsPieChart sample',
+        Component: RechartsPieChart,
     },
-    AreaChart: {
-        Name: 'AreaChart',
-        Description: 'AreaChart sample',
-        Component: AreaChartSticker,
+    RechartsAreaChart: {
+        Name: 'RechartsAreaChart',
+        Description: 'RechartsAreaChart sample',
+        Component: RechartsAreaChart,
     },
-    RadarChart: {
-        Name: 'RadarChart',
-        Description: 'RadarChart sample',
-        Component: RadarChartSticker,
+    RechartsRadarChart: {
+        Name: 'RechartsRadarChart',
+        Description: 'RechartsRadarChart sample',
+        Component: RechartsRadarChart,
     },
-    ScatterChart: {
-        Name: 'ScatterChart',
-        Description: 'ScatterChart sample',
-        Component: ScatterChartSticker,
+    RechartsScatterChart: {
+        Name: 'RechartsScatterChart',
+        Description: 'RechartsScatterChart sample',
+        Component: RechartsScatterChart,
     },
-    TinyChart: {
-        Name: 'TinyChart',
-        Description: 'TinyChart sample',
-        Component: TinyChartSticker,
+    RechartsTinyChart: {
+        Name: 'RechartsTinyChart',
+        Description: 'RechartsTinyChart sample',
+        Component: RechartsTinyChart,
     },
-    TreeMap: {
-        Name: 'TreeMap',
-        Description: 'TreeMap sample',
-        Component: TreeMapSticker,
+    RechartsTreeMap: {
+        Name: 'RechartsTreeMap',
+        Description: 'RechartsTreeMap sample',
+        Component: RechartsTreeMap,
     },
-    StackedBarChart: {
-        Name: 'StackedBarChart',
-        Description: 'StackedBarChart sample',
-        Component: StackedBarChartSticker,
+    RechartsStackedBarChart: {
+        Name: 'RechartsStackedBarChart',
+        Description: 'RechartsStackedBarChart sample',
+        Component: RechartsStackedBarChart,
+    },
+    // Highcharts
+    HighchartsLineChart: {
+        Name: 'HighchartsLineChart',
+        Description: 'HighchartsLineChart sample',
+        Component: HighchartsLineChart,
+    },
+    HighchartsBarChart: {
+        Name: 'HighchartsBarChart',
+        Description: 'HighchartsBarChart sample',
+        Component: HighchartsBarChart,
+    },
+    HighchartsPieChart: {
+        Name: 'HighchartsPieChart',
+        Description: 'HighchartsPieChart sample',
+        Component: HighchartsPieChart,
+    },
+    HighchartsPolarChart: {
+        Name: 'HighchartsPolarChart',
+        Description: 'HighchartsPolarChart sample',
+        Component: HighchartsPolarChart,
+    },
+    HighchartsAreaChart: {
+        Name: 'HighchartsAreaChart',
+        Description: 'HighchartsAreaChart sample',
+        Component: HighchartsAreaChart,
+    },
+    HighchartsScatterChart: {
+        Name: 'HighchartsScatterChart',
+        Description: 'HighchartsScatterChart sample',
+        Component: HighchartsScatterChart,
+    },
+    HighchartsTreeMap: {
+        Name: 'HighchartsTreeMap',
+        Description: 'HighchartsTreeMap sample',
+        Component: HighchartsTreeMap,
+    },
+    HighchartsStreamGraph: {
+        Name: 'HighchartsStreamGraph',
+        Description: 'HighchartsStreamGraph sample',
+        Component: HighchartsStreamGraph,
+    },
+    HighchartsBoxPlot: {
+        Name: 'HighchartsBoxPlot',
+        Description: 'HighchartsBoxPlot sample',
+        Component: HighchartsBoxPlot,
     },
 };

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Sticker } from '@stickyboard/core';
-import { StackedBarChart } from '@stickyboard/recharts';
+import { Highcharts } from '@stickyboard/highcharts';
 
 const lineChartData = [
     {
@@ -71,31 +70,18 @@ const lineChartData = [
     },
 ];
 
-function StackedBarChartSticker(props) {
+function HighchartsScatterChart(props) {
     const { colors } = props;
 
     return (
-        <Sticker>
-            <StackedBarChart
-                data={lineChartData}
-                showBarLabel={false}
-                showTotalSumLabel={false}
-                xAxisDataKey={'time'}
-                barDataArray={[
-                    {
-                        key: 'visitors',
-                        name: 'Visitors',
-                        color: colors[0],
-                    },
-                    {
-                        key: 'staff',
-                        name: 'Staff',
-                        color: colors[1],
-                    },
-                ]}
-            />
-        </Sticker>
+        <Highcharts
+            chartType={'scatter'}
+            title={'Scatter Chart'}
+            data={lineChartData}
+            xAxisDataKey={'time'}
+            yAxisDataKey={'visitors'}
+        />
     );
 }
 
-export default StackedBarChartSticker;
+export default HighchartsScatterChart;

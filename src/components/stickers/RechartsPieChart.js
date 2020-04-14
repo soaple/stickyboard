@@ -1,5 +1,4 @@
 import React from 'react';
-import { Sticker } from '@stickyboard/core';
 import { PieChart } from '@stickyboard/recharts';
 
 const pieChartData = [
@@ -9,14 +8,10 @@ const pieChartData = [
     { name: 'Group D', value: 200 },
 ];
 
-function PieChartSticker(props) {
+function RechartsPieChart(props) {
     const { colors } = props;
 
-    return (
-        <Sticker>
-            <PieChart data={pieChartData} colorArray={colors} />
-        </Sticker>
-    );
+    return <PieChart data={pieChartData} colorArray={colors} />;
 }
 
-export default PieChartSticker;
+export default RechartsPieChart;

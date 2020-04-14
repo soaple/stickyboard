@@ -1,5 +1,4 @@
 import React from 'react';
-import { Sticker } from '@stickyboard/core';
 import { BarChart } from '@stickyboard/recharts';
 
 const lineChartData = [
@@ -71,20 +70,18 @@ const lineChartData = [
     },
 ];
 
-function BarChartSticker(props) {
+function RechartsBarChart(props) {
     const { colors } = props;
 
     return (
-        <Sticker>
-            <BarChart
-                data={lineChartData}
-                xAxisDataKey={'time'}
-                barDataKey={'visitors'}
-                barName={'Visitors'}
-                barColor={colors[1]}
-            />
-        </Sticker>
+        <BarChart
+            data={lineChartData}
+            xAxisDataKey={'time'}
+            barDataKey={'visitors'}
+            barName={'Visitors'}
+            barColor={colors[1]}
+        />
     );
 }
 
-export default BarChartSticker;
+export default RechartsBarChart;

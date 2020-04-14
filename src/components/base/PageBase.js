@@ -20,10 +20,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import EditIcon from '@material-ui/icons/Edit';
 import TvIcon from '@material-ui/icons/Tv';
 
-import { Board } from '@stickyboard/core';
+import { Board, Sticker } from '@stickyboard/core';
 
 import Stickers from 'components/stickers';
-import generateBlock2 from 'components/stickers/generateBlock';
 
 import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
@@ -172,21 +171,22 @@ class PageBase extends React.Component {
                         if (generateBlock) {
                             return generateBlock(block);
                         } else {
-                            return generateBlock2(theme.colors.colorArray, block)
+                            const StickerObject = Stickers[block.i];
 
-                            // const Sticker = Stickers[block.i];
-                            //
-                            // if (
-                            //     Sticker &&
-                            //     typeof Sticker.Component === 'function'
-                            // ) {
-                            //     return (
-                            //         <Sticker.Component
-                            //             key={block.i}
-                            //             colors={theme.colors.colorArray}
-                            //         />
-                            //     );
-                            // }
+                            if (
+                                StickerObject &&
+                                typeof StickerObject.Component === 'function'
+                            ) {
+                                return (
+                                    <Sticker key={block.i}>
+                                        <StickerObject.Component
+                                            colors={theme.colors.colorArray}
+                                        />
+                                    </Sticker>
+                                );
+                            } else {
+                                return null;
+                            }
                         }
                     })}
                 </Board>

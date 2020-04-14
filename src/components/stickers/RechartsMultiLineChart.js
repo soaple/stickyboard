@@ -1,6 +1,5 @@
 import React from 'react';
-import { Sticker } from '@stickyboard/core';
-import { LineChart } from '@stickyboard/recharts';
+import { MultiLineChart } from '@stickyboard/recharts';
 
 const lineChartData = [
     {
@@ -71,21 +70,28 @@ const lineChartData = [
     },
 ];
 
-function LineChartSticker(props) {
+function RechartsMultiLineChart(props) {
     const { colors } = props;
 
     return (
-        <Sticker>
-            <LineChart
-                data={lineChartData}
-                xAxisDataKey={'time'}
-                lineType={'linear'}
-                lineDataKey={'visitors'}
-                lineName={'Visitors'}
-                lineColor={colors[0]}
-            />
-        </Sticker>
+        <MultiLineChart
+            data={lineChartData}
+            xAxisDataKey={'time'}
+            lineType={'linear'}
+            lineDataArray={[
+                {
+                    key: 'visitors',
+                    name: 'Visitors',
+                    color: colors[1],
+                },
+                {
+                    key: 'staff',
+                    name: 'Staff',
+                    color: colors[2],
+                },
+            ]}
+        />
     );
 }
 
-export default LineChartSticker;
+export default RechartsMultiLineChart;

@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { Sticker } from '@stickyboard/core';
 import { LineChart, BarChart, AreaChart } from '@stickyboard/recharts';
 
 const lineChartData = [
@@ -82,60 +81,58 @@ const areaChartData = [
     { month: '2018.07', a: 315, b: 230, c: 140 },
 ];
 
-function TinyChartSticker(props) {
+function RechartsTinyChart(props) {
     const { colors } = props;
 
     return (
-        <Sticker>
-            <Grid container spacing={2} style={{ height: '100%' }}>
-                <Grid item xs={6}>
-                    <LineChart
-                        data={lineChartData}
-                        lineType={'monotone'}
-                        lineDataKey={'visitors'}
-                        lineName={'Visitors'}
-                        lineColor={colors[3]}
-                    />
-                </Grid>
-                <Grid item xs={6}>
-                    <BarChart
-                        data={lineChartData}
-                        barDataKey={'visitors'}
-                        barName={'Visitors'}
-                        barColor={colors[2]}
-                    />
-                </Grid>
-                <Grid item xs={6}>
-                    <AreaChart
-                        data={areaChartData}
-                        xAxisDataKey={'month'}
-                        areaAttrArray={[
-                            {
-                                type: 'monotone',
-                                dataKey: 'b',
-                                stroke: colors[0],
-                                fill: colors[0],
-                            },
-                        ]}
-                    />
-                </Grid>
-                <Grid item xs={6}>
-                    <AreaChart
-                        data={areaChartData}
-                        xAxisDataKey={'month'}
-                        areaAttrArray={[
-                            {
-                                type: 'monotone',
-                                dataKey: 'c',
-                                stroke: colors[6],
-                                fill: colors[6],
-                            },
-                        ]}
-                    />
-                </Grid>
+        <Grid container spacing={2} style={{ height: '100%' }}>
+            <Grid item xs={6}>
+                <LineChart
+                    data={lineChartData}
+                    lineType={'monotone'}
+                    lineDataKey={'visitors'}
+                    lineName={'Visitors'}
+                    lineColor={colors[3]}
+                />
             </Grid>
-        </Sticker>
+            <Grid item xs={6}>
+                <BarChart
+                    data={lineChartData}
+                    barDataKey={'visitors'}
+                    barName={'Visitors'}
+                    barColor={colors[2]}
+                />
+            </Grid>
+            <Grid item xs={6}>
+                <AreaChart
+                    data={areaChartData}
+                    xAxisDataKey={'month'}
+                    areaAttrArray={[
+                        {
+                            type: 'monotone',
+                            dataKey: 'b',
+                            stroke: colors[0],
+                            fill: colors[0],
+                        },
+                    ]}
+                />
+            </Grid>
+            <Grid item xs={6}>
+                <AreaChart
+                    data={areaChartData}
+                    xAxisDataKey={'month'}
+                    areaAttrArray={[
+                        {
+                            type: 'monotone',
+                            dataKey: 'c',
+                            stroke: colors[6],
+                            fill: colors[6],
+                        },
+                    ]}
+                />
+            </Grid>
+        </Grid>
     );
 }
 
-export default TinyChartSticker;
+export default RechartsTinyChart;

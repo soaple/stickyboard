@@ -1,5 +1,4 @@
 import React from 'react';
-import { Sticker } from '@stickyboard/core';
 import { Treemap } from '@stickyboard/recharts';
 
 const treeMapData = [
@@ -135,22 +134,20 @@ const treeMapData = [
     },
 ];
 
-function TreeMapSticker(props) {
+function RechartsTreeMap(props) {
     const { colors } = props;
 
     return (
-        <Sticker>
-            <Treemap
-                isAnimationActive={false}
-                data={treeMapData}
-                dataKey="size"
-                ratio={4 / 3}
-                stroke="#fff"
-                fill="#787878"
-                colorArray={colors}
-            />
-        </Sticker>
+        <Treemap
+            isAnimationActive={false}
+            data={treeMapData}
+            dataKey="size"
+            ratio={4 / 3}
+            stroke="#fff"
+            fill="#787878"
+            colorArray={colors}
+        />
     );
 }
 
-export default TreeMapSticker;
+export default RechartsTreeMap;

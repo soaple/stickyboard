@@ -1,6 +1,5 @@
 import React from 'react';
-import { Sticker } from '@stickyboard/core';
-import { ComposedChart } from '@stickyboard/recharts';
+import { StackedBarChart } from '@stickyboard/recharts';
 
 const lineChartData = [
     {
@@ -71,24 +70,29 @@ const lineChartData = [
     },
 ];
 
-function ComposedChartSticker(props) {
+function RechartsStackedBarChart(props) {
     const { colors } = props;
 
     return (
-        <Sticker>
-            <ComposedChart
-                data={lineChartData}
-                xAxisDataKey={'time'}
-                barDataKey={'visitors'}
-                barName={'Visitors'}
-                barColor={colors[2]}
-                lineType={'linear'}
-                lineDataKey={'visitors'}
-                lineName={'Visitors'}
-                lineColor={colors[3]}
-            />
-        </Sticker>
+        <StackedBarChart
+            data={lineChartData}
+            showBarLabel={false}
+            showTotalSumLabel={false}
+            xAxisDataKey={'time'}
+            barDataArray={[
+                {
+                    key: 'visitors',
+                    name: 'Visitors',
+                    color: colors[0],
+                },
+                {
+                    key: 'staff',
+                    name: 'Staff',
+                    color: colors[1],
+                },
+            ]}
+        />
     );
 }
 
-export default ComposedChartSticker;
+export default RechartsStackedBarChart;
