@@ -1,5 +1,12 @@
 // src/components/sticker/index.js
 
+// Intro
+import IntroIntroduction from './IntroIntroduction';
+import IntroCustomLayout from './IntroCustomLayout';
+import IntroDatabaseSupport from './IntroDatabaseSupport';
+import IntroChartSupport from './IntroChartSupport';
+import IntroMapSupport from './IntroMapSupport';
+import IntroContact from './IntroContact';
 // Recharts
 import RechartsLineChart from './RechartsLineChart';
 import RechartsBarChart from './RechartsBarChart';
@@ -50,6 +57,37 @@ import YahooWeather from './YahooWeather';
 import YahooWeatherForecast from './YahooWeatherForecast';
 
 export default {
+    // Intro
+    IntroIntroduction: {
+        Name: 'IntroIntroduction',
+        Description: 'IntroIntroduction sample',
+        Component: IntroIntroduction,
+    },
+    IntroCustomLayout: {
+        Name: 'IntroCustomLayout',
+        Description: 'IntroCustomLayout sample',
+        Component: IntroCustomLayout,
+    },
+    IntroDatabaseSupport: {
+        Name: 'IntroDatabaseSupport',
+        Description: 'IntroDatabaseSupport sample',
+        Component: IntroDatabaseSupport,
+    },
+    IntroChartSupport: {
+        Name: 'IntroChartSupport',
+        Description: 'IntroChartSupport sample',
+        Component: IntroChartSupport,
+    },
+    IntroMapSupport: {
+        Name: 'IntroMapSupport',
+        Description: 'IntroMapSupport sample',
+        Component: IntroMapSupport,
+    },
+    IntroContact: {
+        Name: 'IntroContact',
+        Description: 'IntroContact sample',
+        Component: IntroContact,
+    },
     // Recharts
     RechartsLineChart: {
         Name: 'RechartsLineChart',

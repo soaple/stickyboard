@@ -151,7 +151,7 @@ class PageBase extends React.Component {
 
     render() {
         const { layouts, blocks, isEditingMode, isMenuOpen } = this.state;
-        const { classes, theme, generateBlock, messageSnackbar } = this.props;
+        const { classes, theme, messageSnackbar } = this.props;
 
         if (!layouts || !blocks) {
             return null;
@@ -168,25 +168,21 @@ class PageBase extends React.Component {
                     }}
                     onSaveLayout={this.onSaveLayout}>
                     {blocks.map((block, index) => {
-                        if (generateBlock) {
-                            return generateBlock(block);
+                        const StickerObject = Stickers[block.i];
+
+                        if (
+                            StickerObject &&
+                            typeof StickerObject.Component === 'function'
+                        ) {
+                            return (
+                                <Sticker key={block.i}>
+                                    <StickerObject.Component
+                                        colors={theme.colors}
+                                    />
+                                </Sticker>
+                            );
                         } else {
-                            const StickerObject = Stickers[block.i];
-                            
-                            if (
-                                StickerObject &&
-                                typeof StickerObject.Component === 'function'
-                            ) {
-                                return (
-                                    <Sticker key={block.i}>
-                                        <StickerObject.Component
-                                            colors={theme.colors}
-                                        />
-                                    </Sticker>
-                                );
-                            } else {
-                                return null;
-                            }
+                            return null;
                         }
                     })}
                 </Board>
