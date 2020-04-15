@@ -22,6 +22,10 @@ import HighchartsScatterChart from './HighchartsScatterChart';
 import HighchartsTreeMap from './HighchartsTreeMap';
 import HighchartsStreamGraph from './HighchartsStreamGraph';
 import HighchartsBoxPlot from './HighchartsBoxPlot';
+// Table
+// SmartTable
+import SmartTableUser from './SmartTableUser';
+import SmartTableUserPost from './SmartTableUserPost';
 // Number
 import NumberDAU from './NumberDAU';
 import NumberWAU from './NumberWAU';
@@ -136,6 +140,18 @@ export default {
         Name: 'HighchartsBoxPlot',
         Description: 'HighchartsBoxPlot sample',
         Component: HighchartsBoxPlot,
+    },
+    // Table
+    // SmartTable
+    SmartTableUser: {
+        Name: 'SmartTableUser',
+        Description: 'SmartTableUser sample',
+        Component: SmartTableUser,
+    },
+    SmartTableUserPost: {
+        Name: 'SmartTableUserPost',
+        Description: 'SmartTableUserPost sample',
+        Component: SmartTableUserPost,
     },
     // Number
     NumberDAU: {
