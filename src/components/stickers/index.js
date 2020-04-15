@@ -42,6 +42,12 @@ import NumberMAU2 from './NumberMAU2';
 import NumberARPU2 from './NumberARPU2';
 import NumberDAU3 from './NumberDAU3';
 import NumberWAU3 from './NumberWAU3';
+// Weather
+import OpenWeatherMap from './OpenWeatherMap';
+import OpenWeatherMap3days from './OpenWeatherMap3days';
+import OpenWeatherMap7days from './OpenWeatherMap7days';
+import YahooWeather from './YahooWeather';
+import YahooWeatherForecast from './YahooWeatherForecast';
 
 export default {
     // Recharts
@@ -233,5 +239,31 @@ export default {
         Name: 'NumberWAU3',
         Description: 'NumberWAU3 sample',
         Component: NumberWAU3,
+    },
+    // Weather
+    OpenWeatherMap: {
+        Name: 'OpenWeatherMap',
+        Description: 'OpenWeatherMap sample',
+        Component: OpenWeatherMap,
+    },
+    OpenWeatherMap3days: {
+        Name: 'OpenWeatherMap3days',
+        Description: 'OpenWeatherMap3days sample',
+        Component: OpenWeatherMap3days,
+    },
+    OpenWeatherMap7days: {
+        Name: 'OpenWeatherMap7days',
+        Description: 'OpenWeatherMap7days sample',
+        Component: OpenWeatherMap7days,
+    },
+    YahooWeather: {
+        Name: 'YahooWeather',
+        Description: 'YahooWeather sample',
+        Component: YahooWeather,
+    },
+    YahooWeatherForecast: {
+        Name: 'YahooWeatherForecast',
+        Description: 'YahooWeatherForecast sample',
+        Component: YahooWeatherForecast,
     },
 };
