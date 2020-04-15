@@ -20,7 +20,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import EditIcon from '@material-ui/icons/Edit';
 import TvIcon from '@material-ui/icons/Tv';
 
-import { Board } from '@stickyboard/core';
+import { Board, Sticker } from '@stickyboard/core';
+
+import Stickers from 'components/stickers';
 
 import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
@@ -166,7 +168,26 @@ class PageBase extends React.Component {
                     }}
                     onSaveLayout={this.onSaveLayout}>
                     {blocks.map((block, index) => {
-                        return generateBlock(block);
+                        if (generateBlock) {
+                            return generateBlock(block);
+                        } else {
+                            const StickerObject = Stickers[block.i];
+                            
+                            if (
+                                StickerObject &&
+                                typeof StickerObject.Component === 'function'
+                            ) {
+                                return (
+                                    <Sticker key={block.i}>
+                                        <StickerObject.Component
+                                            colors={theme.colors}
+                                        />
+                                    </Sticker>
+                                );
+                            } else {
+                                return null;
+                            }
+                        }
                     })}
                 </Board>
 
@@ -212,7 +233,7 @@ PageBase.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     // Layout
-    generateBlock: PropTypes.func.isRequired,
+    // generateBlock: PropTypes.func.isRequired,
     initialLayout: PropTypes.object.isRequired,
     initialBlocks: PropTypes.array.isRequired,
 };

@@ -23,7 +23,7 @@
         "@material-ui/core": "^4.9.7",
         "@material-ui/icons": "^4.9.1",
         "@material-ui/lab": "^4.0.0-alpha.46",
-        "@stickyboard/core": "^1.0.2",
+        "@stickyboard/core": "^1.0.4",
         "@stickyboard/graphql-helper": "^0.2.4",
         "@stickyboard/highcharts": "^0.1.4",
         "@stickyboard/number": "^0.1.4",
