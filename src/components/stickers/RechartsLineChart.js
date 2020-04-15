@@ -80,7 +80,7 @@ function RechartsLineChart(props) {
             lineType={'linear'}
             lineDataKey={'visitors'}
             lineName={'Visitors'}
-            lineColor={colors[0]}
+            lineColor={colors.colorArray[0]}
         />
     );
 }

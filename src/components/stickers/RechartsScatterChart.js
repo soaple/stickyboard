@@ -36,7 +36,7 @@ function RechartsScatterChart(props) {
                 domain: ['auto', 'auto'],
             }}
             scatterName={'tall and weight'}
-            scatterColor={colors[1]}
+            scatterColor={colors.colorArray[1]}
         />
     );
 }

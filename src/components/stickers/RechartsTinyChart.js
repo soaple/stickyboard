@@ -92,7 +92,7 @@ function RechartsTinyChart(props) {
                     lineType={'monotone'}
                     lineDataKey={'visitors'}
                     lineName={'Visitors'}
-                    lineColor={colors[3]}
+                    lineColor={colors.colorArray[3]}
                 />
             </Grid>
             <Grid item xs={6}>
@@ -100,7 +100,7 @@ function RechartsTinyChart(props) {
                     data={lineChartData}
                     barDataKey={'visitors'}
                     barName={'Visitors'}
-                    barColor={colors[2]}
+                    barColor={colors.colorArray[2]}
                 />
             </Grid>
             <Grid item xs={6}>
@@ -111,8 +111,8 @@ function RechartsTinyChart(props) {
                         {
                             type: 'monotone',
                             dataKey: 'b',
-                            stroke: colors[0],
-                            fill: colors[0],
+                            stroke: colors.colorArray[0],
+                            fill: colors.colorArray[0],
                         },
                     ]}
                 />
@@ -125,8 +125,8 @@ function RechartsTinyChart(props) {
                         {
                             type: 'monotone',
                             dataKey: 'c',
-                            stroke: colors[6],
-                            fill: colors[6],
+                            stroke: colors.colorArray[6],
+                            fill: colors.colorArray[6],
                         },
                     ]}
                 />

@@ -154,7 +154,6 @@ const initialBlocks = [
 class ComponentHighchartsPage extends React.Component {
     constructor(props) {
         super(props);
-        this.board = React.createRef();
 
         this.state = {};
     }

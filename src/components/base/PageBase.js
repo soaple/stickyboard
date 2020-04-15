@@ -172,7 +172,7 @@ class PageBase extends React.Component {
                             return generateBlock(block);
                         } else {
                             const StickerObject = Stickers[block.i];
-
+                            
                             if (
                                 StickerObject &&
                                 typeof StickerObject.Component === 'function'
@@ -180,7 +180,7 @@ class PageBase extends React.Component {
                                 return (
                                     <Sticker key={block.i}>
                                         <StickerObject.Component
-                                            colors={theme.colors.colorArray}
+                                            colors={theme.colors}
                                         />
                                     </Sticker>
                                 );

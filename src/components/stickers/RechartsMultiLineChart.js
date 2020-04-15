@@ -82,12 +82,12 @@ function RechartsMultiLineChart(props) {
                 {
                     key: 'visitors',
                     name: 'Visitors',
-                    color: colors[1],
+                    color: colors.colorArray[1],
                 },
                 {
                     key: 'staff',
                     name: 'Staff',
-                    color: colors[2],
+                    color: colors.colorArray[2],
                 },
             ]}
         />

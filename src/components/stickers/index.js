@@ -22,6 +22,17 @@ import HighchartsScatterChart from './HighchartsScatterChart';
 import HighchartsTreeMap from './HighchartsTreeMap';
 import HighchartsStreamGraph from './HighchartsStreamGraph';
 import HighchartsBoxPlot from './HighchartsBoxPlot';
+// Number
+import NumberDAU from './NumberDAU';
+import NumberWAU from './NumberWAU';
+import NumberMAU from './NumberMAU';
+import NumberARPU from './NumberARPU';
+import NumberDAU2 from './NumberDAU2';
+import NumberWAU2 from './NumberWAU2';
+import NumberMAU2 from './NumberMAU2';
+import NumberARPU2 from './NumberARPU2';
+import NumberDAU3 from './NumberDAU3';
+import NumberWAU3 from './NumberWAU3';
 
 export default {
     // Recharts
@@ -125,5 +136,56 @@ export default {
         Name: 'HighchartsBoxPlot',
         Description: 'HighchartsBoxPlot sample',
         Component: HighchartsBoxPlot,
+    },
+    // Number
+    NumberDAU: {
+        Name: 'NumberDAU',
+        Description: 'NumberDAU sample',
+        Component: NumberDAU,
+    },
+    NumberWAU: {
+        Name: 'NumberWAU',
+        Description: 'NumberWAU sample',
+        Component: NumberWAU,
+    },
+    NumberMAU: {
+        Name: 'NumberMAU',
+        Description: 'NumberMAU sample',
+        Component: NumberMAU,
+    },
+    NumberARPU: {
+        Name: 'NumberARPU',
+        Description: 'NumberARPU sample',
+        Component: NumberARPU,
+    },
+    NumberDAU2: {
+        Name: 'NumberDAU2',
+        Description: 'NumberDAU2 sample',
+        Component: NumberDAU2,
+    },
+    NumberWAU2: {
+        Name: 'NumberWAU2',
+        Description: 'NumberWAU2 sample',
+        Component: NumberWAU2,
+    },
+    NumberMAU2: {
+        Name: 'NumberMAU2',
+        Description: 'NumberMAU2 sample',
+        Component: NumberMAU2,
+    },
+    NumberARPU2: {
+        Name: 'NumberARPU2',
+        Description: 'NumberARPU2 sample',
+        Component: NumberARPU2,
+    },
+    NumberDAU3: {
+        Name: 'NumberDAU3',
+        Description: 'NumberDAU3 sample',
+        Component: NumberDAU3,
+    },
+    NumberWAU3: {
+        Name: 'NumberWAU3',
+        Description: 'NumberWAU3 sample',
+        Component: NumberWAU3,
     },
 };

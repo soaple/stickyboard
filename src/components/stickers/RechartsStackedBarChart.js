@@ -83,12 +83,12 @@ function RechartsStackedBarChart(props) {
                 {
                     key: 'visitors',
                     name: 'Visitors',
-                    color: colors[0],
+                    color: colors.colorArray[0],
                 },
                 {
                     key: 'staff',
                     name: 'Staff',
-                    color: colors[1],
+                    color: colors.colorArray[1],
                 },
             ]}
         />

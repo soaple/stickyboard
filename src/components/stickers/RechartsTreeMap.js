@@ -145,7 +145,7 @@ function RechartsTreeMap(props) {
             ratio={4 / 3}
             stroke="#fff"
             fill="#787878"
-            colorArray={colors}
+            colorArray={colors.colorArray}
         />
     );
 }

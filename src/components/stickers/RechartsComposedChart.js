@@ -79,11 +79,11 @@ function RechartsComposedChart(props) {
             xAxisDataKey={'time'}
             barDataKey={'visitors'}
             barName={'Visitors'}
-            barColor={colors[2]}
+            barColor={colors.colorArray[2]}
             lineType={'linear'}
             lineDataKey={'visitors'}
             lineName={'Visitors'}
-            lineColor={colors[3]}
+            lineColor={colors.colorArray[3]}
         />
     );
 }

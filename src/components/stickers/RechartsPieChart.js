@@ -11,7 +11,7 @@ const pieChartData = [
 function RechartsPieChart(props) {
     const { colors } = props;
 
-    return <PieChart data={pieChartData} colorArray={colors} />;
+    return <PieChart data={pieChartData} colorArray={colors.colorArray} />;
 }
 
 export default RechartsPieChart;

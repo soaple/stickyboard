@@ -22,13 +22,13 @@ function RechartsRadarChart(props) {
                     name: 'Mike',
                     dataKey: 'A',
                     stroke: '#ffed00',
-                    fill: colors[4],
+                    fill: colors.colorArray[4],
                 },
                 {
                     name: 'Lily',
                     dataKey: 'B',
                     stroke: '#66d522',
-                    fill: colors[5],
+                    fill: colors.colorArray[5],
                 },
             ]}
         />

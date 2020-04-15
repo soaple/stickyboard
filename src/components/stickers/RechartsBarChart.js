@@ -79,7 +79,7 @@ function RechartsBarChart(props) {
             xAxisDataKey={'time'}
             barDataKey={'visitors'}
             barName={'Visitors'}
-            barColor={colors[1]}
+            barColor={colors.colorArray[1]}
         />
     );
 }

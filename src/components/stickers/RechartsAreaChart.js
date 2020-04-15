@@ -23,22 +23,22 @@ function RechartsAreaChart(props) {
                     type: 'monotone',
                     dataKey: 'a',
                     stackId: '1',
-                    stroke: colors[7],
-                    fill: colors[7],
+                    stroke: colors.colorArray[7],
+                    fill: colors.colorArray[7],
                 },
                 {
                     type: 'monotone',
                     dataKey: 'b',
                     stackId: '1',
-                    stroke: colors[9],
-                    fill: colors[9],
+                    stroke: colors.colorArray[9],
+                    fill: colors.colorArray[9],
                 },
                 {
                     type: 'monotone',
                     dataKey: 'c',
                     stackId: '1',
-                    stroke: colors[3],
-                    fill: colors[3],
+                    stroke: colors.colorArray[3],
+                    fill: colors.colorArray[3],
                 },
             ]}
         />
