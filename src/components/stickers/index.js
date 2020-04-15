@@ -23,6 +23,11 @@ import HighchartsTreeMap from './HighchartsTreeMap';
 import HighchartsStreamGraph from './HighchartsStreamGraph';
 import HighchartsBoxPlot from './HighchartsBoxPlot';
 // Table
+import TableOrder from './TableOrder';
+import TableUser from './TableUser';
+import TableRealtimeOrder from './TableRealtimeOrder';
+import TableRealtimeUser from './TableRealtimeUser';
+import TableRealtimeMessage from './TableRealtimeMessage';
 // SmartTable
 import SmartTableUser from './SmartTableUser';
 import SmartTableUserPost from './SmartTableUserPost';
@@ -142,6 +147,31 @@ export default {
         Component: HighchartsBoxPlot,
     },
     // Table
+    TableOrder: {
+        Name: 'TableOrder',
+        Description: 'TableOrder sample',
+        Component: TableOrder,
+    },
+    TableUser: {
+        Name: 'TableUser',
+        Description: 'TableUser sample',
+        Component: TableUser,
+    },
+    TableRealtimeOrder: {
+        Name: 'TableRealtimeOrder',
+        Description: 'TableRealtimeOrder sample',
+        Component: TableRealtimeOrder,
+    },
+    TableRealtimeUser: {
+        Name: 'TableRealtimeUser',
+        Description: 'TableRealtimeUser sample',
+        Component: TableRealtimeUser,
+    },
+    TableRealtimeMessage: {
+        Name: 'TableRealtimeMessage',
+        Description: 'TableRealtimeMessage sample',
+        Component: TableRealtimeMessage,
+    },
     // SmartTable
     SmartTableUser: {
         Name: 'SmartTableUser',
