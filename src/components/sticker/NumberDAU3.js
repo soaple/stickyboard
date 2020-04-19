@@ -62,7 +62,7 @@ const initialData = [
 
 function NumberDAU3(props) {
     const [data, setData] = useState(initialData);
-    const { colors } = props;
+    const { staticMode, colors } = props;
 
     function startGeneratingRandomData() {
         setInterval(() => {
@@ -80,9 +80,11 @@ function NumberDAU3(props) {
         }, 1100);
     };
 
-    useEffect(() => {
-        startGeneratingRandomData();
-    }, []);
+    if (!staticMode) {
+        useEffect(() => {
+            startGeneratingRandomData();
+        }, []);
+    }
 
     return (
         <NumberWithChartWidget

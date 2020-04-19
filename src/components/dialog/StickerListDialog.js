@@ -11,12 +11,9 @@ import { useTheme } from '@material-ui/core/styles';
 import { Board, Sticker } from '@stickyboard/core';
 import StickerDict from 'components/sticker';
 
-const StickerGridContainer = styled(Grid)`
-    overflow: scroll;
-`;
-
 const StickerGridItem = styled(Grid)`
-    height: 250px;
+    position: relative;
+    height: 300px;
 `;
 
 function StickerListDialog(props) {
@@ -42,7 +39,7 @@ function StickerListDialog(props) {
                     {'Select a sticker'}
                 </DialogContentText>
 
-                <StickerGridContainer container spacing={2}>
+                <Grid container spacing={2}>
                     {Object.keys(StickerDict).map((stickerKey, index) => {
                         const StickerObject = StickerDict[stickerKey];
 
@@ -58,6 +55,7 @@ function StickerListDialog(props) {
                                     md={3}
                                     key={stickerKey}>
                                     <StickerObject.Component
+                                        staticMode={true}
                                         colors={theme.colors}
                                     />
                                 </StickerGridItem>
@@ -66,7 +64,7 @@ function StickerListDialog(props) {
                             return null;
                         }
                     })}
-                </StickerGridContainer>
+                </Grid>
             </DialogContent>
 
             <DialogActions>
