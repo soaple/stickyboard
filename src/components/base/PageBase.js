@@ -22,7 +22,7 @@ import TvIcon from '@material-ui/icons/Tv';
 
 import { Board, Sticker } from '@stickyboard/core';
 
-import Stickers from 'components/stickers';
+import Stickers from 'components/sticker';
 
 import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
