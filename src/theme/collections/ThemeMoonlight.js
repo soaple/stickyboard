@@ -63,6 +63,11 @@ const ThemeMoonlight = {
                 backgroundColor: blueGrey[800],     // Drawer background color
             }
         },
+        MuiButton: {
+            root: {
+                textTransform: 'none',
+            }
+        },
         MuiIconButton: {
             root: {
                 color: '#ffffff',

@@ -61,6 +61,11 @@ const ThemeGrass = {
                 backgroundColor: grey[100],     // Drawer background color
             }
         },
+        MuiButton: {
+            root: {
+                textTransform: 'none',
+            }
+        },
         MuiIconButton: {
             root: {
                 color: '#ffffff',

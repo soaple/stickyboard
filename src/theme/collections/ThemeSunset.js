@@ -61,6 +61,11 @@ const ThemeSunset = {
                 backgroundColor: red[100],     // Drawer background color
             }
         },
+        MuiButton: {
+            root: {
+                textTransform: 'none',
+            }
+        },
         MuiIconButton: {
             root: {
                 color: '#ffffff',

@@ -63,6 +63,11 @@ const ThemeDark = {
                 backgroundColor: grey[700],     // Drawer background color
             }
         },
+        MuiButton: {
+            root: {
+                textTransform: 'none',
+            }
+        },
         MuiIconButton: {
             root: {
                 color: '#ffffff',

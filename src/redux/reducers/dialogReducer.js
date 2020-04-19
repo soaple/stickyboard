@@ -21,7 +21,7 @@ function dialogReducer(state = initialState, action) {
                 ...state,
                 [action.dialogKey]: {
                     isOpen: true,
-                    params: action.params,
+                    params: action.params || {},
                     callback: action.callback,
                 },
             };

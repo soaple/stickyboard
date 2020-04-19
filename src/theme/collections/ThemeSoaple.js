@@ -61,6 +61,11 @@ const ThemeSoaple = {
                 backgroundColor: '#7b7b7e',     // Drawer background color
             }
         },
+        MuiButton: {
+            root: {
+                textTransform: 'none',
+            }
+        },
         MuiIconButton: {
             root: {
                 color: '#ffffff',

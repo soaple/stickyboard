@@ -22,6 +22,7 @@ const ComponentTablePage= loadable(() => import('components/page/ComponentTableP
 const ComponentSmartTablePage= loadable(() => import('components/page/ComponentSmartTablePage'));
 const ComponentNumberPage= loadable(() => import('components/page/ComponentNumberPage'));
 const ComponentWeatherPage= loadable(() => import('components/page/ComponentWeatherPage'));
+const ComponentDialogPageContainer= loadable(() => import('redux/containers/ComponentDialogPageContainer'));
 // Layering
 const LayeringMapPage= loadable(() => import('components/page/LayeringMapPage'));
 const LayeringHeatMapPage= loadable(() => import('components/page/LayeringHeatMapPage'));
@@ -107,6 +108,7 @@ class App extends React.Component {
                                     <Route path='/components/smart-table' component={ComponentSmartTablePage} />
                                     <Route path='/components/number' component={ComponentNumberPage} />
                                     <Route path='/components/weather' component={ComponentWeatherPage} />
+                                    <Route path='/components/dialog' component={ComponentDialogPageContainer} />
                                     {/* Layering */}
                                     <Route path="/layering/map" component={LayeringMapPage} />
                                     <Route path="/layering/heatmap" component={LayeringHeatMapPage} />

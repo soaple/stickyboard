@@ -9,6 +9,7 @@ import ViewList from '@material-ui/icons/ViewList';
 import TableChart from '@material-ui/icons/TableChart';
 import AvTimer from '@material-ui/icons/AvTimer';
 import WbSunny from '@material-ui/icons/WbSunny';
+import WebAsset from '@material-ui/icons/WebAsset';
 import Map from '@material-ui/icons/Map';
 import Layers from '@material-ui/icons/Layers';
 
@@ -74,6 +75,12 @@ const SidebarMenuDict = {
         icon: (<WbSunny />),
         url: '/components/weather',
         value: 206,
+        need_permission: false
+    }, {
+        title: 'Dialog',
+        icon: (<WebAsset />),
+        url: '/components/dialog',
+        value: 207,
         need_permission: false
     }],
 
