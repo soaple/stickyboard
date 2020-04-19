@@ -12,7 +12,7 @@ if (GA_TRACKING_ID) {
         ReactGA.initialize(GA_TRACKING_ID);
         ReactGA.pageview(window.location.pathname + window.location.search);
     } else {
-        console.err('Google Analytics tracking ID is invalid.')
+        console.err('Google Analytics tracking ID is invalid.');
     }
 }
 // React
@@ -21,7 +21,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from 'redux/reducers';
-import App from 'components/base/App';
+import AppContainer from 'redux/containers/AppContainer';
 
 // React-Redux store
 const store = createStore(reducers);
@@ -31,6 +31,7 @@ const unsubscribe = store.subscribe(() => {
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <AppContainer />
     </Provider>,
-    document.getElementById('root'));
+    document.getElementById('root')
+);

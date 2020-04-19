@@ -22,7 +22,7 @@ import TvIcon from '@material-ui/icons/Tv';
 
 import { Board, Sticker } from '@stickyboard/core';
 
-import Stickers from 'components/sticker';
+import StickerDict from 'components/sticker';
 
 import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
@@ -168,7 +168,7 @@ class PageBase extends React.Component {
                     }}
                     onSaveLayout={this.onSaveLayout}>
                     {blocks.map((block, index) => {
-                        const StickerObject = Stickers[block.i];
+                        const StickerObject = StickerDict[block.i];
 
                         if (
                             StickerObject &&

@@ -32,6 +32,8 @@ const SuperuserPage= loadable(() => import('components/page/SuperuserPage'));
 // Not found
 const NotFoundPage= loadable(() => import('components/page/NotFoundPage'));
 
+// Dialog
+import DialogDict from 'components/dialog';
 // Manager
 import LocalStorageManager from 'manager/LocalStorageManager';
 // Theme
@@ -74,6 +76,7 @@ class App extends React.Component {
             selectedThemeKey,
             muiTheme,
         } = this.state;
+        const { dialog, hideDialog } = this.props;
 
         return (
             <MuiThemeProvider theme={muiTheme}>
@@ -118,6 +121,29 @@ class App extends React.Component {
                         </Route>
                     </Switch>
                 </Router>
+
+                {/* Centralized Dialogs */}
+                {Object.keys(DialogDict).map((dialogKey, index) => {
+                    const DialogObject = DialogDict[dialogKey];
+                    if (
+                        DialogObject &&
+                        typeof DialogObject.Component === 'function'
+                    ) {
+                        const dialogState = dialog[dialogKey];
+                        return (
+                            <DialogObject.Component
+                                key={dialogKey}
+                                open={dialogState.isOpen}
+                                params={dialogState.params}
+                                callback={dialogState.callback}
+                                onClose={() => {
+                                    hideDialog(dialogKey);
+                                }} />
+                        );
+                    } else {
+                        return null;
+                    }
+                })}
             </MuiThemeProvider>
         )
     }
