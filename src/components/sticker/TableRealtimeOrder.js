@@ -53,7 +53,7 @@ function TableRealtimeOrder(props) {
     const [recentOrders, setRecentOrders] = useState([]);
     const { colors } = props;
 
-    startGeneratingRealtimeData = () => {
+    function startGeneratingRealtimeData() {
         // Orders
         setInterval(() => {
             let randomIndex = Math.floor(Math.random() * orders.length);

@@ -78,7 +78,7 @@ function TableRealtimeUser(props) {
     const [recentUsers, setRecentUsers] = useState([]);
     const { colors } = props;
 
-    startGeneratingRealtimeData = () => {
+    function startGeneratingRealtimeData() {
         // Users
         setInterval(() => {
             let randomIndex = Math.floor(Math.random() * users.length);

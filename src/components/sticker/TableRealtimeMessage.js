@@ -48,7 +48,7 @@ function TableRealtimeMessage(props) {
     const [recentMessages, setRecentMessages] = useState([]);
     const { colors } = props;
 
-    startGeneratingRealtimeData = () => {
+    function startGeneratingRealtimeData() {
         // Messages
         setInterval(() => {
             let randomIndex = Math.floor(Math.random() * messages.length);
