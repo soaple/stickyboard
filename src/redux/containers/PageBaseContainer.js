@@ -3,6 +3,8 @@
 import { connect } from 'react-redux'
 
 import {
+    showDialog,
+    hideDialog,
     showMessageSnackbar,
     hideMessageSnackbar,
 } from '../actions';
@@ -25,10 +27,16 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        showDialog: (dialogKey, params, callback) => {
+            dispatch(showDialog(dialogKey, params, callback));
+        },
+        hideDialog: (dialogKey) => {
+            dispatch(hideDialog(dialogKey));
+        },
         showMessageSnackbar: (message) => {
             if (!snackBarShownTime) {
                 snackBarShownTime = new Date().getTime();
-                dispatch(showMessageSnackbar(message));    
+                dispatch(showMessageSnackbar(message));
             }
         },
         hideMessageSnackbar: () => {

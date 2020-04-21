@@ -10,15 +10,16 @@ import Grid from '@material-ui/core/Grid';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
+import DeleteIcon from '@material-ui/icons/Delete';
 import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
 import SaveIcon from '@material-ui/icons/Save';
 import PrintIcon from '@material-ui/icons/Print';
 import ShareIcon from '@material-ui/icons/Share';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import EditIcon from '@material-ui/icons/Edit';
 import TvIcon from '@material-ui/icons/Tv';
+import AppsIcon from '@material-ui/icons/Apps';
 
 import { Board, Sticker } from '@stickyboard/core';
 
@@ -40,11 +41,9 @@ const styles = (theme) => ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        position: 'absolute',
-        height: 120,
+        position: 'fixed',
         right: 16,
         bottom: 16,
-        zIndex: 2000,
     },
     speedDial: {
         position: 'absolute',
@@ -151,7 +150,7 @@ class PageBase extends React.Component {
 
     render() {
         const { layouts, blocks, isEditingMode, isMenuOpen } = this.state;
-        const { classes, theme, messageSnackbar } = this.props;
+        const { classes, theme, showDialog, messageSnackbar } = this.props;
 
         if (!layouts || !blocks) {
             return null;
@@ -209,6 +208,14 @@ class PageBase extends React.Component {
                             tooltipTitle={'Toggle TV mode'}
                             onClick={() => {
                                 this.board.current.toggleTvMode();
+                            }}
+                        />
+
+                        <SpeedDialAction
+                            icon={<AppsIcon />}
+                            tooltipTitle={'Sticker List'}
+                            onClick={() => {
+                                showDialog('StickerListDialog');
                             }}
                         />
                     </SpeedDial>
