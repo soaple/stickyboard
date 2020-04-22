@@ -23,7 +23,7 @@ import AppsIcon from '@material-ui/icons/Apps';
 
 import { Board, Sticker } from '@stickyboard/core';
 
-import StickerDict from 'components/sticker';
+import StickerListByCategory from 'components/sticker';
 
 import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
@@ -56,6 +56,14 @@ const styles = (theme) => ({
             left: theme.spacing(2),
         },
     },
+});
+
+// Generate Sticker dictionary
+let StickerDict = {};
+Object.values(StickerListByCategory).forEach((stickerList) => {
+    stickerList.forEach((StickerObject) => {
+        StickerDict[StickerObject.Name] = StickerObject;
+    });
 });
 
 class PageBase extends React.Component {
