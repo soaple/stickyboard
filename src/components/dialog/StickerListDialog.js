@@ -22,7 +22,7 @@ const StickerGridItem = styled(Grid)`
     height: 300px;
 `;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     dialogContentRoot: {
         padding: '0px 24px',
     },
@@ -31,9 +31,9 @@ const useStyles = makeStyles({
         webkitPosition: '-webkit-sticky',
         top: 0,
         zIndex: 1600,
-        backgroundColor: '#ffffff',
+        backgroundColor: theme.palette.background.paper,
     },
-});
+}));
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
