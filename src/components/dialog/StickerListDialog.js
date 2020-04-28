@@ -17,9 +17,40 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Board, Sticker } from '@stickyboard/core';
 import StickerListByCategory from 'components/sticker';
 
-const StickerGridItem = styled(Grid)`
+const StickerObjectContainer = styled.div`
     position: relative;
     height: 300px;
+    padding: 16px;
+    border: 1px solid #9b9b9b;
+    border-radius: 16px;
+`;
+
+const StickerInfoContainer = styled.div`
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: rgb(108, 108, 108);
+    z-index: 1600;
+    text-align: center;
+    transition: opacity 0.2s ease-in-out;
+    -webkit-transition: -webkit-opacity 0.2s ease-in-out;
+    opacity: 0.0;
+    :hover {
+        opacity: 0.95
+    }
+`;
+
+const Title = styled.div`
+    font-size: 20px;
+    font-weight: bold;
+`;
+
+const Description = styled.div`
+    font-size: 16px;
 `;
 
 const useStyles = makeStyles((theme) => ({
@@ -137,17 +168,29 @@ function StickerListDialog(props) {
                                                 'function'
                                         ) {
                                             return (
-                                                <StickerGridItem
+                                                <Grid
                                                     item
                                                     xs={6}
                                                     sm={4}
                                                     md={3}
                                                     key={StickerObject.Name}>
-                                                    <StickerObject.Component
-                                                        staticMode={true}
-                                                        colors={theme.colors}
-                                                    />
-                                                </StickerGridItem>
+                                                    <StickerObjectContainer>
+                                                        <StickerInfoContainer>
+                                                            <Title>
+                                                                {StickerObject.Name}
+                                                            </Title>
+                                                            <Description>
+                                                                {StickerObject.Description}
+                                                            </Description>
+                                                        </StickerInfoContainer>
+                                                        <StickerObject.Component
+                                                            staticMode={true}
+                                                            colors={
+                                                                theme.colors
+                                                            }
+                                                        />
+                                                    </StickerObjectContainer>
+                                                </Grid>
                                             );
                                         } else {
                                             return null;
