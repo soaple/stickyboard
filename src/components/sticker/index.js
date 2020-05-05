@@ -1,5 +1,7 @@
 // src/components/sticker/index.js
 
+import loadable from '@loadable/component';
+
 // Intro
 const IntroIntroduction = loadable(() => import('./IntroIntroduction'));
 const IntroCustomLayout = loadable(() => import('./IntroCustomLayout'));

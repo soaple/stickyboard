@@ -165,7 +165,7 @@ function StickerListDialog(props) {
                                         if (
                                             StickerObject &&
                                             typeof StickerObject.Component ===
-                                                'function'
+                                                'object'
                                         ) {
                                             return (
                                                 <Grid

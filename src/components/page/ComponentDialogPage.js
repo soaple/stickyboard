@@ -38,7 +38,7 @@ class ComponentDialogPage extends React.Component {
                     const DialogObject = DialogDict[dialogKey];
                     if (
                         DialogObject &&
-                        typeof DialogObject.Component === 'function'
+                        typeof DialogObject.Component === 'object'
                     ) {
                         return (
                             <ButtonContainer>

@@ -179,7 +179,7 @@ class PageBase extends React.Component {
 
                         if (
                             StickerObject &&
-                            typeof StickerObject.Component === 'function'
+                            typeof StickerObject.Component === 'object'
                         ) {
                             return (
                                 <Sticker key={block.i}>

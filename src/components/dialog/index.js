@@ -1,5 +1,7 @@
 // components/dialog/index.js
 
+import loadable from '@loadable/component';
+
 const StickerListDialog = loadable(() => import('./StickerListDialog'));
 const AlertDialog = loadable(() => import('./AlertDialog'));
 const ConfirmDialog = loadable(() => import('./ConfirmDialog'));

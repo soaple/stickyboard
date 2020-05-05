@@ -19,9 +19,6 @@ if (envLoadResult.error) {
 }
 // console.log(envLoadResult.parsed);
 
-// Load StickyBoard config file
-const stickyboardConfig = require('./stickyboard.config');
-
 // Database connections
 // var Secret = require('utils/Secret')
 const MySqlConn = require('database/connections/MySqlConn');
@@ -82,9 +79,10 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(morgan('dev'));
-// Configure support for ejs templates
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'src', 'views'));
+// Configure support for html using ejs templates
+app.set('views', path.join(__dirname, 'dist'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 // Initialize the server
 const server = new Server(app);
 
@@ -172,24 +170,36 @@ app.use(
 );
 
 // Set port and running environment
-const port = process.env.PORT || 3000
-const env = process.env.NODE_ENV || 'production'
-delete process.env.BROWSER
+const port = process.env.PORT || 3000;
+const env = process.env.NODE_ENV || 'production';
+const isWebpackDevServerMode = process.env.WEBPACK_DEV_SERVER_MODE === 'true';
+delete process.env.BROWSER;
 
-// Set app bundle URL depends on running environment
-var appBundleUrl
-switch (env) {
-case 'production':
-    appBundleUrl = '/dist/app.bundle.js'
-    break
-case 'development':
-    appBundleUrl = 'http://localhost:8080/app.bundle.js'
-    break
+if (isWebpackDevServerMode) {
+    const webpack = require('webpack');
+    const webpackDevMiddleware = require('webpack-dev-middleware');
+    const historyApiFallback = require('connect-history-api-fallback');
+    const config = require('./webpack.config.js');
+    const compiler = webpack(config);
+    const webpackInstance = webpackDevMiddleware(compiler, {
+        publicPath: config.output.publicPath,
+    });
+
+    app.use(webpackInstance);
+    app.use(historyApiFallback());
+    app.use(webpackInstance);
+} else {
+    // Serving .js file from gzip file (WebPack CompressionPlugin)
+    app.get('*.js', function (req, res, next) {
+        req.url = req.url + '.gz';
+        res.set('Content-Encoding', 'gzip');
+        next();
+    });
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'dist/index.html'));
+    });
 }
-
-app.get('*', function (req, res) {
-    res.render('index', { ...stickyboardConfig, 'APP_BUNDLE_URL': appBundleUrl });
-});
 
 // WARNING: Do not use {force: true} option! It drops all data!
 MySqlConn.sync().then(function() {

@@ -1,13 +1,18 @@
 // webpack.dev.js
 
-const webpack = require('webpack')
-const path = require('path')
+const webpack = require('webpack');
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const stickyboardConfig = require('./stickyboard.config');
 
 const NODE_ENV = process.env.NODE_ENV || 'production';
 const isProductionMode = NODE_ENV === 'production';
 const isWebpackDevServerMode = process.env.WEBPACK_DEV_SERVER_MODE === 'true';
-console.log('================ webpack.app.js ================');
+console.log('================ webpack.config.js ================');
 console.log(`process.env.NODE_ENV: ${process.env.NODE_ENV}`)
 console.log(`isProductionMode: ${isProductionMode}`);
 console.log(`isWebpackDevServerMode: ${isWebpackDevServerMode}`);
@@ -30,8 +35,8 @@ const config = {
     entry: path.join(__dirname, 'src', 'index.js'),
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'app.bundle.js',
-        publicPath: isWebpackDevServerMode ? 'http://localhost:8080/' : '/dist/',
+        filename: '[name].[hash].js',
+        publicPath: isWebpackDevServerMode ? '/' : '/dist/',
     },
     module: {
         rules: [{
@@ -93,13 +98,21 @@ const config = {
         symlinks: false,
     },
     plugins: [
-        new webpack.DllReferencePlugin({
-            context: '.',
-            manifest: require(path.join(__dirname, 'dist', 'lib-manifest.json'))
-        }),
+        new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
         new webpack.DefinePlugin(envKeys),
         // Ignore all locale files of moment.js
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+        new HtmlWebpackPlugin({
+            ...stickyboardConfig,
+            template: 'src/view/index.ejs',
+        }),
+        new CompressionPlugin({
+            filename: "[path].gz[query]",
+            algorithm: "gzip",
+            test: /\.js$|\.css$|\.html$/,
+            threshold: 10240,
+            minRatio: 0.8
+        }),
         // If you want to run bundle analyzer,
         // release below comments with require statements above
         // new BundleAnalyzerPlugin({
@@ -110,6 +123,10 @@ const config = {
     node: {
         fs: 'empty'
     }
+}
+
+if (!isProductionMode) {
+    config['devtool'] = 'inline-source-map';
 }
 
 // Add devServer config if the mode is webpack dev server mode
@@ -123,4 +140,4 @@ if (isWebpackDevServerMode) {
     };
 }
 
-module.exports = config
+module.exports = config;

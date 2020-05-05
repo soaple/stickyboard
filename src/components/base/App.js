@@ -129,7 +129,7 @@ class App extends React.Component {
                     const DialogObject = DialogDict[dialogKey];
                     if (
                         DialogObject &&
-                        typeof DialogObject.Component === 'function'
+                        typeof DialogObject.Component === 'object'
                     ) {
                         const dialogState = dialog[dialogKey];
                         return (
