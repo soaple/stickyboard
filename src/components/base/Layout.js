@@ -432,11 +432,12 @@ class Layout extends React.Component {
                             {/* GitHub Star */}
                             <Hidden xsDown>
                                 <iframe
-                                    src='https://ghbtns.com/github-btn.html?user=soaple&repo=stickyboard&type=star&count=true&size=large'
-                                    frameBorder='0'
-                                    scrolling='0'
-                                    width='130px'
-                                    height='30px' />
+                                    src="https://ghbtns.com/github-btn.html?user=soaple&repo=stickyboard&type=star&count=true&size=large"
+                                    frameborder="0"
+                                    scrolling="0"
+                                    width="140"
+                                    height="30">
+                                </iframe>
                             </Hidden>
 
                             {/* Theme select menu */}
