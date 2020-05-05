@@ -1,60 +1,60 @@
 // src/components/sticker/index.js
 
 // Intro
-import IntroIntroduction from './IntroIntroduction';
-import IntroCustomLayout from './IntroCustomLayout';
-import IntroDatabaseSupport from './IntroDatabaseSupport';
-import IntroChartSupport from './IntroChartSupport';
-import IntroMapSupport from './IntroMapSupport';
-import IntroContact from './IntroContact';
+const IntroIntroduction = loadable(() => import('./IntroIntroduction'));
+const IntroCustomLayout = loadable(() => import('./IntroCustomLayout'));
+const IntroDatabaseSupport = loadable(() => import('./IntroDatabaseSupport'));
+const IntroChartSupport = loadable(() => import('./IntroChartSupport'));
+const IntroMapSupport = loadable(() => import('./IntroMapSupport'));
+const IntroContact = loadable(() => import('./IntroContact'));
 // Recharts
-import RechartsLineChart from './RechartsLineChart';
-import RechartsBarChart from './RechartsBarChart';
-import RechartsComposedChart from './RechartsComposedChart';
-import RechartsMultiLineChart from './RechartsMultiLineChart';
-import RechartsPieChart from './RechartsPieChart';
-import RechartsAreaChart from './RechartsAreaChart';
-import RechartsRadarChart from './RechartsRadarChart';
-import RechartsScatterChart from './RechartsScatterChart';
-import RechartsTinyChart from './RechartsTinyChart';
-import RechartsTreeMap from './RechartsTreeMap';
-import RechartsStackedBarChart from './RechartsStackedBarChart';
+const RechartsLineChart = loadable(() => import('./RechartsLineChart'));
+const RechartsBarChart = loadable(() => import('./RechartsBarChart'));
+const RechartsComposedChart = loadable(() => import('./RechartsComposedChart'));
+const RechartsMultiLineChart = loadable(() => import('./RechartsMultiLineChart'));
+const RechartsPieChart = loadable(() => import('./RechartsPieChart'));
+const RechartsAreaChart = loadable(() => import('./RechartsAreaChart'));
+const RechartsRadarChart = loadable(() => import('./RechartsRadarChart'));
+const RechartsScatterChart = loadable(() => import('./RechartsScatterChart'));
+const RechartsTinyChart = loadable(() => import('./RechartsTinyChart'));
+const RechartsTreeMap = loadable(() => import('./RechartsTreeMap'));
+const RechartsStackedBarChart = loadable(() => import('./RechartsStackedBarChart'));
 // Highcharts
-import HighchartsLineChart from './HighchartsLineChart';
-import HighchartsBarChart from './HighchartsBarChart';
-import HighchartsPieChart from './HighchartsPieChart';
-import HighchartsPolarChart from './HighchartsPolarChart';
-import HighchartsAreaChart from './HighchartsAreaChart';
-import HighchartsScatterChart from './HighchartsScatterChart';
-import HighchartsTreeMap from './HighchartsTreeMap';
-import HighchartsStreamGraph from './HighchartsStreamGraph';
-import HighchartsBoxPlot from './HighchartsBoxPlot';
+const HighchartsLineChart = loadable(() => import('./HighchartsLineChart'));
+const HighchartsBarChart = loadable(() => import('./HighchartsBarChart'));
+const HighchartsPieChart = loadable(() => import('./HighchartsPieChart'));
+const HighchartsPolarChart = loadable(() => import('./HighchartsPolarChart'));
+const HighchartsAreaChart = loadable(() => import('./HighchartsAreaChart'));
+const HighchartsScatterChart = loadable(() => import('./HighchartsScatterChart'));
+const HighchartsTreeMap = loadable(() => import('./HighchartsTreeMap'));
+const HighchartsStreamGraph = loadable(() => import('./HighchartsStreamGraph'));
+const HighchartsBoxPlot = loadable(() => import('./HighchartsBoxPlot'));
 // Table
-import TableOrder from './TableOrder';
-import TableUser from './TableUser';
-import TableRealtimeOrder from './TableRealtimeOrder';
-import TableRealtimeUser from './TableRealtimeUser';
-import TableRealtimeMessage from './TableRealtimeMessage';
+const TableOrder = loadable(() => import('./TableOrder'));
+const TableUser = loadable(() => import('./TableUser'));
+const TableRealtimeOrder = loadable(() => import('./TableRealtimeOrder'));
+const TableRealtimeUser = loadable(() => import('./TableRealtimeUser'));
+const TableRealtimeMessage = loadable(() => import('./TableRealtimeMessage'));
 // SmartTable
-import SmartTableUser from './SmartTableUser';
-import SmartTableUserPost from './SmartTableUserPost';
+const SmartTableUser = loadable(() => import('./SmartTableUser'));
+const SmartTableUserPost = loadable(() => import('./SmartTableUserPost'));
 // Number
-import NumberDAU from './NumberDAU';
-import NumberWAU from './NumberWAU';
-import NumberMAU from './NumberMAU';
-import NumberARPU from './NumberARPU';
-import NumberDAU2 from './NumberDAU2';
-import NumberWAU2 from './NumberWAU2';
-import NumberMAU2 from './NumberMAU2';
-import NumberARPU2 from './NumberARPU2';
-import NumberDAU3 from './NumberDAU3';
-import NumberWAU3 from './NumberWAU3';
+const NumberDAU = loadable(() => import('./NumberDAU'));
+const NumberWAU = loadable(() => import('./NumberWAU'));
+const NumberMAU = loadable(() => import('./NumberMAU'));
+const NumberARPU = loadable(() => import('./NumberARPU'));
+const NumberDAU2 = loadable(() => import('./NumberDAU2'));
+const NumberWAU2 = loadable(() => import('./NumberWAU2'));
+const NumberMAU2 = loadable(() => import('./NumberMAU2'));
+const NumberARPU2 = loadable(() => import('./NumberARPU2'));
+const NumberDAU3 = loadable(() => import('./NumberDAU3'));
+const NumberWAU3 = loadable(() => import('./NumberWAU3'));
 // Weather
-import OpenWeatherMap from './OpenWeatherMap';
-import OpenWeatherMap3days from './OpenWeatherMap3days';
-import OpenWeatherMap7days from './OpenWeatherMap7days';
-import YahooWeather from './YahooWeather';
-import YahooWeatherForecast from './YahooWeatherForecast';
+const OpenWeatherMap = loadable(() => import('./OpenWeatherMap'));
+const OpenWeatherMap3days = loadable(() => import('./OpenWeatherMap3days'));
+const OpenWeatherMap7days = loadable(() => import('./OpenWeatherMap7days'));
+const YahooWeather = loadable(() => import('./YahooWeather'));
+const YahooWeatherForecast = loadable(() => import('./YahooWeatherForecast'));
 
 export default {
     Indroduction: [

@@ -2,6 +2,7 @@
 
 const webpack = require('webpack')
 const path = require('path')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const NODE_ENV = process.env.NODE_ENV || 'production';
 const isProductionMode = NODE_ENV === 'production';
@@ -99,6 +100,12 @@ const config = {
         new webpack.DefinePlugin(envKeys),
         // Ignore all locale files of moment.js
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+        // If you want to run bundle analyzer,
+        // release below comments with require statements above
+        // new BundleAnalyzerPlugin({
+        //     analyzerHost: '127.0.0.1',
+        //     analyzerPort: 9000
+        // })
     ],
     node: {
         fs: 'empty'

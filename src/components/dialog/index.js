@@ -1,8 +1,8 @@
 // components/dialog/index.js
 
-import StickerListDialog from './StickerListDialog';
-import AlertDialog from './AlertDialog';
-import ConfirmDialog from './ConfirmDialog';
+const StickerListDialog = loadable(() => import('./StickerListDialog'));
+const AlertDialog = loadable(() => import('./AlertDialog'));
+const ConfirmDialog = loadable(() => import('./ConfirmDialog'));
 
 export default {
     StickerListDialog: {
