@@ -27,7 +27,7 @@
         "@stickyboard/openlayers": "^0.1.5",
         "@stickyboard/openweathermap": "^0.1.1",
         "@stickyboard/recharts": "^0.1.18",
-        "@stickyboard/smart-table": "^0.1.4",
+        "@stickyboard/smart-table": "^0.1.6",
         "@stickyboard/table": "^0.1.5",
         "@stickyboard/yahoo-weather": "^0.1.1",
         "autosuggest-highlight": "^3.1.1",
