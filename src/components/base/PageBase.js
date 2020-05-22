@@ -74,7 +74,7 @@ class PageBase extends React.Component {
         this.state = {
             // React Grid Layout
             currentBreakpoint: 'lg',
-            layouts: undefined,
+            layout: undefined,
             blocks: undefined,
             isEditingMode: true,
             // SpeedDial
@@ -88,7 +88,7 @@ class PageBase extends React.Component {
 
     setInitialLayout = () => {
         this.setState({
-            layouts: this.props.initialLayout,
+            layout: this.props.initialLayout,
             blocks: this.props.initialBlocks,
         });
     };
@@ -121,7 +121,7 @@ class PageBase extends React.Component {
             ApiManager.StickyBoard.updateUserLayout(
                 userId,
                 window.location.pathname,
-                JSON.stringify(this.state.layouts),
+                JSON.stringify(this.state.layout),
                 JSON.stringify(this.state.blocks),
                 this.updateUserLayoutCallback
             );
@@ -133,7 +133,7 @@ class PageBase extends React.Component {
         switch (statusCode) {
             case StatusCode.OK:
                 this.setState({
-                    layouts: JSON.parse(response.layout),
+                    layout: JSON.parse(response.layout),
                     blocks: JSON.parse(response.blocks),
                 });
                 break;
@@ -157,12 +157,10 @@ class PageBase extends React.Component {
     };
 
     render() {
-        const { layouts, blocks, isEditingMode, isMenuOpen } = this.state;
+        const { layout, blocks, isEditingMode, isMenuOpen } = this.state;
         const { classes, theme, showDialog, messageSnackbar } = this.props;
 
-        console.log(layouts, blocks)
-
-        if (!layouts || !blocks) {
+        if (!layout || !blocks) {
             return null;
         }
 
@@ -170,9 +168,9 @@ class PageBase extends React.Component {
             <div className={classes.root}>
                 <Board
                     ref={this.board}
-                    layouts={layouts}
+                    layouts={layout}
                     onLayoutChange={(newLayouts) => {
-                        this.setState({ layouts: newLayouts });
+                        this.setState({ layout: newLayouts });
                         console.log(JSON.stringify(newLayouts));
                     }}
                     onSaveLayout={this.onSaveLayout}>
