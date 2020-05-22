@@ -21,7 +21,7 @@ if (envLoadResult.error) {
 
 // Database connections
 // var Secret = require('utils/Secret')
-const MySqlConn = require('database/connections/MySqlConn');
+const MySqlConn = require('database/MySQL/Connection');
 
 // Define MySQL USER model relations
 const UserModelRelations = require('database/MySQL/User/ModelRelations');

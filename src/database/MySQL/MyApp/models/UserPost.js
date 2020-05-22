@@ -2,7 +2,7 @@
 
 var Sequelize = require('sequelize');
 
-var MySqlConn = require('database/connections/MySqlConn');
+const MySqlConn = require('database/MySQL/Connection');
 
 var UserPost = MySqlConn.define('myapp_user_post', {
     id: {

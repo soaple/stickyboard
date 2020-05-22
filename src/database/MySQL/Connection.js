@@ -1,4 +1,4 @@
-// src/database/connections/MySqlConn.js
+// src/database/MySQL/Connection.js
 
 var Sequelize = require('sequelize');
 

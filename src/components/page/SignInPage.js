@@ -209,7 +209,7 @@ class SignInPage extends React.Component {
                     <br />
                     <Typography type='caption' gutterBottom align='center'
                         color={'inherit'}>
-                        {'Copyright ⓒ 2018-2019 Soaple'}
+                        {'Copyright ⓒ 2018-2020 Soaple'}
                     </Typography>
                 </div>
             </div>

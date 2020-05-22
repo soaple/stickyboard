@@ -160,6 +160,8 @@ class PageBase extends React.Component {
         const { layouts, blocks, isEditingMode, isMenuOpen } = this.state;
         const { classes, theme, showDialog, messageSnackbar } = this.props;
 
+        console.log(layouts, blocks)
+
         if (!layouts || !blocks) {
             return null;
         }
