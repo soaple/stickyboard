@@ -145,6 +145,30 @@ const ApiManager = {
     },
 
     /**
+     * Database APIs
+     */
+    MySQL: {
+        readUsers: function(offset, limit, callback) {
+            var params = { offset: offset, limit: limit };
+            RestClient.sendGetRequestWithParams(UrlList.MySQL.getUserUrl(), params, callback)
+        },
+    },
+
+    Firestore: {
+        readUsers: function(offset, limit, callback) {
+            var params = { offset: offset, limit: limit };
+            RestClient.sendGetRequestWithParams(UrlList.Firestore.getUserUrl(), params, callback)
+        },
+    },
+
+    MongoDB: {
+        readUsers: function(offset, limit, callback) {
+            var params = { offset: offset, limit: limit };
+            RestClient.sendGetRequestWithParams(UrlList.MongoDB.getUserUrl(), params, callback)
+        },
+    },
+
+    /**
      * Your App's APIs
      */
     MyApp: {

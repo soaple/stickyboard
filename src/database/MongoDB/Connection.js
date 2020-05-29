@@ -17,4 +17,4 @@ client.connect(function(err) {
     client.close();
 });
 
-export default client;
+module.exports = client;

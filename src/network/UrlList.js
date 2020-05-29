@@ -3,8 +3,9 @@
 const BASE_URL = window.location.origin + '/';
 const API_BASE_URL = BASE_URL + 'api/';
 const STICKYBOARD_BASE_URL = API_BASE_URL + 'stkbd/';
+const DATABASE_BASE_URL = API_BASE_URL + 'database/';
 
-var UrlList = {
+const UrlList = {
     /**
      * Auth URLs
      */
@@ -93,6 +94,27 @@ var UrlList = {
             return `${this.getPermissionUrl()}${permissionId}/`
         },
     },
+
+    /**
+     * Database URLs
+     */
+     MySQL: {
+         getUserUrl: function() {
+             return `${DATABASE_BASE_URL}mysql/user/`;
+         },
+     },
+
+     Firestore: {
+         getUserUrl: function() {
+             return `${DATABASE_BASE_URL}firestore/user/`;
+         },
+     },
+
+     MongoDB: {
+         getUserUrl: function() {
+             return `${DATABASE_BASE_URL}mongodb/user/`;
+         },
+     },
 
     /**
      * Your App's URLs

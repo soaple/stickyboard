@@ -1,5 +1,6 @@
-import * as firebase from 'firebase/app';
-import 'firebase/analytics';
+// import * as firebase from 'firebase/app';
+const firebase = require('firebase/app');
+// require('firebase/analytics');
 
 var firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -15,7 +16,7 @@ var firebaseConfig = {
 // Initialize Firebase
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+    // firebase.analytics();
 }
 
-export default firebase;
+module.exports = firebase;

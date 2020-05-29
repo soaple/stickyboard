@@ -1,14 +1,55 @@
 import React from 'react';
+import styled from 'styled-components';
 import { JsonViewer } from '@stickyboard/json-viewer';
 
-function DatabaseMySQL(props) {
-    const jsonObject = {
-        a: 1,
-        b: 2,
-        c: 3,
+import ApiManager from 'network/ApiManager';
+import StatusCode from 'network/StatusCode';
+
+class DatabaseMySQL extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            jsonObject: null,
+        };
+    }
+
+    componentDidMount() {
+        ApiManager.MySQL.readUsers(0, 2, this.readUsersCallback);
+    }
+
+    readUsersCallback = (statusCode, response) => {
+        switch (statusCode) {
+            case StatusCode.OK:
+                this.setState({
+                    jsonObject: response,
+                });
+                break;
+            default:
+                alert(response.msg);
+                break;
+        }
     };
 
-    return <JsonViewer jsonObject={jsonObject} />;
+    render() {
+        const { jsonObject } = this.state;
+
+        return (
+            <div
+                style={{
+                    height: '100%',
+                    padding: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                }}>
+                <img
+                    src="/static/image/database_mysql_logo.png"
+                    style={{ maxHeight: 56, objectFit: 'contain' }}
+                />
+                <JsonViewer jsonObject={jsonObject} />
+            </div>
+        );
+    }
 }
 
 export default DatabaseMySQL;

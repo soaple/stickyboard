@@ -43,6 +43,7 @@ var UserRoute = {
             })
         } else {
             User.findAndCountAll({
+                attributes: { exclude: ['password'] },
                 offset: offset,
                 limit: limit,
                 order: [['date_joined', 'DESC']]

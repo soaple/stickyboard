@@ -32,14 +32,29 @@ UserModelRelations.defineRelations();
 
 // Auth
 const AuthRoute = require('auth/AuthRoute');
-// MySQL USER models route
+/******************************
+    MySQL models and routes
+*******************************/
+// USER models route
 const StkbdUserRoute = require('database/MySQL/User/routes/UserRoute');
 const StkbdUserLayoutRoute = require('database/MySQL/User/routes/UserLayoutRoute');
 const StkbdGroupRoute = require('database/MySQL/User/routes/GroupRoute');
 const StkbdGroupUserRoute = require('database/MySQL/User/routes/GroupUserRoute');
 const StkbdGroupPermissionRoute = require('database/MySQL/User/routes/GroupPermissionRoute');
 const StkbdPermissionRoute = require('database/MySQL/User/routes/PermissionRoute');
-// MySQL MyApp's models route
+// MyApp's models route
+
+/******************************
+    Firestore models and routes
+*******************************/
+// USER models route
+const FirestoreUserRoute = require('database/Firestore/User/routes/UserRoute');
+
+/******************************
+    MongoDB models and routes
+*******************************/
+// USER models route
+const MongoDbUserRoute = require('database/Firestore/User/routes/UserRoute');
 
 // GraphQL
 const { makeExecutableSchema } = require('graphql-tools');
@@ -107,56 +122,78 @@ app.use('/auth', authRouter);
 /******************************
     StickyBoard API routing
 *******************************/
-const router = Express.Router();
+const stickyboardRouter = Express.Router();
 // User
-// router.all('/stkbd/user/:userId/', Secret.verifyToken);
-router.get('/stkbd/user/$', StkbdUserRoute.readAll);
-router.get('/stkbd/user/:userId/$', StkbdUserRoute.read);
-router.get('/stkbd/user/:userId/group/$', StkbdUserRoute.readGroup);
-router.get('/stkbd/user/:userId/permission/$', StkbdUserRoute.readPermissions);
-router.put('/stkbd/user/:userId/$', StkbdUserRoute.update);
-router.put('/stkbd/user/:userId/password/$', StkbdUserRoute.updatePassword);
-router.delete('/stkbd/user/:userId/$', StkbdUserRoute.delete);
+// stickyboardRouter.all('/stkbd/user/:userId/', Secret.verifyToken);
+stickyboardRouter.get('/stkbd/user/$', StkbdUserRoute.readAll);
+stickyboardRouter.get('/stkbd/user/:userId/$', StkbdUserRoute.read);
+stickyboardRouter.get('/stkbd/user/:userId/group/$', StkbdUserRoute.readGroup);
+stickyboardRouter.get('/stkbd/user/:userId/permission/$', StkbdUserRoute.readPermissions);
+stickyboardRouter.put('/stkbd/user/:userId/$', StkbdUserRoute.update);
+stickyboardRouter.put('/stkbd/user/:userId/password/$', StkbdUserRoute.updatePassword);
+stickyboardRouter.delete('/stkbd/user/:userId/$', StkbdUserRoute.delete);
 
 // User Layout
-router.post('/stkbd/user/:userId/layout/$', StkbdUserLayoutRoute.create);
-router.get('/stkbd/user/:userId/layout/$', StkbdUserLayoutRoute.read);
-router.put('/stkbd/user/:userId/layout/$', StkbdUserLayoutRoute.update);
-router.delete('/stkbd/user/:userId/layout/$', StkbdUserLayoutRoute.delete);
+stickyboardRouter.post('/stkbd/user/:userId/layout/$', StkbdUserLayoutRoute.create);
+stickyboardRouter.get('/stkbd/user/:userId/layout/$', StkbdUserLayoutRoute.read);
+stickyboardRouter.put('/stkbd/user/:userId/layout/$', StkbdUserLayoutRoute.update);
+stickyboardRouter.delete('/stkbd/user/:userId/layout/$', StkbdUserLayoutRoute.delete);
 
 // Group
-router.get('/stkbd/group/$', StkbdGroupRoute.readAll);
-router.get('/stkbd/group/:groupId/$', StkbdGroupRoute.read);
-router.post('/stkbd/group/$', StkbdGroupRoute.create);
-router.put('/stkbd/group/:groupId/$', StkbdGroupRoute.update);
-router.delete('/stkbd/group/:groupId/$', StkbdGroupRoute.delete);
+stickyboardRouter.get('/stkbd/group/$', StkbdGroupRoute.readAll);
+stickyboardRouter.get('/stkbd/group/:groupId/$', StkbdGroupRoute.read);
+stickyboardRouter.post('/stkbd/group/$', StkbdGroupRoute.create);
+stickyboardRouter.put('/stkbd/group/:groupId/$', StkbdGroupRoute.update);
+stickyboardRouter.delete('/stkbd/group/:groupId/$', StkbdGroupRoute.delete);
 
 // Group User
-router.get('/stkbd/group/:groupId/user/$', StkbdGroupUserRoute.readAll);
-router.get('/stkbd/group/:groupId/user/:userId/$', StkbdGroupUserRoute.read);
-router.post('/stkbd/group/:groupId/user/$', StkbdGroupUserRoute.create);
-router.put('/stkbd/group/:groupId/user/:userId/$', StkbdGroupUserRoute.update);
-router.delete('/stkbd/group/:groupId/user/:userId/$', StkbdGroupUserRoute.delete);
+stickyboardRouter.get('/stkbd/group/:groupId/user/$', StkbdGroupUserRoute.readAll);
+stickyboardRouter.get('/stkbd/group/:groupId/user/:userId/$', StkbdGroupUserRoute.read);
+stickyboardRouter.post('/stkbd/group/:groupId/user/$', StkbdGroupUserRoute.create);
+stickyboardRouter.put('/stkbd/group/:groupId/user/:userId/$', StkbdGroupUserRoute.update);
+stickyboardRouter.delete('/stkbd/group/:groupId/user/:userId/$', StkbdGroupUserRoute.delete);
 
 // Group Permission
-router.get('/stkbd/group/:groupId/permission/$', StkbdGroupPermissionRoute.readAll);
-router.get('/stkbd/group/:groupId/permission/:permissionId/$', StkbdGroupPermissionRoute.read);
-router.post('/stkbd/group/:groupId/permission/$', StkbdGroupPermissionRoute.create);
-router.put('/stkbd/group/:groupId/permission/:permissionId/$', StkbdGroupPermissionRoute.update);
-router.delete('/stkbd/group/:groupId/permission/:permissionId/$', StkbdGroupPermissionRoute.delete);
+stickyboardRouter.get('/stkbd/group/:groupId/permission/$', StkbdGroupPermissionRoute.readAll);
+stickyboardRouter.get('/stkbd/group/:groupId/permission/:permissionId/$', StkbdGroupPermissionRoute.read);
+stickyboardRouter.post('/stkbd/group/:groupId/permission/$', StkbdGroupPermissionRoute.create);
+stickyboardRouter.put('/stkbd/group/:groupId/permission/:permissionId/$', StkbdGroupPermissionRoute.update);
+stickyboardRouter.delete('/stkbd/group/:groupId/permission/:permissionId/$', StkbdGroupPermissionRoute.delete);
 
 // Permission
-router.get('/stkbd/permission/$', StkbdPermissionRoute.readAll);
-router.get('/stkbd/permission/:permissionId/$', StkbdPermissionRoute.read);
-router.post('/stkbd/permission/$', StkbdPermissionRoute.create);
-router.put('/stkbd/permission/:permissionId/$', StkbdPermissionRoute.update);
-router.delete('/stkbd/permission/:permissionId/$', StkbdPermissionRoute.delete);
+stickyboardRouter.get('/stkbd/permission/$', StkbdPermissionRoute.readAll);
+stickyboardRouter.get('/stkbd/permission/:permissionId/$', StkbdPermissionRoute.read);
+stickyboardRouter.post('/stkbd/permission/$', StkbdPermissionRoute.create);
+stickyboardRouter.put('/stkbd/permission/:permissionId/$', StkbdPermissionRoute.update);
+stickyboardRouter.delete('/stkbd/permission/:permissionId/$', StkbdPermissionRoute.delete);
+
+/******************************
+    Database API routing
+*******************************/
+const databaseRouter = Express.Router();
+databaseRouter.get('/database/mysql/user/$', StkbdUserRoute.readAll);
+databaseRouter.get('/database/firestore/user/$', FirestoreUserRoute.readAll);
+databaseRouter.get('/database/mongodb/user/$', MongoDbUserRoute.readAll);
 
 /******************************
     MyApp's API routing
 *******************************/
+// Your App's API route
+const myAppRouter = Express.Router();
+// myAppRouter.get('/myapp/sample/$', MyAppSampleRoute.readAll);
+// myAppRouter.get('/myapp/sample/$', MyAppSampleRoute.readAll);
+// myAppRouter.get('/myapp/sample/$', MyAppSampleRoute.readAll);
+// myAppRouter.get('/myapp/sample/$', MyAppSampleRoute.readAll);
 
-app.use('/api', passport.authenticate('jwt', { session: false }), router);
+app.use(
+    '/api',
+    // API router (public)
+    databaseRouter,
+    // API router (authenticaion required)
+    passport.authenticate('jwt', { session: false }),
+    stickyboardRouter,
+    myAppRouter,
+);
 
 /******************************
     GraphQL routing
