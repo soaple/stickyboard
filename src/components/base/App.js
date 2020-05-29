@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import loadable from '@loadable/component';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
@@ -13,8 +13,9 @@ import FullScreenLayout from './FullScreenLayout';
 // Signing
 const SignInPage = loadable(() => import('components/page/SignInPage'));
 const SignUpPage = loadable(() => import('components/page/SignUpPage'));
-// Index
+// Introduction
 const IntroPage = loadable(() => import('components/page/IntroPage'));
+const IntroDatabasePage = loadable(() => import('components/page/IntroDatabasePage'));
 // Component
 const ComponentChartsPage= loadable(() => import('components/page/ComponentChartsPage'));
 const ComponentHighchartsPage= loadable(() => import('components/page/ComponentHighchartsPage'));
@@ -100,7 +101,11 @@ class App extends React.Component {
                                 selectedThemeKey={selectedThemeKey}
                                 onThemeChange={this.onThemeChange}>
                                 <Switch>
-                                    <Route exact path='/' component={IntroPage} />
+                                    <Redirect exact from='/' to='/intro' />
+
+                                    {/* Intro */}
+                                    <Route exact path='/intro' component={IntroPage} />
+                                    <Route exact path='/intro/database' component={IntroDatabasePage} />
                                     {/* Component */}
                                     <Route path='/components/chart' component={ComponentChartsPage} />
                                     <Route path='/components/highcharts' component={ComponentHighchartsPage} />

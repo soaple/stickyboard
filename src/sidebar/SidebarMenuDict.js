@@ -4,6 +4,7 @@ import React from 'react';
 
 import SvgIcon from '@material-ui/core/SvgIcon';
 
+import AccountTree from '@material-ui/icons/AccountTree';
 import Timeline from '@material-ui/icons/Timeline';
 import ViewList from '@material-ui/icons/ViewList';
 import TableChart from '@material-ui/icons/TableChart';
@@ -32,8 +33,14 @@ const SidebarMenuDict = {
      INTRO: [{
          title: 'Intro',
          icon: (<StickyBoardIcon style={{ padding: 2 }} />),
-         url: '/',
+         url: '/intro',
          value: 101,
+         need_permission: false
+     }, {
+         title: 'Database',
+         icon: (<AccountTree />),
+         url: '/intro/database',
+         value: 102,
          need_permission: false
      }],
 
