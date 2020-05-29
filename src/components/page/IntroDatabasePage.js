@@ -13,54 +13,36 @@ const styles = (theme) => ({
 
 const initialLayout = {
     lg: [
-        { i: 'IntroCustomLayout', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'IntroIntroduction', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'IntroDatabaseSupport', x: 4, y: 6, w: 4, h: 6 },
-        { i: 'IntroChartSupport', x: 4, y: 0, w: 4, h: 6 },
-        { i: 'IntroMapSupport', x: 8, y: 0, w: 4, h: 6 },
-        { i: 'IntroContact', x: 8, y: 6, w: 4, h: 6 },
+        { i: 'DatabaseMySQL', x: 0, y: 0, w: 4, h: 16 },
+        { i: 'DatabaseFirestore', x: 4, y: 0, w: 4, h: 16 },
+        { i: 'DatabaseMongoDB', x: 8, y: 0, w: 4, h: 16 },
     ],
     md: [
-        { i: 'IntroCustomLayout', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'IntroIntroduction', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'IntroDatabaseSupport', x: 4, y: 6, w: 4, h: 6 },
-        { i: 'IntroChartSupport', x: 4, y: 0, w: 4, h: 6 },
-        { i: 'IntroMapSupport', x: 8, y: 0, w: 4, h: 6 },
-        { i: 'IntroContact', x: 8, y: 6, w: 4, h: 6 },
+        { i: 'DatabaseMySQL', x: 0, y: 0, w: 4, h: 15 },
+        { i: 'DatabaseFirestore', x: 4, y: 0, w: 4, h: 15 },
+        { i: 'DatabaseMongoDB', x: 8, y: 0, w: 4, h: 15 },
     ],
     sm: [
-        { i: 'IntroCustomLayout', x: 4, y: 6, w: 4, h: 6 },
-        { i: 'IntroIntroduction', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'IntroDatabaseSupport', x: 0, y: 12, w: 4, h: 6 },
-        { i: 'IntroChartSupport', x: 4, y: 0, w: 4, h: 6 },
-        { i: 'IntroMapSupport', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'IntroContact', x: 4, y: 12, w: 4, h: 6 },
+        { i: 'DatabaseMySQL', x: 0, y: 0, w: 4, h: 8 },
+        { i: 'DatabaseFirestore', x: 4, y: 0, w: 4, h: 8 },
+        { i: 'DatabaseMongoDB', x: 0, y: 8, w: 4, h: 8 },
     ],
     xs: [
-        { i: 'IntroCustomLayout', x: 3, y: 6, w: 3, h: 6 },
-        { i: 'IntroIntroduction', x: 0, y: 0, w: 3, h: 6 },
-        { i: 'IntroDatabaseSupport', x: 0, y: 12, w: 3, h: 6 },
-        { i: 'IntroChartSupport', x: 3, y: 0, w: 3, h: 6 },
-        { i: 'IntroMapSupport', x: 0, y: 6, w: 3, h: 6 },
-        { i: 'IntroContact', x: 3, y: 12, w: 3, h: 6 },
+        { i: 'DatabaseMySQL', x: 0, y: 0, w: 6, h: 7 },
+        { i: 'DatabaseFirestore', x: 0, y: 7, w: 6, h: 7 },
+        { i: 'DatabaseMongoDB', x: 0, y: 14, w: 6, h: 7 },
     ],
     xxs: [
-        { i: 'IntroCustomLayout', x: 0, y: 21, w: 4, h: 7 },
-        { i: 'IntroIntroduction', x: 0, y: 0, w: 4, h: 7 },
-        { i: 'IntroDatabaseSupport', x: 0, y: 28, w: 4, h: 7 },
-        { i: 'IntroChartSupport', x: 0, y: 7, w: 4, h: 7 },
-        { i: 'IntroMapSupport', x: 0, y: 14, w: 4, h: 7 },
-        { i: 'IntroContact', x: 0, y: 35, w: 4, h: 7 },
+        { i: 'DatabaseMySQL', x: 0, y: 0, w: 4, h: 7 },
+        { i: 'DatabaseFirestore', x: 0, y: 7, w: 4, h: 7 },
+        { i: 'DatabaseMongoDB', x: 0, y: 14, w: 4, h: 7 },
     ],
 };
 
 const initialBlocks = [
-    { i: 'IntroCustomLayout' },
-    { i: 'IntroIntroduction' },
-    { i: 'IntroDatabaseSupport' },
-    { i: 'IntroChartSupport' },
-    { i: 'IntroMapSupport' },
-    { i: 'IntroContact' },
+    { i: 'DatabaseMySQL' },
+    { i: 'DatabaseFirestore' },
+    { i: 'DatabaseMongoDB' },
 ];
 
 class IntroDatabasePage extends React.Component {

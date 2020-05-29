@@ -9,6 +9,10 @@ const IntroDatabaseSupport = loadable(() => import('./IntroDatabaseSupport'));
 const IntroChartSupport = loadable(() => import('./IntroChartSupport'));
 const IntroMapSupport = loadable(() => import('./IntroMapSupport'));
 const IntroContact = loadable(() => import('./IntroContact'));
+// Database
+const DatabaseMySQL = loadable(() => import('./DatabaseMySQL'));
+const DatabaseFirestore = loadable(() => import('./DatabaseFirestore'));
+const DatabaseMongoDB = loadable(() => import('./DatabaseMongoDB'));
 // Recharts
 const RechartsLineChart = loadable(() => import('./RechartsLineChart'));
 const RechartsBarChart = loadable(() => import('./RechartsBarChart'));
@@ -89,6 +93,23 @@ export default {
             Name: 'IntroContact',
             Description: 'IntroContact sample',
             Component: IntroContact,
+        },
+    ],
+    Database: [
+        {
+            Name: 'DatabaseMySQL',
+            Description: 'DatabaseMySQL sample',
+            Component: DatabaseMySQL,
+        },
+        {
+            Name: 'DatabaseFirestore',
+            Description: 'DatabaseFirestore sample',
+            Component: DatabaseFirestore,
+        },
+        {
+            Name: 'DatabaseMongoDB',
+            Description: 'DatabaseMongoDB sample',
+            Component: DatabaseMongoDB,
         },
     ],
     Recharts: [
