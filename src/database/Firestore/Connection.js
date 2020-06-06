@@ -1,22 +1,15 @@
-// import * as firebase from 'firebase/app';
-const firebase = require('firebase/app');
-// require('firebase/analytics');
+const admin = require('firebase-admin');
 
-var firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+// IMPORTANT!!
+// Download your firebase-service-account.json file and update the file path below
+// Firebase Console > Project settings > Service accounts > Generate new private key
+const serviceAccount = require('../../../firebase-service-account.json');
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
     databaseURL: process.env.FIREBASE_DATABASE_URL,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.FIREBASE_APP_ID,
-    measurementId: process.env.FIREBASE_MEASUREMENT_ID,
-};
+});
 
-// Initialize Firebase
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-    // firebase.analytics();
-}
+let db = admin.firestore();
 
-module.exports = firebase;
+module.exports = db;

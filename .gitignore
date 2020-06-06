@@ -38,3 +38,6 @@ tags
 !.elasticbeanstalk/*.global.yml
 .ebextensions/*
 .ebignore
+
+# Firebase
+firebase-service-account.json

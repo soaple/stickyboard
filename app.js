@@ -54,7 +54,7 @@ const FirestoreUserRoute = require('database/Firestore/User/routes/UserRoute');
     MongoDB models and routes
 *******************************/
 // USER models route
-const MongoDbUserRoute = require('database/Firestore/User/routes/UserRoute');
+const MongoDbUserRoute = require('database/MongoDB/User/routes/UserRoute');
 
 // GraphQL
 const { makeExecutableSchema } = require('graphql-tools');

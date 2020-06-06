@@ -3,18 +3,34 @@ const MongoClient = require('mongodb').MongoClient;
 // Create a new MongoClient
 const client = new MongoClient(process.env.MONGODB_URL, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
 
-// Use connect method to connect to the Server
-client.connect(function(err) {
-    if (err) {
-        throw err;
-    }
+let dbInstance = null;
 
-    console.log('Connected successfully to server');
-    const db = client.db(process.eng.MONGODB_DB_NAME);
+const Connection = {
+    connect: async function() {
+        return await client
+            .connect()
+            .then(function(db) {
+                dbInstance = db.db();
 
-    client.close();
-});
+                return dbInstance;
+            })
+            .catch(function(err) {
+                throw err;
+            });
+    },
+    getDbInstance: async function() {
+        if (!dbInstance) {
+            return await this.connect();
+        }
 
-module.exports = client;
+        return dbInstance;
+    },
+    close: function() {
+        client.close();
+    },
+};
+
+module.exports = Connection;

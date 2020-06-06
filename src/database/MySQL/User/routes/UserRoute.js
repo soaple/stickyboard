@@ -46,7 +46,7 @@ var UserRoute = {
                 attributes: { exclude: ['password'] },
                 offset: offset,
                 limit: limit,
-                order: [['date_joined', 'DESC']]
+                order: [['date_joined', 'ASC']]
             })
             .then(function (result) {
                 res.json(result)

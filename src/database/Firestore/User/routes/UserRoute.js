@@ -1,20 +1,19 @@
 // src/database/Firestore/User/routes/UserRoute.js
 
-// const FirebaseConn = require('../../Connection');
-// const db = FirebaseConn.firestore;
+const firestore = require('../../Connection');
 
 const StatusCode = require('network/StatusCode');
 
 const UserRoute = {
-    readAll: function(req, res) {
-        // let userRef = db.collection('User');
+    readAll: async function(req, res) {
+        const userSnapshot = await firestore.collection('user').get();
 
-        // res.status(StatusCode.OK).json(userRef);
-
-        res.status(StatusCode.OK).json({
-            name: 'Firestore',
-            company: 'Google',
+        let userArray = [];
+        userSnapshot.forEach((doc) => {
+            userArray.push(doc.data());
         });
+
+        res.status(StatusCode.OK).json(userArray);
     },
 };
 
