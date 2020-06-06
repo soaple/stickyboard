@@ -10,7 +10,7 @@
     "scripts": {
         "watch": "NODE_ENV=development npm run watch-app-dev",
         "watch-app-dev": "WEBPACK_DEV_SERVER_MODE=true webpack-dev-server --progress --config=webpack.config.js",
-        "build": "webpack --config webpack.config.js",
+        "build": "NODE_ENV=production webpack --config webpack.config.js",
         "start": "pm2-runtime start ecosystem.config.js --env production --name stickyboard",
         "dev": "NODE_ENV=development NODE_PATH=./src WEBPACK_DEV_SERVER_MODE=true node app.js",
         "production": "NODE_ENV=production NODE_PATH=./src node app.js"
