@@ -12,10 +12,8 @@ const UserRoute = {
                     .find({})
                     .toArray(function(err, result) {
                         if (err) throw err;
-                        
-                        res.status(StatusCode.OK).json(result);
 
-                        MongoDbConn.close();
+                        res.status(StatusCode.OK).json(result);
                     });
             })
             .catch((err) => {
