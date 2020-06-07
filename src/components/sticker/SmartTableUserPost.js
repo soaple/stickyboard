@@ -1,5 +1,5 @@
 import React from 'react';
-import { SmartTable } from '@stickyboard/smart-table';
+import { SmartTable, OrderMethod } from '@stickyboard/smart-table';
 import MyAppUserPostSchema from 'graphql/schemas/myapp_user_post';
 
 function SmartTableUserPost(props) {
@@ -18,6 +18,8 @@ function SmartTableUserPost(props) {
                 created: 'Created',
                 updated: 'Updated',
             }}
+            initialOrderColumn={'created'}
+            initialOrderMethod={OrderMethod.DESC}
         />
     );
 }

@@ -117,29 +117,29 @@ type myapp_user_post_page {
 
     type Query {
     read_stkbd_user(id: Int!): stkbd_user
-read_multiple_stkbd_user(offset: Int!, limit: Int!): stkbd_user_page
+read_multiple_stkbd_user(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_user_page
 read_stkbd_user_profile(id: Int!): stkbd_user_profile
-read_multiple_stkbd_user_profile(offset: Int!, limit: Int!): stkbd_user_profile_page
+read_multiple_stkbd_user_profile(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_user_profile_page
 read_stkbd_user_layout(id: Int!): stkbd_user_layout
-read_multiple_stkbd_user_layout(offset: Int!, limit: Int!): stkbd_user_layout_page
+read_multiple_stkbd_user_layout(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_user_layout_page
 read_stkbd_group(id: Int!): stkbd_group
-read_multiple_stkbd_group(offset: Int!, limit: Int!): stkbd_group_page
+read_multiple_stkbd_group(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_group_page
 read_stkbd_group_user(id: Int!): stkbd_group_user
-read_multiple_stkbd_group_user(offset: Int!, limit: Int!): stkbd_group_user_page
+read_multiple_stkbd_group_user(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_group_user_page
 read_stkbd_permission(id: Int!): stkbd_permission
-read_multiple_stkbd_permission(offset: Int!, limit: Int!): stkbd_permission_page
+read_multiple_stkbd_permission(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_permission_page
 read_stkbd_group_permission(id: Int!): stkbd_group_permission
-read_multiple_stkbd_group_permission(offset: Int!, limit: Int!): stkbd_group_permission_page
+read_multiple_stkbd_group_permission(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_group_permission_page
 read_myapp_user(id: Int!): myapp_user
-read_multiple_myapp_user(offset: Int!, limit: Int!): myapp_user_page
+read_multiple_myapp_user(offset: Int!, limit: Int!, order_column: String, order_method: String): myapp_user_page
 read_myapp_user_post(id: Int!): myapp_user_post
-read_multiple_myapp_user_post(offset: Int!, limit: Int!): myapp_user_post_page
+read_multiple_myapp_user_post(offset: Int!, limit: Int!, order_column: String, order_method: String): myapp_user_post_page
     }
 
     type Mutation {
     create_stkbd_user(email: String!, password: String!, is_superuser: Boolean!): stkbd_user
 update_stkbd_user(id: Int!, email: String!, password: String!, is_superuser: Boolean!, date_joined: Date!, last_online: Date!): stkbd_user
-create_stkbd_user_profile(user_id: Int!, name: String!, company: String!, department: String!, position: String!, mobile: String!, office: String!, is_superuser: Boolean!): stkbd_user_profile
+create_stkbd_user_profile(user_id: Int!, name: String!, gender: Int!, company: String!, department: String!, position: String!, mobile: String!, office: String!, is_superuser: Boolean!): stkbd_user_profile
 update_stkbd_user_profile(id: Int!, user_id: Int!, name: String!, gender: Int, company: String!, department: String!, position: String!, mobile: String!, office: String!, is_superuser: Boolean!, date_joined: Date!, last_online: Date!): stkbd_user_profile
 create_stkbd_user_layout(user_id: Int!, route: String!, layout: String!, blocks: String!): stkbd_user_layout
 update_stkbd_user_layout(id: Int!, user_id: Int!, route: String!, layout: String!, blocks: String!, created: Date!, updated: Date!): stkbd_user_layout

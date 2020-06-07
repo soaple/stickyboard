@@ -25,7 +25,7 @@ updated: Date!
     `,
     query: {
         read: 'read_myapp_user_post(id: Int!): myapp_user_post',
-        readItems: 'read_multiple_myapp_user_post(offset: Int!, limit: Int!): myapp_user_post_page',
+        readItems: 'read_multiple_myapp_user_post(offset: Int!, limit: Int!, order_column: String, order_method: String): myapp_user_post_page',
     },
     mutation: {
         create: 'create_myapp_user_post(user_id: Int!, title: String!, content: String!, hits: Int!): myapp_user_post',

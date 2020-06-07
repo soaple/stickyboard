@@ -25,7 +25,7 @@ updated: Date!
     `,
     query: {
         read: 'read_stkbd_user_layout(id: Int!): stkbd_user_layout',
-        readItems: 'read_multiple_stkbd_user_layout(offset: Int!, limit: Int!): stkbd_user_layout_page',
+        readItems: 'read_multiple_stkbd_user_layout(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_user_layout_page',
     },
     mutation: {
         create: 'create_stkbd_user_layout(user_id: Int!, route: String!, layout: String!, blocks: String!): stkbd_user_layout',
