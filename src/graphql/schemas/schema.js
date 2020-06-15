@@ -1,6 +1,12 @@
 const schema = `
     scalar Date
 
+    input FilterOption {
+        filterDataType: String
+        filterColumnName: String
+        filterColumnValue: String
+    }
+
     type stkbd_user {
     id: Int!
 email: String!
@@ -117,23 +123,23 @@ type myapp_user_post_page {
 
     type Query {
     read_stkbd_user(id: Int!): stkbd_user
-read_multiple_stkbd_user(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_user_page
+read_multiple_stkbd_user(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_user_page
 read_stkbd_user_profile(id: Int!): stkbd_user_profile
-read_multiple_stkbd_user_profile(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_user_profile_page
+read_multiple_stkbd_user_profile(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_user_profile_page
 read_stkbd_user_layout(id: Int!): stkbd_user_layout
-read_multiple_stkbd_user_layout(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_user_layout_page
+read_multiple_stkbd_user_layout(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_user_layout_page
 read_stkbd_group(id: Int!): stkbd_group
-read_multiple_stkbd_group(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_group_page
+read_multiple_stkbd_group(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_group_page
 read_stkbd_group_user(id: Int!): stkbd_group_user
-read_multiple_stkbd_group_user(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_group_user_page
+read_multiple_stkbd_group_user(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_group_user_page
 read_stkbd_permission(id: Int!): stkbd_permission
-read_multiple_stkbd_permission(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_permission_page
+read_multiple_stkbd_permission(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_permission_page
 read_stkbd_group_permission(id: Int!): stkbd_group_permission
-read_multiple_stkbd_group_permission(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_group_permission_page
+read_multiple_stkbd_group_permission(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_group_permission_page
 read_myapp_user(id: Int!): myapp_user
-read_multiple_myapp_user(offset: Int!, limit: Int!, order_column: String, order_method: String): myapp_user_page
+read_multiple_myapp_user(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): myapp_user_page
 read_myapp_user_post(id: Int!): myapp_user_post
-read_multiple_myapp_user_post(offset: Int!, limit: Int!, order_column: String, order_method: String): myapp_user_post_page
+read_multiple_myapp_user_post(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): myapp_user_post_page
     }
 
     type Mutation {

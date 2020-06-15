@@ -21,7 +21,7 @@ updated: Date!
     `,
     query: {
         read: 'read_stkbd_group(id: Int!): stkbd_group',
-        readItems: 'read_multiple_stkbd_group(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_group_page',
+        readItems: 'read_multiple_stkbd_group(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_group_page',
     },
     mutation: {
         create: 'create_stkbd_group(name: String!, description: String!): stkbd_group',

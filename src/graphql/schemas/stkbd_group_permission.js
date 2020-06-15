@@ -19,7 +19,7 @@ created: Date!
     `,
     query: {
         read: 'read_stkbd_group_permission(id: Int!): stkbd_group_permission',
-        readItems: 'read_multiple_stkbd_group_permission(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_group_permission_page',
+        readItems: 'read_multiple_stkbd_group_permission(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_group_permission_page',
     },
     mutation: {
         create: 'create_stkbd_group_permission(group_id: Int!, permission_id: Int!): stkbd_group_permission',

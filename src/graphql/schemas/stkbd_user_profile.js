@@ -35,7 +35,7 @@ last_online: Date!
     `,
     query: {
         read: 'read_stkbd_user_profile(id: Int!): stkbd_user_profile',
-        readItems: 'read_multiple_stkbd_user_profile(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_user_profile_page',
+        readItems: 'read_multiple_stkbd_user_profile(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_user_profile_page',
     },
     mutation: {
         create: 'create_stkbd_user_profile(user_id: Int!, name: String!, gender: Int!, company: String!, department: String!, position: String!, mobile: String!, office: String!, is_superuser: Boolean!): stkbd_user_profile',

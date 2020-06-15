@@ -29,7 +29,7 @@ updated: Date!
     `,
     query: {
         read: 'read_stkbd_permission(id: Int!): stkbd_permission',
-        readItems: 'read_multiple_stkbd_permission(offset: Int!, limit: Int!, order_column: String, order_method: String): stkbd_permission_page',
+        readItems: 'read_multiple_stkbd_permission(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): stkbd_permission_page',
     },
     mutation: {
         create: 'create_stkbd_permission(route: String!, name: String!, description: String!, key: String!, read_write: Boolean!, level: Int!): stkbd_permission',

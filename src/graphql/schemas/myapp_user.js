@@ -21,7 +21,7 @@ last_online: Date!
     `,
     query: {
         read: 'read_myapp_user(id: Int!): myapp_user',
-        readItems: 'read_multiple_myapp_user(offset: Int!, limit: Int!, order_column: String, order_method: String): myapp_user_page',
+        readItems: 'read_multiple_myapp_user(offset: Int!, limit: Int!, filter_options: [FilterOption], order_column: String, order_method: String): myapp_user_page',
     },
     mutation: {
         create: 'create_myapp_user(email: String!, password: String!): myapp_user',
