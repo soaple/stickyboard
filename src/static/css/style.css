@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
 
-html, body {
+html,
+body {
     font-family: 'Nanum Gothic', serif;
     -webkit-font-smoothing: antialiased;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
 }
 
 html,
@@ -11,12 +19,19 @@ body,
     height: 100%;
 }
 
-input:focus, button:focus {
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+input:focus,
+button:focus {
     outline: none;
 }
 
 @media all {
-    .page-break	{
+    .page-break {
         display: none;
     }
 }
@@ -25,7 +40,8 @@ input:focus, button:focus {
     body * {
         visibility: hidden;
     }
-    #print-section, #print-section * {
+    #print-section,
+    #print-section * {
         visibility: visible;
     }
     #print-section {
@@ -43,19 +59,19 @@ input:focus, button:focus {
  * Animations
  */
 .example-enter {
-  opacity: 0.01;
+    opacity: 0.01;
 }
 
 .example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
+    opacity: 1;
+    transition: opacity 500ms ease-in;
 }
 
 .example-exit {
-  opacity: 1;
+    opacity: 1;
 }
 
 .example-exit.example-exit-active {
-  opacity: 0.01;
-  transition: opacity 500ms ease-in;
+    opacity: 0.01;
+    transition: opacity 500ms ease-in;
 }
