@@ -21,11 +21,8 @@ function IntroIntroduction(props) {
                 max={200}
                 forceSingleModeWidth={false}
                 style={{ height: '50%', padding: 8 }}>
-                <p>
-                    {
-                        'StickyBoard is on-demand dashboard solution based on React. Users can make their own dashboard with locating component.'
-                    }
-                </p>
+                StickyBoard is on-demand dashboard solution based on React.
+                Users can make their own dashboard with locating component.
             </Textfit>
         </div>
     );

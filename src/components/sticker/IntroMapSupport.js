@@ -9,11 +9,11 @@ function IntroMapSupport(props) {
         <div style={{ width: '100%', height: '100%', padding: 8 }}>
             <Textfit
                 mode="single"
-                min={12}
+                min={16}
                 max={200}
                 forceSingleModeWidth={false}
                 style={{ height: '15%' }}>
-                <p>{'Supports map and layer components'}</p>
+                Supports map and layer components
             </Textfit>
             <div style={{ height: '85%', textAlign: 'center' }}>
                 <OpenLayers

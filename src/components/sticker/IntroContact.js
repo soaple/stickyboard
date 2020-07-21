@@ -8,11 +8,11 @@ function IntroContact(props) {
         <div style={{ width: '100%', height: '100%', padding: 8 }}>
             <Textfit
                 mode="multi"
-                min={12}
+                min={16}
                 max={200}
                 forceSingleModeWidth={false}
                 style={{ height: '40%', padding: 8 }}>
-                <p>{'Visit our Github page!'}</p>
+                Visit our Github page!
             </Textfit>
             <div style={{ height: '60%', textAlign: 'center' }}>
                 <div>

@@ -8,11 +8,11 @@ function IntroDatabaseSupport(props) {
         <div style={{ width: '100%', height: '100%', padding: 8 }}>
             <Textfit
                 mode="single"
-                min={12}
+                min={16}
                 max={200}
                 forceSingleModeWidth={false}
                 style={{ height: '15%' }}>
-                <p>{'Supports various type of DB connecting'}</p>
+                Supports various type of DB connecting
             </Textfit>
             <div style={{ height: '85%', textAlign: 'center' }}>
                 <img
