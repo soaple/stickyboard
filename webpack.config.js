@@ -13,23 +13,14 @@ const stickyboardConfig = require('./stickyboard.config');
 const NODE_ENV = process.env.NODE_ENV || 'production';
 const isProductionMode = NODE_ENV === 'production';
 const isWebpackDevServerMode = process.env.WEBPACK_DEV_SERVER_MODE === 'true';
-console.log('================ webpack.config.js ================');
+console.log('\n================ webpack.config.js ================');
 console.log(`process.env.NODE_ENV: ${process.env.NODE_ENV}`);
 console.log(`isProductionMode: ${isProductionMode}`);
 console.log(`isWebpackDevServerMode: ${isWebpackDevServerMode}`);
-console.log('================================================');
+console.log('===================================================\n');
 
-// Load .env configuration
-const envFilePath = isProductionMode ? '.env.production' : '.env.development';
-const envLoadResult = require('dotenv').config({ path: envFilePath }).parsed;
-if (envLoadResult.error) {
-    throw envLoadResult.error;
-}
-// reduce it to an object
-const envKeys = Object.keys(envLoadResult).reduce((prev, next) => {
-    prev[`process.env.${next}`] = JSON.stringify(envLoadResult[next]);
-    return prev;
-}, {});
+console.log(`stickyboard.config env variables are loaded successfully.`);
+console.log('[FRONT-END]', stickyboardConfig.env, '\n');
 
 const config = {
     mode: NODE_ENV,
@@ -103,7 +94,7 @@ const config = {
     },
     plugins: [
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
-        new webpack.DefinePlugin(envKeys),
+        new webpack.DefinePlugin(stickyboardConfig.env),
         // Ignore all locale files of moment.js
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new HtmlWebpackPlugin({
