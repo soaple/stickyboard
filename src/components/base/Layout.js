@@ -51,10 +51,6 @@ import Const from '../../constants/Const';
 
 import DateUtil from '../../utils/DateUtil';
 
-require('react-grid-layout/css/styles.css');
-require('react-resizable/css/styles.css');
-require('../../static/css/react-grid-layout.css');
-
 const styles = theme => ({
     root: {
         width: '100%',

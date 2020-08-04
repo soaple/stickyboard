@@ -115,6 +115,11 @@ class PageBase extends React.Component {
         this.setState({ isMenuOpen: true });
     };
 
+    onLayoutChange = (newLayouts) => {
+        this.setState({ layout: newLayouts });
+        console.log(JSON.stringify(newLayouts));
+    };
+
     onSaveLayout = () => {
         const userId = CookieManager.getCookie('userId');
         if (userId) {
@@ -169,10 +174,7 @@ class PageBase extends React.Component {
                 <Board
                     ref={this.board}
                     layouts={layout}
-                    onLayoutChange={(newLayouts) => {
-                        this.setState({ layout: newLayouts });
-                        console.log(JSON.stringify(newLayouts));
-                    }}
+                    onLayoutChange={this.onLayoutChange}
                     onSaveLayout={this.onSaveLayout}>
                     {blocks.map((block, index) => {
                         const StickerObject = StickerDict[block.i];

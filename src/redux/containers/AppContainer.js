@@ -1,4 +1,4 @@
-// src/components/containers/AppContainer.js
+// redux/containers/AppContainer.js
 
 import { connect } from 'react-redux';
 
