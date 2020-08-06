@@ -1,9 +1,9 @@
 const stkbd_group_permission = {
     columns: [
-        {"name":"id","type":"Int","required":false,"updatable":false},
-{"name":"group_id","type":"Int","required":true,"updatable":true},
-{"name":"permission_id","type":"Int","required":true,"updatable":true},
-{"name":"created","type":"Date","required":false,"updatable":true}
+        {"name":"id","type":"Int","required":true,"requiredToCreate":false,"updatable":false},
+{"name":"group_id","type":"Int","required":true,"requiredToCreate":true,"updatable":true},
+{"name":"permission_id","type":"Int","required":true,"requiredToCreate":true,"updatable":true},
+{"name":"created","type":"Date","required":true,"requiredToCreate":false,"updatable":true}
     ],
     model: `
         type stkbd_group_permission {

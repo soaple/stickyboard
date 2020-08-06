@@ -1,10 +1,10 @@
 const myapp_user = {
     columns: [
-        {"name":"id","type":"Int","required":false,"updatable":false},
-{"name":"email","type":"String","required":true,"updatable":true},
-{"name":"password","type":"String","required":true,"updatable":true},
-{"name":"date_joined","type":"Date","required":false,"updatable":true},
-{"name":"last_online","type":"Date","required":false,"updatable":true}
+        {"name":"id","type":"Int","required":true,"requiredToCreate":false,"updatable":false},
+{"name":"email","type":"String","required":true,"requiredToCreate":true,"updatable":true},
+{"name":"password","type":"String","required":true,"requiredToCreate":true,"updatable":true},
+{"name":"date_joined","type":"Date","required":true,"requiredToCreate":false,"updatable":true},
+{"name":"last_online","type":"Date","required":true,"requiredToCreate":false,"updatable":true}
     ],
     model: `
         type myapp_user {

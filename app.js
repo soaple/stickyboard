@@ -67,36 +67,87 @@ const FirestoreUserRoute = require('database/Firestore/User/routes/UserRoute');
 // USER models route
 const MongoDbUserRoute = require('database/MongoDB/User/routes/UserRoute');
 
+
 // GraphQL
 const { makeExecutableSchema } = require('graphql-tools');
 const graphqlHTTP = require('express-graphql');
 const graphqlHelper = require('@stickyboard/graphql-helper');
 
-const sequelizeModels = [
-    // MySQL USER models
-    require('database/MySQL/User/models/User'),
-    require('database/MySQL/User/models/UserProfile'),
-    require('database/MySQL/User/models/UserLayout'),
-    require('database/MySQL/User/models/Group'),
-    require('database/MySQL/User/models/GroupUser'),
-    require('database/MySQL/User/models/Permission'),
-    require('database/MySQL/User/models/GroupPermission'),
-    // MySQL MyApp's models
-    require('database/MySQL/MyApp/models/User'),
-    require('database/MySQL/MyApp/models/UserPost'),
-];
+function importFilesInPath(targetPath) {
+    if (fs.existsSync(targetPath)) {
+        return fs.readdirSync(targetPath).map((file) => {
+            return require(`${targetPath}/${file}`);
+        });
+    }
+
+    return [];
+}
+
+const mySqlBasePath = `${process.env.NODE_PATH}/database/MySQL`;
+// Import MySQL User models
+const mySqlUserModelsPath = path.resolve(mySqlBasePath, 'User', 'models');
+const mySqlUserModels = importFilesInPath(mySqlUserModelsPath);
+// Import MySQL MyApp models
+const mySqlMyAppModelsPath = path.resolve(mySqlBasePath, 'MyApp', 'models');
+const mySqlMyAppModels = importFilesInPath(mySqlMyAppModelsPath);
+
+const sequelizeModels = [...mySqlUserModels, ...mySqlMyAppModels];
 
 const graphqlBasePath = `${process.env.NODE_PATH}/graphql`;
-const schemaPath = graphqlHelper.syncSchema(
+const basePathForCustom = path.resolve(graphqlBasePath, 'custom');
+// Import custom schema files
+const customSchemaPath = path.resolve(basePathForCustom, 'schemas');
+const customSchemas = importFilesInPath(customSchemaPath);
+// Import custom resolver files
+const customResolverPath = path.resolve(basePathForCustom, 'resolvers');
+const customResolvers = importFilesInPath(customResolverPath);
+
+const { buildSchemaFilePath, resolvers } = graphqlHelper.sync(
     fs,
     path,
     graphqlBasePath,
     sequelizeModels,
-    { overwrite: false }
+    customSchemas,
+    customResolvers
 );
-const typeDefs = require(schemaPath);
-const resolvers = graphqlHelper.generateResolvers(sequelizeModels);
-const graphqlSchema = makeExecutableSchema({ typeDefs, resolvers });
+const graphqlSchema = makeExecutableSchema({
+    typeDefs: require(buildSchemaFilePath),
+    resolvers: resolvers,
+});
+
+
+
+
+// // GraphQL
+// const { makeExecutableSchema } = require('graphql-tools');
+// const graphqlHTTP = require('express-graphql');
+// const graphqlHelper = require('@stickyboard/graphql-helper');
+//
+// const sequelizeModels = [
+//     // MySQL USER models
+//     require('database/MySQL/User/models/User'),
+//     require('database/MySQL/User/models/UserProfile'),
+//     require('database/MySQL/User/models/UserLayout'),
+//     require('database/MySQL/User/models/Group'),
+//     require('database/MySQL/User/models/GroupUser'),
+//     require('database/MySQL/User/models/Permission'),
+//     require('database/MySQL/User/models/GroupPermission'),
+//     // MySQL MyApp's models
+//     require('database/MySQL/MyApp/models/User'),
+//     require('database/MySQL/MyApp/models/UserPost'),
+// ];
+//
+// const graphqlBasePath = `${process.env.NODE_PATH}/graphql`;
+// const schemaPath = graphqlHelper.syncSchema(
+//     fs,
+//     path,
+//     graphqlBasePath,
+//     sequelizeModels,
+//     { overwrite: false }
+// );
+// const typeDefs = require(schemaPath);
+// const resolvers = graphqlHelper.generateResolvers(sequelizeModels);
+// const graphqlSchema = makeExecutableSchema({ typeDefs, resolvers });
 
 // Initialize the app
 const app = new Express();

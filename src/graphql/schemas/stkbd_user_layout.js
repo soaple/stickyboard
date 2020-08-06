@@ -1,12 +1,12 @@
 const stkbd_user_layout = {
     columns: [
-        {"name":"id","type":"Int","required":false,"updatable":false},
-{"name":"user_id","type":"Int","required":true,"updatable":true},
-{"name":"route","type":"String","required":true,"updatable":true},
-{"name":"layout","type":"String","required":true,"updatable":true},
-{"name":"blocks","type":"String","required":true,"updatable":true},
-{"name":"created","type":"Date","required":false,"updatable":true},
-{"name":"updated","type":"Date","required":false,"updatable":true}
+        {"name":"id","type":"Int","required":true,"requiredToCreate":false,"updatable":false},
+{"name":"user_id","type":"Int","required":true,"requiredToCreate":true,"updatable":true},
+{"name":"route","type":"String","required":true,"requiredToCreate":true,"updatable":true},
+{"name":"layout","type":"String","required":true,"requiredToCreate":true,"updatable":true},
+{"name":"blocks","type":"String","required":true,"requiredToCreate":true,"updatable":true},
+{"name":"created","type":"Date","required":true,"requiredToCreate":false,"updatable":true},
+{"name":"updated","type":"Date","required":true,"requiredToCreate":false,"updatable":true}
     ],
     model: `
         type stkbd_user_layout {
