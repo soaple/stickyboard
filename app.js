@@ -106,6 +106,7 @@ const { buildSchemaFilePath, resolvers } = graphqlHelper.sync(
     fs,
     path,
     graphqlBasePath,
+    require('sequelize'),
     sequelizeModels,
     customSchemas,
     customResolvers
