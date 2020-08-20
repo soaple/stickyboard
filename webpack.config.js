@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const stickyboardConfig = require('./stickyboard.config');
@@ -115,6 +116,11 @@ const config = {
         //     analyzerHost: '127.0.0.1',
         //     analyzerPort: 9000
         // })
+        new CopyPlugin({
+            patterns: [
+                { from: './src/static', to: './static' },
+            ],
+        }),
     ],
     node: {
         fs: 'empty',
