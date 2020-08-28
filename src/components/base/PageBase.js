@@ -184,7 +184,10 @@ class PageBase extends React.Component {
                             typeof StickerObject.Component === 'object'
                         ) {
                             return (
-                                <Sticker key={block.i}>
+                                <Sticker
+                                    key={block.i}
+                                    name={StickerObject.Name}
+                                    description={StickerObject.Description}>
                                     <StickerObject.Component
                                         colors={theme.colors}
                                     />
