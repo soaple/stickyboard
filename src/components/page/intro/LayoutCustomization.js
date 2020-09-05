@@ -1,4 +1,4 @@
-// src/components/intro/LayoutCustomization.js
+// src/components/page/intro/LayoutCustomization.js
 
 import React, { useState } from 'react';
 import styled from 'styled-components';

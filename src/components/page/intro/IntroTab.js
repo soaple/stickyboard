@@ -1,4 +1,4 @@
-// src/components/intro/IntroTab.js
+// src/components/page/intro/IntroTab.js
 
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,13 +27,18 @@ const tabStyles = makeStyles({
     },
 });
 
-export default function IntroTab({
-    firstTab,
-    secondTab,
-    mode,
-    onChangeMode,
-    label,
-}) {
+function TabPanel({ children, value, index }) {
+    if (value !== index) {
+        return null;
+    }
+    return (
+        <Typography component="div">
+            <Box>{children}</Box>
+        </Typography>
+    );
+}
+
+function IntroTab({ firstTab, secondTab, mode, onChangeMode, label }) {
     const classes = tabStyles();
 
     return (
@@ -57,13 +62,4 @@ export default function IntroTab({
     );
 }
 
-function TabPanel({ children, value, index }) {
-    if (value !== index) {
-        return null;
-    }
-    return (
-        <Typography component="div">
-            <Box>{children}</Box>
-        </Typography>
-    );
-}
+export default IntroTab;

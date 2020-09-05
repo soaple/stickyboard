@@ -1,4 +1,4 @@
-// src/components/intro/SupportChart.js
+// src/components/page/intro/SupportChart.js
 
 import React, { useState } from 'react';
 
@@ -113,7 +113,7 @@ const initialHighBlocks = [
     { i: 'HighchartsBoxPlot' },
 ];
 
-export default function SupportChart() {
+function SupportChart(props) {
     const [chartMode, setChartMode] = useState(CHART);
 
     const onChangeMode = (event, mode) => {
@@ -147,3 +147,5 @@ export default function SupportChart() {
         </IntroSection>
     );
 }
+
+export default SupportChart;

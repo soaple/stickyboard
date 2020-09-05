@@ -1,4 +1,4 @@
-// src/components/intro/SupportMap.js
+// src/components/page/intro/SupportMap.js
 
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -279,7 +279,7 @@ const mapStyles = makeStyles({
     },
 });
 
-export default function SupportMap() {
+function SupportMap(props) {
     const [mapMode, setMapMode] = useState(MAP);
     const classes = mapStyles();
 
@@ -329,3 +329,5 @@ export default function SupportMap() {
         </IntroSection>
     );
 }
+
+export default SupportMap;

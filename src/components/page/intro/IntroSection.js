@@ -1,18 +1,8 @@
-// src/components/intro/IntroSection.js
+// src/components/page/intro/IntroSection.js
 
 import React from 'react';
 import styled from 'styled-components';
-
 import IntroTitle from './IntroTitle';
-
-export default function IntroSection({ children, title }) {
-    return (
-        <Section>
-            <IntroTitle title={title} />
-            {children}
-        </Section>
-    );
-}
 
 const Section = styled.section`
     margin: 100px auto;
@@ -41,3 +31,14 @@ const Section = styled.section`
         }
     }
 `;
+
+function IntroSection({ children, title }) {
+    return (
+        <Section>
+            <IntroTitle title={title} />
+            {children}
+        </Section>
+    );
+}
+
+export default IntroSection;

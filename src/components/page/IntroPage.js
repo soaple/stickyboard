@@ -2,36 +2,32 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import GetStarted from 'components/page/intro/GetStarted';
+import SupportChart from 'components/page/intro/SupportChart';
+import SupportMap from 'components/page/intro/SupportMap';
+import LayoutCustomization from 'components/page/intro/LayoutCustomization';
 
-import { withStyles } from '@material-ui/core/styles';
-
-import IntroPageContent from '../intro/IntroPageContent';
-
-const styles = (theme) => ({
-    root: {},
-});
-
-class IntroPage extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {};
+const Wrapper = styled.div`
+    padding: 0 50px;
+    width: 100%;
+    @media (max-width: 1450px) {
+        padding: 0 30px;
     }
-
-    render() {
-        const { classes, theme } = this.props;
-
-        return (
-            <div>
-                <IntroPageContent />
-            </div>
-        );
+    @media (max-width: 600px) {
+        padding: 0;
     }
+`;
+
+function IntroPage(props) {
+    return (
+        <Wrapper>
+            <GetStarted />
+            <SupportChart />
+            <SupportMap />
+            <LayoutCustomization />
+        </Wrapper>
+    );
 }
 
-IntroPage.propTypes = {
-    classes: PropTypes.object.isRequired,
-    theme: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles, { withTheme: true })(IntroPage);
+export default IntroPage;
