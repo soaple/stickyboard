@@ -9,6 +9,8 @@ function NumberMQTT(props) {
         <MqttComponent
             serverUrl={'wss://test.mosquitto.org:8081'}
             subscribeTopic={'revspace/sensors/temperature'}
+            maxValue={'30.0 °C'}
+            minValue={'18.0 °C'}
         />
     );
 }

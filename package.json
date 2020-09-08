@@ -22,7 +22,7 @@
         "@stickyboard/graphql-helper": "^0.3.0",
         "@stickyboard/highcharts": "^0.1.5",
         "@stickyboard/json-viewer": "^0.1.0",
-        "@stickyboard/mqtt": "^0.1.0",
+        "@stickyboard/mqtt": "^0.1.1",
         "@stickyboard/number": "^0.1.4",
         "@stickyboard/openlayers": "^0.1.5",
         "@stickyboard/openweathermap": "^0.1.1",
