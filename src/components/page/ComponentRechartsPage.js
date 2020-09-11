@@ -1,4 +1,4 @@
-// src/components/page/ComponentChartsPage.js
+// src/components/page/ComponentRechartsPage.js
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -93,7 +93,7 @@ const initialBlocks = [
     { i: 'RechartsTinyChart' },
 ];
 
-class ComponentChartsPage extends React.Component {
+class ComponentRechartsPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -112,9 +112,9 @@ class ComponentChartsPage extends React.Component {
     }
 }
 
-ComponentChartsPage.propTypes = {
+ComponentRechartsPage.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(ComponentChartsPage);
+export default withStyles(styles, { withTheme: true })(ComponentRechartsPage);

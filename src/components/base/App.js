@@ -17,7 +17,7 @@ const SignUpPage = loadable(() => import('components/page/SignUpPage'));
 const IntroPage = loadable(() => import('components/page/IntroPage'));
 const IntroDatabasePage = loadable(() => import('components/page/IntroDatabasePage'));
 // Component
-const ComponentChartsPage= loadable(() => import('components/page/ComponentChartsPage'));
+const ComponentRechartsPage= loadable(() => import('components/page/ComponentRechartsPage'));
 const ComponentHighchartsPage= loadable(() => import('components/page/ComponentHighchartsPage'));
 const ComponentTablePage= loadable(() => import('components/page/ComponentTablePage'));
 const ComponentSmartTablePage= loadable(() => import('components/page/ComponentSmartTablePage'));
@@ -108,7 +108,7 @@ class App extends React.Component {
                                     <Route exact path='/intro' component={IntroPage} />
                                     <Route exact path='/intro/database' component={IntroDatabasePage} />
                                     {/* Component */}
-                                    <Route path='/components/chart' component={ComponentChartsPage} />
+                                    <Route path='/components/recharts' component={ComponentRechartsPage} />
                                     <Route path='/components/highcharts' component={ComponentHighchartsPage} />
                                     <Route path='/components/table' component={ComponentTablePage} />
                                     <Route path='/components/smart-table' component={ComponentSmartTablePage} />

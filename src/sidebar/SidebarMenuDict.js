@@ -60,9 +60,9 @@ const SidebarMenuDict = {
      ******************/
     COMPONENTS: [
         {
-            title: 'Chart',
+            title: 'Recharts',
             icon: <Timeline />,
-            url: '/components/chart',
+            url: '/components/recharts',
             value: 201,
             need_permission: false,
         },
