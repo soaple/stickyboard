@@ -8,14 +8,38 @@ import { Sticker } from '@stickyboard/core';
 import PageBaseContainer from 'redux/containers/PageBaseContainer';
 
 const initialLayout = {
-    lg: [{ i: 'OtherGitHubCalendar', x: 0, y: 0, w: 12, h: 5 }],
-    md: [{ i: 'OtherGitHubCalendar', x: 0, y: 0, w: 12, h: 5 }],
-    sm: [{ i: 'OtherGitHubCalendar', x: 0, y: 0, w: 12, h: 5 }],
-    xs: [{ i: 'OtherGitHubCalendar', x: 0, y: 0, w: 12, h: 5 }],
-    xxs: [{ i: 'OtherGitHubCalendar', x: 0, y: 0, w: 12, h: 5 }],
+    lg: [
+        { i: 'OthersGitHubCalendar', x: 0, y: 9, w: 12, h: 5 },
+        { i: 'OthersMarkdown', x: 6, y: 0, w: 6, h: 9 },
+        { i: 'OthersCardList', x: 0, y: 0, w: 6, h: 9 },
+    ],
+    md: [
+        { i: 'OthersGitHubCalendar', x: 0, y: 9, w: 12, h: 5 },
+        { i: 'OthersMarkdown', x: 6, y: 0, w: 6, h: 9 },
+        { i: 'OthersCardList', x: 0, y: 0, w: 6, h: 9 },
+    ],
+    sm: [
+        { i: 'OthersGitHubCalendar', x: 0, y: 9, w: 8, h: 5 },
+        { i: 'OthersMarkdown', x: 4, y: 0, w: 4, h: 9 },
+        { i: 'OthersCardList', x: 0, y: 0, w: 4, h: 9 },
+    ],
+    xs: [
+        { i: 'OthersGitHubCalendar', x: 0, y: 18, w: 6, h: 5 },
+        { i: 'OthersMarkdown', x: 0, y: 9, w: 6, h: 9 },
+        { i: 'OthersCardList', x: 0, y: 0, w: 6, h: 9 },
+    ],
+    xxs: [
+        { i: 'OthersGitHubCalendar', x: 0, y: 18, w: 4, h: 5 },
+        { i: 'OthersMarkdown', x: 0, y: 9, w: 4, h: 9 },
+        { i: 'OthersCardList', x: 0, y: 0, w: 4, h: 9 },
+    ],
 };
 
-const initialBlocks = [{ i: 'OtherGitHubCalendar' }];
+const initialBlocks = [
+    { i: 'OthersGitHubCalendar' },
+    { i: 'OthersMarkdown' },
+    { i: 'OthersCardList' },
+];
 
 class ComponentOthersPage extends React.Component {
     constructor(props) {

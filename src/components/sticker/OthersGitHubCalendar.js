@@ -14,7 +14,7 @@ function generateSampleData() {
     return data;
 }
 
-function OtherGitHubCalendar(props) {
+function OthersGitHubCalendar(props) {
     const { colors } = props;
 
     return (
@@ -26,4 +26,4 @@ function OtherGitHubCalendar(props) {
     );
 }
 
-export default OtherGitHubCalendar;
+export default OthersGitHubCalendar;

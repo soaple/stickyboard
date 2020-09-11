@@ -68,7 +68,9 @@ const OpenWeatherMap7days = loadable(() => import('./OpenWeatherMap7days'));
 const YahooWeather = loadable(() => import('./YahooWeather'));
 const YahooWeatherForecast = loadable(() => import('./YahooWeatherForecast'));
 // Others
-const OtherGitHubCalendar = loadable(() => import('./OtherGitHubCalendar'));
+const OthersGitHubCalendar = loadable(() => import('./OthersGitHubCalendar'));
+const OthersMarkdown = loadable(() => import('./OthersMarkdown'));
+const OthersCardList = loadable(() => import('./OthersCardList'));
 
 export default {
     Indroduction: [
@@ -344,9 +346,19 @@ export default {
     ],
     Others: [
         {
-            Name: 'OtherGitHubCalendar',
-            Description: 'OtherGitHubCalendar sample',
-            Component: OtherGitHubCalendar,
+            Name: 'OthersGitHubCalendar',
+            Description: 'OthersGitHubCalendar sample',
+            Component: OthersGitHubCalendar,
+        },
+        {
+            Name: 'OthersMarkdown',
+            Description: 'OthersMarkdown sample',
+            Component: OthersMarkdown,
+        },
+        {
+            Name: 'OthersCardList',
+            Description: 'OthersCardList sample',
+            Component: OthersCardList,
         },
     ],
 };
