@@ -22,6 +22,12 @@ console.log('===================================================\n');
 console.log(`stickyboard.config env variables are loaded successfully.`);
 console.log('[FRONT-END]', stickyboardConfig.env, '\n');
 
+const aa = Object.keys(stickyboardConfig.env).reduce((acc, envKey) => {
+    acc[`process.env.${envKey}`] = stickyboardConfig.env[envKey];
+    return acc;
+}, {});
+console.log(aa);
+
 const config = {
     mode: NODE_ENV,
     entry: path.join(__dirname, 'src', 'index.js'),
@@ -94,7 +100,17 @@ const config = {
     },
     plugins: [
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
-        new webpack.DefinePlugin(stickyboardConfig.env),
+        new webpack.DefinePlugin(
+            Object.keys(stickyboardConfig.env).reduce((acc, envKey) => {
+                const value = stickyboardConfig.env[envKey];
+                if (typeof value === 'number') {
+                    acc[`process.env.${envKey}`] = value;
+                } else {
+                    acc[`process.env.${envKey}`] = JSON.stringify(value);
+                }
+                return acc;
+            }, {})
+        ),
         // Ignore all locale files of moment.js
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new HtmlWebpackPlugin({
