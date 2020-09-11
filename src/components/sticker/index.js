@@ -2,13 +2,6 @@
 
 import loadable from '@loadable/component';
 
-// Intro
-const IntroIntroduction = loadable(() => import('./IntroIntroduction'));
-const IntroCustomLayout = loadable(() => import('./IntroCustomLayout'));
-const IntroDatabaseSupport = loadable(() => import('./IntroDatabaseSupport'));
-const IntroChartSupport = loadable(() => import('./IntroChartSupport'));
-const IntroMapSupport = loadable(() => import('./IntroMapSupport'));
-const IntroContact = loadable(() => import('./IntroContact'));
 // Database
 const DatabaseMySQL = loadable(() => import('./DatabaseMySQL'));
 const DatabaseFirestore = loadable(() => import('./DatabaseFirestore'));
@@ -73,38 +66,6 @@ const OthersMarkdown = loadable(() => import('./OthersMarkdown'));
 const OthersCardList = loadable(() => import('./OthersCardList'));
 
 export default {
-    Indroduction: [
-        {
-            Name: 'IntroIntroduction',
-            Description: 'IntroIntroduction sample',
-            Component: IntroIntroduction,
-        },
-        {
-            Name: 'IntroCustomLayout',
-            Description: 'IntroCustomLayout sample',
-            Component: IntroCustomLayout,
-        },
-        {
-            Name: 'IntroDatabaseSupport',
-            Description: 'IntroDatabaseSupport sample',
-            Component: IntroDatabaseSupport,
-        },
-        {
-            Name: 'IntroChartSupport',
-            Description: 'IntroChartSupport sample',
-            Component: IntroChartSupport,
-        },
-        {
-            Name: 'IntroMapSupport',
-            Description: 'IntroMapSupport sample',
-            Component: IntroMapSupport,
-        },
-        {
-            Name: 'IntroContact',
-            Description: 'IntroContact sample',
-            Component: IntroContact,
-        },
-    ],
     Database: [
         {
             Name: 'DatabaseMySQL',

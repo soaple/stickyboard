@@ -18,14 +18,13 @@ console.log(`isWebpackDevServerMode: ${isWebpackDevServerMode}`);
 console.log('===================================================\n');
 
 // Load .env file
-const envFilePath = isProductionMode ? '.env.production' : '.env.development';
-const envLoadResult = require('dotenv').config({ path: envFilePath });
-if (envLoadResult.error) {
-    console.log(envLoadResult.error);
-} else {
-    console.log(`env file '${envFilePath}' loaded successfully.\n`);
-    if (!isProductionMode) {
-        console.log('[BACK-END]', envLoadResult.parsed);
+if (isProductionMode) {
+    const envFilePath = '.env.production';
+    const envLoadResult = require('dotenv').config({ path: envFilePath });
+    if (envLoadResult.error) {
+        console.log(`[WARNING] ${envLoadResult.error.message}\n`);
+    } else {
+        console.log(`env file '${envFilePath}' loaded successfully.\n`);
     }
 }
 
