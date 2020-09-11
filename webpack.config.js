@@ -8,8 +8,6 @@ const LiveReloadPlugin = require('webpack-livereload-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const stickyboardConfig = require('./stickyboard.config');
-
 const NODE_ENV = process.env.NODE_ENV || 'production';
 const isProductionMode = NODE_ENV === 'production';
 const isWebpackDevServerMode = process.env.WEBPACK_DEV_SERVER_MODE === 'true';
@@ -19,14 +17,24 @@ console.log(`isProductionMode: ${isProductionMode}`);
 console.log(`isWebpackDevServerMode: ${isWebpackDevServerMode}`);
 console.log('===================================================\n');
 
-console.log(`stickyboard.config env variables are loaded successfully.`);
-console.log('[FRONT-END]', stickyboardConfig.env, '\n');
+// Load .env file
+const envFilePath = isProductionMode ? '.env.production' : '.env.development';
+const envLoadResult = require('dotenv').config({ path: envFilePath });
+if (envLoadResult.error) {
+    console.log(envLoadResult.error);
+} else {
+    console.log(`env file '${envFilePath}' loaded successfully.\n`);
+    if (!isProductionMode) {
+        console.log('[BACK-END]', envLoadResult.parsed);
+    }
+}
 
-const aa = Object.keys(stickyboardConfig.env).reduce((acc, envKey) => {
-    acc[`process.env.${envKey}`] = stickyboardConfig.env[envKey];
-    return acc;
-}, {});
-console.log(aa);
+// Load StickyBoard config
+const stickyboardConfig = require('./stickyboard.config');
+console.log(`stickyboard.config env variables are loaded successfully.`);
+if (!isProductionMode) {
+    console.log('[FRONT-END]', stickyboardConfig.env, '\n');
+}
 
 const config = {
     mode: NODE_ENV,
