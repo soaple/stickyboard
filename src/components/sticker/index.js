@@ -17,21 +17,27 @@ const DatabaseMongoDB = loadable(() => import('./DatabaseMongoDB'));
 const RechartsLineChart = loadable(() => import('./RechartsLineChart'));
 const RechartsBarChart = loadable(() => import('./RechartsBarChart'));
 const RechartsComposedChart = loadable(() => import('./RechartsComposedChart'));
-const RechartsMultiLineChart = loadable(() => import('./RechartsMultiLineChart'));
+const RechartsMultiLineChart = loadable(() =>
+    import('./RechartsMultiLineChart')
+);
 const RechartsPieChart = loadable(() => import('./RechartsPieChart'));
 const RechartsAreaChart = loadable(() => import('./RechartsAreaChart'));
 const RechartsRadarChart = loadable(() => import('./RechartsRadarChart'));
 const RechartsScatterChart = loadable(() => import('./RechartsScatterChart'));
 const RechartsTinyChart = loadable(() => import('./RechartsTinyChart'));
 const RechartsTreeMap = loadable(() => import('./RechartsTreeMap'));
-const RechartsStackedBarChart = loadable(() => import('./RechartsStackedBarChart'));
+const RechartsStackedBarChart = loadable(() =>
+    import('./RechartsStackedBarChart')
+);
 // Highcharts
 const HighchartsLineChart = loadable(() => import('./HighchartsLineChart'));
 const HighchartsBarChart = loadable(() => import('./HighchartsBarChart'));
 const HighchartsPieChart = loadable(() => import('./HighchartsPieChart'));
 const HighchartsPolarChart = loadable(() => import('./HighchartsPolarChart'));
 const HighchartsAreaChart = loadable(() => import('./HighchartsAreaChart'));
-const HighchartsScatterChart = loadable(() => import('./HighchartsScatterChart'));
+const HighchartsScatterChart = loadable(() =>
+    import('./HighchartsScatterChart')
+);
 const HighchartsTreeMap = loadable(() => import('./HighchartsTreeMap'));
 const HighchartsStreamGraph = loadable(() => import('./HighchartsStreamGraph'));
 const HighchartsBoxPlot = loadable(() => import('./HighchartsBoxPlot'));
@@ -62,6 +68,8 @@ const OpenWeatherMap3days = loadable(() => import('./OpenWeatherMap3days'));
 const OpenWeatherMap7days = loadable(() => import('./OpenWeatherMap7days'));
 const YahooWeather = loadable(() => import('./YahooWeather'));
 const YahooWeatherForecast = loadable(() => import('./YahooWeatherForecast'));
+// Others
+const OtherGitHubCalendar = loadable(() => import('./OtherGitHubCalendar'));
 
 export default {
     Indroduction: [
@@ -338,6 +346,13 @@ export default {
             Name: 'YahooWeatherForecast',
             Description: 'YahooWeatherForecast sample',
             Component: YahooWeatherForecast,
+        },
+    ],
+    Others: [
+        {
+            Name: 'OtherGitHubCalendar',
+            Description: 'OtherGitHubCalendar sample',
+            Component: OtherGitHubCalendar,
         },
     ],
 };
