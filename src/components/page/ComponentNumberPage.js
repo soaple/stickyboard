@@ -22,7 +22,7 @@ const initialLayout = {
         { i: 'NumberMAU2', x: 6, y: 2, w: 6, h: 8 },
         { i: 'NumberARPU2', x: 0, y: 10, w: 3, h: 4 },
         { i: 'NumberDAU3', x: 6, y: 10, w: 3, h: 4 },
-        { i: 'NumberWAU3', x: 9, y: 10, w: 3, h: 4 },
+        { i: 'NumberMQTT', x: 9, y: 10, w: 3, h: 4 },
     ],
     md: [
         { i: 'NumberDAU', x: 0, y: 8, w: 3, h: 2 },
@@ -34,7 +34,7 @@ const initialLayout = {
         { i: 'NumberMAU2', x: 6, y: 2, w: 6, h: 8 },
         { i: 'NumberARPU2', x: 0, y: 10, w: 3, h: 4 },
         { i: 'NumberDAU3', x: 6, y: 10, w: 3, h: 4 },
-        { i: 'NumberWAU3', x: 9, y: 10, w: 3, h: 4 },
+        { i: 'NumberMQTT', x: 9, y: 10, w: 3, h: 4 },
     ],
     sm: [
         { i: 'NumberDAU', x: 0, y: 8, w: 2, h: 2 },
@@ -46,7 +46,7 @@ const initialLayout = {
         { i: 'NumberMAU2', x: 4, y: 2, w: 4, h: 8 },
         { i: 'NumberARPU2', x: 0, y: 10, w: 2, h: 4 },
         { i: 'NumberDAU3', x: 4, y: 10, w: 2, h: 4 },
-        { i: 'NumberWAU3', x: 6, y: 10, w: 2, h: 4 },
+        { i: 'NumberMQTT', x: 6, y: 10, w: 2, h: 4 },
     ],
     xs: [
         { i: 'NumberDAU', x: 0, y: 8, w: 3, h: 2 },
@@ -58,7 +58,7 @@ const initialLayout = {
         { i: 'NumberMAU2', x: 3, y: 4, w: 3, h: 8 },
         { i: 'NumberARPU2', x: 0, y: 12, w: 3, h: 4 },
         { i: 'NumberDAU3', x: 0, y: 16, w: 3, h: 4 },
-        { i: 'NumberWAU3', x: 3, y: 16, w: 3, h: 4 },
+        { i: 'NumberMQTT', x: 3, y: 16, w: 3, h: 4 },
     ],
     xxs: [
         { i: 'NumberDAU', x: 0, y: 12, w: 2, h: 2 },
@@ -70,7 +70,7 @@ const initialLayout = {
         { i: 'NumberMAU2', x: 0, y: 7, w: 4, h: 5 },
         { i: 'NumberARPU2', x: 0, y: 14, w: 2, h: 4 },
         { i: 'NumberDAU3', x: 0, y: 18, w: 2, h: 4 },
-        { i: 'NumberWAU3', x: 2, y: 18, w: 2, h: 4 },
+        { i: 'NumberMQTT', x: 2, y: 18, w: 2, h: 4 },
     ],
 };
 
@@ -84,7 +84,7 @@ const initialBlocks = [
     { i: 'NumberMAU2' },
     { i: 'NumberARPU2' },
     { i: 'NumberDAU3' },
-    { i: 'NumberWAU3' },
+    { i: 'NumberMQTT' },
 ];
 
 class ComponentNumberPage extends React.Component {

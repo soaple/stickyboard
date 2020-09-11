@@ -60,7 +60,6 @@ const NumberWAU2 = loadable(() => import('./NumberWAU2'));
 const NumberMAU2 = loadable(() => import('./NumberMAU2'));
 const NumberARPU2 = loadable(() => import('./NumberARPU2'));
 const NumberDAU3 = loadable(() => import('./NumberDAU3'));
-const NumberWAU3 = loadable(() => import('./NumberWAU3'));
 const NumberMQTT = loadable(() => import('./NumberMQTT'));
 // Weather
 const OpenWeatherMap = loadable(() => import('./OpenWeatherMap'));
@@ -309,11 +308,6 @@ export default {
             Name: 'NumberDAU3',
             Description: 'NumberDAU3 sample',
             Component: NumberDAU3,
-        },
-        {
-            Name: 'NumberWAU3',
-            Description: 'NumberWAU3 sample',
-            Component: NumberWAU3,
         },
         {
             Name: 'NumberMQTT',
