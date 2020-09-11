@@ -115,7 +115,7 @@ class App extends React.Component {
                                     <Route path='/components/number' component={ComponentNumberPage} />
                                     <Route path='/components/weather' component={ComponentWeatherPage} />
                                     <Route path='/components/others' component={ComponentOthersPage} />
-                                    <Route path='/components/dialog' component={ComponentDialogPageContainer} />
+                                    <Route path='/intro/dialog' component={ComponentDialogPageContainer} />
                                     {/* Layering */}
                                     <Route path="/layering/map" component={LayeringMapPage} />
                                     <Route path="/layering/heatmap" component={LayeringHeatMapPage} />
