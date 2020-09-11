@@ -133,12 +133,14 @@ function SupportChart(props) {
                 label={['Charts', 'HighCharts']}
                 firstTab={
                     <PageBaseContainer
+                        readonly
                         initialLayout={initialChartLayout}
                         initialBlocks={initialChartBlocks}
                     />
                 }
                 secondTab={
                     <PageBaseContainer
+                        readonly
                         initialLayout={initialHighLayout}
                         initialBlocks={initialHighBlocks}
                     />

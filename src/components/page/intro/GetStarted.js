@@ -68,7 +68,6 @@ const StartDesc = styled.p`
 const BtnDiv = styled.div`
     margin: auto;
     height: 150px;
-
     display: flex;
     justify-content: center;
     align-items: center;

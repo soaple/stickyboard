@@ -114,6 +114,7 @@ export default function LayoutCustomization() {
                 firstTab={
                     <WeatherDiv>
                         <PageBaseContainer
+                            readonly
                             initialLayout={initialLayoutA}
                             initialBlocks={initialBlocks}
                         />
@@ -122,6 +123,7 @@ export default function LayoutCustomization() {
                 secondTab={
                     <WeatherDiv>
                         <PageBaseContainer
+                            readonly
                             initialLayout={initialLayoutB}
                             initialBlocks={initialBlocks}
                         />

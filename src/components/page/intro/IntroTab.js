@@ -32,7 +32,7 @@ function TabPanel({ children, value, index }) {
         return null;
     }
     return (
-        <Typography component="div">
+        <Typography component="div" style={{ minHeight: 652 }}>
             <Box>{children}</Box>
         </Typography>
     );

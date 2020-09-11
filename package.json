@@ -20,7 +20,7 @@
         "@material-ui/lab": "^4.0.0-alpha.52",
         "@stickyboard/core": "^1.0.10",
         "@stickyboard/graphql-helper": "^0.3.0",
-        "@stickyboard/highcharts": "^0.1.5",
+        "@stickyboard/highcharts": "^0.1.7",
         "@stickyboard/json-viewer": "^0.1.0",
         "@stickyboard/mqtt": "^0.1.1",
         "@stickyboard/number": "^0.1.4",

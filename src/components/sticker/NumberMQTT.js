@@ -1,5 +1,4 @@
 import React from 'react';
-import PersonIcon from '@material-ui/icons/Person';
 import { MqttComponent } from '@stickyboard/mqtt';
 
 function NumberMQTT(props) {

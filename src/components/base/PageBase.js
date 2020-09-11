@@ -163,7 +163,13 @@ class PageBase extends React.Component {
 
     render() {
         const { layout, blocks, isEditingMode, isMenuOpen } = this.state;
-        const { classes, theme, showDialog, messageSnackbar } = this.props;
+        const {
+            classes,
+            theme,
+            readonly,
+            showDialog,
+            messageSnackbar,
+        } = this.props;
 
         if (!layout || !blocks) {
             return null;
@@ -199,40 +205,42 @@ class PageBase extends React.Component {
                     })}
                 </Board>
 
-                <div className={classes.menuContainer}>
-                    <SpeedDial
-                        ariaLabel="SpeedDial"
-                        className={classes.speedDial}
-                        icon={<MenuIcon />}
-                        onClose={this.handleCloseMenu}
-                        onOpen={this.handleOpenMenu}
-                        open={isMenuOpen}
-                        direction={'up'}>
-                        <SpeedDialAction
-                            icon={<EditIcon />}
-                            tooltipTitle={'Toggle Edit mode'}
-                            onClick={() => {
-                                this.board.current.toggleEditingMode();
-                            }}
-                        />
+                {!readonly && (
+                    <div className={classes.menuContainer}>
+                        <SpeedDial
+                            ariaLabel="SpeedDial"
+                            className={classes.speedDial}
+                            icon={<MenuIcon />}
+                            onClose={this.handleCloseMenu}
+                            onOpen={this.handleOpenMenu}
+                            open={isMenuOpen}
+                            direction={'up'}>
+                            <SpeedDialAction
+                                icon={<EditIcon />}
+                                tooltipTitle={'Toggle Edit mode'}
+                                onClick={() => {
+                                    this.board.current.toggleEditingMode();
+                                }}
+                            />
 
-                        <SpeedDialAction
-                            icon={<TvIcon />}
-                            tooltipTitle={'Toggle TV mode'}
-                            onClick={() => {
-                                this.board.current.toggleTvMode();
-                            }}
-                        />
+                            <SpeedDialAction
+                                icon={<TvIcon />}
+                                tooltipTitle={'Toggle TV mode'}
+                                onClick={() => {
+                                    this.board.current.toggleTvMode();
+                                }}
+                            />
 
-                        <SpeedDialAction
-                            icon={<AppsIcon />}
-                            tooltipTitle={'Sticker List'}
-                            onClick={() => {
-                                showDialog('StickerListDialog');
-                            }}
-                        />
-                    </SpeedDial>
-                </div>
+                            <SpeedDialAction
+                                icon={<AppsIcon />}
+                                tooltipTitle={'Sticker List'}
+                                onClick={() => {
+                                    showDialog('StickerListDialog');
+                                }}
+                            />
+                        </SpeedDial>
+                    </div>
+                )}
 
                 {/* Message Snackbar */}
                 <MessageSnackbar
