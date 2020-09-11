@@ -25,7 +25,7 @@ Fully customizable Web Admin/Dashboard starter kit based on React
 
 This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).
 
-However, this project has a dependency on [Highcharts.js](http://www.highcharts.com) from [@stickyboard/highcharts](https://github.com/soaple/stickyboard-highcharts).
+However, this project has a dependency on [Highcharts.js](http://www.highcharts.com) from [@stickyboard/highcharts](https://github.com/soaple/stickyboard-highcharts).<br />
 For commercial use, you have to buy a valid [Highcharts license](https://github.com/highcharts/highcharts/blob/master/license.txt).
 
 Also, this project has a dependency on [MapBox GL JS](https://github.com/mapbox/mapbox-gl-js/) from [@stickyboard/mapbox](https://github.com/soaple/stickyboard-mapbox).<br />
