@@ -1,6 +1,6 @@
 // src/components/page/intro/IntroTab.js
 
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -31,34 +31,42 @@ function TabPanel({ children, value, index }) {
     if (value !== index) {
         return null;
     }
+
     return (
-        <Typography component="div" style={{ minHeight: 652 }}>
+        <Typography component="div">
             <Box>{children}</Box>
         </Typography>
     );
 }
 
-function IntroTab({ firstTab, secondTab, mode, onChangeMode, label }) {
+function IntroTab({ labels, children }) {
     const classes = tabStyles();
 
+    const [tabValue, setTabValue] = useState(0);
+
+    const onChangeTab = (event, newTabValue) => {
+        setTabValue(newTabValue);
+    };
+
     return (
-        <div>
+        <>
             <AppBar position="static" elevation={0} className={classes.appBar}>
                 <Tabs
-                    value={mode}
-                    onChange={onChangeMode}
+                    value={tabValue}
+                    onChange={onChangeTab}
                     aria-label="section-tabs">
-                    <Tab className={classes.firstLabel} label={label[0]} />
-                    <Tab className={classes.secondLabel} label={label[1]} />
+                    <Tab className={classes.firstLabel} label={labels[0]} />
+                    <Tab className={classes.secondLabel} label={labels[1]} />
                 </Tabs>
             </AppBar>
-            <TabPanel value={mode} index={0}>
-                {firstTab}
-            </TabPanel>
-            <TabPanel value={mode} index={1}>
-                {secondTab}
-            </TabPanel>
-        </div>
+            {children.map((childElem, index) => {
+                return (
+                    <TabPanel value={tabValue} index={index}>
+                        {childElem}
+                    </TabPanel>
+                );
+            })}
+        </>
     );
 }
 

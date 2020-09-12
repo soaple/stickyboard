@@ -7,9 +7,6 @@ import { OpenLayers, HeatMap } from '@stickyboard/openlayers';
 import IntroSection from './IntroSection';
 import IntroTab from './IntroTab';
 
-export const MAP = 0;
-export const HEAT_MAP = 1;
-
 const pointList = [
     { geometry: [117.2264, 31.8257], weight: 1 },
     { geometry: [116.4142, 40.1824], weight: 1 },
@@ -280,52 +277,39 @@ const mapStyles = makeStyles({
 });
 
 function SupportMap(props) {
-    const [mapMode, setMapMode] = useState(MAP);
     const classes = mapStyles();
-
-    const onChangeMode = (event, mode) => {
-        setMapMode(mode);
-    };
 
     return (
         <IntroSection title={'Supports map and layer components'}>
             <small>
-                For more information, please see the
-                {mapMode === MAP ? " 'Map' " : " 'HeatMap' "}
-                menu of components.
+                For more information, please see the Map and HeatMap menu of
+                components.
             </small>
-            <IntroTab
-                mode={mapMode}
-                onChangeMode={onChangeMode}
-                label={['Map', 'HeatMap']}
-                firstTab={
-                    <div className={classes.map}>
-                        <OpenLayers
-                            claaName={classes.map}
-                            isHeatmapMode={false}
-                            zoom={12}
-                            minZoom={2}
-                            maxZoom={19}
-                            longitude={127.024792}
-                            latitude={37.504296}
-                        />
-                    </div>
-                }
-                secondTab={
-                    <div className={classes.map}>
-                        <HeatMap
-                            zoom={3}
-                            minZoom={2}
-                            maxZoom={17}
-                            blur={40}
-                            radius={30}
-                            longitude={127.024792}
-                            latitude={37.504296}
-                            pointList={pointList}
-                        />
-                    </div>
-                }
-            />
+            <IntroTab labels={['Map', 'HeatMap']}>
+                <div className={classes.map}>
+                    <OpenLayers
+                        claaName={classes.map}
+                        isHeatmapMode={false}
+                        zoom={12}
+                        minZoom={2}
+                        maxZoom={19}
+                        longitude={127.024792}
+                        latitude={37.504296}
+                    />
+                </div>
+                <div className={classes.map}>
+                    <HeatMap
+                        zoom={3}
+                        minZoom={2}
+                        maxZoom={17}
+                        blur={40}
+                        radius={30}
+                        longitude={127.024792}
+                        latitude={37.504296}
+                        pointList={pointList}
+                    />
+                </div>
+            </IntroTab>
         </IntroSection>
     );
 }

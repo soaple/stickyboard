@@ -1,13 +1,11 @@
 // src/components/page/intro/SupportChart.js
 
-import React, { useState } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 
 import PageBaseContainer from 'redux/containers/PageBaseContainer';
 import IntroSection from './IntroSection';
 import IntroTab from './IntroTab';
-
-export const CHART = 0;
-export const HIGH_CHART = 1;
 
 const initialChartLayout = {
     lg: [
@@ -113,39 +111,33 @@ const initialHighBlocks = [
     { i: 'HighchartsBoxPlot' },
 ];
 
+const PageBaseWrapper = styled.div`
+    min-height: 832px;
+`;
+
 function SupportChart(props) {
-    const [chartMode, setChartMode] = useState(CHART);
-
-    const onChangeMode = (event, mode) => {
-        setChartMode(mode);
-    };
-
     return (
         <IntroSection title={'Supports various chart'}>
             <small>
-                For more charts, please see the
-                {chartMode === CHART ? " 'Chart' " : " 'HighCharts' "}
-                menu of components.
+                For more charts, please see the Recharts and Highcharts menu of
+                components.
             </small>
-            <IntroTab
-                mode={chartMode}
-                onChangeMode={onChangeMode}
-                label={['Charts', 'HighCharts']}
-                firstTab={
+            <IntroTab labels={['Recharts', 'HighCharts']}>
+                <PageBaseWrapper>
                     <PageBaseContainer
                         readonly
                         initialLayout={initialChartLayout}
                         initialBlocks={initialChartBlocks}
                     />
-                }
-                secondTab={
+                </PageBaseWrapper>
+                <PageBaseWrapper>
                     <PageBaseContainer
                         readonly
                         initialLayout={initialHighLayout}
                         initialBlocks={initialHighBlocks}
                     />
-                }
-            />
+                </PageBaseWrapper>
+            </IntroTab>
         </IntroSection>
     );
 }
