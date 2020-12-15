@@ -64,6 +64,8 @@ const YahooWeatherForecast = loadable(() => import('./YahooWeatherForecast'));
 const OthersGitHubCalendar = loadable(() => import('./OthersGitHubCalendar'));
 const OthersMarkdown = loadable(() => import('./OthersMarkdown'));
 const OthersCardList = loadable(() => import('./OthersCardList'));
+// Internal
+const EmptySticker = loadable(() => import('./EmptySticker'));
 
 export default {
     Database: [
@@ -320,6 +322,13 @@ export default {
             Name: 'OthersCardList',
             Description: 'OthersCardList sample',
             Component: OthersCardList,
+        },
+    ],
+    Internal: [
+        {
+            Name: 'Empty',
+            Description: 'Empty sticker',
+            Component: EmptySticker,
         },
     ],
 };

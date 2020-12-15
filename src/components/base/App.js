@@ -16,24 +16,27 @@ const SignUpPage = loadable(() => import('components/page/SignUpPage'));
 // Introduction
 const IntroPage = loadable(() => import('components/page/IntroPage'));
 const IntroDatabasePage = loadable(() => import('components/page/IntroDatabasePage'));
+const IntroPlaygroundPageContainer= loadable(() => import('redux/containers/IntroPlaygroundPageContainer'));
 // Component
-const ComponentRechartsPage= loadable(() => import('components/page/ComponentRechartsPage'));
-const ComponentHighchartsPage= loadable(() => import('components/page/ComponentHighchartsPage'));
-const ComponentTablePage= loadable(() => import('components/page/ComponentTablePage'));
-const ComponentSmartTablePage= loadable(() => import('components/page/ComponentSmartTablePage'));
-const ComponentNumberPage= loadable(() => import('components/page/ComponentNumberPage'));
-const ComponentWeatherPage= loadable(() => import('components/page/ComponentWeatherPage'));
-const ComponentOthersPage= loadable(() => import('components/page/ComponentOthersPage'));
+const ComponentRechartsPage = loadable(() => import('components/page/ComponentRechartsPage'));
+const ComponentHighchartsPage = loadable(() => import('components/page/ComponentHighchartsPage'));
+const ComponentTablePage = loadable(() => import('components/page/ComponentTablePage'));
+const ComponentSmartTablePage = loadable(() => import('components/page/ComponentSmartTablePage'));
+const ComponentNumberPage = loadable(() => import('components/page/ComponentNumberPage'));
+const ComponentWeatherPage = loadable(() => import('components/page/ComponentWeatherPage'));
+const ComponentOthersPage = loadable(() => import('components/page/ComponentOthersPage'));
 const ComponentDialogPageContainer= loadable(() => import('redux/containers/ComponentDialogPageContainer'));
 // Layering
-const LayeringMapPage= loadable(() => import('components/page/LayeringMapPage'));
-const LayeringHeatMapPage= loadable(() => import('components/page/LayeringHeatMapPage'));
+const LayeringMapPage = loadable(() => import('components/page/LayeringMapPage'));
+const LayeringHeatMapPage = loadable(() => import('components/page/LayeringHeatMapPage'));
+// Example
+const ExampleSamplePage = loadable(() => import('components/page/ExampleSamplePage'));
 // Setting
-const SettingsPage= loadable(() => import('components/page/SettingsPage'));
+const SettingsPage = loadable(() => import('components/page/SettingsPage'));
 // Superuser
-const SuperuserPage= loadable(() => import('components/page/SuperuserPage'));
+const SuperuserPage = loadable(() => import('components/page/SuperuserPage'));
 // Not found
-const NotFoundPage= loadable(() => import('components/page/NotFoundPage'));
+const NotFoundPage = loadable(() => import('components/page/NotFoundPage'));
 
 // Dialog
 import DialogDict from 'components/dialog';
@@ -107,6 +110,7 @@ class App extends React.Component {
                                     {/* Intro */}
                                     <Route exact path='/intro' component={IntroPage} />
                                     <Route exact path='/intro/database' component={IntroDatabasePage} />
+                                    <Route exact path='/intro/playground' component={IntroPlaygroundPageContainer} />
                                     {/* Component */}
                                     <Route path='/components/recharts' component={ComponentRechartsPage} />
                                     <Route path='/components/highcharts' component={ComponentHighchartsPage} />
@@ -119,6 +123,8 @@ class App extends React.Component {
                                     {/* Layering */}
                                     <Route path="/layering/map" component={LayeringMapPage} />
                                     <Route path="/layering/heatmap" component={LayeringHeatMapPage} />
+                                    {/* Example */}
+                                    <Route path="/example/sample" component={ExampleSamplePage} />
                                     {/* Setting */}
                                     <Route path="/settings" component={SettingsPage} />
                                     {/* Superuser */}

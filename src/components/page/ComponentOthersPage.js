@@ -7,38 +7,38 @@ import { Sticker } from '@stickyboard/core';
 
 import PageBaseContainer from 'redux/containers/PageBaseContainer';
 
-const initialLayout = {
+const initialLayouts = {
     lg: [
-        { i: 'OthersGitHubCalendar', x: 0, y: 9, w: 12, h: 5 },
-        { i: 'OthersMarkdown', x: 6, y: 0, w: 6, h: 9 },
-        { i: 'OthersCardList', x: 0, y: 0, w: 6, h: 9 },
+        { i: 1, x: 0, y: 9, w: 12, h: 5 },
+        { i: 2, x: 6, y: 0, w: 6, h: 9 },
+        { i: 3, x: 0, y: 0, w: 6, h: 9 },
     ],
     md: [
-        { i: 'OthersGitHubCalendar', x: 0, y: 9, w: 12, h: 5 },
-        { i: 'OthersMarkdown', x: 6, y: 0, w: 6, h: 9 },
-        { i: 'OthersCardList', x: 0, y: 0, w: 6, h: 9 },
+        { i: 1, x: 0, y: 9, w: 12, h: 5 },
+        { i: 2, x: 6, y: 0, w: 6, h: 9 },
+        { i: 3, x: 0, y: 0, w: 6, h: 9 },
     ],
     sm: [
-        { i: 'OthersGitHubCalendar', x: 0, y: 9, w: 8, h: 5 },
-        { i: 'OthersMarkdown', x: 4, y: 0, w: 4, h: 9 },
-        { i: 'OthersCardList', x: 0, y: 0, w: 4, h: 9 },
+        { i: 1, x: 0, y: 9, w: 8, h: 5 },
+        { i: 2, x: 4, y: 0, w: 4, h: 9 },
+        { i: 3, x: 0, y: 0, w: 4, h: 9 },
     ],
     xs: [
-        { i: 'OthersGitHubCalendar', x: 0, y: 18, w: 6, h: 5 },
-        { i: 'OthersMarkdown', x: 0, y: 9, w: 6, h: 9 },
-        { i: 'OthersCardList', x: 0, y: 0, w: 6, h: 9 },
+        { i: 1, x: 0, y: 18, w: 6, h: 5 },
+        { i: 2, x: 0, y: 9, w: 6, h: 9 },
+        { i: 3, x: 0, y: 0, w: 6, h: 9 },
     ],
     xxs: [
-        { i: 'OthersGitHubCalendar', x: 0, y: 18, w: 4, h: 5 },
-        { i: 'OthersMarkdown', x: 0, y: 9, w: 4, h: 9 },
-        { i: 'OthersCardList', x: 0, y: 0, w: 4, h: 9 },
+        { i: 1, x: 0, y: 18, w: 4, h: 5 },
+        { i: 2, x: 0, y: 9, w: 4, h: 9 },
+        { i: 3, x: 0, y: 0, w: 4, h: 9 },
     ],
 };
 
-const initialBlocks = [
-    { i: 'OthersGitHubCalendar' },
-    { i: 'OthersMarkdown' },
-    { i: 'OthersCardList' },
+const initialStickers = [
+    { i: 1, name: 'OthersGitHubCalendar' },
+    { i: 2, name: 'OthersMarkdown' },
+    { i: 3, name: 'OthersCardList' },
 ];
 
 class ComponentOthersPage extends React.Component {
@@ -51,8 +51,8 @@ class ComponentOthersPage extends React.Component {
     render() {
         return (
             <PageBaseContainer
-                initialLayout={initialLayout}
-                initialBlocks={initialBlocks}
+                initialLayouts={initialLayouts}
+                initialStickers={initialStickers}
             />
         );
     }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
@@ -15,14 +15,26 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Divider from '@material-ui/core/Divider';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Board, Sticker } from '@stickyboard/core';
-import StickerListByCategory from 'components/sticker';
+import StickerListByCategoryOriginal from 'components/sticker';
+
+// Delete internal stickers
+const StickerListByCategory = { ...StickerListByCategoryOriginal };
+delete StickerListByCategory.Internal;
 
 const StickerObjectContainer = styled.div`
     position: relative;
     height: 300px;
     padding: 16px;
-    border: 1px solid #9b9b9b;
+    border: 1px solid #cccccc;
     border-radius: 16px;
+    :hover {
+        cursor: pointer;
+    }
+    ${(props) =>
+        props.selected &&
+        `
+        border: 1px solid #000000;
+        `}
 `;
 
 const StickerInfoContainer = styled.div`
@@ -34,13 +46,13 @@ const StickerInfoContainer = styled.div`
     padding: 16px;
     border-radius: 16px;
     background-color: rgb(108, 108, 108);
-    z-index: 1600;
+    z-index: 1;
     text-align: center;
     transition: opacity 0.2s ease-in-out;
     -webkit-transition: -webkit-opacity 0.2s ease-in-out;
-    opacity: 0.0;
+    opacity: 0;
     :hover {
-        opacity: 0.95
+        opacity: 0.95;
     }
 `;
 
@@ -99,8 +111,24 @@ function StickerListDialog(props) {
     const classes = useStyles();
     const theme = useTheme();
     const { open, params, callback, onClose } = props;
-    const { title, message, cancelButtonText, confirmButtonText } = params;
-    const [tabValue, setTabValue] = React.useState(0);
+    const {
+        title,
+        message,
+        currentStickerName,
+        cancelButtonText,
+        confirmButtonText,
+    } = params;
+    const [tabValue, setTabValue] = useState(0);
+    const [selectedStickerName, setSelectedStickerName] = useState(
+        currentStickerName
+    );
+    console.log(params);
+
+    useEffect(() => {
+        if (currentStickerName) {
+            setSelectedStickerName(currentStickerName);
+        }
+    }, [currentStickerName]);
 
     const handleTabChange = (event, newValue) => {
         setTabValue(newValue);
@@ -116,7 +144,11 @@ function StickerListDialog(props) {
             aria-labelledby="sticker-list-dialog-title"
             aria-describedby="sticker-list-dialog-description">
             <DialogTitle id="sticker-list-dialog-title">
-                {'Sticker List'}
+                {`Sticker List${
+                    selectedStickerName
+                        ? ` - '${selectedStickerName}' selected`
+                        : ''
+                }`}
             </DialogTitle>
 
             <Divider />
@@ -161,7 +193,7 @@ function StickerListDialog(props) {
                                 value={tabValue}
                                 index={index}>
                                 <Grid container spacing={2}>
-                                    {StickerList.map((StickerObject, index) => {
+                                    {StickerList.map((StickerObject, index) => {                                        
                                         if (
                                             StickerObject &&
                                             typeof StickerObject.Component ===
@@ -174,13 +206,26 @@ function StickerListDialog(props) {
                                                     sm={4}
                                                     md={3}
                                                     key={StickerObject.Name}>
-                                                    <StickerObjectContainer>
+                                                    <StickerObjectContainer
+                                                        selected={
+                                                            selectedStickerName ===
+                                                            StickerObject.Name
+                                                        }
+                                                        onClick={() => {
+                                                            setSelectedStickerName(
+                                                                StickerObject.Name
+                                                            );
+                                                        }}>
                                                         <StickerInfoContainer>
                                                             <Title>
-                                                                {StickerObject.Name}
+                                                                {
+                                                                    StickerObject.Name
+                                                                }
                                                             </Title>
                                                             <Description>
-                                                                {StickerObject.Description}
+                                                                {
+                                                                    StickerObject.Description
+                                                                }
                                                             </Description>
                                                         </StickerInfoContainer>
                                                         <StickerObject.Component
@@ -212,7 +257,7 @@ function StickerListDialog(props) {
                 <Button
                     onClick={() => {
                         if (callback && typeof callback === 'function') {
-                            callback();
+                            callback(selectedStickerName);
                         }
                         onClose();
                     }}

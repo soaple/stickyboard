@@ -11,74 +11,77 @@ const styles = (theme) => ({
     root: {},
 });
 
-// const initialLayout = {
+// const initialLayouts = {
 //     lg: [
-//         { i: 'TableOrder', x: 0, y: 0, w: 6, h: 7 },
-//         { i: 'TableUser', x: 6, y: 0, w: 6, h: 7 },
-//         { i: 'TableRealtimeOrder', x: 0, y: 7, w: 4, h: 7 },
-//         { i: 'TableRealtimeUser', x: 4, y: 7, w: 4, h: 7 },
-//         { i: 'RealtimeMessageTable', x: 8, y: 7, w: 4, h: 7 },
+//         { i: 1, x: 0, y: 0, w: 6, h: 7 },
+//         { i: 2, x: 6, y: 0, w: 6, h: 7 },
+//         { i: 3, x: 0, y: 7, w: 4, h: 7 },
+//         { i: 4, x: 4, y: 7, w: 4, h: 7 },
+//         { i: 5, x: 8, y: 7, w: 4, h: 7 },
 //     ],
 //     md: [
-//         { i: 'TableOrder', x: 0, y: 0, w: 6, h: 7 },
-//         { i: 'TableUser', x: 6, y: 0, w: 6, h: 7 },
-//         { i: 'TableRealtimeOrder', x: 0, y: 7, w: 4, h: 7 },
-//         { i: 'TableRealtimeUser', x: 4, y: 7, w: 4, h: 7 },
-//         { i: 'RealtimeMessageTable', x: 8, y: 7, w: 4, h: 7 },
+//         { i: 1, x: 0, y: 0, w: 6, h: 7 },
+//         { i: 2, x: 6, y: 0, w: 6, h: 7 },
+//         { i: 3, x: 0, y: 7, w: 4, h: 7 },
+//         { i: 4, x: 4, y: 7, w: 4, h: 7 },
+//         { i: 5, x: 8, y: 7, w: 4, h: 7 },
 //     ],
 //     sm: [
-//         { i: 'TableOrder', x: 0, y: 0, w: 8, h: 7 },
-//         { i: 'TableUser', x: 0, y: 7, w: 8, h: 7 },
-//         { i: 'TableRealtimeOrder', x: 0, y: 14, w: 8, h: 6 },
-//         { i: 'TableRealtimeUser', x: 0, y: 20, w: 4, h: 6 },
-//         { i: 'RealtimeMessageTable', x: 4, y: 20, w: 4, h: 6 },
+//         { i: 1, x: 0, y: 0, w: 8, h: 7 },
+//         { i: 2, x: 0, y: 7, w: 8, h: 7 },
+//         { i: 3, x: 0, y: 14, w: 8, h: 6 },
+//         { i: 4, x: 0, y: 20, w: 4, h: 6 },
+//         { i: 5, x: 4, y: 20, w: 4, h: 6 },
 //     ],
 //     xs: [
-//         { i: 'TableOrder', x: 0, y: 0, w: 6, h: 7 },
-//         { i: 'TableUser', x: 0, y: 7, w: 6, h: 7 },
-//         { i: 'TableRealtimeOrder', x: 0, y: 14, w: 6, h: 6 },
-//         { i: 'TableRealtimeUser', x: 0, y: 20, w: 6, h: 6 },
-//         { i: 'RealtimeMessageTable', x: 0, y: 26, w: 6, h: 6 },
+//         { i: 1, x: 0, y: 0, w: 6, h: 7 },
+//         { i: 2, x: 0, y: 7, w: 6, h: 7 },
+//         { i: 3, x: 0, y: 14, w: 6, h: 6 },
+//         { i: 4, x: 0, y: 20, w: 6, h: 6 },
+//         { i: 5, x: 0, y: 26, w: 6, h: 6 },
 //     ],
 //     xxs: [
-//         { i: 'TableOrder', x: 0, y: 0, w: 4, h: 7 },
-//         { i: 'TableUser', x: 0, y: 7, w: 4, h: 7 },
-//         { i: 'TableRealtimeOrder', x: 0, y: 14, w: 4, h: 6 },
-//         { i: 'TableRealtimeUser', x: 0, y: 20, w: 4, h: 6 },
-//         { i: 'RealtimeMessageTable', x: 0, y: 26, w: 4, h: 6 },
+//         { i: 1, x: 0, y: 0, w: 4, h: 7 },
+//         { i: 2, x: 0, y: 7, w: 4, h: 7 },
+//         { i: 3, x: 0, y: 14, w: 4, h: 6 },
+//         { i: 4, x: 0, y: 20, w: 4, h: 6 },
+//         { i: 5, x: 0, y: 26, w: 4, h: 6 },
 //     ],
 // };
-const initialLayout = {
+const initialLayouts = {
     lg: [
-        { i: 'TableOrder', x: 0, y: 0, w: 6, h: 14 },
-        { i: 'TableUser', x: 6, y: 0, w: 6, h: 14 },
+        { i: 1, x: 0, y: 0, w: 6, h: 14 },
+        { i: 2, x: 6, y: 0, w: 6, h: 14 },
     ],
     md: [
-        { i: 'TableOrder', x: 0, y: 0, w: 6, h: 14 },
-        { i: 'TableUser', x: 6, y: 0, w: 6, h: 14 },
+        { i: 1, x: 0, y: 0, w: 6, h: 14 },
+        { i: 2, x: 6, y: 0, w: 6, h: 14 },
     ],
     sm: [
-        { i: 'TableOrder', x: 0, y: 14, w: 8, h: 14 },
-        { i: 'TableUser', x: 0, y: 0, w: 8, h: 14 },
+        { i: 1, x: 0, y: 14, w: 8, h: 14 },
+        { i: 2, x: 0, y: 0, w: 8, h: 14 },
     ],
     xs: [
-        { i: 'TableOrder', x: 0, y: 14, w: 6, h: 14 },
-        { i: 'TableUser', x: 0, y: 0, w: 6, h: 14 },
+        { i: 1, x: 0, y: 14, w: 6, h: 14 },
+        { i: 2, x: 0, y: 0, w: 6, h: 14 },
     ],
     xxs: [
-        { i: 'TableOrder', x: 0, y: 14, w: 4, h: 14 },
-        { i: 'TableUser', x: 0, y: 0, w: 4, h: 14 },
+        { i: 1, x: 0, y: 14, w: 4, h: 14 },
+        { i: 2, x: 0, y: 0, w: 4, h: 14 },
     ],
 };
 
-// const initialBlocks = [
-//     { i: 'TableOrder' },
-//     { i: 'TableUser' },
-//     { i: 'TableRealtimeOrder' },
-//     { i: 'TableRealtimeUser' },
-//     { i: 'RealtimeMessageTable' },
+// const initialStickers = [
+//     { i: 1, name: 'TableOrder' },
+//     { i: 2, name: 'TableUser' },
+//     { i: 3, name: 'TableRealtimeOrder' },
+//     { i: 4, name: 'TableRealtimeUser' },
+//     { i: 5, name: 'RealtimeMessageTable' },
 // ];
-const initialBlocks = [{ i: 'TableOrder' }, { i: 'TableUser' }];
+const initialStickers = [
+    { i: 1, name: 'TableOrder' },
+    { i: 2, name: 'TableUser' },
+];
 
 class ComponentTablePage extends React.Component {
     constructor(props) {
@@ -92,8 +95,8 @@ class ComponentTablePage extends React.Component {
 
         return (
             <PageBaseContainer
-                initialLayout={initialLayout}
-                initialBlocks={initialBlocks}
+                initialLayouts={initialLayouts}
+                initialStickers={initialStickers}
             />
         );
     }

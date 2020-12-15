@@ -11,30 +11,33 @@ const styles = (theme) => ({
     root: {},
 });
 
-const initialLayout = {
+const initialLayouts = {
     lg: [
-        { i: 'SmartTableUser', x: 0, y: 0, w: 6, h: 15 },
-        { i: 'SmartTableUserPost', x: 6, y: 0, w: 6, h: 15 },
+        { i: 1, x: 0, y: 0, w: 6, h: 15 },
+        { i: 2, x: 6, y: 0, w: 6, h: 15 },
     ],
     md: [
-        { i: 'SmartTableUser', x: 0, y: 0, w: 6, h: 15 },
-        { i: 'SmartTableUserPost', x: 6, y: 0, w: 6, h: 15 },
+        { i: 1, x: 0, y: 0, w: 6, h: 15 },
+        { i: 2, x: 6, y: 0, w: 6, h: 15 },
     ],
     sm: [
-        { i: 'SmartTableUser', x: 0, y: 0, w: 8, h: 15 },
-        { i: 'SmartTableUserPost', x: 0, y: 15, w: 8, h: 15 },
+        { i: 1, x: 0, y: 0, w: 8, h: 15 },
+        { i: 2, x: 0, y: 15, w: 8, h: 15 },
     ],
     xs: [
-        { i: 'SmartTableUser', x: 0, y: 0, w: 6, h: 15 },
-        { i: 'SmartTableUserPost', x: 0, y: 15, w: 6, h: 15 },
+        { i: 1, x: 0, y: 0, w: 6, h: 15 },
+        { i: 2, x: 0, y: 15, w: 6, h: 15 },
     ],
     xxs: [
-        { i: 'SmartTableUser', x: 0, y: 0, w: 4, h: 15 },
-        { i: 'SmartTableUserPost', x: 0, y: 15, w: 4, h: 15 },
+        { i: 1, x: 0, y: 0, w: 4, h: 15 },
+        { i: 2, x: 0, y: 15, w: 4, h: 15 },
     ],
 };
 
-const initialBlocks = [{ i: 'SmartTableUser' }, { i: 'SmartTableUserPost' }];
+const initialStickers = [
+    { i: 1, name: 'SmartTableUser' },
+    { i: 2, name: 'SmartTableUserPost' },
+];
 
 class ComponentSmartTablePage extends React.Component {
     constructor(props) {
@@ -48,8 +51,8 @@ class ComponentSmartTablePage extends React.Component {
 
         return (
             <PageBaseContainer
-                initialLayout={initialLayout}
-                initialBlocks={initialBlocks}
+                initialLayouts={initialLayouts}
+                initialStickers={initialStickers}
             />
         );
     }

@@ -11,38 +11,38 @@ const styles = (theme) => ({
     root: {},
 });
 
-const initialLayout = {
+const initialLayouts = {
     lg: [
-        { i: 'DatabaseMySQL', x: 0, y: 0, w: 4, h: 16 },
-        { i: 'DatabaseFirestore', x: 4, y: 0, w: 4, h: 16 },
-        { i: 'DatabaseMongoDB', x: 8, y: 0, w: 4, h: 16 },
+        { i: 1, x: 0, y: 0, w: 4, h: 16 },
+        { i: 2, x: 4, y: 0, w: 4, h: 16 },
+        { i: 3, x: 8, y: 0, w: 4, h: 16 },
     ],
     md: [
-        { i: 'DatabaseMySQL', x: 0, y: 0, w: 4, h: 15 },
-        { i: 'DatabaseFirestore', x: 4, y: 0, w: 4, h: 15 },
-        { i: 'DatabaseMongoDB', x: 8, y: 0, w: 4, h: 15 },
+        { i: 1, x: 0, y: 0, w: 4, h: 15 },
+        { i: 2, x: 4, y: 0, w: 4, h: 15 },
+        { i: 3, x: 8, y: 0, w: 4, h: 15 },
     ],
     sm: [
-        { i: 'DatabaseMySQL', x: 0, y: 0, w: 4, h: 8 },
-        { i: 'DatabaseFirestore', x: 4, y: 0, w: 4, h: 8 },
-        { i: 'DatabaseMongoDB', x: 0, y: 8, w: 4, h: 8 },
+        { i: 1, x: 0, y: 0, w: 4, h: 8 },
+        { i: 2, x: 4, y: 0, w: 4, h: 8 },
+        { i: 3, x: 0, y: 8, w: 4, h: 8 },
     ],
     xs: [
-        { i: 'DatabaseMySQL', x: 0, y: 0, w: 6, h: 7 },
-        { i: 'DatabaseFirestore', x: 0, y: 7, w: 6, h: 7 },
-        { i: 'DatabaseMongoDB', x: 0, y: 14, w: 6, h: 7 },
+        { i: 1, x: 0, y: 0, w: 6, h: 7 },
+        { i: 2, x: 0, y: 7, w: 6, h: 7 },
+        { i: 3, x: 0, y: 14, w: 6, h: 7 },
     ],
     xxs: [
-        { i: 'DatabaseMySQL', x: 0, y: 0, w: 4, h: 7 },
-        { i: 'DatabaseFirestore', x: 0, y: 7, w: 4, h: 7 },
-        { i: 'DatabaseMongoDB', x: 0, y: 14, w: 4, h: 7 },
+        { i: 1, x: 0, y: 0, w: 4, h: 7 },
+        { i: 2, x: 0, y: 7, w: 4, h: 7 },
+        { i: 3, x: 0, y: 14, w: 4, h: 7 },
     ],
 };
 
-const initialBlocks = [
-    { i: 'DatabaseMySQL' },
-    { i: 'DatabaseFirestore' },
-    { i: 'DatabaseMongoDB' },
+const initialStickers = [
+    { i: 1, name: 'DatabaseMySQL' },
+    { i: 2, name: 'DatabaseFirestore' },
+    { i: 3, name: 'DatabaseMongoDB' },
 ];
 
 class IntroDatabasePage extends React.Component {
@@ -57,8 +57,8 @@ class IntroDatabasePage extends React.Component {
 
         return (
             <PageBaseContainer
-                initialLayout={initialLayout}
-                initialBlocks={initialBlocks}
+                initialLayouts={initialLayouts}
+                initialStickers={initialStickers}
             />
         );
     }

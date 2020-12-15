@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
 import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
@@ -17,6 +18,7 @@ import PrintIcon from '@material-ui/icons/Print';
 import ShareIcon from '@material-ui/icons/Share';
 
 import MenuIcon from '@material-ui/icons/Menu';
+import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import TvIcon from '@material-ui/icons/Tv';
 import AppsIcon from '@material-ui/icons/Apps';
@@ -74,9 +76,8 @@ class PageBase extends React.Component {
         this.state = {
             // React Grid Layout
             currentBreakpoint: 'lg',
-            layout: undefined,
-            blocks: undefined,
-            isEditingMode: true,
+            layouts: undefined,
+            stickers: undefined,
             // SpeedDial
             isMenuOpen: false,
         };
@@ -87,9 +88,17 @@ class PageBase extends React.Component {
     }
 
     setInitialLayout = () => {
+        const { initialLayouts, initialStickers } = this.props;
+
         this.setState({
-            layout: this.props.initialLayout,
-            blocks: this.props.initialBlocks,
+            layouts: initialLayouts || {
+                lg: [],
+                md: [],
+                sm: [],
+                xs: [],
+                xxs: [],
+            },
+            stickers: initialStickers || [],
         });
     };
 
@@ -116,7 +125,7 @@ class PageBase extends React.Component {
     };
 
     onLayoutChange = (newLayouts) => {
-        this.setState({ layout: newLayouts });
+        this.setState({ layouts: newLayouts });
         console.log(JSON.stringify(newLayouts));
     };
 
@@ -126,11 +135,78 @@ class PageBase extends React.Component {
             ApiManager.StickyBoard.updateUserLayout(
                 userId,
                 window.location.pathname,
-                JSON.stringify(this.state.layout),
-                JSON.stringify(this.state.blocks),
+                JSON.stringify(this.state.layouts),
+                JSON.stringify(this.state.stickers),
                 this.updateUserLayoutCallback
             );
         }
+    };
+
+    handleInsert = () => {
+        const { layouts, stickers } = this.state;
+
+        const emptyStickerId = uuidv4();
+        const emptyStickerLayoutItem = {
+            i: emptyStickerId,
+            x: 0,
+            y: 0,
+            w: 4,
+            h: 6,
+        };
+        const emptySticker = {
+            i: emptyStickerId,
+            name: 'Empty',
+        };
+
+        this.setState({
+            layouts: {
+                lg: [emptyStickerLayoutItem, ...layouts.lg],
+                md: [emptyStickerLayoutItem, ...layouts.md],
+                sm: [emptyStickerLayoutItem, ...layouts.sm],
+                xs: [emptyStickerLayoutItem, ...layouts.xs],
+                xxs: [emptyStickerLayoutItem, ...layouts.xxs],
+            },
+            stickers: [emptySticker, ...stickers],
+        });
+    };
+
+    onClickChange = (sticker) => {
+        const { showDialog } = this.props;
+
+        showDialog(
+            'StickerListDialog',
+            {
+                currentStickerName: sticker.name,
+            },
+            (selectedStickerName) => {
+                this.handleChangeStickerContent(sticker.i, selectedStickerName);
+            }
+        );
+    };
+
+    handleChangeStickerContent = (stickerId, selectedStickerName) => {
+        this.setState((prevState) => ({
+            stickers: prevState.stickers.map((sticker) => {
+                if (sticker.i === stickerId) {
+                    return {
+                        i: stickerId,
+                        name: selectedStickerName,
+                    };
+                } else {
+                    return sticker;
+                }
+            }),
+        }));
+    };
+
+    handleDelete = (targetStickerId) => {
+        const { stickers } = this.state;
+
+        this.setState({
+            stickers: stickers.filter(
+                (sticker) => sticker.i !== targetStickerId
+            ),
+        });
     };
 
     readUserLayoutCallback = (statusCode, response) => {
@@ -138,8 +214,8 @@ class PageBase extends React.Component {
         switch (statusCode) {
             case StatusCode.OK:
                 this.setState({
-                    layout: JSON.parse(response.layout),
-                    blocks: JSON.parse(response.blocks),
+                    layouts: JSON.parse(response.layouts),
+                    stickers: JSON.parse(response.stickers),
                 });
                 break;
             case StatusCode.NOT_FOUND:
@@ -162,7 +238,7 @@ class PageBase extends React.Component {
     };
 
     render() {
-        const { layout, blocks, isEditingMode, isMenuOpen } = this.state;
+        const { layouts, stickers, isMenuOpen } = this.state;
         const {
             classes,
             theme,
@@ -171,7 +247,7 @@ class PageBase extends React.Component {
             messageSnackbar,
         } = this.props;
 
-        if (!layout || !blocks) {
+        if (!layouts || !stickers) {
             return null;
         }
 
@@ -179,11 +255,12 @@ class PageBase extends React.Component {
             <div className={classes.root}>
                 <Board
                     ref={this.board}
-                    layouts={layout}
+                    layouts={layouts}
                     onLayoutChange={this.onLayoutChange}
                     onSaveLayout={this.onSaveLayout}>
-                    {blocks.map((block, index) => {
-                        const StickerObject = StickerDict[block.i];
+                    {stickers.map((sticker, index) => {
+                        const StickerObject =
+                            StickerDict[sticker.name] ?? StickerDict['Empty'];
 
                         if (
                             StickerObject &&
@@ -191,9 +268,15 @@ class PageBase extends React.Component {
                         ) {
                             return (
                                 <Sticker
-                                    key={block.i}
+                                    key={sticker.i}
                                     name={StickerObject.Name}
-                                    description={StickerObject.Description}>
+                                    description={StickerObject.Description}
+                                    onChange={() => {
+                                        this.onClickChange(sticker);
+                                    }}
+                                    onDelete={() =>
+                                        this.handleDelete(sticker.i)
+                                    }>
                                     <StickerObject.Component
                                         colors={theme.colors}
                                     />
@@ -215,6 +298,15 @@ class PageBase extends React.Component {
                             onOpen={this.handleOpenMenu}
                             open={isMenuOpen}
                             direction={'up'}>
+                            <SpeedDialAction
+                                icon={<AddIcon />}
+                                tooltipTitle={'Insert Sticker'}
+                                onClick={() => {
+                                    this.handleInsert();
+                                    this.board.current.setEditingMode(true);
+                                }}
+                            />
+
                             <SpeedDialAction
                                 icon={<EditIcon />}
                                 tooltipTitle={'Toggle Edit mode'}
@@ -257,9 +349,9 @@ PageBase.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     // Layout
-    // generateBlock: PropTypes.func.isRequired,
-    initialLayout: PropTypes.object.isRequired,
-    initialBlocks: PropTypes.array.isRequired,
+    // generateSticker: PropTypes.func.isRequired,
+    initialLayouts: PropTypes.object.isRequired,
+    initialStickers: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(PageBase);

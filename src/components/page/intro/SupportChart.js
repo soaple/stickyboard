@@ -9,106 +9,106 @@ import IntroTab from './IntroTab';
 
 const initialChartLayout = {
     lg: [
-        { i: 'RechartsLineChart', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'RechartsMultiLineChart', x: 4, y: 0, w: 4, h: 6 },
-        { i: 'RechartsBarChart', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'RechartsStackedBarChart', x: 4, y: 6, w: 4, h: 6 },
-        { i: 'RechartsComposedChart', x: 8, y: 0, w: 4, h: 6 },
-        { i: 'RechartsAreaChart', x: 8, y: 6, w: 4, h: 6 },
+        { i: 1, x: 0, y: 0, w: 4, h: 6 },
+        { i: 2, x: 4, y: 0, w: 4, h: 6 },
+        { i: 3, x: 0, y: 6, w: 4, h: 6 },
+        { i: 4, x: 4, y: 6, w: 4, h: 6 },
+        { i: 5, x: 8, y: 0, w: 4, h: 6 },
+        { i: 6, x: 8, y: 6, w: 4, h: 6 },
     ],
     md: [
-        { i: 'RechartsLineChart', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'RechartsMultiLineChart', x: 4, y: 0, w: 4, h: 6 },
-        { i: 'RechartsBarChart', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'RechartsStackedBarChart', x: 4, y: 6, w: 4, h: 6 },
-        { i: 'RechartsComposedChart', x: 8, y: 0, w: 4, h: 6 },
-        { i: 'RechartsAreaChart', x: 8, y: 6, w: 4, h: 6 },
+        { i: 1, x: 0, y: 0, w: 4, h: 6 },
+        { i: 2, x: 4, y: 0, w: 4, h: 6 },
+        { i: 3, x: 0, y: 6, w: 4, h: 6 },
+        { i: 4, x: 4, y: 6, w: 4, h: 6 },
+        { i: 5, x: 8, y: 0, w: 4, h: 6 },
+        { i: 6, x: 8, y: 6, w: 4, h: 6 },
     ],
     sm: [
-        { i: 'RechartsLineChart', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'RechartsMultiLineChart', x: 4, y: 0, w: 4, h: 6 },
-        { i: 'RechartsBarChart', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'RechartsStackedBarChart', x: 4, y: 6, w: 4, h: 6 },
-        { i: 'RechartsComposedChart', x: 4, y: 12, w: 4, h: 6 },
-        { i: 'RechartsAreaChart', x: 0, y: 12, w: 4, h: 6 },
+        { i: 1, x: 0, y: 0, w: 4, h: 6 },
+        { i: 2, x: 4, y: 0, w: 4, h: 6 },
+        { i: 3, x: 0, y: 6, w: 4, h: 6 },
+        { i: 4, x: 4, y: 6, w: 4, h: 6 },
+        { i: 5, x: 4, y: 12, w: 4, h: 6 },
+        { i: 6, x: 0, y: 12, w: 4, h: 6 },
     ],
     xs: [
-        { i: 'RechartsLineChart', x: 0, y: 0, w: 6, h: 6 },
-        { i: 'RechartsMultiLineChart', x: 0, y: 6, w: 6, h: 7 },
-        { i: 'RechartsBarChart', x: 0, y: 19, w: 6, h: 6 },
-        { i: 'RechartsStackedBarChart', x: 0, y: 25, w: 6, h: 6 },
-        { i: 'RechartsComposedChart', x: 0, y: 13, w: 6, h: 6 },
-        { i: 'RechartsAreaChart', x: 0, y: 31, w: 6, h: 6 },
+        { i: 1, x: 0, y: 0, w: 6, h: 6 },
+        { i: 2, x: 0, y: 6, w: 6, h: 7 },
+        { i: 3, x: 0, y: 19, w: 6, h: 6 },
+        { i: 4, x: 0, y: 25, w: 6, h: 6 },
+        { i: 5, x: 0, y: 13, w: 6, h: 6 },
+        { i: 6, x: 0, y: 31, w: 6, h: 6 },
     ],
     xxs: [
-        { i: 'RechartsLineChart', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'RechartsMultiLineChart', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'RechartsBarChart', x: 0, y: 18, w: 4, h: 6 },
-        { i: 'RechartsStackedBarChart', x: 0, y: 24, w: 4, h: 6 },
-        { i: 'RechartsComposedChart', x: 0, y: 12, w: 4, h: 6 },
-        { i: 'RechartsAreaChart', x: 0, y: 30, w: 4, h: 6 },
+        { i: 1, x: 0, y: 0, w: 4, h: 6 },
+        { i: 2, x: 0, y: 6, w: 4, h: 6 },
+        { i: 3, x: 0, y: 18, w: 4, h: 6 },
+        { i: 4, x: 0, y: 24, w: 4, h: 6 },
+        { i: 5, x: 0, y: 12, w: 4, h: 6 },
+        { i: 6, x: 0, y: 30, w: 4, h: 6 },
     ],
 };
 
 const initialChartBlocks = [
-    { i: 'RechartsLineChart' },
-    { i: 'RechartsMultiLineChart' },
-    { i: 'RechartsBarChart' },
-    { i: 'RechartsStackedBarChart' },
-    { i: 'RechartsComposedChart' },
-    { i: 'RechartsAreaChart' },
+    { i: 1, name: 'RechartsLineChart' },
+    { i: 2, name: 'RechartsMultiLineChart' },
+    { i: 3, name: 'RechartsBarChart' },
+    { i: 4, name: 'RechartsStackedBarChart' },
+    { i: 5, name: 'RechartsComposedChart' },
+    { i: 6, name: 'RechartsAreaChart' },
 ];
 
 const initialHighLayout = {
     lg: [
-        { i: 'HighchartsLineChart', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'HighchartsBarChart', x: 4, y: 0, w: 4, h: 6 },
-        { i: 'HighchartsPieChart', x: 8, y: 0, w: 4, h: 6 },
-        { i: 'HighchartsPolarChart', x: 4, y: 6, w: 4, h: 6 },
-        { i: 'HighchartsBoxPlot', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'HighchartsAreaChart', x: 8, y: 6, w: 4, h: 6 },
+        { i: 1, x: 0, y: 0, w: 4, h: 6 },
+        { i: 2, x: 4, y: 0, w: 4, h: 6 },
+        { i: 3, x: 8, y: 0, w: 4, h: 6 },
+        { i: 4, x: 4, y: 6, w: 4, h: 6 },
+        { i: 5, x: 8, y: 6, w: 4, h: 6 },
+        { i: 6, x: 0, y: 6, w: 4, h: 6 },
     ],
     md: [
-        { i: 'HighchartsLineChart', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'HighchartsBarChart', x: 4, y: 0, w: 4, h: 6 },
-        { i: 'HighchartsPieChart', x: 8, y: 0, w: 4, h: 6 },
-        { i: 'HighchartsPolarChart', x: 4, y: 6, w: 4, h: 6 },
-        { i: 'HighchartsBoxPlot', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'HighchartsAreaChart', x: 8, y: 6, w: 4, h: 6 },
+        { i: 1, x: 0, y: 0, w: 4, h: 6 },
+        { i: 2, x: 4, y: 0, w: 4, h: 6 },
+        { i: 3, x: 8, y: 0, w: 4, h: 6 },
+        { i: 4, x: 4, y: 6, w: 4, h: 6 },
+        { i: 5, x: 8, y: 6, w: 4, h: 6 },
+        { i: 6, x: 0, y: 6, w: 4, h: 6 },
     ],
     sm: [
-        { i: 'HighchartsLineChart', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'HighchartsBarChart', x: 4, y: 0, w: 4, h: 6 },
-        { i: 'HighchartsPieChart', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'HighchartsPolarChart', x: 0, y: 12, w: 4, h: 6 },
-        { i: 'HighchartsBoxPlot', x: 4, y: 6, w: 4, h: 6 },
-        { i: 'HighchartsAreaChart', x: 4, y: 12, w: 4, h: 6 },
+        { i: 1, x: 0, y: 0, w: 4, h: 6 },
+        { i: 2, x: 4, y: 0, w: 4, h: 6 },
+        { i: 3, x: 0, y: 6, w: 4, h: 6 },
+        { i: 4, x: 0, y: 12, w: 4, h: 6 },
+        { i: 5, x: 4, y: 12, w: 4, h: 6 },
+        { i: 6, x: 4, y: 6, w: 4, h: 6 },
     ],
     xs: [
-        { i: 'HighchartsLineChart', x: 0, y: 0, w: 6, h: 6 },
-        { i: 'HighchartsBarChart', x: 0, y: 6, w: 6, h: 6 },
-        { i: 'HighchartsPieChart', x: 0, y: 12, w: 6, h: 6 },
-        { i: 'HighchartsPolarChart', x: 0, y: 18, w: 6, h: 6 },
-        { i: 'HighchartsBoxPlot', x: 0, y: 24, w: 6, h: 6 },
-        { i: 'HighchartsAreaChart', x: 0, y: 30, w: 6, h: 6 },
+        { i: 1, x: 0, y: 0, w: 6, h: 6 },
+        { i: 2, x: 0, y: 6, w: 6, h: 6 },
+        { i: 3, x: 0, y: 12, w: 6, h: 6 },
+        { i: 4, x: 0, y: 18, w: 6, h: 6 },
+        { i: 5, x: 0, y: 30, w: 6, h: 6 },
+        { i: 6, x: 0, y: 24, w: 6, h: 6 },
     ],
     xxs: [
-        { i: 'HighchartsLineChart', x: 0, y: 0, w: 4, h: 6 },
-        { i: 'HighchartsBarChart', x: 0, y: 6, w: 4, h: 6 },
-        { i: 'HighchartsPieChart', x: 0, y: 12, w: 4, h: 6 },
-        { i: 'HighchartsPolarChart', x: 0, y: 18, w: 4, h: 6 },
-        { i: 'HighchartsBoxPlot', x: 0, y: 24, w: 4, h: 6 },
-        { i: 'HighchartsAreaChart', x: 0, y: 30, w: 4, h: 6 },
+        { i: 1, x: 0, y: 0, w: 4, h: 6 },
+        { i: 2, x: 0, y: 6, w: 4, h: 6 },
+        { i: 3, x: 0, y: 12, w: 4, h: 6 },
+        { i: 4, x: 0, y: 18, w: 4, h: 6 },
+        { i: 5, x: 0, y: 30, w: 4, h: 6 },
+        { i: 6, x: 0, y: 24, w: 4, h: 6 },
     ],
 };
 
 const initialHighBlocks = [
-    { i: 'HighchartsLineChart' },
-    { i: 'HighchartsBarChart' },
-    { i: 'HighchartsPieChart' },
-    { i: 'HighchartsPolarChart' },
-    { i: 'HighchartsAreaChart' },
-    { i: 'HighchartsBoxPlot' },
+    { i: 1, name: 'HighchartsLineChart' },
+    { i: 2, name: 'HighchartsBarChart' },
+    { i: 3, name: 'HighchartsPieChart' },
+    { i: 4, name: 'HighchartsPolarChart' },
+    { i: 5, name: 'HighchartsAreaChart' },
+    { i: 6, name: 'HighchartsBoxPlot' },
 ];
 
 const PageBaseWrapper = styled.div`
@@ -126,15 +126,15 @@ function SupportChart(props) {
                 <PageBaseWrapper>
                     <PageBaseContainer
                         readonly
-                        initialLayout={initialChartLayout}
-                        initialBlocks={initialChartBlocks}
+                        initialLayouts={initialChartLayout}
+                        initialStickers={initialChartBlocks}
                     />
                 </PageBaseWrapper>
                 <PageBaseWrapper>
                     <PageBaseContainer
                         readonly
-                        initialLayout={initialHighLayout}
-                        initialBlocks={initialHighBlocks}
+                        initialLayouts={initialHighLayout}
+                        initialStickers={initialHighBlocks}
                     />
                 </PageBaseWrapper>
             </IntroTab>

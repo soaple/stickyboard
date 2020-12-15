@@ -5,15 +5,22 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 import AccountTree from '@material-ui/icons/AccountTree';
+import WebAsset from '@material-ui/icons/WebAsset';
+import Toys from '@material-ui/icons/Toys';
 import Timeline from '@material-ui/icons/Timeline';
 import ViewList from '@material-ui/icons/ViewList';
 import TableChart from '@material-ui/icons/TableChart';
 import AvTimer from '@material-ui/icons/AvTimer';
 import WbSunny from '@material-ui/icons/WbSunny';
 import MoreHoriz from '@material-ui/icons/MoreHoriz';
-import WebAsset from '@material-ui/icons/WebAsset';
 import Map from '@material-ui/icons/Map';
 import Layers from '@material-ui/icons/Layers';
+import Dashboard from '@material-ui/icons/Dashboard';
+import VideogameAsset from '@material-ui/icons/VideogameAsset';
+import Eco from '@material-ui/icons/Eco';
+import House from '@material-ui/icons/House';
+import LocalHospital from '@material-ui/icons/LocalHospital';
+import LocalMall from '@material-ui/icons/LocalMall';
 
 // https://material-ui.com/components/icons/#svgicon
 function StickyBoardIcon(props) {
@@ -51,6 +58,13 @@ const SidebarMenuDict = {
             icon: <WebAsset />,
             url: '/intro/dialog',
             value: 103,
+            need_permission: false,
+        },
+        {
+            title: 'Playground',
+            icon: <Toys />,
+            url: '/intro/playground',
+            value: 104,
             need_permission: false,
         },
     ],
@@ -128,6 +142,54 @@ const SidebarMenuDict = {
             value: 302,
             need_permission: false,
         },
+    ],
+
+    /******************
+     * Example Menus
+     ******************/
+    EXAMPLE: [
+        {
+            title: 'Sample',
+            icon: <Dashboard />,
+            url: '/example/sample',
+            value: 401,
+            need_permission: false,
+        },
+        // {
+        //     title: 'Game',
+        //     icon: <VideogameAsset />,
+        //     url: '/example/game',
+        //     value: 401,
+        //     need_permission: false,
+        // },
+        // {
+        //     title: 'Farm',
+        //     icon: <Eco />,
+        //     url: '/example/farm',
+        //     value: 402,
+        //     need_permission: false,
+        // },
+        // {
+        //     title: 'Factory',
+        //     icon: <House />,
+        //     url: '/example/factory',
+        //     value: 403,
+        //     need_permission: false,
+        // },
+        // {
+        //     title: 'Hospital',
+        //     icon: <LocalHospital />,
+        //     url: '/example/hospital',
+        //     value: 404,
+        //     need_permission: false,
+        // },
+        // {
+        //     title: 'Mall',
+        //     icon: <LocalMall />,
+        //     url: '/example/mall',
+        //     value: 405,
+        //     need_permission: false,
+        // },
     ],
 };
 
