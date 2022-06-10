@@ -10,16 +10,16 @@ const ApiManager = {
     Auth: {
         // Auth
         signUp: function(user, callback) {
-            RestClient.sendPostRequest(UrlList.Auth.getAuthSignUpUrl(), user, callback)
+            RestClient.post(UrlList.Auth.getAuthSignUpUrl(), user, callback)
         },
 
         signIn: function(email, password, callback) {
             var params = { email: email, password: password }
-            RestClient.sendPostRequest(UrlList.Auth.getAuthSignInUrl(), params, callback)
+            RestClient.post(UrlList.Auth.getAuthSignInUrl(), params, callback)
         },
 
         signOut: function(callback) {
-            RestClient.sendPostRequest(UrlList.Auth.getAuthSignInUrl(), callback)
+            RestClient.post(UrlList.Auth.getAuthSignInUrl(), callback)
         },
     },
 
@@ -30,36 +30,39 @@ const ApiManager = {
         // User
         readUsers: function(offset, limit, callback) {
             var params = {offset: offset, limit: limit}
-            RestClient.sendGetRequestWithParams(UrlList.StickyBoard.getUserUrl(), params, callback)
+            RestClient.get(UrlList.StickyBoard.getUserUrl(), params, callback)
         },
 
         readUsersByKeyword: function(keyword, callback) {
             var params = {keyword: keyword}
-            RestClient.sendGetRequestWithParams(UrlList.StickyBoard.getUserUrl(), params, callback)
+            RestClient.get(UrlList.StickyBoard.getUserUrl(), params, callback)
         },
 
         readUser: function(userId, callback) {
-            RestClient.sendGetRequest(UrlList.StickyBoard.getUserIdUrl(userId), callback)
+            const params = {};
+            RestClient.get(UrlList.StickyBoard.getUserIdUrl(userId), params, callback)
         },
 
         readUserGroup: function(userId, callback) {
-            RestClient.sendGetRequest(UrlList.StickyBoard.getUserGroupUrl(userId), callback)
+            const params = {};
+            RestClient.get(UrlList.StickyBoard.getUserGroupUrl(userId), params, callback)
         },
 
         readUserPermissions: function(userId, callback) {
-            RestClient.sendGetRequest(UrlList.StickyBoard.getUserPermissionUrl(userId), callback)
+            const params = {};
+            RestClient.get(UrlList.StickyBoard.getUserPermissionUrl(userId), params, callback)
         },
 
         updateUser: function(user, callback) {
-            RestClient.sendPutRequest(UrlList.StickyBoard.getUserIdUrl(user.id), user, callback)
+            RestClient.put(UrlList.StickyBoard.getUserIdUrl(user.id), user, callback)
         },
 
         updatePassword: function(userId, newPassword, callback) {
-            RestClient.sendPutRequest(UrlList.StickyBoard.getUserPasswordUrl(userId), {password: newPassword}, callback)
+            RestClient.put(UrlList.StickyBoard.getUserPasswordUrl(userId), {password: newPassword}, callback)
         },
 
         deleteUser: function(userId, callback) {
-            RestClient.sendDeleteRequest(UrlList.StickyBoard.getUserIdUrl(userId), callback)
+            RestClient.delete(UrlList.StickyBoard.getUserIdUrl(userId), callback)
         },
 
         // User Profile
@@ -67,7 +70,7 @@ const ApiManager = {
         // User Layout
         readUserLayout: function(userId, route, callback) {
             var params = { route: route };
-            RestClient.sendGetRequestWithParams(UrlList.StickyBoard.getUserLayoutUrl(userId), params, callback)
+            RestClient.get(UrlList.StickyBoard.getUserLayoutUrl(userId), params, callback)
         },
 
         updateUserLayout: function(userId, route, layout, blocks, callback) {
@@ -76,71 +79,75 @@ const ApiManager = {
                 layout: layout,
                 blocks: blocks,
             };
-            RestClient.sendPutRequest(UrlList.StickyBoard.getUserLayoutUrl(userId), params, callback)
+            RestClient.put(UrlList.StickyBoard.getUserLayoutUrl(userId), params, callback)
         },
 
         deleteUserLayout: function(userId, route, callback) {
-            RestClient.sendDeleteRequest(UrlList.StickyBoard.getUserLayoutUrl(userId), callback)
+            RestClient.delete(UrlList.StickyBoard.getUserLayoutUrl(userId), callback)
         },
 
         // Group
         createGroup: function(group, callback) {
-            RestClient.sendPostRequest(UrlList.StickyBoard.getGroupUrl(), group, callback)
+            RestClient.post(UrlList.StickyBoard.getGroupUrl(), group, callback)
         },
 
         readGroups: function(callback) {
-            RestClient.sendGetRequest(UrlList.StickyBoard.getGroupUrl(), callback)
+            const params = {};
+            RestClient.get(UrlList.StickyBoard.getGroupUrl(), params, callback)
         },
 
         updateGroup: function(group, callback) {
-            RestClient.sendPutRequest(UrlList.StickyBoard.getGroupIdUrl(group.id), group, callback)
+            RestClient.put(UrlList.StickyBoard.getGroupIdUrl(group.id), group, callback)
         },
 
         deleteGroup: function(groupId, callback) {
-            RestClient.sendDeleteRequest(UrlList.StickyBoard.getGroupIdUrl(groupId), callback)
+            RestClient.delete(UrlList.StickyBoard.getGroupIdUrl(groupId), callback)
         },
 
         // GroupUser
         createGroupUser: function(groupId, userId, callback) {
-            RestClient.sendPostRequest(UrlList.StickyBoard.getGroupUserUrl(groupId), {userId: userId}, callback)
+            RestClient.post(UrlList.StickyBoard.getGroupUserUrl(groupId), {userId: userId}, callback)
         },
 
         readGroupUsers: function(groupId, callback) {
-            RestClient.sendGetRequest(UrlList.StickyBoard.getGroupUserUrl(groupId), callback)
+            const params = {};
+            RestClient.get(UrlList.StickyBoard.getGroupUserUrl(groupId), params, callback)
         },
 
         deleteGroupUser: function(groupId, userId, callback) {
-            RestClient.sendDeleteRequest(UrlList.StickyBoard.getGroupUserIdUrl(groupId, userId), callback)
+            RestClient.delete(UrlList.StickyBoard.getGroupUserIdUrl(groupId, userId), callback)
         },
 
         // GroupPermission
         createGroupPermission: function(groupId, permissionId, callback) {
-            RestClient.sendPostRequest(UrlList.StickyBoard.getGroupPermissionUrl(groupId), {permissionId: permissionId}, callback)
+            RestClient.post(UrlList.StickyBoard.getGroupPermissionUrl(groupId), {permissionId: permissionId}, callback)
         },
 
         readGroupPermissions: function(groupId, callback) {
-            RestClient.sendGetRequest(UrlList.StickyBoard.getGroupPermissionUrl(groupId), callback)
+            const params = {};
+            RestClient.get(UrlList.StickyBoard.getGroupPermissionUrl(groupId), params, callback)
         },
 
         deleteGroupPermission: function(groupId, permissionId, callback) {
-            RestClient.sendDeleteRequest(UrlList.StickyBoard.getGroupPermissionIdUrl(groupId, permissionId), callback)
+            RestClient.delete(UrlList.StickyBoard.getGroupPermissionIdUrl(groupId, permissionId), callback)
         },
 
         // Permission
         createPermission: function(permission, callback) {
-            RestClient.sendPostRequest(UrlList.StickyBoard.getPermissionUrl(), permission, callback)
+            RestClient.post(UrlList.StickyBoard.getPermissionUrl(), permission, callback)
         },
 
         readPermissions: function(callback) {
-            RestClient.sendGetRequest(UrlList.StickyBoard.getPermissionUrl(), callback)
+            const params = {};
+            RestClient.get(UrlList.StickyBoard.getPermissionUrl(), params, callback)
         },
 
         updatePermission: function(permission, callback) {
-            RestClient.sendPutRequest(UrlList.StickyBoard.getPermissionIdUrl(permission.id), permission, callback)
+            RestClient.put(UrlList.StickyBoard.getPermissionIdUrl(permission.id), permission, callback)
         },
 
         deletePermission: function(permissionId, callback) {
-            RestClient.sendDeleteRequest(UrlList.StickyBoard.getPermissionIdUrl(permissionId), callback)
+            RestClient.delete(UrlList.StickyBoard.getPermissionIdUrl(permissionId), callback)
         },
     },
 
@@ -150,21 +157,21 @@ const ApiManager = {
     MySQL: {
         readUsers: function(offset, limit, callback) {
             var params = { offset: offset, limit: limit };
-            RestClient.sendGetRequestWithParams(UrlList.MySQL.getUserUrl(), params, callback)
+            RestClient.get(UrlList.MySQL.getUserUrl(), params, callback)
         },
     },
 
     Firestore: {
         readUsers: function(offset, limit, callback) {
             var params = { offset: offset, limit: limit };
-            RestClient.sendGetRequestWithParams(UrlList.Firestore.getUserUrl(), params, callback)
+            RestClient.get(UrlList.Firestore.getUserUrl(), params, callback)
         },
     },
 
     MongoDB: {
         readUsers: function(offset, limit, callback) {
             var params = { offset: offset, limit: limit };
-            RestClient.sendGetRequestWithParams(UrlList.MongoDB.getUserUrl(), params, callback)
+            RestClient.get(UrlList.MongoDB.getUserUrl(), params, callback)
         },
     },
 
