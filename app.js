@@ -302,7 +302,7 @@ if (isWebpackDevServerMode) {
 }
 
 // WARNING: Do not use {force: true} option! It drops all data!
-MySqlConn.sync().then(function() {
+// MySqlConn.sync().then(function() {
     // Start the server
     server.listen(port, err => {
         if (err) {
@@ -312,4 +312,4 @@ MySqlConn.sync().then(function() {
         }
         console.info(`Server running on http://localhost:${port} [${env}]`);
     });
-});
+// });

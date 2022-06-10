@@ -2,6 +2,7 @@
 
 const webpack = require('webpack');
 const path = require('path');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
@@ -40,7 +41,7 @@ const config = {
     entry: path.join(__dirname, 'src', 'index.js'),
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].[hash].js',
+        filename: '[name].[contenthash].js',
         publicPath: isWebpackDevServerMode ? '/' : '/dist/',
     },
     module: {
@@ -79,7 +80,7 @@ const config = {
             },
             {
                 test: /\.css$/,
-                loaders: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
@@ -106,6 +107,7 @@ const config = {
         symlinks: false,
     },
     plugins: [
+        new NodePolyfillPlugin(),
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
         new webpack.DefinePlugin(
             Object.keys(stickyboardConfig.env).reduce((acc, envKey) => {
@@ -119,7 +121,7 @@ const config = {
             }, {})
         ),
         // Ignore all locale files of moment.js
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+        new webpack.WatchIgnorePlugin({ paths: [/^\.\/locale$/, /moment$/] }),
         new HtmlWebpackPlugin({
             ...stickyboardConfig,
             template: 'src/view/index.ejs',
@@ -138,10 +140,7 @@ const config = {
         //     analyzerHost: '127.0.0.1',
         //     analyzerPort: 9000
         // })
-    ],
-    node: {
-        fs: 'empty',
-    },
+    ]
 };
 
 if (!isProductionMode) {

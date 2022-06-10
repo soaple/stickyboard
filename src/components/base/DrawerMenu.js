@@ -14,7 +14,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
 
 import SidebarMenuDict from '../../sidebar/SidebarMenuDict';
 import SidebarCategoryName from '../../sidebar/SidebarCategoryName';

@@ -3,7 +3,13 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    //  BrowserRouter as Router, Route, Switch,
+    Redirect
+} from 'react-router-dom';
 import loadable from '@loadable/component';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
@@ -86,15 +92,15 @@ class App extends React.Component {
 
         return (
             <MuiThemeProvider theme={muiTheme}>
-                <Router>
-                    <Switch>
+                <BrowserRouter>
+                    <Routes>
                         {/* Signing pages (FullScreenLayout) */}
                         <Route path={['/signin', '/signup']}>
                             <FullScreenLayout>
-                                <Switch>
+                                <Routes>
                                     <Route path='/signin' component={SignInPage} />
                                     <Route path='/signup' component={SignUpPage} />
-                                </Switch>
+                                </Routes>
                             </FullScreenLayout>
                         </Route>
 
@@ -104,8 +110,8 @@ class App extends React.Component {
                                 themeKeys={themeKeys}
                                 selectedThemeKey={selectedThemeKey}
                                 onThemeChange={this.onThemeChange}>
-                                <Switch>
-                                    <Redirect exact from='/' to='/intro' />
+                                <Routes>
+                                    <Route path="/" render={() => <Redirect to="/intro" />} />
 
                                     {/* Intro */}
                                     <Route exact path='/intro' component={IntroPage} />
@@ -131,11 +137,11 @@ class App extends React.Component {
                                     <Route path="/superuser"component={SuperuserPage} />
                                     {/* Not found */}
                                     <Route path='*' component={NotFoundPage} />
-                                </Switch>
+                                </Routes>
                             </Layout>
                         </Route>
-                    </Switch>
-                </Router>
+                    </Routes>
+                </BrowserRouter>
 
                 {/* Centralized Dialogs */}
                 {Object.keys(DialogDict).map((dialogKey, index) => {

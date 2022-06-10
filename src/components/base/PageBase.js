@@ -8,20 +8,20 @@ import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
 
-import SpeedDial from '@material-ui/lab/SpeedDial';
-import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
-import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
-import DeleteIcon from '@material-ui/icons/Delete';
-import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
-import SaveIcon from '@material-ui/icons/Save';
-import PrintIcon from '@material-ui/icons/Print';
-import ShareIcon from '@material-ui/icons/Share';
+import SpeedDial from '@mui/lab/SpeedDial';
+import SpeedDialIcon from '@mui/lab/SpeedDialIcon';
+import SpeedDialAction from '@mui/lab/SpeedDialAction';
+import DeleteIcon from '@mui/icons-material/Delete';
+import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import PrintIcon from '@mui/icons-material/Print';
+import ShareIcon from '@mui/icons-material/Share';
 
-import MenuIcon from '@material-ui/icons/Menu';
-import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
-import TvIcon from '@material-ui/icons/Tv';
-import AppsIcon from '@material-ui/icons/Apps';
+import MenuIcon from '@mui/icons-material/Menu';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import TvIcon from '@mui/icons-material/Tv';
+import AppsIcon from '@mui/icons-material/Apps';
 
 import { Board, Sticker } from '@stickyboard/core';
 

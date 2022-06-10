@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PersonIcon from '@material-ui/icons/Person';
+import PersonIcon from '@mui/icons-material/Person';
 import { NumberWithChartWidget } from '@stickyboard/number';
 
 const initialData = [

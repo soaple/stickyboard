@@ -4,23 +4,23 @@ import React from 'react';
 
 import SvgIcon from '@material-ui/core/SvgIcon';
 
-import AccountTree from '@material-ui/icons/AccountTree';
-import WebAsset from '@material-ui/icons/WebAsset';
-import Toys from '@material-ui/icons/Toys';
-import Timeline from '@material-ui/icons/Timeline';
-import ViewList from '@material-ui/icons/ViewList';
-import TableChart from '@material-ui/icons/TableChart';
-import AvTimer from '@material-ui/icons/AvTimer';
-import WbSunny from '@material-ui/icons/WbSunny';
-import MoreHoriz from '@material-ui/icons/MoreHoriz';
-import Map from '@material-ui/icons/Map';
-import Layers from '@material-ui/icons/Layers';
-import Dashboard from '@material-ui/icons/Dashboard';
-import VideogameAsset from '@material-ui/icons/VideogameAsset';
-import Eco from '@material-ui/icons/Eco';
-import House from '@material-ui/icons/House';
-import LocalHospital from '@material-ui/icons/LocalHospital';
-import LocalMall from '@material-ui/icons/LocalMall';
+import AccountTree from '@mui/icons-material/AccountTree';
+import WebAsset from '@mui/icons-material/WebAsset';
+import Toys from '@mui/icons-material/Toys';
+import Timeline from '@mui/icons-material/Timeline';
+import ViewList from '@mui/icons-material/ViewList';
+import TableChart from '@mui/icons-material/TableChart';
+import AvTimer from '@mui/icons-material/AvTimer';
+import WbSunny from '@mui/icons-material/WbSunny';
+import MoreHoriz from '@mui/icons-material/MoreHoriz';
+import Map from '@mui/icons-material/Map';
+import Layers from '@mui/icons-material/Layers';
+import Dashboard from '@mui/icons-material/Dashboard';
+// import VideogameAsset from '@mui/icons-material/VideogameAsset';
+// import Eco from '@mui/icons-material/Eco';
+// import House from '@mui/icons-material/House';
+// import LocalHospital from '@mui/icons-material/LocalHospital';
+// import LocalMall from '@mui/icons-material/LocalMall';
 
 // https://material-ui.com/components/icons/#svgicon
 function StickyBoardIcon(props) {

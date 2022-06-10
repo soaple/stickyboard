@@ -17,7 +17,7 @@ import Chip from '@material-ui/core/Chip';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 import sha256 from 'sha256'
 

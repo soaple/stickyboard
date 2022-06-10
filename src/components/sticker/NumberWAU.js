@@ -1,5 +1,5 @@
 import React from 'react';
-import PersonIcon from '@material-ui/icons/Person';
+import PersonIcon from '@mui/icons-material/Person';
 import { NumberWidget } from '@stickyboard/number';
 
 function NumberWAU(props) {

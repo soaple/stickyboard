@@ -29,17 +29,17 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import Divider from '@material-ui/core/Divider';
 
-import MenuIcon from '@material-ui/icons/Menu';
-import ColorLens from '@material-ui/icons/ColorLens';
-import Lock from '@material-ui/icons/Lock';
-import Person from '@material-ui/icons/Person';
-import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import SocialNotifications from '@material-ui/icons/Notifications';
-import Settings from '@material-ui/icons/Settings';
-import Info from '@material-ui/icons/Info';
-import Warning from '@material-ui/icons/Warning';
-import ErrorOutline from '@material-ui/icons/ErrorOutline';
+import MenuIcon from '@mui/icons-material/Menu';
+import ColorLens from '@mui/icons-material/ColorLens';
+import Lock from '@mui/icons-material/Lock';
+import Person from '@mui/icons-material/Person';
+import PowerSettingsNew from '@mui/icons-material/PowerSettingsNew';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import SocialNotifications from '@mui/icons-material/Notifications';
+import Settings from '@mui/icons-material/Settings';
+import Info from '@mui/icons-material/Info';
+import Warning from '@mui/icons-material/Warning';
+import ErrorOutline from '@mui/icons-material/ErrorOutline';
 
 import ApiManager from 'network/ApiManager';
 import StatusCode from 'network/StatusCode';
