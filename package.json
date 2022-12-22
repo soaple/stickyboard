@@ -52,7 +52,7 @@
         "graphql-tools": "^4.0.8",
         "image-size": "^0.5.1",
         "json-loader": "^0.5.4",
-        "jsonwebtoken": "^7.4.3",
+        "jsonwebtoken": "^9.0.0",
         "material-ui-pickers": "^1.0.0-rc.17",
         "moment": "^2.25.3",
         "moment-timezone": "^0.5.28",
