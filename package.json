@@ -78,7 +78,7 @@
         "react-router-dom": "^6.3.0",
         "react-textfit": "^1.1.0",
         "redux": "^3.7.2",
-        "sequelize": "^5.21.8",
+        "sequelize": "^6.29.0",
         "sha256": "^0.2.0",
         "styled-components": "^5.3.5",
         "tls": "0.0.1",
